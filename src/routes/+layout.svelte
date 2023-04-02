@@ -1,9 +1,14 @@
 <script>
 	import 'uno.css';
 	import '@unocss/reset/antfu.css';
+	import '../app.css';
 
 	import Header from '$lib/components/Header.svelte';
 </script>
+
+<svelte:head>
+	<title>PathfinderKit</title>
+</svelte:head>
 
 <main>
 	<Header />
@@ -14,6 +19,6 @@
 
 <style>
 	main {
-		--at-apply: container text-center;
+		--at-apply: container ma text-center;
 	}
 </style>

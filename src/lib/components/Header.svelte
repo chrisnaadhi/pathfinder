@@ -14,9 +14,6 @@
 	}
 
 	ul {
-		padding: 0;
-		display: flex;
-		gap: 15px;
-		list-style: none;
+		--at-apply: p-0 flex gap-4 list-none;
 	}
 </style>

@@ -1,0 +1,7 @@
+a {
+	--at-apply: underline text-green-5;
+}
+
+input {
+	--at-apply: border border-green border-rd;
+}
