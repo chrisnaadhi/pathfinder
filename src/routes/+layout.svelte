@@ -19,6 +19,6 @@
 
 <style>
 	main {
-		--at-apply: container ma text-center;
+		--at-apply: max-w-7xl ma text-center px-4;
 	}
 </style>

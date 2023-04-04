@@ -1,9 +1,15 @@
 <script>
+	import Welcome from '$lib/components/home/Welcome.svelte';
+	import SubjectLists from '$lib/components/home/SubjectLists.svelte';
+
 	let appName = 'PathfinderKit';
 	export let data;
 </script>
 
-<h1>Welcome to {appName}</h1>
-<input type="search" name="general-search" id="general-search" />
-<p>{data.msg} - {data.statusMsg}</p>
-<p>{data.checkParams}</p>
+<main>
+	<Welcome />
+	<input type="search" name="general-search" id="general-search" />
+	<SubjectLists />
+	<p>{data.msg} - {data.statusMsg}</p>
+	<p>{data.checkParams}</p>
+</main>
