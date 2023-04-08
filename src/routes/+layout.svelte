@@ -4,6 +4,9 @@
 	import '../app.css';
 
 	import Header from '$lib/components/Header.svelte';
+	import Welcome from '$lib/components/home/Welcome.svelte';
+
+	let name = 'PathfinderKit';
 </script>
 
 <svelte:head>
@@ -12,6 +15,9 @@
 
 <main>
 	<Header />
+	<section class="bg-gray-2 w-full">
+		<Welcome {name} />
+	</section>
 	<section>
 		<slot />
 	</section>
@@ -19,6 +25,6 @@
 
 <style>
 	main {
-		--at-apply: max-w-7xl ma text-center px-4;
+		--at-apply: ma text-center;
 	}
 </style>

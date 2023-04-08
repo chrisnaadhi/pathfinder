@@ -1,17 +1,28 @@
+<script>
+	/**
+	 * @type {string}
+	 */
+	export let name;
+</script>
+
 <section>
-	<h1>Selamat datang di PathfinderKit</h1>
+	<h1>Selamat datang di {name}</h1>
+	<br />
 	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias nihil aperiam necessitatibus
-		asperiores ducimus earum, accusamus tenetur cumque quasi mollitia totam placeat iure vel quos
-		ratione repellat dolore ad vero perferendis incidunt laudantium consequuntur ipsam. Consequuntur
-		mollitia eaque commodi id quae nobis quidem inventore eveniet ad qui fuga eligendi dicta neque
-		soluta officia earum iste dolorum voluptatem, aperiam, ab voluptas reiciendis laudantium. Veniam
-		quia sapiente, earum facilis explicabo non tenetur dolorem, obcaecati libero incidunt unde?
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et amet provident nesciunt deserunt
+		quae, maiores temporibus architecto ab ullam harum culpa possimus, repellendus inventore illum
+		omnis laboriosam! Ratione hic qui autem mollitia? Dignissimos, alias voluptatum distinctio
+		beatae a adipisci, iusto inventore ipsam quaerat asperiores, quos natus aliquid incidunt fugiat
+		quasi.
 	</p>
 </section>
 
 <style>
+	section {
+		--at-apply: pt-10 pb-15 max-w-7xl ma;
+	}
+
 	h1 {
-		--at-apply: text-4xl font-600 text-center text-green;
+		--at-apply: text-3xl font-600 text-center text-dark;
 	}
 </style>

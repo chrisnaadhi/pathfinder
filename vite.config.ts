@@ -12,7 +12,10 @@ export default defineConfig({
 		UnoCSS({
 			extractors: [extractorSvelte],
 			presets: [presetUno(), presetIcons()],
-			transformers: [transformerDirectives(), transformerVariantGroup()]
+			transformers: [transformerDirectives(), transformerVariantGroup()],
+			shortcuts: {
+				btn: 'py-2 px-4 font-semibold rounded-lg shadow-md'
+			}
 		}),
 		sveltekit()
 	],

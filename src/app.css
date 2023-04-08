@@ -3,5 +3,5 @@ a {
 }
 
 input {
-	--at-apply: border border-green border-rd;
+	--at-apply: border border-green;
 }
