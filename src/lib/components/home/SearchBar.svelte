@@ -19,6 +19,6 @@
 	}
 
 	button {
-		--at-apply: btn bg-green text-dark absolute top-2 right-2;
+		--at-apply: btn bg-fuchsia text-white absolute top-2 right-2;
 	}
 </style>

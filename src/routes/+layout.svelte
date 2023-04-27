@@ -1,10 +1,12 @@
 <script>
+	import { page } from '$app/stores';
 	import 'uno.css';
 	import '@unocss/reset/antfu.css';
 	import '../app.css';
 
 	import Header from '$lib/components/Header.svelte';
 	import Welcome from '$lib/components/home/Welcome.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
 	let name = 'PathfinderKit';
 </script>
@@ -15,11 +17,17 @@
 
 <main>
 	<Header />
-	<section class="bg-gray-2 w-full">
-		<Welcome {name} />
-	</section>
+	{#if $page.url.pathname === '/'}
+		<section class="bg-fuchsia-50 w-full">
+			<Welcome {name} />
+		</section>
+	{/if}
+
 	<section>
 		<slot />
+	</section>
+	<section>
+		<Footer />
 	</section>
 </main>
 
