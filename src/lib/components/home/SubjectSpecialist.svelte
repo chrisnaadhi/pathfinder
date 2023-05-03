@@ -22,7 +22,7 @@
 	<h4>Subject Specialists</h4>
 	<div class="librarian-list">
 		{#each specialist as spec}
-			<div class="flex flex-row my-2">
+			<div class="flex flex-row items-center my-2">
 				<img src="/img/no-image.jpg" alt="foto" class="h-18 mx-2 rounded-lg" />
 				<div class="text-left">
 					<h5>{spec.nama}</h5>

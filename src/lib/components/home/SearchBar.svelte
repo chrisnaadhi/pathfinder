@@ -7,7 +7,7 @@
 
 <style>
 	section {
-		--at-apply: w-full mt--8;
+		--at-apply: w-full mt--23 px-2 md:px-0;
 	}
 
 	input {

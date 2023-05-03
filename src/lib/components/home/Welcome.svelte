@@ -24,7 +24,7 @@
 
 <style>
 	section {
-		--at-apply: pt-10 pb-15 max-w-5xl ma;
+		--at-apply: pt-10 pb-15 max-w-5xl ma px-3;
 	}
 
 	h1 {

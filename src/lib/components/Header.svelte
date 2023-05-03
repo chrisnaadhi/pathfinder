@@ -7,7 +7,7 @@
 	};
 </script>
 
-<nav>
+<nav class="fixed top-0 w-full z-5">
 	<a href="/" class={isLinkActive('/')}>Home</a>
 	<a href="/about" class={isLinkActive('/about')}>About</a>
 	<a href="/guides" class={isLinkActive('/guides')}>Guide</a>

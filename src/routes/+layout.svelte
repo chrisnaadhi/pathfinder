@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import 'uno.css';
-	import '@unocss/reset/antfu.css';
+	import '@unocss/reset/tailwind.css';
 	import '../app.css';
 
 	import Header from '$lib/components/Header.svelte';
@@ -18,12 +18,12 @@
 <main>
 	<Header />
 	{#if $page.url.pathname === '/'}
-		<section class="bg-fuchsia-50 w-full">
+		<section class="bg-fuchsia-50 w-full pt-12">
 			<Welcome {name} />
 		</section>
 	{/if}
 
-	<section>
+	<section class="mt-15">
 		<slot />
 	</section>
 	<section>
