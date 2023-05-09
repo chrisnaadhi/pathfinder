@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 
 	$: path = $page.url.pathname;
-	$: isLinkActive = (/** @type {string} */ val) => {
+	$: isLinkActive = (val: string) => {
 		return path === val ? 'menu-active menu-link' : 'menu-link';
 	};
 </script>
@@ -13,6 +13,7 @@
 	<a href="/guides" class={isLinkActive('/guides')}>Guide</a>
 	<a href="/librarian" class={isLinkActive('/librarian')}>Librarian</a>
 	<a href="/contacts" class={isLinkActive('/contacts')}>Ask us!</a>
+	<a href="/manage">Manage PFKit</a>
 </nav>
 
 <style>

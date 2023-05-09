@@ -1,27 +1,13 @@
 <script>
-	const specialist = [
-		{
-			nama: 'Chrisna',
-			subject: 'Computer and Electronical Stuff',
-			email: 'chrisna@pathfinderkit.net'
-		},
-		{
-			nama: 'Adhi',
-			subject: 'Alchemist and other stuff',
-			email: 'adhi@pathfinderkit.net'
-		},
-		{
-			nama: 'Pranoto',
-			subject: 'Communication & Social Studies',
-			email: 'pranoto@pathfinderkit.net'
-		}
-	];
+	import { specialist } from '$lib/utils/dummyData';
+
+	const listPeople = specialist();
 </script>
 
 <section class="w-full my-5 flex flex-col items-center">
 	<h4>Subject Specialists</h4>
 	<div class="librarian-list">
-		{#each specialist as spec}
+		{#each listPeople as spec}
 			<div class="flex flex-row items-center my-2">
 				<img src="/img/no-image.jpg" alt="foto" class="h-18 mx-2 rounded-lg" />
 				<div class="text-left">

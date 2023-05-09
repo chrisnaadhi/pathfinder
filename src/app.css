@@ -44,6 +44,7 @@ a:hover {
 	--at-apply: text-fuchsia-5;
 }
 
-input {
-	--at-apply: border border-fuchsia;
+input,
+textarea {
+	--at-apply: border border-fuchsia rounded;
 }

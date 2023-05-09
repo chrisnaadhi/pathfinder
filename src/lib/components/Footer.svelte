@@ -10,6 +10,6 @@
 
 <style>
 	section {
-		--at-apply: text-center bg-fuchsia-50 mt-4;
+		--at-apply: text-center bg-fuchsia-50;
 	}
 </style>

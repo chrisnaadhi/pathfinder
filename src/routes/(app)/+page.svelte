@@ -7,7 +7,10 @@
 </script>
 
 <main class="max-w-7xl ma">
-	<SearchBar />
+	<div class="mt--23">
+		<SearchBar />
+	</div>
+
 	<section class="main-content">
 		<div class="main-subject">
 			<SubjectLists />
