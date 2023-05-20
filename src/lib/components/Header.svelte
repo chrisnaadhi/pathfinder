@@ -22,7 +22,7 @@
 	}
 
 	.menu-link {
-		--at-apply: relative py-2 font-500;
+		--at-apply: relative py-2 font-500 hover:text-fuchsia;
 	}
 
 	.menu-link::after {

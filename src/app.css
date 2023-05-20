@@ -40,11 +40,21 @@ h6 {
 	--at-apply: text-lg;
 }
 
-a:hover {
-	--at-apply: text-fuchsia-5;
-}
-
 input,
 textarea {
 	--at-apply: border border-fuchsia rounded;
+}
+
+table {
+	--at-apply: w-full my-4;
+}
+
+table,
+td,
+th {
+	--at-apply: border border-fuchsia;
+}
+
+th {
+	--at-apply: bg-fuchsia-1;
 }
