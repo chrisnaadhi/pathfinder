@@ -20,7 +20,7 @@
 				<input type="checkbox" name="agreement" id="agreement" />
 				<p>Agree to Terms and Conditions</p>
 			</div>
-			<button type="submit" class="btn bg-fuchsia-5 text-white">Submit</button>
+			<button type="submit" class="btn bg-violet-5 text-white">Submit</button>
 		</form>
 	</div>
 </section>

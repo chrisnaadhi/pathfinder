@@ -1,6 +1,6 @@
 <script>
 	import 'uno.css';
-	import '@unocss/reset/tailwind-compat.css';
+	import '../reset.css';
 	import '../app.css';
 
 	import Footer from '$lib/components/Footer.svelte';

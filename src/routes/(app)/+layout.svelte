@@ -9,7 +9,7 @@
 <main>
 	<Header />
 	{#if $page.url.pathname === '/'}
-		<section class="bg-fuchsia-50 w-full pt-10">
+		<section class="bg-violet-50 w-full pt-10">
 			<Welcome {name} />
 		</section>
 	{/if}

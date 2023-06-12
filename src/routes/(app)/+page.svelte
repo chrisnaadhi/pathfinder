@@ -25,7 +25,7 @@
 
 <style>
 	.main-content {
-		--at-apply: bg-fuchsia-50 h-full rounded-lg;
+		--at-apply: bg-violet-50 h-full rounded-lg;
 	}
 
 	.main-subject {

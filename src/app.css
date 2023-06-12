@@ -42,7 +42,7 @@ h6 {
 
 input,
 textarea {
-	--at-apply: border border-fuchsia rounded;
+	--at-apply: border border-violet rounded;
 }
 
 table {
@@ -52,9 +52,9 @@ table {
 table,
 td,
 th {
-	--at-apply: border border-fuchsia;
+	--at-apply: border border-violet;
 }
 
 th {
-	--at-apply: bg-fuchsia-1;
+	--at-apply: bg-violet-1;
 }

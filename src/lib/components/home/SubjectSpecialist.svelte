@@ -29,6 +29,6 @@
 	}
 
 	a {
-		--at-apply: btn bg-fuchsia hover:(text-white);
+		--at-apply: btn bg-violet hover:(text-white);
 	}
 </style>

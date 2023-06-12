@@ -10,7 +10,7 @@
 </script>
 
 <section>
-	<h1>Selamat datang di <span class="text-fuchsia-5">{name}</span></h1>
+	<h1>Selamat datang di <span class="text-violet-5">{name}</span></h1>
 	<br />
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et amet provident nesciunt deserunt

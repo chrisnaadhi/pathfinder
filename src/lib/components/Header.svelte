@@ -18,11 +18,11 @@
 
 <style>
 	nav {
-		--at-apply: flex items-center justify-center gap-5 py-2 bg-fuchsia-1;
+		--at-apply: flex items-center justify-center gap-5 py-2 bg-violet-1;
 	}
 
 	.menu-link {
-		--at-apply: relative py-2 font-500 hover:text-fuchsia;
+		--at-apply: relative py-2 font-500 hover:text-violet;
 	}
 
 	.menu-link::after {
@@ -35,7 +35,7 @@
 		left: 0;
 		transform-origin: bottom right;
 		transition: transform 0.25s ease-out;
-		--at-apply: bg-fuchsia-5;
+		--at-apply: bg-violet-5;
 	}
 
 	.menu-link:hover::after {
@@ -44,6 +44,6 @@
 	}
 
 	.menu-active {
-		--at-apply: text-fuchsia-5;
+		--at-apply: text-violet-5;
 	}
 </style>
