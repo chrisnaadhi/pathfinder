@@ -56,7 +56,7 @@ model UserProfile {
 model AuthUser {
   id           String        @id @unique
   created_at   DateTime      @default(now())
-  username     String
+  username     String        @unique
   password     String
   user_type_id Int?
   user_type    UserType?     @relation(fields: [user_type_id], references: [id])
@@ -106,12 +106,13 @@ model Subject {
   id                 Int          @id @unique @default(autoincrement())
   subject_name       String
   subject_slug       String       @unique
-  active             Int
+  active             String
   redirect_url       String
   header             String?
   description        String?
   keywords           String?
   type               String?
+  created_at         DateTime     @default(now())
   last_modified      DateTime     @updatedAt
   instructor         String?
   subject_specialist UserProfile? @relation(references: [id], fields: [instructor])

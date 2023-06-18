@@ -41,7 +41,8 @@ h6 {
 }
 
 input,
-textarea {
+textarea,
+select {
 	--at-apply: border border-violet rounded;
 }
 
