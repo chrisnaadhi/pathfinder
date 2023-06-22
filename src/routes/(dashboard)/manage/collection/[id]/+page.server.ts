@@ -1,9 +1,21 @@
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import prisma from '$lib/server/prisma';
 
-export const actions = {
-	default: async (event) => {
+export const load: PageServerLoad = async ({ params }) => {
+	const subjectData = await prisma.subject.findUniqueOrThrow({
+		where: {
+			id: +params.id
+		}
+	});
+
+	return {
+		subjectData
+	};
+};
+
+export const actions: Actions = {
+	updateData: async (event) => {
 		const data = await event.request.formData();
 		const subjectName = data.get('title') as string;
 		const subjectSlug = data.get('slug') as string;
@@ -12,7 +24,10 @@ export const actions = {
 		const subjectKeywords = data.get('keywords') as string;
 		const subjectType = data.get('typesubject') as string;
 
-		await prisma.subject.create({
+		await prisma.subject.update({
+			where: {
+				id: +event.params.id
+			},
 			data: {
 				subject_name: subjectName,
 				subject_slug: subjectSlug,
@@ -24,5 +39,14 @@ export const actions = {
 		});
 
 		throw redirect(302, '/manage/collection');
+	},
+	deleteData: async (event) => {
+		await prisma.subject.delete({
+			where: {
+				id: Number(event.params.id)
+			}
+		});
+
+		throw redirect(303, '/manage/collection');
 	}
-} satisfies Actions;
+};

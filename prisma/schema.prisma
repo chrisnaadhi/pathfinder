@@ -107,7 +107,7 @@ model Subject {
   subject_name       String
   subject_slug       String       @unique
   active             String
-  redirect_url       String
+  redirect_url       String?
   header             String?
   description        String?
   keywords           String?
