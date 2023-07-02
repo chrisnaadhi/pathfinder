@@ -1,12 +1,16 @@
 <script>
 	let news = 'Sekilas berita dan informasi terbaru akan tampil disini';
+
+	export let data;
 </script>
 
 <main class="w-full min-h-150 flex">
 	<section class="bg-violet-50 text-violet-8 min-h-full w-60 px-4 py-2">
 		<div class="flex flex-col items-center">
 			<img src="/img/no-image.jpg" alt="foto" class="h-18 rounded-full" />
-			<p>Hello, Admin!</p>
+			{#if data.user}
+				<p>Hello, {data.user.email.split('@')[0]}!</p>
+			{/if}
 		</div>
 		<p class="font-bold">Main Menu Here</p>
 		<div class="flex flex-col">

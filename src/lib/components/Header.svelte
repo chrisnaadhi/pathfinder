@@ -7,22 +7,34 @@
 	};
 </script>
 
-<nav class="fixed top-0 w-full z-5">
-	<a href="/" class={isLinkActive('/')}>Home</a>
-	<a href="/about" class={isLinkActive('/about')}>About</a>
-	<a href="/guides" class={isLinkActive('/guides')}>Guide</a>
-	<a href="/librarian" class={isLinkActive('/librarian')}>Librarian</a>
-	<a href="/contacts" class={isLinkActive('/contacts')}>Ask us!</a>
-	<a href="/manage">Manage PFKit</a>
+<nav class="fixed top-0 w-full z-5 bg-violet-1">
+	<section class="nav-section">
+		<div>
+			<a href="/">
+				<h5>PathfinderKit</h5>
+			</a>
+		</div>
+		<div class="hidden md:(flex items-center gap-5)">
+			<a href="/" class={isLinkActive('/')}>Home</a>
+			<a href="/about" class={isLinkActive('/about')}>About</a>
+			<a href="/guides" class={isLinkActive('/guides')}>Guide</a>
+			<a href="/librarian" class={isLinkActive('/librarian')}>Librarian</a>
+			<a href="/contacts" class={isLinkActive('/contacts')}>Ask us!</a>
+			<a href="/manage">Manage PFKit</a>
+		</div>
+		<div>
+			<a href="/account">Account</a>
+		</div>
+	</section>
 </nav>
 
 <style>
-	nav {
-		--at-apply: flex items-center justify-center gap-5 py-2 bg-violet-1;
+	.nav-section {
+		--at-apply: max-w-6xl ma flex items-center justify-between gap-5 py-4 px-5;
 	}
 
 	.menu-link {
-		--at-apply: relative py-2 font-500 hover:text-violet;
+		--at-apply: relative font-500 hover:text-violet-6;
 	}
 
 	.menu-link::after {

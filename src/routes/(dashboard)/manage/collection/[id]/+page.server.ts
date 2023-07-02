@@ -41,12 +41,18 @@ export const actions: Actions = {
 		throw redirect(302, '/manage/collection');
 	},
 	deleteData: async (event) => {
-		await prisma.subject.delete({
-			where: {
-				id: Number(event.params.id)
-			}
-		});
+		const data = await event.request.formData();
+		const isDelete = data.get('confirmation');
+		if (isDelete === 'delete') {
+			await prisma.subject.delete({
+				where: {
+					id: Number(event.params.id)
+				}
+			});
 
-		throw redirect(303, '/manage/collection');
+			throw redirect(307, '/manage/collection');
+		} else {
+			throw redirect(304, event.url.pathname);
+		}
 	}
 };

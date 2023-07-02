@@ -43,9 +43,4 @@
 </section>
 
 <style>
-	input,
-	textarea,
-	select {
-		--at-apply: max-w-md p-2;
-	}
 </style>

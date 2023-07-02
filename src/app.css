@@ -43,7 +43,7 @@ h6 {
 input,
 textarea,
 select {
-	--at-apply: border border-violet rounded;
+	--at-apply: border border-violet rounded max-w-md p-2;
 }
 
 table {

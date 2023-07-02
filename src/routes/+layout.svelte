@@ -12,7 +12,7 @@
 	<title>{name}</title>
 </svelte:head>
 
-<main class="min-h-screen">
+<main>
 	<slot />
 	<Footer />
 </main>

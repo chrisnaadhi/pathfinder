@@ -14,7 +14,7 @@
 		</section>
 	{/if}
 
-	<section class="mt-15 mb-5">
+	<section class="mt-15 mb-5 px-5 xl:px-0">
 		<slot />
 	</section>
 </main>
