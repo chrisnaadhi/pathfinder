@@ -16,6 +16,7 @@
 		<div class="flex flex-col">
 			<a href="/manage/#">Dashboard</a>
 			<a href="/manage/collection">Collection</a>
+			<a href="/manage/profile">Profile</a>
 			<a href="/manage/#">Guides</a>
 			<a href="/manage/#">Member</a>
 			<a href="/manage/#">Help</a>

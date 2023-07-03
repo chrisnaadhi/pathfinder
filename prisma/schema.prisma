@@ -38,15 +38,15 @@ model Department {
 }
 
 model UserProfile {
-  id                 String     @id @default(uuid())
-  email              String     @unique
+  id                 String      @id @default(uuid())
+  email              String      @unique
   name               String
-  title              String
-  bio                String
-  profile_id         String     @unique
-  auth_user          AuthUser   @relation(fields: [profile_id], references: [id])
-  department_id      String
-  department         Department @relation(fields: [department_id], references: [id])
+  title              String?
+  bio                String?
+  profile_id         String?     @unique
+  auth_user          AuthUser?   @relation(fields: [profile_id], references: [id])
+  department_id      String?
+  department         Department? @relation(fields: [department_id], references: [id])
   subject_specialist Subject[]
 
   @@map("user_profile")
