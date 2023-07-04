@@ -4,9 +4,9 @@ import type { PageServerLoad, Actions } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { user } = await locals.auth.validateUser();
-	const userdata = await prisma.userProfile.findUnique({
+	const userdata = await prisma.authUser.findUnique({
 		where: {
-			profile_id: user.userId
+			id: user.userId
 		}
 	});
 
@@ -23,9 +23,9 @@ export const actions: Actions = {
 		const title = data.get('title') as string;
 		const bio = data.get('bio') as string;
 
-		await prisma.userProfile.update({
+		await prisma.authUser.update({
 			where: {
-				profile_id: user.userId
+				id: user.userId
 			},
 			data: {
 				name: name,

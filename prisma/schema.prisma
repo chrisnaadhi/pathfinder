@@ -26,43 +26,33 @@ model UserType {
 }
 
 model Department {
-  id                     String        @id @default(uuid())
+  id                     String     @id @default(uuid())
   department_name        String
   department_description String
   telephone              String?
   email                  String?
   url                    String?
-  user_profile           UserProfile[]
+  user_profile           AuthUser[]
 
   @@map("department")
 }
 
-model UserProfile {
-  id                 String      @id @default(uuid())
-  email              String      @unique
+// User Auth
+model AuthUser {
+  id                 String        @id @unique
+  created_at         DateTime      @default(now())
+  username           String?       @unique
+  email              String        @unique
   name               String
   title              String?
   bio                String?
-  profile_id         String?     @unique
-  auth_user          AuthUser?   @relation(fields: [profile_id], references: [id])
+  user_type_id       Int?
+  user_type          UserType?     @relation(fields: [user_type_id], references: [id])
   department_id      String?
-  department         Department? @relation(fields: [department_id], references: [id])
+  department         Department?   @relation(fields: [department_id], references: [id])
+  auth_session       AuthSession[]
+  auth_key           AuthKey[]
   subject_specialist Subject[]
-
-  @@map("user_profile")
-}
-
-// User Auth
-model AuthUser {
-  id           String        @id @unique
-  created_at   DateTime      @default(now())
-  username     String?       @unique
-  email        String        @unique
-  user_type_id Int?
-  user_type    UserType?     @relation(fields: [user_type_id], references: [id])
-  user_profile UserProfile?
-  auth_session AuthSession[]
-  auth_key     AuthKey[]
 
   @@map("auth_user")
 }
@@ -103,21 +93,21 @@ model Discipline {
 }
 
 model Subject {
-  id                 Int          @id @unique @default(autoincrement())
+  id                 Int         @id @unique @default(autoincrement())
   subject_name       String
-  subject_slug       String       @unique
+  subject_slug       String      @unique
   active             String
   redirect_url       String?
   header             String?
   description        String?
   keywords           String?
   type               String?
-  created_at         DateTime     @default(now())
-  last_modified      DateTime     @updatedAt
+  created_at         DateTime    @default(now())
+  last_modified      DateTime    @updatedAt
   instructor         String?
-  subject_specialist UserProfile? @relation(references: [id], fields: [instructor])
+  subject_specialist AuthUser?   @relation(references: [id], fields: [instructor])
   discipline_id      Int?
-  Discipline         Discipline?  @relation(references: [id], fields: [discipline_id])
+  Discipline         Discipline? @relation(references: [id], fields: [discipline_id])
 
   @@index([subject_slug])
   @@map("subject")

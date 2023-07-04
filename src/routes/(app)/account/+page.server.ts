@@ -52,15 +52,13 @@ export const actions: Actions = {
 			const session = await auth.createSession(user.userId);
 			locals.auth.setSession(session);
 
-			await prisma.userProfile.create({
+			await prisma.authUser.update({
+				where: {
+					id: user.userId
+				},
 				data: {
-					email: email,
 					name: namaLengkap,
-					auth_user: {
-						connect: {
-							id: user.userId
-						}
-					}
+					username: email.split('@')[0]
 				}
 			});
 		} catch (err) {
