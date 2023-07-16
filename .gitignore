@@ -9,6 +9,4 @@ package-lock.json
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-/prisma/migrations
-/prisma/pathfinder.db
-/prisma/pathfinder.db-journal
+drizzle

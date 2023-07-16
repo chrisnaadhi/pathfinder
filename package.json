@@ -11,7 +11,11 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"generateDB": "drizzle-kit generate:sqlite",
+		"pushDB": "drizzle-kit push:sqlite",
+		"dropDB": "drizzle-kit drop",
+		"studio": "drizzle-kit studio"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
@@ -20,12 +24,12 @@
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"@unocss/extractor-svelte": "^0.53.1",
+		"drizzle-kit": "^0.19.5",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte": "^2.3.0",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.10.1",
-		"prisma": "^4.14.1",
 		"svelte": "^4.0.0",
 		"svelte-check": "^3.4.3",
 		"tslib": "^2.4.1",
@@ -36,8 +40,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@lucia-auth/adapter-prisma": "^2.0.0",
-		"@prisma/client": "^4.14.1",
+		"@libsql/client": "^0.3.0",
+		"drizzle-orm": "^0.27.2",
 		"lucia-auth": "^1.8.0"
 	}
 }

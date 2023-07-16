@@ -5,7 +5,7 @@
 	let name = 'Collection';
 	let displayCard = ['One', 'Two', 'Three', 'Four'];
 
-	export let data;
+	// export let data;
 </script>
 
 <section>
@@ -22,7 +22,7 @@
 			<th>Ops</th>
 		</thead>
 		<tbody>
-			{#each data.subject as reps, i}
+			<!-- {#each data.subject as reps, i}
 				<tr>
 					<td>{i + 1}</td>
 					<td>{reps.subject_name}</td>
@@ -34,7 +34,7 @@
 						</a>
 					</td>
 				</tr>
-			{/each}
+			{/each} -->
 		</tbody>
 	</table>
 

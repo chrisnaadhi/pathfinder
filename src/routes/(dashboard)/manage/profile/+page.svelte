@@ -10,7 +10,7 @@
 <section>
 	<h1 class="text-violet-5">{name}</h1>
 	<form method="POST" action="?/updateProfile" use:enhance>
-		<div>
+		<!-- <div>
 			<label for="name">Nama Lengkap: </label>
 			<input type="text" bind:value={userdata.name} name="nama-lengkap" />
 		</div>
@@ -26,6 +26,6 @@
 			<label for="bio">Biodata: </label>
 			<textarea type="text" bind:value={userdata.bio} name="bio" />
 		</div>
-		<button type="submit" class="btn bg-violet-6 py-1 px-2 text-white">Update</button>
+		<button type="submit" class="btn bg-violet-6 py-1 px-2 text-white">Update</button> -->
 	</form>
 </section>
