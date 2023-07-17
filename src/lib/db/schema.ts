@@ -51,10 +51,11 @@ export const department = sqliteTable('department', {
 
 // Table for Subjects
 export const subjects = sqliteTable('subjects', {
-	id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }).unique(),
+	id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 	subjectName: text('subject_name').notNull(),
 	subjectSlug: text('subject_slug').unique().notNull(),
 	redirectUrl: text('redirect_url'),
+	status: text('status'),
 	header: text('header'),
 	description: text('description'),
 	keywords: text('keywords'),

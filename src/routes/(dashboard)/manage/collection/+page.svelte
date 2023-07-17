@@ -5,7 +5,9 @@
 	let name = 'Collection';
 	let displayCard = ['One', 'Two', 'Three', 'Four'];
 
-	// export let data;
+	export let data;
+
+	const { results } = data;
 </script>
 
 <section>
@@ -22,19 +24,19 @@
 			<th>Ops</th>
 		</thead>
 		<tbody>
-			<!-- {#each data.subject as reps, i}
+			{#each results as reps, i}
 				<tr>
 					<td>{i + 1}</td>
-					<td>{reps.subject_name}</td>
+					<td>{reps.subjectName}</td>
 					<td>{reps.description}</td>
 					<td>{reps.keywords}</td>
 					<td>
-						<a href="{$page.url.pathname}/{reps.id}">
+						<a href="{$page.url.pathname}/{reps.subjectSlug}">
 							<button class="btn bg-violet text-white">Edit</button>
 						</a>
 					</td>
 				</tr>
-			{/each} -->
+			{/each}
 		</tbody>
 	</table>
 

@@ -1,7 +1,21 @@
 import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
+import { eq } from 'drizzle-orm';
+import { db } from '$lib/server/drizzle';
+import { subjects } from '$lib/db/schema';
 
-export const load: PageServerLoad = async ({ params }) => {};
+export const load: PageServerLoad = async ({ params }) => {
+	const getSubject = await db
+		.select()
+		.from(subjects)
+		.where(eq(subjects.subjectSlug, params.id))
+		.run();
+	const subjectData = getSubject.rows[0];
+
+	return {
+		subjectData
+	};
+};
 
 export const actions: Actions = {
 	updateData: async (event) => {
@@ -13,10 +27,32 @@ export const actions: Actions = {
 		const subjectKeywords = data.get('keywords') as string;
 		const subjectType = data.get('typesubject') as string;
 
+		await db
+			.update(subjects)
+			.set({
+				subjectName: subjectName,
+				subjectSlug: subjectSlug,
+				description: subjectDescription,
+				status: subjectStatus,
+				keywords: subjectKeywords,
+				type: subjectType
+			})
+			.where(eq(subjects.subjectSlug, event.params.id))
+			.run();
+
 		throw redirect(302, '/manage/collection');
 	},
 	deleteData: async (event) => {
 		const data = await event.request.formData();
 		const isDelete = data.get('confirmation');
+
+		if (isDelete === 'delete') {
+			await db.delete(subjects).where(eq(subjects.subjectSlug, event.params.id)).run();
+			throw redirect(302, '/manage/collection');
+		} else if (isDelete === 'keep') {
+			throw redirect(300, '/manage/collection/' + event.params.id);
+		} else {
+			console.log('Nothing Happen');
+		}
 	}
 };
