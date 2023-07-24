@@ -1,7 +1,7 @@
 import type { Actions } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
-import { subjects } from '$lib/db/schema';
+import { subjects } from '$lib/db/pgSchema';
 
 export const actions = {
 	default: async (event) => {
@@ -13,17 +13,14 @@ export const actions = {
 		const subjectKeywords = data.get('keywords') as string;
 		const subjectType = data.get('typesubject') as string;
 
-		await db
-			.insert(subjects)
-			.values({
-				subjectName: subjectName,
-				subjectSlug: subjectSlug,
-				description: subjectDescription,
-				keywords: subjectKeywords,
-				type: subjectType,
-				status: subjectStatus
-			})
-			.run();
+		await db.insert(subjects).values({
+			subjectName: subjectName,
+			subjectSlug: subjectSlug,
+			subjectDescription: subjectDescription,
+			keywords: subjectKeywords,
+			subjectStatus: subjectStatus,
+			type: subjectType
+		});
 
 		throw redirect(302, '/manage/collection');
 	}

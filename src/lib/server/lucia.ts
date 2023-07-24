@@ -15,4 +15,8 @@ import { dev } from '$app/environment';
 // 	}
 // });
 
+// export const auth = lucia({
+//   adapter: pg(connectionPool),
+// })
+
 // export type Auth = typeof auth;

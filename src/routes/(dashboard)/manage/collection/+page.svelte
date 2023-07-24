@@ -28,12 +28,17 @@
 				<tr>
 					<td>{i + 1}</td>
 					<td>{reps.subjectName}</td>
-					<td>{reps.description}</td>
+					<td>{reps.subjectDescription}</td>
 					<td>{reps.keywords}</td>
 					<td>
-						<a href="{$page.url.pathname}/{reps.subjectSlug}">
-							<button class="btn bg-violet text-white">Edit</button>
-						</a>
+						<span class="flex gap-1">
+							<a href="{$page.url.pathname}/{reps.subjectSlug}">
+								<button class="btn bg-violet text-white w-full">List</button>
+							</a>
+							<a href="{$page.url.pathname}/{reps.subjectSlug}/edit">
+								<button class="btn bg-violet text-white w-full">Edit</button>
+							</a>
+						</span>
 					</td>
 				</tr>
 			{/each}

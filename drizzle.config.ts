@@ -2,10 +2,10 @@ import { type Config } from 'drizzle-kit';
 
 export default {
 	out: './drizzle',
-	schema: './src/lib/db/schema.ts',
-	driver: 'turso',
+	schema: './src/lib/db/pgSchema.ts',
+	driver: 'pg',
 	dbCredentials: {
-		url: 'file:./drizzle/pathfinder.db'
+		connectionString: 'postgres://pathfinder:path@0.0.0.0:5432/pathfinder'
 	},
 	breakpoints: true
 } satisfies Config;

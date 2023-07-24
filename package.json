@@ -12,8 +12,8 @@
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
-		"generateDB": "drizzle-kit generate:sqlite",
-		"pushDB": "drizzle-kit push:sqlite",
+		"generateDB": "drizzle-kit generate:pg",
+		"pushDB": "drizzle-kit push:pg",
 		"dropDB": "drizzle-kit drop",
 		"studio": "drizzle-kit studio"
 	},
@@ -40,8 +40,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@libsql/client": "^0.3.0",
+		"dotenv": "^16.3.1",
 		"drizzle-orm": "^0.27.2",
-		"lucia-auth": "^1.8.0"
+		"lucia-auth": "^1.8.0",
+		"postgres": "^3.3.5"
 	}
 }

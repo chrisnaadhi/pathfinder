@@ -14,7 +14,7 @@ export default defineConfig({
 			presets: [presetUno(), presetIcons()],
 			transformers: [transformerDirectives(), transformerVariantGroup()],
 			shortcuts: {
-				btn: 'py-1 px-4 font-semibold rounded-lg'
+				btn: 'py-1 px-4 rounded-lg'
 			}
 		}),
 		sveltekit()

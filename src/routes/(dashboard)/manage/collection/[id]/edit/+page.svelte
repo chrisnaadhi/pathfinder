@@ -9,7 +9,7 @@
 	let objData = {
 		subjectName: subjectData.subjectName,
 		subjectSlug: subjectData.subjectSlug,
-		status: subjectData.status,
+		status: subjectData.subjectStatus,
 		description: subjectData.subjectDescription,
 		keywords: subjectData.keywords,
 		subjectType: subjectData.type

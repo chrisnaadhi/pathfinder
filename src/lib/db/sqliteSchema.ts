@@ -1,5 +1,5 @@
 import { sql, relations } from 'drizzle-orm';
-import { sqliteTable, text, integer, primaryKey } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // Table for Users
 export const users = sqliteTable('auth_users', {
@@ -9,8 +9,8 @@ export const users = sqliteTable('auth_users', {
 	name: text('full_name').notNull(),
 	title: text('title'),
 	bio: text('biograph'),
-	userType: text('user_type').references(() => userType.id),
-	department: text('department').references(() => department.id)
+	userType: integer('user_type').references(() => userType.id),
+	department: integer('department').references(() => department.id)
 });
 
 export const session = sqliteTable('auth_session', {
@@ -35,6 +35,7 @@ export const key = sqliteTable('auth_key', {
 export const userType = sqliteTable('user_type', {
 	id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
 	typeName: text('type_name').notNull(),
+	typeRole: text('type_role').unique().notNull(),
 	description: text('description'),
 	createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
 	lastModified: text('last_modified').default(sql`CURRENT_TIMESTAMP`)
@@ -64,32 +65,3 @@ export const subjects = sqliteTable('subjects', {
 	lastModified: text('last_modified').default(sql`CURRENT_TIMESTAMP`),
 	instructor: text('instructor')
 });
-
-// Relation Table
-// export const usersToSubjects = sqliteTable(
-// 	'users_to_subjects',
-// 	{
-// 		userId: text('user_id').references(() => users.id),
-// 		subjectId: integer('subject_id').references(() => subjects.id)
-// 	},
-// 	(t) => ({ pk: primaryKey(t.userId, t.subjectId) })
-// );
-
-// export const usersRelations = relations(users, ({ many }) => ({
-// 	usersToSubjects: many(usersToSubjects)
-// }));
-
-// export const subjectsRelations = relations(subjects, ({ many }) => ({
-// 	usersToSubjects: many(usersToSubjects)
-// }));
-
-// export const usersToSubjectsRelations = relations(usersToSubjects, ({ one }) => ({
-// 	subject: one(subjects, {
-// 		fields: [usersToSubjects.subjectId],
-// 		references: [subjects.id]
-// 	}),
-// 	user: one(users, {
-// 		fields: [usersToSubjects.userId],
-// 		references: [users.id]
-// 	})
-// }));
