@@ -22,7 +22,8 @@ export const actions: Actions = {
 				name: 'Chrisna Adhi Pranoto',
 				bio: "Lotus wasn't bloom in vain",
 				title: 'System Librarian',
-				username: 'chrisnaadhi'
+				username: 'chrisnaadhi',
+				type: 1
 			});
 
 			await db
@@ -31,22 +32,26 @@ export const actions: Actions = {
 					{
 						typeName: 'Super Admin',
 						description: 'Super Administrator PathfinderKit',
-						typeRole: 'admin'
+						typeRole: 'admin',
+						id: 1
 					},
 					{
 						typeName: 'Subject Librarian',
 						description: 'Subject Librarian',
-						typeRole: 'subjectlib'
+						typeRole: 'subjectlib',
+						id: 2
 					},
 					{
 						typeName: 'Lecturer',
 						description: 'Lecturer and Teacher',
-						typeRole: 'lecturer'
+						typeRole: 'lecturer',
+						id: 3
 					},
 					{
 						typeName: 'Registered User',
 						description: 'User that has registered to PathfinderKit',
-						typeRole: 'user'
+						typeRole: 'user',
+						id: 4
 					}
 				])
 				.onConflictDoNothing();

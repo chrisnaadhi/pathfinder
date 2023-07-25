@@ -19,7 +19,9 @@ export const users = pgTable('auth_user', {
 	email: varchar('email').notNull().unique(),
 	name: varchar('full_name', { length: 255 }).notNull(),
 	title: text('title'),
-	bio: text('biograph')
+	bio: text('biograph'),
+	type: serial('type_id').references(() => userType.id),
+	department: serial('department_id').references(() => department.id)
 });
 
 export const session = pgTable('auth_session', {
@@ -107,3 +109,5 @@ export const content = pgTable('content', {
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
 	subject: integer('subject').references(() => subjects.id)
 });
+
+// Subject Relations

@@ -1,5 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
+import { db } from '$lib/server/drizzle';
+import { users } from '$lib/db/pgSchema';
 
 export const load: PageServerLoad = async ({ locals }) => {};
 

@@ -1,4 +1,7 @@
 import type { Config } from 'drizzle-kit';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 export default {
 	out: './drizzle',
@@ -6,7 +9,6 @@ export default {
 	driver: 'pg',
 	dbCredentials: {
 		// connectionString: DATABASE_URL
-		connectionString: process.env.DATABASE_URL as string
-	},
-	breakpoints: true
+		connectionString: process.env.DATABASE_URL!
+	}
 } satisfies Config;
