@@ -1,11 +1,12 @@
-import { type Config } from 'drizzle-kit';
+import type { Config } from 'drizzle-kit';
 
 export default {
 	out: './drizzle',
 	schema: './src/lib/db/pgSchema.ts',
 	driver: 'pg',
 	dbCredentials: {
-		connectionString: 'postgres://pathfinder:path@0.0.0.0:5432/pathfinder'
+		// connectionString: DATABASE_URL
+		connectionString: process.env.DATABASE_URL as string
 	},
 	breakpoints: true
 } satisfies Config;

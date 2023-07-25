@@ -1,4 +1,5 @@
 import type { Actions, PageServerLoad } from '../$types';
+import { migrate } from 'drizzle-orm/postgres-js/migrator';
 import { db } from '$lib/server/drizzle';
 import { users, userType } from '$lib/db/pgSchema';
 
@@ -12,6 +13,8 @@ export const load: PageServerLoad = async ({ cookies }) => {
 
 export const actions: Actions = {
 	default: async ({ cookies }) => {
+		await migrate(db, { migrationsFolder: 'drizzle' });
+
 		try {
 			await db.insert(users).values({
 				id: 'chrisna',
