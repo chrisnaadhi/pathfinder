@@ -1,7 +1,6 @@
 import type { Actions, PageServerLoad } from '../$types';
-import { migrate } from 'drizzle-orm/postgres-js/migrator';
 import { db } from '$lib/server/drizzle';
-import { users, userType } from '$lib/db/pgSchema';
+import { users, userType, department } from '$lib/db/pgSchema';
 
 export const load: PageServerLoad = async ({ cookies }) => {
 	const status = cookies.get('seedState');
@@ -13,18 +12,20 @@ export const load: PageServerLoad = async ({ cookies }) => {
 
 export const actions: Actions = {
 	default: async ({ cookies }) => {
-		await migrate(db, { migrationsFolder: 'drizzle' });
-
 		try {
-			await db.insert(users).values({
-				id: 'chrisna',
-				email: 'chrisna.adhi@unpad.ac.id',
-				name: 'Chrisna Adhi Pranoto',
-				bio: "Lotus wasn't bloom in vain",
-				title: 'System Librarian',
-				username: 'chrisnaadhi',
-				type: 1
-			});
+			await db
+				.insert(users)
+				.values({
+					id: '1',
+					email: 'chrisna.adhi@unpad.ac.id',
+					name: 'Chrisna Adhi Pranoto',
+					bio: "Lotus wasn't bloom in vain",
+					title: 'System Librarian',
+					username: 'chrisna',
+					type: 1,
+					department: 1
+				})
+				.onConflictDoNothing();
 
 			await db
 				.insert(userType)
@@ -32,29 +33,36 @@ export const actions: Actions = {
 					{
 						typeName: 'Super Admin',
 						description: 'Super Administrator PathfinderKit',
-						typeRole: 'admin',
-						id: 1
+						typeRole: 'admin'
 					},
 					{
 						typeName: 'Subject Librarian',
 						description: 'Subject Librarian',
-						typeRole: 'subjectlib',
-						id: 2
+						typeRole: 'subjectlib'
 					},
 					{
 						typeName: 'Lecturer',
 						description: 'Lecturer and Teacher',
-						typeRole: 'lecturer',
-						id: 3
+						typeRole: 'lecturer'
 					},
 					{
 						typeName: 'Registered User',
 						description: 'User that has registered to PathfinderKit',
-						typeRole: 'user',
-						id: 4
+						typeRole: 'user'
 					}
 				])
 				.onConflictDoNothing();
+
+			await db.insert(department).values([
+				{
+					departmentName: 'Central Library',
+					departmentDescription: 'lorem ipsum'
+				},
+				{
+					departmentName: 'Faculty Library',
+					departmentDescription: 'lorem ipsum 2'
+				}
+			]);
 
 			cookies.set('seedState', 'success');
 			console.log('Success!');

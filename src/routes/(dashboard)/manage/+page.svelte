@@ -17,3 +17,9 @@
 		<button type="submit" class="btn bg-red text-white">Sign Out</button>
 	</form>
 </section>
+
+<style>
+	button {
+		--at-apply: mt-5;
+	}
+</style>
