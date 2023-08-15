@@ -29,12 +29,13 @@
 <section>
 	<h1>{subjectData.subjectName}</h1>
 	<form method="POST" action="?/updateData" use:enhance>
+		<h3 class="text-violet-5">Subjects</h3>
 		<FormCollection {...objData} />
 		<input type="hidden" name="confirmation" bind:value={confirmState} />
 		<button type="submit" class="btn bg-violet-5 text-white">Update</button>
-		<button type="submit" class="btn bg-red" on:click={confirmDelete} formaction="?/deleteData"
-			>Delete</button
-		>
+		<button type="submit" class="btn bg-red" on:click={confirmDelete} formaction="?/deleteData">
+			Delete
+		</button>
 	</form>
 	<div class="text-white">
 		<a href="/manage/collection">

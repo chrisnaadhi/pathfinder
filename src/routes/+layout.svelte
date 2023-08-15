@@ -14,5 +14,7 @@
 
 <main>
 	<slot />
-	<Footer />
+	<section>
+		<Footer />
+	</section>
 </main>

@@ -8,7 +8,7 @@ export default defineConfig({
 	plugins: [
 		UnoCSS({
 			extractors: [extractorSvelte()],
-			presets: [presetUno(), presetIcons()],
+			presets: [presetUno({}), presetIcons()],
 			transformers: [transformerDirectives(), transformerVariantGroup()],
 			shortcuts: {
 				btn: 'py-1 px-4 rounded-lg'

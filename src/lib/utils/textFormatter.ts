@@ -1,4 +1,4 @@
-export const formatDescription = (text: string) => {
+export const formatDescription = (text: string | any) => {
 	if (text.length < 55) {
 		return text;
 	}

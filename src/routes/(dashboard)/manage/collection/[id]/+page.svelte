@@ -1,6 +1,4 @@
-<script>
-	// @ts-nocheck
-
+<script lang="ts">
 	import { enhance } from '$app/forms';
 	import FormCollection from '$lib/components/items/FormCollection.svelte';
 
@@ -9,7 +7,7 @@
 	let objData = {
 		subjectName: subjectData.subjectName,
 		subjectSlug: subjectData.subjectSlug,
-		status: subjectData.status,
+		status: subjectData.subjectStatus,
 		description: subjectData.subjectDescription,
 		keywords: subjectData.keywords,
 		subjectType: subjectData.type
@@ -32,9 +30,9 @@
 		<FormCollection {...objData} />
 		<input type="hidden" name="confirmation" bind:value={confirmState} />
 		<button type="submit" class="btn bg-violet-5 text-white">Update</button>
-		<button type="submit" class="btn bg-red" on:click={confirmDelete} formaction="?/deleteData"
-			>Delete</button
-		>
+		<button type="submit" class="btn bg-red" on:click={confirmDelete} formaction="?/deleteData">
+			Delete
+		</button>
 	</form>
 	<div class="text-white">
 		<a href="/manage/collection">

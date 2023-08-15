@@ -1,13 +1,13 @@
 <script lang="ts">
 	export let subjectName: string;
 	export let subjectSlug: string;
-	export let status: string;
-	export let description: string;
-	export let keywords: string;
-	export let subjectType: string;
+	export let status: string | null;
+	export let description: string | null;
+	export let keywords: string | null;
+	export let subjectType: string | null;
 </script>
 
-<section>
+<section class="flex flex-col gap-4">
 	<div class="flex flex-col">
 		<label for="subject">Subject Name:</label>
 		<input type="text" name="title" id="title" bind:value={subjectName} />
@@ -26,7 +26,7 @@
 	</div>
 	<div class="flex flex-col">
 		<label for="description">Description:</label>
-		<textarea name="description" id="description" bind:value={description} />
+		<textarea name="description" id="description" bind:value={description} rows="10" />
 	</div>
 	<div class="flex flex-col">
 		<label for="keywords">Keywords:</label>
@@ -43,4 +43,7 @@
 </section>
 
 <style>
+	label {
+		--at-apply: font-semibold;
+	}
 </style>

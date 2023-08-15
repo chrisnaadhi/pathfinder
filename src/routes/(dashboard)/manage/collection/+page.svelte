@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import BaseCard from '$lib/components/generic/BaseCard.svelte';
+	import { formatDescription } from '$lib/utils/textFormatter';
 
 	let name = 'Collection';
 	let displayCard = ['One', 'Two', 'Three', 'Four'];
@@ -28,7 +29,7 @@
 				<tr>
 					<td>{i + 1}</td>
 					<td>{reps.subjectName}</td>
-					<td>{reps.subjectDescription}</td>
+					<td>{formatDescription(reps.subjectDescription)}</td>
 					<td>{reps.keywords}</td>
 					<td>
 						<span class="flex gap-1">

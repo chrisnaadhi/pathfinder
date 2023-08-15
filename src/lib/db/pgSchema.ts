@@ -1,4 +1,4 @@
-import { sql } from 'drizzle-orm';
+import { sql, relations } from 'drizzle-orm';
 import {
 	pgTable,
 	pgEnum,
@@ -20,8 +20,8 @@ export const users = pgTable('auth_user', {
 	name: varchar('full_name', { length: 255 }).notNull(),
 	title: text('title'),
 	bio: text('biograph'),
-	type: serial('type_id').references(() => userType.id),
-	department: serial('department_id').references(() => department.id)
+	type: integer('type_id').references(() => userType.id),
+	departmentId: integer('department_id').references(() => department.id)
 });
 
 export const session = pgTable('auth_session', {
@@ -100,7 +100,7 @@ export const discipline = pgTable('discipline', {
 });
 
 export const content = pgTable('content', {
-	id: uuid('id').defaultRandom(),
+	id: uuid('id').defaultRandom().primaryKey(),
 	title: varchar('title').notNull(),
 	contentDescription: text('content_description'),
 	contents: text('contents'),
@@ -110,4 +110,33 @@ export const content = pgTable('content', {
 	subject: integer('subject').references(() => subjects.id)
 });
 
-// Subject Relations
+// Users Relations
+export const usersRelations = relations(users, ({ many, one }) => ({
+	subjects: many(subjects),
+	department: one(department, {
+		fields: [users.departmentId],
+		references: [department.id]
+	}),
+	role: one(userType, {
+		fields: [users.type],
+		references: [userType.id]
+	})
+}));
+
+// Subjects Relations
+export const subjectsRelations = relations(subjects, ({ one }) => ({
+	instructor: one(users, {
+		fields: [subjects.instructor],
+		references: [users.id]
+	})
+}));
+
+// Department Relations
+export const departmentRelations = relations(department, ({ many }) => ({
+	users: many(users)
+}));
+
+// UserType Relations
+export const userTypeRelations = relations(userType, ({ many }) => ({
+	users: many(users)
+}));

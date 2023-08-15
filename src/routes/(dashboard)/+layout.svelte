@@ -1,22 +1,46 @@
 <script>
+	import Footer from '$lib/components/Footer.svelte';
 	let news = 'Sekilas berita dan informasi terbaru akan tampil disini';
 
 	// export let data;
 </script>
 
-<main class="w-full min-h-150 flex">
-	<section class="bg-violet-50 text-violet-8 min-h-full w-60 px-4 py-2">
+<main class="w-full min-h-screen flex">
+	<section class="bg-violet-50 text-violet-8 w-60 px-4 py-2">
 		<div class="flex flex-col items-center">
 			<img src="/img/no-image.jpg" alt="foto" class="h-18 rounded-full" />
 		</div>
-		<p class="font-bold">Main Menu Here</p>
-		<div class="flex flex-col">
-			<a href="/manage/#">Dashboard</a>
-			<a href="/manage/collection">Collection</a>
-			<a href="/manage/profile">Profile</a>
-			<a href="/manage/#">Guides</a>
-			<a href="/manage/#">Member</a>
-			<a href="/manage/#">Help</a>
+		<h5 class="font-bold text-center text-violet-5">PathfinderKit</h5>
+		<div class="flex flex-col justify-between h-80%">
+			<div class="flex flex-col gap-4">
+				<a href="/manage/#" class="menu-item">
+					<div class="i-mdi-home w-5 h-5" />
+					<p>Dashboard</p>
+				</a>
+				<a href="/manage/collection" class="menu-item">
+					<div class="i-mdi-home w-5 h-5" />
+					Collection
+				</a>
+				<a href="/manage/profile" class="menu-item">
+					<div class="i-mdi-home w-5 h-5" />
+					Profile
+				</a>
+				<a href="/manage/#" class="menu-item">
+					<div class="i-mdi-home w-5 h-5" />
+					Guides
+				</a>
+				<a href="/manage/member" class="menu-item">
+					<div class="i-mdi-home w-5 h-5" />
+					Member
+				</a>
+				<a href="/manage/setting" class="menu-item">
+					<div class="i-mdi-home w-5 h-5" />
+					Setting
+				</a>
+			</div>
+			<div>
+				<a href="/" class="btn bg-violet-5 text-white font-semibold">Exit Dashboard</a>
+			</div>
 		</div>
 	</section>
 	<section class="w-full">
@@ -28,3 +52,9 @@
 		</div>
 	</section>
 </main>
+
+<style>
+	.menu-item {
+		--at-apply: flex items-center gap-1;
+	}
+</style>
