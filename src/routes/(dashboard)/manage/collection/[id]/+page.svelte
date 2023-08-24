@@ -1,42 +1,23 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import FormCollection from '$lib/components/items/FormCollection.svelte';
-
 	export let data;
-	let { subjectData } = data;
-	let objData = {
-		subjectName: subjectData.subjectName,
-		subjectSlug: subjectData.subjectSlug,
-		status: subjectData.subjectStatus,
-		description: subjectData.subjectDescription,
-		keywords: subjectData.keywords,
-		subjectType: subjectData.type
-	};
 
-	let confirmState = 'keep';
-	const confirmDelete = () => {
-		const del = window.confirm('Ingin menghapus data ?');
-		if (del) {
-			return (confirmState = 'delete');
-		} else {
-			return (confirmState = 'keep');
-		}
-	};
+	const { getContents, subjectData } = data;
 </script>
 
 <section>
-	<h1>{subjectData.subjectName}</h1>
-	<form method="POST" action="?/updateData" use:enhance>
-		<FormCollection {...objData} />
-		<input type="hidden" name="confirmation" bind:value={confirmState} />
-		<button type="submit" class="btn bg-violet-5 text-white">Update</button>
-		<button type="submit" class="btn bg-red" on:click={confirmDelete} formaction="?/deleteData">
-			Delete
-		</button>
-	</form>
-	<div class="text-white">
+	<h3 class="text-violet-5">Daftar Koleksi {subjectData.name}</h3>
+	<p class="text-italic">{subjectData.description}</p>
+	<div>
+		<div>
+			{#each getContents as content, idx}
+				<pre>{idx + 1}. {content.id} - {content.title} ({content.subject})</pre>
+			{/each}
+		</div>
+		<a href="/manage/collection/{subjectData.slug}/new">
+			<button class="btn bg-violet text-white">Tambah</button>
+		</a>
 		<a href="/manage/collection">
-			<button class="btn bg-violet">Back</button>
+			<button class="btn bg-violet text-white">Back</button>
 		</a>
 	</div>
 </section>

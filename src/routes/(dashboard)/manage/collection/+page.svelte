@@ -3,7 +3,7 @@
 	import BaseCard from '$lib/components/generic/BaseCard.svelte';
 	import { formatDescription } from '$lib/utils/textFormatter';
 
-	let name = 'Collection';
+	let name = 'Subjects';
 	let displayCard = ['One', 'Two', 'Three', 'Four'];
 
 	export let data;
@@ -14,7 +14,7 @@
 <section>
 	<h1 class="text-violet-5">{name}</h1>
 	<div class="my-4 float-right">
-		<a class="btn bg-violet-5 text-white" href="/manage/collection/new">+ New Collection</a>
+		<a class="btn bg-violet-5 text-white" href="/manage/collection/new">+ New Subject</a>
 	</div>
 	<table>
 		<thead>

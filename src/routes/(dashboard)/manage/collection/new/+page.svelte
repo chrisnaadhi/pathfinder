@@ -5,7 +5,7 @@
 	let newObj = {
 		subjectName: '',
 		subjectSlug: '',
-		status: 'active',
+		status: 'pending',
 		description: '',
 		keywords: '',
 		subjectType: 'guide'

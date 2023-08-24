@@ -88,7 +88,8 @@ export const subjects = pgTable('subjects', {
 	type: varchar('subject_type'),
 	created_at: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-	instructor: varchar('instructor', { length: 32 }).references(() => users.id)
+	instructor: varchar('instructor', { length: 32 }).references(() => users.id),
+	disciplineId: integer('discipline_id').references(() => discipline.id)
 });
 
 export const discipline = pgTable('discipline', {
@@ -111,7 +112,7 @@ export const content = pgTable('content', {
 });
 
 // Users Relations
-export const usersRelations = relations(users, ({ many, one }) => ({
+export const usersRelations = relations(users, ({ one, many }) => ({
 	subjects: many(subjects),
 	department: one(department, {
 		fields: [users.departmentId],
@@ -124,11 +125,27 @@ export const usersRelations = relations(users, ({ many, one }) => ({
 }));
 
 // Subjects Relations
-export const subjectsRelations = relations(subjects, ({ one }) => ({
+export const subjectsRelations = relations(subjects, ({ one, many }) => ({
 	instructor: one(users, {
 		fields: [subjects.instructor],
 		references: [users.id]
+	}),
+	discipline: one(discipline, {
+		fields: [subjects.disciplineId],
+		references: [discipline.id]
+	}),
+	content: many(content)
+}));
+
+export const contentRelations = relations(content, ({ one }) => ({
+	subject: one(subjects, {
+		fields: [content.subject],
+		references: [subjects.id]
 	})
+}));
+
+export const disciplineRelation = relations(discipline, ({ many }) => ({
+	subject: many(subjects)
 }));
 
 // Department Relations

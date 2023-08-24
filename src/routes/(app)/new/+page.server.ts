@@ -14,20 +14,6 @@ export const actions: Actions = {
 	default: async ({ cookies }) => {
 		try {
 			await db
-				.insert(users)
-				.values({
-					id: '1234567890',
-					email: 'chrisna.adhi@unpad.ac.id',
-					name: 'Chrisna Adhi Pranoto',
-					bio: "Lotus wasn't bloom in vain",
-					title: 'System Librarian',
-					username: 'chrisna',
-					departmentId: 1,
-					type: 1
-				})
-				.onConflictDoNothing();
-
-			await db
 				.insert(userType)
 				.values([
 					{
@@ -63,6 +49,20 @@ export const actions: Actions = {
 					departmentDescription: 'lorem ipsum 2'
 				}
 			]);
+
+			await db
+				.insert(users)
+				.values({
+					id: '1234567890',
+					email: 'chrisna.adhi@unpad.ac.id',
+					name: 'Chrisna Adhi Pranoto',
+					bio: "Lotus wasn't bloom in vain",
+					title: 'System Librarian',
+					username: 'chrisna',
+					departmentId: 1,
+					type: 1
+				})
+				.onConflictDoNothing();
 
 			cookies.set('seedState', 'success');
 			console.log('Success!');
