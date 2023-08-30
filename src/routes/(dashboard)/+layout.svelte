@@ -6,13 +6,13 @@
 	export let data;
 </script>
 
-<main class="w-full min-h-screen flex" in:fade={{ delay: 100, duration: 500 }}>
+<main class="w-full flex" in:fade={{ delay: 100, duration: 500 }}>
 	<section class="bg-violet-50 text-violet-8 w-60 px-4 py-2">
 		<div class="flex flex-col items-center">
 			<img src="/img/no-image.jpg" alt="foto" class="h-18 rounded-full" />
 		</div>
 		<h5 class="font-bold text-center text-violet-5">PathfinderKit</h5>
-		<div class="flex flex-col justify-between h-80%">
+		<div class="flex flex-col justify-between h-screen">
 			<div class="flex flex-col gap-4">
 				<a href="/manage/#" class="menu-item">
 					<div class="i-mdi-home w-5 h-5" />
@@ -38,9 +38,7 @@
 					<div class="i-mdi-cog w-5 h-5" />
 					Setting
 				</a>
-			</div>
-			<div class="flex items-center justify-center">
-				<a href="/" class="btn bg-violet-5 text-white font-semibold">Exit Dashboard</a>
+				<a href="/" class="btn text-center bg-violet-5 text-white font-semibold">Exit Dashboard</a>
 			</div>
 		</div>
 	</section>

@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ request }) => {
 		.from(subjects)
 		.leftJoin(content, eq(subjects.id, content.subject));
 
-	const results = listSubject.reduce((acc, val) => {
+	const results = listSubject.reduce((acc: any, val: any) => {
 		acc[val.nama] = acc[val.nama] || [];
 		acc[val.nama].push(val);
 
