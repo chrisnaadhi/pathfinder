@@ -4,6 +4,8 @@ import { eq } from 'drizzle-orm';
 import { db } from '$lib/server/drizzle';
 import { subjects } from '$lib/db/pgSchema';
 
+const date = new Date();
+
 export const load: PageServerLoad = async ({ params }) => {
 	const getSubject = await db.select().from(subjects).where(eq(subjects.subjectSlug, params.id));
 
@@ -32,11 +34,12 @@ export const actions: Actions = {
 				subjectDescription: subjectDescription,
 				subjectStatus: subjectStatus,
 				keywords: subjectKeywords,
-				type: subjectType
+				type: subjectType,
+				updatedAt: new Date(date.toISOString())
 			})
 			.where(eq(subjects.subjectSlug, event.params.id));
 
-		throw redirect(302, '/manage/collection');
+		throw redirect(302, '/manage/subjects');
 	},
 	deleteData: async (event) => {
 		const data = await event.request.formData();
@@ -44,9 +47,9 @@ export const actions: Actions = {
 
 		if (isDelete === 'delete') {
 			await db.delete(subjects).where(eq(subjects.subjectSlug, event.params.id));
-			throw redirect(302, '/manage/collection');
+			throw redirect(302, '/manage/subjects');
 		} else if (isDelete === 'keep') {
-			throw redirect(300, '/manage/collection/' + event.params.id);
+			throw redirect(300, '/manage/subjects/' + event.params.id);
 		} else {
 			console.log('Nothing Happen');
 		}

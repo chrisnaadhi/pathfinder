@@ -14,7 +14,7 @@
 <section>
 	<h1 class="text-violet-5">{name}</h1>
 	<div class="my-4 float-right">
-		<a class="btn bg-violet-5 text-white" href="/manage/collection/new">+ New Subject</a>
+		<a class="btn bg-violet-5 text-white" href="/manage/subjects/new">+ New Subject</a>
 	</div>
 	<table>
 		<thead>
@@ -32,12 +32,12 @@
 					<td>{formatDescription(reps.subjectDescription)}</td>
 					<td>{reps.keywords}</td>
 					<td>
-						<span class="flex gap-1">
+						<span class="flex justify-center gap-1 my-2">
 							<a href="{$page.url.pathname}/{reps.subjectSlug}">
-								<button class="btn bg-violet text-white w-full">List</button>
+								<button class="btn bg-violet text-white w-full py-0">List</button>
 							</a>
 							<a href="{$page.url.pathname}/{reps.subjectSlug}/edit">
-								<button class="btn bg-violet text-white w-full">Edit</button>
+								<button class="btn bg-violet text-white w-full py-0">Edit</button>
 							</a>
 						</span>
 					</td>

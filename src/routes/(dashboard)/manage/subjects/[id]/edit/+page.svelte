@@ -38,7 +38,7 @@
 		</button>
 	</form>
 	<div class="text-white">
-		<a href="/manage/collection">
+		<a href="/manage/subjects">
 			<button class="btn bg-violet">Back</button>
 		</a>
 	</div>
