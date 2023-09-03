@@ -1,8 +1,8 @@
-import type { Actions, PageServerLoad } from '../$types';
 import { db } from '$lib/server/drizzle';
 import { users, userType, department } from '$lib/db/pgSchema';
 
-export const load: PageServerLoad = async ({ cookies }) => {
+/** @type {import('./$types').PageServerLoad} */
+export const load = async ({ cookies }) => {
 	const status = cookies.get('seedState');
 
 	return {
@@ -10,7 +10,8 @@ export const load: PageServerLoad = async ({ cookies }) => {
 	};
 };
 
-export const actions: Actions = {
+/** @type {import('./$types').Actions} */
+export const actions = {
 	default: async ({ cookies }) => {
 		try {
 			await db

@@ -1,10 +1,10 @@
-import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import { db } from '$lib/server/drizzle';
 import { subjects, content } from '$lib/db/pgSchema';
 
-export const load: PageServerLoad = async ({ params }) => {
+/** @type {import('./$types').PageServerLoad} */
+export const load = async ({ params }) => {
 	const getSubject = await db
 		.select({
 			id: subjects.id,
@@ -25,4 +25,5 @@ export const load: PageServerLoad = async ({ params }) => {
 	};
 };
 
-export const actions: Actions = {};
+/** @type {import('./$types').Actions} */
+export const actions = {};
