@@ -20,8 +20,6 @@ export const users = pgTable('auth_user', {
 	name: varchar('full_name', { length: 255 }).notNull(),
 	title: text('title'),
 	bio: text('biograph'),
-	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
-	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
 	type: integer('type_id').references(() => userType.id),
 	departmentId: integer('department_id').references(() => department.id)
 });
@@ -74,9 +72,7 @@ export const department = pgTable('department', {
 	departmentDescription: text('department_description'),
 	telephone: varchar('telephone'),
 	email: varchar('email'),
-	url: varchar('url'),
-	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
-	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow()
+	url: varchar('url')
 });
 
 // Table for Subjects
@@ -90,7 +86,7 @@ export const subjects = pgTable('subjects', {
 	header: text('header'),
 	keywords: text('keywords'),
 	type: varchar('subject_type'),
-	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+	created_at: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
 	instructor: varchar('instructor', { length: 32 }).references(() => users.id),
 	disciplineId: integer('discipline_id').references(() => discipline.id)
@@ -101,9 +97,7 @@ export const discipline = pgTable('discipline', {
 	code: varchar('code').notNull(),
 	disciplineName: varchar('discipline_name').notNull(),
 	disciplineDescription: text('discipline_description'),
-	faculty: varchar('faculty'),
-	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
-	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow()
+	faculty: varchar('faculty')
 });
 
 export const content = pgTable('content', {
@@ -112,30 +106,9 @@ export const content = pgTable('content', {
 	contentDescription: text('content_description'),
 	contents: text('contents'),
 	tag: varchar('tag'),
-	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+	created_at: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
 	subject: integer('subject').references(() => subjects.id)
-});
-
-// Table for System Setting
-export const systemContent = pgTable('system_content', {
-	id: serial('id').notNull().primaryKey(),
-	title: varchar('title').notNull(),
-	description: text('description'),
-	contents: text('contents'),
-	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
-	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow()
-});
-
-export const systemConfig = pgTable('system_config', {
-	id: serial('id').notNull().primaryKey(),
-	configName: varchar('config_name').notNull(),
-	description: text('description'),
-	configValue: integer('config_value'),
-	configOption: varchar('config_option'),
-	configState: boolean('config_state'),
-	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
-	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow()
 });
 
 // Users Relations

@@ -25,7 +25,7 @@
 			<div>
 				<h5>{key}</h5>
 				{#each val as we}
-					<p>{we.contentTitle}</p>
+					<p>{we}</p>
 				{/each}
 			</div>
 		{/each}

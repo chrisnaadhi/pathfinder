@@ -22,7 +22,7 @@
 					<div class="i-mdi-account-edit w-5 h-5" />
 					Profile
 				</a>
-				<a href="/manage/subjects" class="menu-item">
+				<a href="/manage/collection" class="menu-item">
 					<div class="i-mdi-bookshelf w-5 h-5" />
 					Subjects
 				</a>

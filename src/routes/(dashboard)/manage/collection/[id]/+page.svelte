@@ -13,10 +13,10 @@
 				<pre>{idx + 1}. {content.id} - {content.title} ({content.subject})</pre>
 			{/each}
 		</div>
-		<a href="/manage/subjects/{subjectData.slug}/new">
+		<a href="/manage/collection/{subjectData.slug}/new">
 			<button class="btn bg-violet text-white">Tambah</button>
 		</a>
-		<a href="/manage/subjects">
+		<a href="/manage/collection">
 			<button class="btn bg-violet text-white">Back</button>
 		</a>
 	</div>

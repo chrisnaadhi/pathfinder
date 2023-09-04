@@ -22,6 +22,6 @@ export const actions = {
 			type: subjectType
 		});
 
-		throw redirect(302, '/manage/subjects');
+		throw redirect(302, '/manage/collection');
 	}
 };

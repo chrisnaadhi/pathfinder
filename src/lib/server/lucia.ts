@@ -1,11 +1,6 @@
-import { lucia } from 'lucia';
-import { sveltekit } from 'lucia/middleware';
-import { postgres as postgresAdapter } from '@lucia-auth/adapter-postgresql';
-import postgres from 'postgres';
+import lucia from 'lucia-auth';
+import { sveltekit } from 'lucia-auth/middleware';
 import { dev } from '$app/environment';
-import { DATABASE_URL } from '$env/static/private';
-
-const sql = postgres(DATABASE_URL);
 
 export const auth = lucia({
 	adapter: postgresAdapter(sql, {
@@ -21,3 +16,5 @@ export const auth = lucia({
 		};
 	}
 });
+
+export type Auth = typeof auth;
