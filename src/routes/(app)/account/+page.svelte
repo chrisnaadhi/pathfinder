@@ -15,7 +15,7 @@
 				<form action="?/signin" method="POST" use:enhance>
 					<div class="input-block">
 						<label for="email-login">E-Mail:</label>
-						<input type="email" name="email-login" id="email-login" />
+						<input type="text" name="email-login" id="email-login" />
 					</div>
 					<div class="input-block">
 						<label for="password-login">Password:</label>

@@ -1,9 +1,9 @@
+import type { Actions, PageServerLoad } from './$types';
 import { db } from '$lib/server/drizzle';
 import { subjects, content } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 
-/** @type {import('./$types').Actions} */
-export const load = async ({ request }) => {
+export const load: PageServerLoad = async ({ request }) => {
 	const listSubject = await db
 		.select({
 			id: content.id,
@@ -13,7 +13,7 @@ export const load = async ({ request }) => {
 		.from(subjects)
 		.leftJoin(content, eq(subjects.id, content.subject));
 
-	const results = listSubject.reduce((acc, val) => {
+	const results = listSubject.reduce((acc: any, val) => {
 		acc[val.nama] = acc[val.nama] || [];
 		acc[val.nama].push(val);
 

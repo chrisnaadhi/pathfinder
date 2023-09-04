@@ -1,5 +1,5 @@
-/** @type {import('./$types').PageServerLoad} */
-export async function load() {}
+import type { Actions, PageServerLoad } from './$types';
 
-/** @type {import('./$types').Actions} */
-export const actions = {};
+export const load: PageServerLoad = () => {};
+
+export const actions: Actions = {};

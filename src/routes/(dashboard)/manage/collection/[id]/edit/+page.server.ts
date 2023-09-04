@@ -1,17 +1,12 @@
-
+import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import { db } from '$lib/server/drizzle';
 import { subjects } from '$lib/db/pgSchema';
 
-<<<<<<<< HEAD:src/routes/(dashboard)/manage/collection/[id]/edit/+page.server.js
 const date = new Date();
 
-/** @type {import('./$types').PageServerLoad} */
-export const load = async ({ params }) => {
-========
 export const load: PageServerLoad = async ({ params }) => {
->>>>>>>> parent of cee3d44 (update project):src/routes/(dashboard)/manage/collection/[id]/edit/+page.server.ts
 	const getSubject = await db.select().from(subjects).where(eq(subjects.subjectSlug, params.id));
 
 	const subjectData = getSubject[0];
@@ -21,8 +16,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	};
 };
 
-/** @type {import('./$types').Actions} */
-export const actions = {
+export const actions: Actions = {
 	updateData: async (event) => {
 		const data = await event.request.formData();
 		const subjectName = data.get('title');
@@ -35,12 +29,13 @@ export const actions = {
 		await db
 			.update(subjects)
 			.set({
-				subjectName: subjectName,
-				subjectSlug: subjectSlug,
-				subjectDescription: subjectDescription,
-				subjectStatus: subjectStatus,
-				keywords: subjectKeywords,
-				type: subjectType
+				subjectName: subjectName as string,
+				subjectSlug: subjectSlug as string,
+				subjectDescription: subjectDescription as string,
+				subjectStatus: subjectStatus as string,
+				keywords: subjectKeywords as string,
+				type: subjectType as string,
+				updatedAt: new Date(date.toISOString())
 			})
 			.where(eq(subjects.subjectSlug, event.params.id));
 

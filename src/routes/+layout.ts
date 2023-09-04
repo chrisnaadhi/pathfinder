@@ -1,5 +1,7 @@
-export function load({ url }) {
+import type { LayoutLoad } from './$types';
+
+export const load: LayoutLoad = ({ url }) => {
 	return {
 		url: url.pathname
 	};
-}
+};

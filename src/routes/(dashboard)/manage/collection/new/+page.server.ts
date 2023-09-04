@@ -1,17 +1,17 @@
+import type { Actions } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
 import { subjects } from '$lib/db/pgSchema';
 
-/** @type {import('./$types').Actions} */
-export const actions = {
+export const actions: Actions = {
 	default: async (event) => {
 		const data = await event.request.formData();
-		const subjectName = data.get('title');
-		const subjectSlug = data.get('slug');
-		const subjectStatus = data.get('status');
-		const subjectDescription = data.get('description');
-		const subjectKeywords = data.get('keywords');
-		const subjectType = data.get('typesubject');
+		const subjectName = data.get('title') as string;
+		const subjectSlug = data.get('slug') as string;
+		const subjectStatus = data.get('status') as string;
+		const subjectDescription = data.get('description') as string;
+		const subjectKeywords = data.get('keywords') as string;
+		const subjectType = data.get('typesubject') as string;
 
 		await db.insert(subjects).values({
 			subjectName: subjectName,

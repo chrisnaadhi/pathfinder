@@ -4,9 +4,9 @@ dotenv.config();
 
 export default {
 	out: './drizzle',
-	schema: './src/lib/db/pgSchema.js',
+	schema: './src/lib/db/pgSchema.ts',
 	driver: 'pg',
 	dbCredentials: {
-		connectionString: process.env.DATABASE_URL
+		connectionString: process.env.DATABASE_URL!
 	}
-}; satisfies Config
+} satisfies Config;

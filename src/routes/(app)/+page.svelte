@@ -24,8 +24,8 @@
 		{#each Object.entries(lists) as [key, val]}
 			<div>
 				<h5>{key}</h5>
-				{#each val as we}
-					<p>{we}</p>
+				{#each val as item}
+					<p>{item.contentTitle}</p>
 				{/each}
 			</div>
 		{/each}

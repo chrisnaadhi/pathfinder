@@ -1,20 +1,59 @@
+import type { Actions, PageServerLoad } from './$types';
+import { auth } from '$lib/server/lucia';
 import { fail, redirect } from '@sveltejs/kit';
 
-/** @type {import('./$types').PageServerLoad} */
-export const load = async ({ locals }) => {};
+export const load: PageServerLoad = async ({ locals }) => {};
 
-/** @type {import('./$types').Actions} */
-export const actions = {
+export const actions: Actions = {
 	signin: async ({ request, locals }) => {
 		const data = await request.formData();
-		const email = data.get('email-login');
-		const password = data.get('password-login');
+		const email = data.get('email-login') as string;
+		const password = data.get('password-login') as string;
+
+		try {
+			const key = await auth.useKey('username', email.toLowerCase(), password);
+			const session = await auth.createSession({
+				userId: key.userId,
+				attributes: {}
+			});
+
+			locals.auth.setSession(session);
+			console.log('success');
+		} catch (err) {
+			console.log(err);
+		}
 	},
 	signup: async ({ request, locals }) => {
 		const data = await request.formData();
-		const namaLengkap = data.get('nama-lengkap');
-		const email = data.get('email-regis');
-		const password = data.get('password-regis');
-		const username = data.get('email-regis')?.toString().split('@')[0];
+		const namaLengkap = data.get('nama-lengkap') as string;
+		const email = data.get('email-regis') as string;
+		const password = data.get('password-regis') as string;
+		const username = data.get('email-regis')?.toString().split('@')[0] as string;
+
+		try {
+			const user = await auth.createUser({
+				key: {
+					providerId: 'username',
+					providerUserId: username.toLowerCase(),
+					password
+				},
+				attributes: {
+					username,
+					email,
+					full_name: namaLengkap
+				}
+			});
+
+			const session = await auth.createSession({
+				userId: user.userId,
+				attributes: {}
+			});
+
+			locals.auth.setSession(session);
+		} catch (err) {
+			console.log(err);
+		}
+
+		throw redirect(302, '/');
 	}
 };

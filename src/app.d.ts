@@ -18,6 +18,11 @@ declare global {
 		type UserAtributes = {
 			username: string;
 			email: string;
+			name: string;
+			title: string;
+			bio: string;
+			type: number;
+			departmentId: number;
 		};
 	}
 }
