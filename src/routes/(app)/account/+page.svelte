@@ -1,15 +1,17 @@
-<script>
+<script lang="ts">
+	import { slide, fade } from 'svelte/transition';
+	import { sineOut } from 'svelte/easing';
 	import { enhance } from '$app/forms';
 	let account = 'login';
-
-	const changeForm = () => {
-		account === 'login' ? (account = 'register') : (account = 'login');
-	};
 </script>
 
 <main>
 	{#if account === 'login'}
-		<section class="py-15">
+		<section
+			class="py-15"
+			in:slide={{ delay: 100, duration: 500, axis: 'x' }}
+			out:fade={{ delay: 0, duration: 100, easing: sineOut }}
+		>
 			<div class="account-block">
 				<h2>Login</h2>
 				<form action="?/signin" method="POST" use:enhance>
@@ -25,7 +27,7 @@
 				</form>
 				<div class="flex justify-between mt-2">
 					<div>
-						<button class="link" on:click={changeForm}>Create Account</button>
+						<button class="link" on:click={() => (account = 'register')}>Create Account</button>
 					</div>
 					<div>
 						<a href="#top">Forgot Password</a>
@@ -34,7 +36,11 @@
 			</div>
 		</section>
 	{:else if account === 'register'}
-		<section class="py-15">
+		<section
+			class="py-15"
+			in:slide={{ delay: 100, duration: 500, axis: 'x' }}
+			out:fade={{ delay: 0, duration: 100, easing: sineOut }}
+		>
 			<div class="account-block">
 				<h2>Register</h2>
 				<form action="?/signup" method="POST" use:enhance>
@@ -54,7 +60,7 @@
 				</form>
 				<div class="flex justify-between mt-2">
 					<div>
-						<button class="link" on:click={changeForm}>Login</button>
+						<button class="link" on:click={() => (account = 'login')}>Login</button>
 					</div>
 					<div>
 						<a href="#top">Forgot Password</a>

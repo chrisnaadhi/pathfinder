@@ -1,6 +1,6 @@
 import type { Actions, PageServerLoad } from './$types';
 import { auth } from '$lib/server/lucia';
-import { fail, redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ locals }) => {};
 
@@ -21,6 +21,14 @@ export const actions: Actions = {
 			console.log('success');
 		} catch (err) {
 			console.log(err);
+		}
+
+		const session = await locals.auth.validate();
+
+		if (session) {
+			throw redirect(302, '/manage');
+		} else {
+			throw error(401, { message: 'Something wrong' });
 		}
 	},
 	signup: async ({ request, locals }) => {

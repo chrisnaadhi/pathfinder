@@ -7,7 +7,6 @@
 	export let data;
 
 	const { lists } = data;
-	// console.log(Object.entries(lists));
 </script>
 
 <main class="max-w-7xl ma">

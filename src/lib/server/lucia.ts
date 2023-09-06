@@ -19,7 +19,11 @@ export const auth = lucia({
 		return {
 			username: data.username,
 			email: data.email,
-			fullName: data.name
+			fullName: data.full_name,
+			title: data.title,
+			bio: data.biograph,
+			userType: data.type_id,
+			department: data.department_id
 		};
 	}
 });

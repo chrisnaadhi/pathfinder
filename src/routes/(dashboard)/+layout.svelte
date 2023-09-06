@@ -12,6 +12,9 @@
 			<img src="/img/no-image.jpg" alt="foto" class="h-18 rounded-full" />
 		</div>
 		<h5 class="font-bold text-center text-violet-5">PathfinderKit</h5>
+		<div>
+			<p>{data.authData.user.email}</p>
+		</div>
 		<div class="flex flex-col justify-between h-screen">
 			<div class="flex flex-col gap-4">
 				<a href="/manage/#" class="menu-item">

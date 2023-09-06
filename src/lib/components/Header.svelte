@@ -20,7 +20,6 @@
 			<a href="/guides" class={isLinkActive('/guides')}>Guide</a>
 			<a href="/librarian" class={isLinkActive('/librarian')}>Librarian</a>
 			<a href="/contacts" class={isLinkActive('/contacts')}>Ask us!</a>
-			<a href="/manage">Manage PFKit</a>
 		</div>
 		<div>
 			<a href="/account">Account</a>
