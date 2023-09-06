@@ -18,7 +18,7 @@
 					<Welcome {name} />
 				</section>
 			{/if}
-			<section class="mt-15 mb-5 px-5 xl:px-0">
+			<section class="mt-20 mb-5 px-5 xl:px-0">
 				<slot />
 			</section>
 		</div>

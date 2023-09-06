@@ -2,18 +2,22 @@
 	import SearchBar from '$lib/components/home/SearchBar.svelte';
 	import SubjectLists from '$lib/components/home/SubjectLists.svelte';
 	import SubjectSpecialist from '$lib/components/home/SubjectSpecialist.svelte';
+	import SubjectExplanation from '$lib/components/home/SubjectExplanation.svelte';
 
 	export let data;
 
 	const { lists } = data;
-	console.log(Object.entries(lists));
+	// console.log(Object.entries(lists));
 </script>
 
 <main class="max-w-7xl ma">
 	<div class="mt--23">
 		<SearchBar />
 	</div>
-
+	<div class="my-5">
+		<SubjectExplanation />
+	</div>
+	<h2>Lantera in Action</h2>
 	<section class="main-content">
 		<div class="main-subject">
 			<SubjectLists guideType={data.listGuide} />
