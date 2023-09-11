@@ -1,10 +1,7 @@
-<script>
+<script lang="ts">
 	import { formatDescription } from '$lib/utils/textFormatter';
 
-	/**
-	 * @type {string}
-	 */
-	export let name;
+	export let name: string;
 	const description =
 		"The Web doesn't have a changelog, but MDN can help. You can personalize and filter compatibility changes based on browsers or the tech category you are interested in whether that is JavaScript, CSS, etc.";
 </script>

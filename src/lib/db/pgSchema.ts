@@ -15,7 +15,7 @@ import {
 // Table for Users
 export const users = pgTable('auth_user', {
 	id: varchar('id', { length: 32 }).notNull().primaryKey(),
-	username: varchar('username', { length: 64 }),
+	username: varchar('username', { length: 64 }).unique(),
 	email: varchar('email').notNull().unique(),
 	name: varchar('full_name', { length: 255 }).notNull(),
 	title: text('title'),
@@ -68,7 +68,7 @@ export const userType = pgTable('user_type', {
 
 export const department = pgTable('department', {
 	id: serial('id').primaryKey(),
-	departmentName: varchar('department_name', { length: 255 }).notNull(),
+	departmentName: varchar('department_name', { length: 255 }).notNull().unique(),
 	departmentDescription: text('department_description'),
 	telephone: varchar('telephone'),
 	email: varchar('email'),
@@ -118,7 +118,7 @@ export const usersRelations = relations(users, ({ one, many }) => ({
 		fields: [users.departmentId],
 		references: [department.id]
 	}),
-	role: one(userType, {
+	userType: one(userType, {
 		fields: [users.type],
 		references: [userType.id]
 	})

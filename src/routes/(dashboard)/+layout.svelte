@@ -13,7 +13,7 @@
 		</div>
 		<h5 class="font-bold text-center text-violet-5">PathfinderKit</h5>
 		<div>
-			<p>{data.authData.user.email}</p>
+			<!-- <p>{data}</p> -->
 		</div>
 		<div class="flex flex-col justify-between h-screen">
 			<div class="flex flex-col gap-4">

@@ -1,11 +1,10 @@
 <script>
 	import { page } from '$app/stores';
 	import { fade, fly, slide } from 'svelte/transition';
-	import { expoInOut } from 'svelte/easing';
 	import Header from '$lib/components/Header.svelte';
 	import Welcome from '$lib/components/home/Welcome.svelte';
 
-	let name = 'PathfinderKit';
+	let name = 'Lantera';
 	export let data;
 </script>
 

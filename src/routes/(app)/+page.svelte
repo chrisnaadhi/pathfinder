@@ -10,7 +10,7 @@
 </script>
 
 <main class="max-w-7xl ma">
-	<div class="mt--23">
+	<div class="mt--27">
 		<SearchBar />
 	</div>
 	<div class="my-5">
