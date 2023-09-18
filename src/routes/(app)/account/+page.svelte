@@ -2,7 +2,9 @@
 	import { slide, fade } from 'svelte/transition';
 	import { sineOut } from 'svelte/easing';
 	import { enhance } from '$app/forms';
+	import { onMount } from 'svelte';
 	let account = 'login';
+	export let data;
 </script>
 
 <main>
@@ -15,13 +17,23 @@
 			<div class="account-block">
 				<h2>Login</h2>
 				<form action="?/signin" method="POST" use:enhance>
+					{#if data.loginStatus === 'AUTH_INVALID_PASSWORD'}
+						<div class="bg-red text-white rounded">
+							<p>Password Salah</p>
+						</div>
+					{/if}
+					{#if data.loginStatus === 'AUTH_INVALID_KEY_ID'}
+						<div class="bg-red text-white rounded">
+							<p>Akun ini tidak ditemukan</p>
+						</div>
+					{/if}
 					<div class="input-block">
 						<label for="email-login">E-Mail:</label>
-						<input type="text" name="email-login" id="email-login" />
+						<input type="email" name="email-login" id="email-login" required />
 					</div>
 					<div class="input-block">
 						<label for="password-login">Password:</label>
-						<input type="password" name="password-login" id="password-login" />
+						<input type="password" name="password-login" id="password-login" required />
 					</div>
 					<button class="btn-account" type="submit">Login</button>
 				</form>
@@ -76,6 +88,10 @@
 		--at-apply: min-h-full;
 	}
 
+	form {
+		--at-apply: flex flex-col gap-3;
+	}
+
 	h2 {
 		--at-apply: py-5;
 	}
@@ -85,7 +101,7 @@
 	}
 
 	.input-block {
-		--at-apply: flex flex-col gap-2 text-left;
+		--at-apply: flex flex-col gap-1 text-left;
 	}
 
 	input {
@@ -93,7 +109,7 @@
 	}
 
 	a, .link {
-		--at-apply: text-sm text-violet-5 hover:underline;
+		--at-apply: text-sm bg-transparent text-violet-5 hover:underline;
 	}
 
 	.btn-account {

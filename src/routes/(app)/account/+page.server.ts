@@ -1,34 +1,65 @@
 import type { Actions, PageServerLoad } from './$types';
 import { auth } from '$lib/server/lucia';
 import { error, redirect } from '@sveltejs/kit';
+import { LuciaError } from 'lucia';
 
-export const load: PageServerLoad = async ({ locals }) => {};
+const date = new Date();
+
+export const load: PageServerLoad = async ({ locals, cookies }) => {
+	const session = await locals.auth.validate();
+	const loginStatus = cookies.get('loginStatus');
+	if (session) {
+		if (session.user.userType === 57) {
+			throw redirect(302, '/manage');
+		} else if (session.user.userType === 60) {
+			throw redirect(302, '/account/profile');
+		} else {
+			console.log(session.state);
+		}
+	}
+
+	return {
+		loginStatus
+	};
+};
 
 export const actions: Actions = {
-	signin: async ({ request, locals }) => {
+	signin: async ({ request, locals, cookies }) => {
 		const data = await request.formData();
 		const email = data.get('email-login') as string;
 		const password = data.get('password-login') as string;
 
+		let luciaError;
+
 		try {
-			const key = await auth.useKey('username', email.toLowerCase(), password);
+			const key = await auth.useKey('email', email.toLowerCase(), password);
 			const session = await auth.createSession({
 				userId: key.userId,
 				attributes: {}
 			});
 
 			locals.auth.setSession(session);
-			console.log('success');
+			if (cookies.get('loginStatus')) {
+				cookies.delete('loginStatus');
+			}
 		} catch (err) {
-			console.log(err);
+			if (err instanceof LuciaError) {
+				cookies.set('loginStatus', err.message, { expires: new Date(date.getTime() + 10 * 60000) });
+			}
 		}
 
 		const session = await locals.auth.validate();
 
 		if (session) {
-			throw redirect(302, '/manage');
+			if (session.user.userType === 57) {
+				throw redirect(302, '/manage');
+			} else if (session.user.userType === 60) {
+				throw redirect(302, '/');
+			} else {
+				console.log(session.state);
+			}
 		} else {
-			throw error(401, { message: 'Something wrong' });
+			console.log(luciaError);
 		}
 	},
 	signup: async ({ request, locals }) => {
@@ -41,14 +72,15 @@ export const actions: Actions = {
 		try {
 			const user = await auth.createUser({
 				key: {
-					providerId: 'username',
-					providerUserId: username.toLowerCase(),
+					providerId: 'email',
+					providerUserId: email.toLowerCase(),
 					password
 				},
 				attributes: {
 					username,
 					email,
-					full_name: namaLengkap
+					full_name: namaLengkap,
+					type_id: 60
 				}
 			});
 

@@ -4,11 +4,23 @@ import { auth } from '$lib/server/lucia';
 import { users, userType, department } from '$lib/db/pgSchema';
 import { fail, redirect } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async ({ cookies }) => {
+export const load: PageServerLoad = async ({ cookies, locals }) => {
 	const status = cookies.get('seedState');
+	const firstUserData = await db.select().from(users);
+	const session = await locals.auth.validate();
+
+	let isAvailable;
+	if (firstUserData.length > 0) {
+		isAvailable = true;
+	} else {
+		isAvailable = false;
+	}
+
+	if (session) throw redirect(302, '/manage');
 
 	return {
-		status
+		status,
+		isAvailable
 	};
 };
 
@@ -72,7 +84,8 @@ export const actions: Actions = {
 				attributes: {
 					username: email?.split('@')[0],
 					email: email,
-					full_name: 'Administrator'
+					full_name: 'Administrator',
+					type_id: 1
 				}
 			});
 

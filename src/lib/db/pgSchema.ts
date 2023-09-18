@@ -76,6 +76,17 @@ export const department = pgTable('department', {
 });
 
 // Table for Subjects
+export const discipline = pgTable('discipline', {
+	id: serial('id').primaryKey(),
+	code: varchar('code').notNull(),
+	disciplineName: varchar('discipline_name').notNull(),
+	disciplineDescription: text('discipline_description'),
+	faculty: varchar('faculty'),
+	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
+	creator: varchar('creator').references(() => users.id)
+});
+
 export const subjects = pgTable('subjects', {
 	id: serial('id').primaryKey(),
 	subjectName: varchar('subject_name', { length: 255 }).notNull(),
@@ -86,29 +97,33 @@ export const subjects = pgTable('subjects', {
 	header: text('header'),
 	keywords: text('keywords'),
 	type: varchar('subject_type'),
-	created_at: timestamp('created_at', { withTimezone: true }).defaultNow(),
+	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
+	creator: varchar('creator').references(() => users.id),
 	instructor: varchar('instructor', { length: 32 }).references(() => users.id),
 	disciplineId: integer('discipline_id').references(() => discipline.id)
 });
 
-export const discipline = pgTable('discipline', {
+export const collections = pgTable('collections', {
 	id: serial('id').primaryKey(),
-	code: varchar('code').notNull(),
-	disciplineName: varchar('discipline_name').notNull(),
-	disciplineDescription: text('discipline_description'),
-	faculty: varchar('faculty')
+	slug: varchar('slug').notNull(),
+	name: varchar('collection_name'),
+	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
+	creator: varchar('creator').references(() => users.id),
+	subjectId: integer('subject_id').references(() => subjects.id)
 });
 
-export const content = pgTable('content', {
+export const contents = pgTable('contents', {
 	id: uuid('id').defaultRandom().primaryKey(),
 	title: varchar('title').notNull(),
 	contentDescription: text('content_description'),
 	contents: text('contents'),
 	tag: varchar('tag'),
-	created_at: timestamp('created_at', { withTimezone: true }).defaultNow(),
+	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-	subject: integer('subject').references(() => subjects.id)
+	creator: varchar('creator').references(() => users.id),
+	collectionId: integer('collection_id').references(() => subjects.id)
 });
 
 // Users Relations
@@ -134,13 +149,21 @@ export const subjectsRelations = relations(subjects, ({ one, many }) => ({
 		fields: [subjects.disciplineId],
 		references: [discipline.id]
 	}),
-	content: many(content)
+	collections: many(collections)
 }));
 
-export const contentRelations = relations(content, ({ one }) => ({
-	subject: one(subjects, {
-		fields: [content.subject],
+export const collectionRelations = relations(collections, ({ one, many }) => ({
+	subjects: one(subjects, {
+		fields: [collections.subjectId],
 		references: [subjects.id]
+	}),
+	contents: many(contents)
+}));
+
+export const contentRelations = relations(contents, ({ one }) => ({
+	collections: one(collections, {
+		fields: [contents.collectionId],
+		references: [collections.id]
 	})
 }));
 

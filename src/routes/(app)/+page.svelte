@@ -16,7 +16,9 @@
 	<div class="my-5">
 		<SubjectExplanation />
 	</div>
-	<h2>Lantera in Action</h2>
+	<h2 class="italic">
+		<span class="text-violet-5">Lantera</span> in Action
+	</h2>
 	<section class="main-content">
 		<div class="main-subject">
 			<SubjectLists guideType={data.listGuide} />

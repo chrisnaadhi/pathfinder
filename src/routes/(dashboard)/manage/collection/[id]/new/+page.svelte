@@ -12,8 +12,8 @@
 </script>
 
 <section>
-	<p>{placeholder} + {data}</p>
-	<form action="?/" method="post">
+	<p>{placeholder} + {data.authData?.user.fullName}</p>
+	<form action="?/tambah" method="POST">
 		<input type="text" name="title" />
 		<input type="text" name="description" />
 		<input type="text" name="contents" />

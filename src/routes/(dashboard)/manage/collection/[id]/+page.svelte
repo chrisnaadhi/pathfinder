@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	export let data;
 
 	const { getContents, subjectData } = data;
@@ -11,6 +12,7 @@
 		<div>
 			{#each getContents as content, idx}
 				<pre>{idx + 1}. {content.id} - {content.title} ({content.subject})</pre>
+				<a href="{$page.url}/{content.id}">Klik</a>
 			{/each}
 		</div>
 		<a href="/manage/collection/{subjectData.slug}/new">
