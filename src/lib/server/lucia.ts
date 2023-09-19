@@ -23,7 +23,8 @@ export const auth = lucia({
 			title: data.title,
 			bio: data.biograph,
 			userType: data.type_id,
-			department: data.department_id
+			department: data.department_id,
+			photo: data.photo
 		};
 	}
 });

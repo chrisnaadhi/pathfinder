@@ -21,6 +21,7 @@ export const users = pgTable('auth_user', {
 	title: text('title'),
 	bio: text('biograph'),
 	type: integer('type_id').references(() => userType.id),
+	photo: text('photo'),
 	departmentId: integer('department_id').references(() => department.id)
 });
 
@@ -108,6 +109,7 @@ export const collections = pgTable('collections', {
 	id: serial('id').primaryKey(),
 	slug: varchar('slug').notNull(),
 	name: varchar('collection_name'),
+	status: varchar('collection_status'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
 	creator: varchar('creator').references(() => users.id),
@@ -122,13 +124,12 @@ export const contents = pgTable('contents', {
 	tag: varchar('tag'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-	creator: varchar('creator').references(() => users.id),
-	collectionId: integer('collection_id').references(() => subjects.id)
+	collectionId: integer('collection_id').references(() => subjects.id),
+	creator: varchar('creator').references(() => users.id)
 });
 
 // Users Relations
 export const usersRelations = relations(users, ({ one, many }) => ({
-	subjects: many(subjects),
 	department: one(department, {
 		fields: [users.departmentId],
 		references: [department.id]
@@ -136,23 +137,50 @@ export const usersRelations = relations(users, ({ one, many }) => ({
 	userType: one(userType, {
 		fields: [users.type],
 		references: [userType.id]
-	})
+	}),
+	discipline: many(discipline),
+	subjectsCreator: many(subjects, {
+		relationName: 'subject_creator'
+	}),
+	subjectsInstructor: many(subjects, {
+		relationName: 'subject_instructor'
+	}),
+	collectionCreator: many(collections),
+	contentCreator: many(contents)
 }));
 
 // Subjects Relations
-export const subjectsRelations = relations(subjects, ({ one, many }) => ({
-	instructor: one(users, {
-		fields: [subjects.instructor],
+export const disciplineRelation = relations(discipline, ({ one, many }) => ({
+	creator: one(users, {
+		fields: [discipline.creator],
 		references: [users.id]
+	}),
+	subject: many(subjects)
+}));
+
+export const subjectsRelations = relations(subjects, ({ one, many }) => ({
+	creator: one(users, {
+		fields: [subjects.creator],
+		references: [users.id],
+		relationName: 'subject_creator'
 	}),
 	discipline: one(discipline, {
 		fields: [subjects.disciplineId],
 		references: [discipline.id]
 	}),
+	instructor: one(users, {
+		fields: [subjects.instructor],
+		references: [users.id],
+		relationName: 'subject_instructor'
+	}),
 	collections: many(collections)
 }));
 
 export const collectionRelations = relations(collections, ({ one, many }) => ({
+	creator: one(users, {
+		fields: [collections.creator],
+		references: [users.id]
+	}),
 	subjects: one(subjects, {
 		fields: [collections.subjectId],
 		references: [subjects.id]
@@ -161,14 +189,14 @@ export const collectionRelations = relations(collections, ({ one, many }) => ({
 }));
 
 export const contentRelations = relations(contents, ({ one }) => ({
+	creator: one(users, {
+		fields: [contents.creator],
+		references: [users.id]
+	}),
 	collections: one(collections, {
 		fields: [contents.collectionId],
 		references: [collections.id]
 	})
-}));
-
-export const disciplineRelation = relations(discipline, ({ many }) => ({
-	subject: many(subjects)
 }));
 
 // Department Relations

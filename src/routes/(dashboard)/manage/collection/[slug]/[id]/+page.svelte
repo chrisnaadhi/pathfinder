@@ -10,7 +10,7 @@
 
 <section>
 	<p>{placeholder}</p>
-	<pre>{data}</pre>
+	<pre>{data.collectionItem.slug}</pre>
 	<a href={backUrl}>Kembali</a>
 </section>
 

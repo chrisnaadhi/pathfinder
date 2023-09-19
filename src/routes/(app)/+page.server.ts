@@ -1,30 +1,18 @@
 import type { Actions, PageServerLoad } from './$types';
 import { db } from '$lib/server/drizzle';
-import { subjects, content } from '$lib/db/pgSchema';
+import { users } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
+import { redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ request }) => {
-	const listSubject = await db
-		.select({
-			id: content.id,
-			nama: subjects.subjectName,
-			contentTitle: content.title
-		})
-		.from(subjects)
-		.leftJoin(content, eq(subjects.id, content.subject));
+	const listUsers = await db.select().from(users);
 
-	const results = listSubject.reduce((acc: any, val) => {
-		acc[val.nama] = acc[val.nama] || [];
-		acc[val.nama].push(val);
-
-		return acc;
-	}, {});
+	if (listUsers.length < 1) throw redirect(302, '/new-instance');
 
 	return {
 		msg: 'Can i load this with load function ?',
 		statusCode: 200,
 		checkParams: request.method,
-		listGuide: ['Guide Collections', 'Topic Guides', 'Course List'],
-		lists: results
+		listGuide: ['Guide Collections', 'Topic Guides', 'Course List']
 	};
 };

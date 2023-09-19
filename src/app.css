@@ -43,7 +43,11 @@ h6 {
 input,
 textarea,
 select {
-	--at-apply: border border-violet rounded max-w-md p-2;
+	--at-apply: border border-violet rounded p-2;
+}
+
+input:disabled {
+	--at-apply: bg-gray-3 cursor-not-allowed;
 }
 
 table {
@@ -58,4 +62,8 @@ th {
 
 th {
 	--at-apply: bg-violet-1;
+}
+
+.div-form {
+	--at-apply: flex flex-col;
 }

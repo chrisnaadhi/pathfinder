@@ -2,16 +2,21 @@ import type { Actions, PageServerLoad } from './$types';
 import { auth } from '$lib/server/lucia';
 import { error, redirect } from '@sveltejs/kit';
 import { LuciaError } from 'lucia';
+import { db } from '$lib/server/drizzle';
+import { users } from '$lib/db/pgSchema';
 
 const date = new Date();
 
 export const load: PageServerLoad = async ({ locals, cookies }) => {
 	const session = await locals.auth.validate();
+	const listUsers = await db.select().from(users);
 	const loginStatus = cookies.get('loginStatus');
+
+	if (listUsers.length < 1) throw redirect(302, '/new-instance');
 	if (session) {
-		if (session.user.userType === 57) {
+		if (session.user.userType === 1) {
 			throw redirect(302, '/manage');
-		} else if (session.user.userType === 60) {
+		} else if (session.user.userType === 4) {
 			throw redirect(302, '/account/profile');
 		} else {
 			console.log(session.state);
@@ -44,16 +49,18 @@ export const actions: Actions = {
 			}
 		} catch (err) {
 			if (err instanceof LuciaError) {
-				cookies.set('loginStatus', err.message, { expires: new Date(date.getTime() + 10 * 60000) });
+				cookies.set('loginStatus', err.message, {
+					expires: new Date(date.getTime() + 0.1 * 60000)
+				});
 			}
 		}
 
 		const session = await locals.auth.validate();
 
 		if (session) {
-			if (session.user.userType === 57) {
+			if (session.user.userType === 1) {
 				throw redirect(302, '/manage');
-			} else if (session.user.userType === 60) {
+			} else if (session.user.userType === 4) {
 				throw redirect(302, '/');
 			} else {
 				console.log(session.state);
@@ -80,7 +87,7 @@ export const actions: Actions = {
 					username,
 					email,
 					full_name: namaLengkap,
-					type_id: 60
+					type_id: 4
 				}
 			});
 

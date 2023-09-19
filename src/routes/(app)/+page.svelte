@@ -5,8 +5,6 @@
 	import SubjectExplanation from '$lib/components/home/SubjectExplanation.svelte';
 
 	export let data;
-
-	const { lists } = data;
 </script>
 
 <main class="max-w-7xl ma">
@@ -26,14 +24,6 @@
 				<SubjectSpecialist />
 			</div>
 		</div>
-		{#each Object.entries(lists) as [key, val]}
-			<div>
-				<h5>{key}</h5>
-				{#each val as item}
-					<p>{item.contentTitle}</p>
-				{/each}
-			</div>
-		{/each}
 		<p>{data.msg} - {data.statusCode}</p>
 		<p>{data.checkParams}</p>
 	</section>

@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	export let data;
 
-	const { getContents, subjectData } = data;
+	const { getCollection, subjectData } = data;
 </script>
 
 <section>
@@ -10,9 +10,9 @@
 	<p class="text-italic">{subjectData.description}</p>
 	<div>
 		<div>
-			{#each getContents as content, idx}
-				<pre>{idx + 1}. {content.id} - {content.title} ({content.subject})</pre>
-				<a href="{$page.url}/{content.id}">Klik</a>
+			{#each getCollection as collection}
+				<pre>{collection.id} - {collection.name} ({collection.slug}) : Subject = {subjectData.name}</pre>
+				<a href="{$page.url}/{collection.id}">Klik</a>
 			{/each}
 		</div>
 		<a href="/manage/collection/{subjectData.slug}/new">
