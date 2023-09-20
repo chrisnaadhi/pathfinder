@@ -21,8 +21,7 @@
 						<div class="bg-red text-white rounded">
 							<p>Password Salah</p>
 						</div>
-					{/if}
-					{#if data.loginStatus === 'AUTH_INVALID_KEY_ID'}
+					{:else if data.loginStatus === 'AUTH_INVALID_KEY_ID'}
 						<div class="bg-red text-white rounded">
 							<p>Akun ini tidak ditemukan</p>
 						</div>
@@ -109,10 +108,10 @@
 	}
 
 	a, .link {
-		--at-apply: text-sm bg-transparent text-violet-5 hover:underline;
+		--at-apply: text-sm bg-transparent dfTx hover:underline;
 	}
 
 	.btn-account {
-		--at-apply: btn bg-violet-5 mt-3 text-white w-full;
+		--at-apply: btn dfBg mt-3 w-full;
 	}
 </style>

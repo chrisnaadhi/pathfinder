@@ -34,8 +34,6 @@ export const actions: Actions = {
 		const email = data.get('email-login') as string;
 		const password = data.get('password-login') as string;
 
-		let luciaError;
-
 		try {
 			const key = await auth.useKey('email', email.toLowerCase(), password);
 			const session = await auth.createSession({
@@ -45,12 +43,12 @@ export const actions: Actions = {
 
 			locals.auth.setSession(session);
 			if (cookies.get('loginStatus')) {
-				cookies.delete('loginStatus');
+				cookies.set('loginStatus', 'SUCCESS');
 			}
 		} catch (err) {
 			if (err instanceof LuciaError) {
 				cookies.set('loginStatus', err.message, {
-					expires: new Date(date.getTime() + 0.1 * 60000)
+					expires: new Date(date.getTime() + 1 * 60000)
 				});
 			}
 		}
@@ -65,8 +63,6 @@ export const actions: Actions = {
 			} else {
 				console.log(session.state);
 			}
-		} else {
-			console.log(luciaError);
 		}
 	},
 	signup: async ({ request, locals }) => {

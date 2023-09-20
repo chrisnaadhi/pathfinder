@@ -15,7 +15,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			fill="#000000"
 			stroke="#000000"
-			class="text-violet-5"
+			class="dfTx"
 			stroke-width="0.00512"
 			><g id="SVGRepo_bgCarrier" stroke-width="0" /><g
 				id="SVGRepo_tracerCarrier"
@@ -30,7 +30,7 @@
 		</svg>
 	</div>
 
-	<h1>Selamat datang di <span class="text-violet-5">{name}</span></h1>
+	<h1>Selamat datang di <span class="dfTx">{name}</span></h1>
 	<br />
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et amet provident nesciunt deserunt

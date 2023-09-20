@@ -7,7 +7,7 @@
 </script>
 
 <main class="w-full flex" in:fade={{ delay: 100, duration: 500 }}>
-	<section class="bg-violet-50 text-violet-8 w-60 px-4 py-2">
+	<section class="bg-violet-50 dfTx w-60 px-4 py-2">
 		<div class="flex flex-col items-center">
 			<img
 				src={data.userData?.photo ?? '/img/default.jpg'}
@@ -15,7 +15,7 @@
 				class="rounded-full w-20 h-20 object-cover"
 			/>
 		</div>
-		<h5 class="font-bold text-center text-violet-5">PathfinderKit</h5>
+		<h5 class="font-bold text-center dfTx">PathfinderKit</h5>
 		<div>
 			<!-- <p>{data}</p> -->
 		</div>
@@ -28,6 +28,10 @@
 				<a href="/manage/profile" class="menu-item">
 					<div class="i-mdi-account-edit w-5 h-5" />
 					Profile
+				</a>
+				<a href="/manage/discipline" class="menu-item">
+					<div class="i-mdi-school w-5 h-5" />
+					Discipline
 				</a>
 				<a href="/manage/collection" class="menu-item">
 					<div class="i-mdi-bookshelf w-5 h-5" />
@@ -63,6 +67,6 @@
 
 <style>
 	.menu-item {
-		--at-apply: flex items-center gap-1 p-1 rounded hover:(bg-violet-5 text-white);
+		--at-apply: flex items-center gap-1 p-1 rounded hover:(dfBg);
 	}
 </style>

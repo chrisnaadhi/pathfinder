@@ -12,9 +12,9 @@
 </script>
 
 <section>
-	<h1 class="text-violet-5">{name}</h1>
+	<h1 class="dfTx">{name}</h1>
 	<div class="my-4 float-right">
-		<a class="btn bg-violet-5 text-white" href="/manage/collection/new">+ New Subject</a>
+		<a class="btn dfBg" href="/manage/collection/new">+ New Subject</a>
 	</div>
 	<table>
 		<thead>
@@ -34,10 +34,10 @@
 					<td>
 						<span class="flex justify-center gap-1">
 							<a href="{$page.url.pathname}/{subject.subjectSlug}">
-								<button class="btn bg-violet-5 text-white w-full text-xs">Check</button>
+								<button class="default-button">Check</button>
 							</a>
 							<a href="{$page.url.pathname}/{subject.subjectSlug}/edit">
-								<button class="btn bg-violet-5 text-white w-full text-xs">Edit</button>
+								<button class="default-button">Edit</button>
 							</a>
 						</span>
 					</td>
@@ -59,6 +59,3 @@
 		{/each}
 	</div>
 </section>
-
-<style>
-</style>

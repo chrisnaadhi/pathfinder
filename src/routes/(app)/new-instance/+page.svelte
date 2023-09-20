@@ -12,7 +12,7 @@
 			<p class="mb-5">
 				Look like you already have an Administrator Account. Try to login with this link instead.
 			</p>
-			<a href="/account" class="btn bg-violet text-white">Login</a>
+			<a href="/account" class="default-button">Login</a>
 		</div>
 	{:else}
 		<div>
@@ -30,7 +30,7 @@
 					<label for="password">Password: </label>
 					<input type="password" name="password" />
 				</div>
-				<button type="submit" class="btn bg-violet text-white">Create PathfinderKit</button>
+				<button type="submit" class="default-button">Create PathfinderKit</button>
 			</form>
 		</div>
 	{/if}

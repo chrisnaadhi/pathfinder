@@ -26,10 +26,10 @@
 
 <section>
 	<form method="POST" action="?/updateData" use:enhance>
-		<h3 class="text-violet-5">{subjectData.subjectName}</h3>
+		<h3 class="dfTx">{subjectData.subjectName}</h3>
 		<FormCollection {...objData} />
 		<input type="hidden" name="confirmation" bind:value={confirmState} />
-		<button type="submit" class="btn bg-violet-5 text-white">Update</button>
+		<button type="submit" class="default-button">Update</button>
 		<button
 			type="submit"
 			class="btn bg-red text-white"
@@ -41,7 +41,7 @@
 	</form>
 	<div class="text-white">
 		<a href="/manage/collection">
-			<button class="btn bg-violet">Back</button>
+			<button class="default-button">Back</button>
 		</a>
 	</div>
 </section>

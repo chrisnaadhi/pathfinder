@@ -5,7 +5,7 @@
 </script>
 
 <section>
-	<h1 class="text-violet-5">{name}</h1>
+	<h1 class="dfTx">{name}</h1>
 	<div>
 		<p>User ID: {data.userData?.userId}</p>
 	</div>

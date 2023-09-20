@@ -44,10 +44,10 @@
 
 		<input type="hidden" name="val" bind:value={$page.params.id} />
 
-		<button type="submit">Submit</button>
+		<button type="submit" class="default-button">Submit</button>
 	</form>
 	<div class="py-5">
-		<a href={newLink} class="text-violet-5">&leftarrow;Back</a>
+		<a href={newLink} class="dfTx">&leftarrow;Back</a>
 	</div>
 
 	<pre>{data.param.id}</pre>
@@ -60,9 +60,5 @@
 
 	form {
 		--at-apply: flex flex-col gap-3;
-	}
-
-	button {
-		--at-apply: btn bg-violet-5 text-white;
 	}
 </style>

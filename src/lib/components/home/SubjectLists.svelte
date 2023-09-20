@@ -17,6 +17,6 @@
 	}
 
 	.subject-head {
-		--at-apply: bg-violet px-4 py-1 rounded text-white font-500 cursor-pointer;
+		--at-apply: dfBg px-4 py-1 rounded font-500 cursor-pointer;
 	}
 </style>

@@ -41,10 +41,10 @@
 			</p>
 			<div class="flex gap-3 py-5">
 				<a href="/#" class="w-full">
-					<button class="btn bg-violet text-white w-full">Tombol 1</button>
+					<button class="default-button w-full">Tombol 1</button>
 				</a>
 				<a href="/#" class="w-full">
-					<button class="btn bg-violet text-white w-full">Tombol 2</button>
+					<button class="default-button w-full">Tombol 2</button>
 				</a>
 			</div>
 		</div>
@@ -70,6 +70,6 @@
 	}
 
 	.lantera {
-		--at-apply: text-violet-5;
+		--at-apply: dfTx;
 	}
 </style>

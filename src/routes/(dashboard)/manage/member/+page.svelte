@@ -9,7 +9,7 @@
 	<p>{placeholder}</p>
 	<div>
 		{#each listUsers as user}
-			<pre>{user.email} - {user.username} - {user.fullName}</pre>
+			<pre>{user.typeName}. {user.email} - {user.username} - {user.fullName}</pre>
 		{/each}
 	</div>
 </section>

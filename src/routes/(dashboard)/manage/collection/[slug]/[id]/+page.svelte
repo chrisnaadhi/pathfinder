@@ -21,8 +21,8 @@
 		</p>
 	</div>
 	<div class="flex justify-between">
-		<a href={backUrl} class="text-violet-5">&leftarrow;Kembali</a>
-		<a href={$page.url.toString() + '/new'} class="text-violet-5">Tambah Konten&rightarrow;</a>
+		<a href={backUrl} class="dfTx">&leftarrow;Kembali</a>
+		<a href={$page.url.toString() + '/new'} class="dfTx">Tambah Konten&rightarrow;</a>
 	</div>
 
 	<div class="grid grid-cols-2 gap-2">

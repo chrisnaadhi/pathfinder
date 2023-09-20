@@ -9,10 +9,10 @@
 </script>
 
 <section>
-	<h1 class="text-violet-5">{name}</h1>
+	<h1 class="dfTx">{name}</h1>
 	<img
 		src={userData?.photo}
-		class="w-32 h-32 object-cover bg-violet-6 rounded-full border border-violet"
+		class="w-32 h-32 object-cover rounded-full border border-violet"
 		alt={userData?.fullName}
 	/>
 	<form method="POST" action="?/updateProfile" use:enhance>
@@ -58,7 +58,7 @@
 			<input type="file" name="photo" id="photo" accept={authorizedExtension.join(',')} />
 		</div>
 		<div>
-			<button type="submit" class="btn bg-violet-6 py-2 px-2 text-white w-full">Update</button>
+			<button type="submit" class="btn dfBg py-2 px-2 w-full">Update</button>
 		</div>
 	</form>
 </section>

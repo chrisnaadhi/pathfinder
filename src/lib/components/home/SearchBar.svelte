@@ -19,6 +19,6 @@
 	}
 
 	button {
-		--at-apply: btn bg-violet py-2 text-white absolute top-2 right-2;
+		--at-apply: btn dfBg py-2 absolute top-2 right-2;
 	}
 </style>

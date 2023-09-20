@@ -67,3 +67,7 @@ th {
 .div-form {
 	--at-apply: flex flex-col;
 }
+
+.default-button {
+	--at-apply: btn dfBg;
+}

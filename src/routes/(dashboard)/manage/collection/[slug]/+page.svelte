@@ -6,7 +6,7 @@
 </script>
 
 <section>
-	<h3 class="text-violet-5">Daftar Koleksi {subjectData.name}</h3>
+	<h3 class="dfTx">Daftar Koleksi {subjectData.name}</h3>
 	<p>{subjectData.description}</p>
 	<p class="italic text-sm">Keywords: {subjectData.keywords}</p>
 	<div>
@@ -17,10 +17,10 @@
 			{/each}
 		</div>
 		<a href="/manage/collection/{subjectData.slug}/new">
-			<button class="btn bg-violet text-white">Tambah</button>
+			<button class="default-button">Tambah</button>
 		</a>
 		<a href="/manage/collection">
-			<button class="btn bg-violet text-white">Back</button>
+			<button class="default-button">Back</button>
 		</a>
 	</div>
 </section>

@@ -1,8 +1,20 @@
-// placed blank file here to make the latest UnoCSS VSCode extension work (v.0.45.26)
+import type { UserConfig } from 'unocss';
+import {
+	defineConfig,
+	presetIcons,
+	presetUno,
+	transformerDirectives,
+	transformerVariantGroup
+} from 'unocss';
+import extractorSvelte from '@unocss/extractor-svelte';
 
-// import { presetIcons, presetUno, extractorSvelte } from 'unocss'
-// import { defineConfig } from 'unocss/vite'
-
-// export default defineConfig({
-// placing the UnoCSS config currently seen in vite.config.ts does not work from this file
-// })
+export default defineConfig({
+	extractors: [extractorSvelte()],
+	presets: [presetUno({}), presetIcons()],
+	transformers: [transformerDirectives(), transformerVariantGroup()],
+	shortcuts: {
+		btn: 'py-1 px-4 rounded',
+		dfBg: 'bg-violet-5 text-white',
+		dfTx: 'text-violet-5'
+	}
+}) satisfies UserConfig;
