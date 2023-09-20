@@ -2,15 +2,17 @@ import { writeFileSync, mkdirSync } from 'fs';
 import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
-import { users } from '$lib/db/pgSchema';
+import { department, users } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	const userData = session?.user;
+	const departmentList = await db.select().from(department);
 
 	return {
-		userData
+		userData,
+		departmentList
 	};
 };
 
@@ -21,15 +23,18 @@ export const actions: Actions = {
 		const userId = session?.user.userId as string;
 		const name = data.get('nama-lengkap') as string;
 		const title = data.get('title') as string;
-		const department = data.get('department') as string;
+		const department = data.get('department');
 		const bio = data.get('bio') as string;
 		const photo = data.get('photo') as File;
-		const splitPhotoName = photo.name.split('.');
-		splitPhotoName.splice(0, 1, userId);
-		const joinedPhoto = splitPhotoName.join('.');
-		console.log(splitPhotoName, joinedPhoto);
-
-		writeFileSync(`static/uploads/profile/${joinedPhoto}`, Buffer.from(await photo.arrayBuffer()));
+		let joinedPhoto = session?.user.photo;
+		if (photo.name !== undefined && photo.size !== 0) {
+			const splitPhotoName = photo.name.split('.');
+			splitPhotoName.splice(0, 1, userId);
+			joinedPhoto = splitPhotoName.join('.');
+			joinedPhoto = '/uploads/profile/' + joinedPhoto;
+			console.log(splitPhotoName, joinedPhoto, photo);
+			writeFileSync(`static${joinedPhoto}`, Buffer.from(await photo.arrayBuffer()));
+		}
 
 		await db
 			.update(users)
@@ -37,7 +42,8 @@ export const actions: Actions = {
 				name,
 				title,
 				bio,
-				photo: '/uploads/profile/' + joinedPhoto
+				departmentId: Number(department),
+				photo: joinedPhoto
 			})
 			.where(eq(users.id, userId));
 

@@ -7,7 +7,8 @@
 
 <section>
 	<h3 class="text-violet-5">Daftar Koleksi {subjectData.name}</h3>
-	<p class="text-italic">{subjectData.description}</p>
+	<p>{subjectData.description}</p>
+	<p class="italic text-sm">Keywords: {subjectData.keywords}</p>
 	<div>
 		<div>
 			{#each getCollection as collection}

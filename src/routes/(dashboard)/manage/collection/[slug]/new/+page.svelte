@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { slugifyText } from '$lib/utils/textFormatter.js';
 
 	let placeholder = 'Hello, svelte!';
 
@@ -10,7 +11,6 @@
 	reduceNew.splice(-1);
 	const newLink = reduceNew.join('/');
 
-	let title = '';
 	let slugValue: HTMLInputElement;
 
 	const handleSlug = () => {
@@ -21,11 +21,11 @@
 </script>
 
 <section>
-	<p>{placeholder} + {data.authData}</p>
+	<p>{placeholder} + {data.userData?.email}</p>
 	<form action="?/tambah" method="POST">
 		<div class="div-form">
 			<label for="">Judul</label>
-			<input type="text" name="title" bind:value={title} />
+			<input type="text" name="title" />
 		</div>
 
 		<div class="div-form">
@@ -63,6 +63,6 @@
 	}
 
 	button {
-		--at-apply: btn bg-violet-5 text-white w-md;
+		--at-apply: btn bg-violet-5 text-white;
 	}
 </style>

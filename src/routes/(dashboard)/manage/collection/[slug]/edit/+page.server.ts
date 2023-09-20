@@ -7,7 +7,7 @@ import { subjects } from '$lib/db/pgSchema';
 const date = new Date();
 
 export const load: PageServerLoad = async ({ params }) => {
-	const getSubject = await db.select().from(subjects).where(eq(subjects.subjectSlug, params.id));
+	const getSubject = await db.select().from(subjects).where(eq(subjects.subjectSlug, params.slug));
 
 	const subjectData = getSubject[0];
 
@@ -37,7 +37,7 @@ export const actions: Actions = {
 				type: subjectType as string,
 				updatedAt: new Date(date.toISOString())
 			})
-			.where(eq(subjects.subjectSlug, event.params.id));
+			.where(eq(subjects.subjectSlug, event.params.slug));
 
 		throw redirect(302, '/manage/collection');
 	},
@@ -46,10 +46,10 @@ export const actions: Actions = {
 		const isDelete = data.get('confirmation');
 
 		if (isDelete === 'delete') {
-			await db.delete(subjects).where(eq(subjects.subjectSlug, event.params.id));
+			await db.delete(subjects).where(eq(subjects.subjectSlug, event.params.slug));
 			throw redirect(302, '/manage/collection');
 		} else if (isDelete === 'keep') {
-			throw redirect(300, '/manage/collection/' + event.params.id);
+			throw redirect(300, '/manage/collection/' + event.params.slug);
 		} else {
 			console.log('Nothing Happen');
 		}

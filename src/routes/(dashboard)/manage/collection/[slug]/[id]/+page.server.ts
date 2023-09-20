@@ -1,4 +1,4 @@
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad, Actions } from './$types';
 import { auth } from '$lib/server/lucia';
 import { db } from '$lib/server/drizzle';
 import { collections } from '$lib/db/pgSchema';
@@ -13,4 +13,10 @@ export const load: PageServerLoad = async ({ params }) => {
 	return {
 		collectionItem
 	};
+};
+
+export const actions: Actions = {
+	tambahKonten: async ({ locals }) => {
+		const session = await locals.auth.validate();
+	}
 };

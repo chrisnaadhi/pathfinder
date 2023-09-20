@@ -21,23 +21,23 @@
 			<th>No.</th>
 			<th>Title</th>
 			<th>Description</th>
-			<th>Keywords</th>
+			<th>Type Subject</th>
 			<th>Ops</th>
 		</thead>
 		<tbody>
-			{#each results as reps, i}
+			{#each results as subject, i}
 				<tr>
 					<td>{i + 1}</td>
-					<td>{reps.subjectName}</td>
-					<td>{formatDescription(reps.subjectDescription)}</td>
-					<td>{reps.keywords}</td>
+					<td>{subject.subjectName}</td>
+					<td>{formatDescription(subject.subjectDescription)}</td>
+					<td>{subject.type}</td>
 					<td>
-						<span class="flex gap-1">
-							<a href="{$page.url.pathname}/{reps.subjectSlug}">
-								<button class="btn bg-violet text-white w-full">List</button>
+						<span class="flex justify-center gap-1">
+							<a href="{$page.url.pathname}/{subject.subjectSlug}">
+								<button class="btn bg-violet-5 text-white w-full text-xs">Check</button>
 							</a>
-							<a href="{$page.url.pathname}/{reps.subjectSlug}/edit">
-								<button class="btn bg-violet text-white w-full">Edit</button>
+							<a href="{$page.url.pathname}/{subject.subjectSlug}/edit">
+								<button class="btn bg-violet-5 text-white w-full text-xs">Edit</button>
 							</a>
 						</span>
 					</td>

@@ -7,7 +7,7 @@
 <section>
 	<h1 class="text-violet-5">{name}</h1>
 	<div>
-		<p>User ID: {data.authData}</p>
+		<p>User ID: {data.userData?.userId}</p>
 	</div>
 	<form action="?/signOut" method="POST" use:enhance>
 		<button type="submit" class="btn bg-red text-white">Sign Out</button>

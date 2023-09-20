@@ -10,7 +10,8 @@ export const load: PageServerLoad = async ({ params }) => {
 			id: subjects.id,
 			slug: subjects.subjectSlug,
 			name: subjects.subjectName,
-			description: subjects.subjectDescription
+			description: subjects.subjectDescription,
+			keywords: subjects.keywords
 		})
 		.from(subjects)
 		.where(eq(subjects.subjectSlug, params.slug));

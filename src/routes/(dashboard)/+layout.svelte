@@ -9,14 +9,18 @@
 <main class="w-full flex" in:fade={{ delay: 100, duration: 500 }}>
 	<section class="bg-violet-50 text-violet-8 w-60 px-4 py-2">
 		<div class="flex flex-col items-center">
-			<img src="/img/no-image.jpg" alt="foto" class="h-18 rounded-full" />
+			<img
+				src={data.userData?.photo ?? '/img/default.jpg'}
+				alt="foto"
+				class="rounded-full w-20 h-20 object-cover"
+			/>
 		</div>
 		<h5 class="font-bold text-center text-violet-5">PathfinderKit</h5>
 		<div>
 			<!-- <p>{data}</p> -->
 		</div>
 		<div class="flex flex-col justify-between h-screen">
-			<div class="flex flex-col gap-4">
+			<div class="flex flex-col gap-4 my-4">
 				<a href="/manage/#" class="menu-item">
 					<div class="i-mdi-home w-5 h-5" />
 					<p>Dashboard</p>
@@ -41,7 +45,7 @@
 					<div class="i-mdi-cog w-5 h-5" />
 					Setting
 				</a>
-				<a href="/" class="btn text-center bg-violet-5 text-white font-semibold">Exit Dashboard</a>
+				<a href="/" class="btn text-center bg-red text-white font-semibold">Exit Dashboard</a>
 			</div>
 		</div>
 	</section>
@@ -59,6 +63,6 @@
 
 <style>
 	.menu-item {
-		--at-apply: flex items-center gap-1;
+		--at-apply: flex items-center gap-1 p-1 rounded hover:(bg-violet-5 text-white);
 	}
 </style>
