@@ -110,6 +110,7 @@ export const collections = pgTable('collections', {
 	slug: varchar('slug').notNull(),
 	name: varchar('collection_name'),
 	status: varchar('collection_status'),
+	deskripsi: varchar('description'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
 	creator: varchar('creator').references(() => users.id),
