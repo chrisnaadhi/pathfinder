@@ -1,4 +1,4 @@
-import { writeFileSync, mkdirSync } from 'fs';
+import { writeFileSync } from 'fs';
 import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
@@ -17,7 +17,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions: Actions = {
-	updateProfile: async ({ locals, request }) => {
+	updateProfile: async ({ locals, request, fetch }) => {
 		const session = await locals.auth.validate();
 		const data = await request.formData();
 		const userId = session?.user.userId as string;
@@ -32,7 +32,6 @@ export const actions: Actions = {
 			splitPhotoName.splice(0, 1, userId);
 			joinedPhoto = splitPhotoName.join('.');
 			joinedPhoto = '/uploads/profile/' + joinedPhoto;
-			console.log(splitPhotoName, joinedPhoto, photo);
 			writeFileSync(`static${joinedPhoto}`, Buffer.from(await photo.arrayBuffer()));
 		}
 
@@ -46,6 +45,11 @@ export const actions: Actions = {
 				photo: joinedPhoto
 			})
 			.where(eq(users.id, userId));
+
+		await fetch('/api/files', {
+			method: 'PUT',
+			body: photo
+		});
 
 		throw redirect(304, '/manage');
 	}

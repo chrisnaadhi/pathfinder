@@ -10,7 +10,7 @@
 	<section class="bg-violet-50 dfTx w-60 px-4 py-2">
 		<div class="flex flex-col items-center">
 			<img
-				src={data.userData?.photo ?? '/img/default.jpg'}
+				src={data.userData?.photo === '' ? '/img/default.jpg' : data.userData?.photo}
 				alt="foto"
 				class="rounded-full w-20 h-20 object-cover"
 			/>

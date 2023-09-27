@@ -6,13 +6,14 @@
 
 	const name = 'Profile';
 	const authorizedExtension = ['.jpg', '.jpeg', '.png', '.webp'];
+	console.log(userData?.photo);
 </script>
 
 <section>
 	<h1 class="dfTx">{name}</h1>
 	<img
-		src={userData?.photo}
-		class="w-32 h-32 object-cover rounded-full border border-violet"
+		src={userData?.photo === '' ? '/img/default.jpg' : userData?.photo}
+		class="w-32 h-32 object-cover bg-violet-6 rounded-full border border-violet"
 		alt={userData?.fullName}
 	/>
 	<form method="POST" action="?/updateProfile" use:enhance>
