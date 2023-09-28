@@ -24,6 +24,7 @@ export const actions: Actions = {
 		const name = data.get('title') as string;
 		const slug = data.get('slug') as string;
 		const status = data.get('status') as string;
+		const deskripsi = data.get('deskripsi') as string;
 
 		const searchParam = await db
 			.select({
@@ -37,6 +38,7 @@ export const actions: Actions = {
 			name,
 			slug,
 			status,
+			deskripsi,
 			subjectId: searchParam[0].id,
 			creator: session?.user.userId
 		});

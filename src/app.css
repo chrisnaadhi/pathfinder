@@ -64,6 +64,10 @@ th {
 	--at-apply: bg-violet-1;
 }
 
+.ProseMirror:focus {
+	outline: none;
+}
+
 .div-form {
 	--at-apply: flex flex-col;
 }

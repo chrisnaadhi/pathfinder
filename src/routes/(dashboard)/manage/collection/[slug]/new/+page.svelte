@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { slugifyText } from '$lib/utils/textFormatter.js';
+	import { enhance } from '$app/forms';
 
 	let placeholder = 'Hello, svelte!';
 
@@ -22,24 +22,29 @@
 
 <section>
 	<p>{placeholder} + {data.userData?.email}</p>
-	<form action="?/tambah" method="POST">
+	<form action="?/tambah" method="POST" use:enhance>
 		<div class="div-form">
-			<label for="">Judul</label>
-			<input type="text" name="title" />
+			<label for="title">Judul</label>
+			<input type="text" name="title" required />
 		</div>
 
 		<div class="div-form">
-			<label for="">Slug</label>
-			<input type="text" name="slug" bind:this={slugValue} on:input={handleSlug} />
+			<label for="slug">Slug</label>
+			<input type="text" name="slug" bind:this={slugValue} on:input={handleSlug} required />
 		</div>
 
 		<div class="div-form">
-			<label for="">Status</label>
-			<select name="status" id="content-type">
+			<label for="status">Status</label>
+			<select name="status" id="content-type" required>
 				<option value="active">Active</option>
 				<option value="inactive">Inactive</option>
 				<option value="pending">Pending</option>
 			</select>
+		</div>
+
+		<div class="div-form">
+			<label for="deskripsi">Deskripsi:</label>
+			<textarea name="deskripsi" id="" cols="30" rows="10" required />
 		</div>
 
 		<input type="hidden" name="val" bind:value={$page.params.id} />

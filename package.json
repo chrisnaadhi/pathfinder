@@ -52,6 +52,9 @@
 		"@lucia-auth/adapter-postgresql": "^2.0.1",
 		"@melt-ui/svelte": "^0.41.3",
 		"@neondatabase/serverless": "^0.6.0",
+		"@tiptap/core": "^2.1.11",
+		"@tiptap/pm": "^2.1.11",
+		"@tiptap/starter-kit": "^2.1.11",
 		"drizzle-orm": "^0.28.6",
 		"lucia": "^2.6.0",
 		"postgres": "^3.3.5"

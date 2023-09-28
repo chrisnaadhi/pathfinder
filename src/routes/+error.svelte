@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { backButton } from '$lib/utils/textFormatter';
 	import Header from '$lib/components/Header.svelte';
+
+	const back = backButton($page);
 </script>
 
 <main class="text-center text-violet-5 h-full">
@@ -10,7 +13,7 @@
 		<h1 class="text-9xl">{$page.status}</h1>
 		<p class="font-semibold">{$page.error?.message}</p>
 		<div class="mt-5">
-			<a href="/" class="btn bg-violet text-white">Kembali</a>
+			<a href={back} class="btn bg-violet text-white">Kembali</a>
 		</div>
 	</section>
 </main>

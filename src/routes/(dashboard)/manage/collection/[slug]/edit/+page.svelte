@@ -1,8 +1,10 @@
 <script>
 	import { enhance } from '$app/forms';
+	import DeleteModal from '$lib/components/generic/DeleteModal.svelte';
 	import FormCollection from '$lib/components/items/FormCollection.svelte';
 
 	export let data;
+
 	let { subjectData } = data;
 	let objData = {
 		subjectName: subjectData.subjectName,
@@ -12,38 +14,22 @@
 		keywords: subjectData.keywords,
 		subjectType: subjectData.type
 	};
-
-	let confirmState = 'keep';
-	const confirmDelete = () => {
-		const del = window.confirm('Ingin menghapus data ?');
-		if (del) {
-			return (confirmState = 'delete');
-		} else {
-			return (confirmState = 'keep');
-		}
-	};
 </script>
 
 <section>
 	<form method="POST" action="?/updateData" use:enhance>
 		<h3 class="dfTx">{subjectData.subjectName}</h3>
+		<div class="text-white">
+			<a href="/manage/collection">
+				<button class="dfTx bg-transparent">&leftarrow;Back</button>
+			</a>
+		</div>
 		<FormCollection {...objData} />
-		<input type="hidden" name="confirmation" bind:value={confirmState} />
 		<button type="submit" class="default-button">Update</button>
-		<button
-			type="submit"
-			class="btn bg-red text-white"
-			on:click={confirmDelete}
-			formaction="?/deleteData"
-		>
-			Delete
-		</button>
+		<DeleteModal>
+			<p>Anda yakin ingin menghapus ini ?</p>
+		</DeleteModal>
 	</form>
-	<div class="text-white">
-		<a href="/manage/collection">
-			<button class="default-button">Back</button>
-		</a>
-	</div>
 </section>
 
 <style>

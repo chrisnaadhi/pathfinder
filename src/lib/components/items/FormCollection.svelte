@@ -77,9 +77,10 @@
 				>
 			{/each}
 		</div>
-		<pre>Keywords: {keywords}</pre>
-		<pre>Keyword List: {keywordList}</pre>
-		<p class="italic text-sm">Klik label untuk menghapus keyword</p>
+		{#if keywordList.length > 0}
+			<p class="italic text-sm text-red-6">Klik label untuk menghapus keyword</p>
+		{/if}
+
 		<input type="hidden" name="keywords" bind:value={keywords} />
 	</div>
 	<div class="div-form">
