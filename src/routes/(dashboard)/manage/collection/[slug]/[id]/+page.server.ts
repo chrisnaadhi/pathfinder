@@ -1,6 +1,6 @@
 import type { PageServerLoad, Actions } from './$types';
 import { db } from '$lib/server/drizzle';
-import { collections } from '$lib/db/pgSchema';
+import { collections, contents } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
 
@@ -13,8 +13,11 @@ export const load: PageServerLoad = async ({ params, url }) => {
 		.where(eq(collections.id, Number(params.id)));
 	const collectionItem = collectionSearch[0];
 
+	const contentsList = await db.select().from(contents);
+
 	return {
-		collectionItem
+		collectionItem,
+		contentsList
 	};
 };
 

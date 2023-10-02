@@ -37,7 +37,7 @@
 <section class="flex flex-col gap-4">
 	<div class="div-form">
 		<label for="title">Subject Name:</label>
-		<input type="text" name="title" id="title" bind:value={subjectName} />
+		<input type="text" name="title" id="title" bind:value={subjectName} required />
 	</div>
 	<div class="div-form">
 		<label for="slug">Subject Slug:</label>
@@ -48,11 +48,12 @@
 			bind:value={subjectSlug}
 			bind:this={slugValue}
 			on:input={handleSlug}
+			required
 		/>
 	</div>
 	<div class="div-form">
 		<label for="status">Status:</label>
-		<select name="status" id="status" bind:value={status}>
+		<select name="status" id="status" bind:value={status} required>
 			<option value="active">Active</option>
 			<option value="inactive">Inactive</option>
 			<option value="pending">Pending</option>
@@ -60,7 +61,7 @@
 	</div>
 	<div class="div-form">
 		<label for="description">Description:</label>
-		<textarea name="description" id="description" bind:value={description} rows="10" />
+		<textarea name="description" id="description" bind:value={description} rows="10" required />
 	</div>
 	<div class="div-form">
 		<label for="keywords">Keywords:</label>
@@ -85,7 +86,7 @@
 	</div>
 	<div class="div-form">
 		<label for="typesubject">Subject Type:</label>
-		<select name="typesubject" id="typesubject" bind:value={subjectType}>
+		<select name="typesubject" id="typesubject" bind:value={subjectType} required>
 			<option value="guide">Guide</option>
 			<option value="course">Course</option>
 			<option value="topic">Topic</option>

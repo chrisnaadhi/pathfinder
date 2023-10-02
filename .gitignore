@@ -9,6 +9,7 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 /static/uploads/profile/*
-/files/*.jpg
-/files/*.png
-/files/*.jpeg
+/files/api/uploads/*.jpg
+/files/api/uploads/*.png
+/files/api/uploads/*.jpeg
+/files/api/uploads/*.webp

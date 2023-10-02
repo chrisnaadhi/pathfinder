@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
@@ -27,12 +27,16 @@ export const actions: Actions = {
 		const bio = data.get('bio') as string;
 		const photo = data.get('photo') as File;
 		let joinedPhoto = session?.user.photo;
+
+		if (!existsSync('./files/api/uploads/')) {
+			mkdirSync('./files/api/uploads/', { recursive: true });
+		}
 		if (photo.name !== undefined && photo.size !== 0) {
 			const splitPhotoName = photo.name.split('.');
 			splitPhotoName.splice(0, 1, userId);
 			joinedPhoto = splitPhotoName.join('.');
-			joinedPhoto = '/uploads/profile/' + joinedPhoto;
-			writeFileSync(`static${joinedPhoto}`, Buffer.from(await photo.arrayBuffer()));
+			joinedPhoto = '/api/uploads/' + joinedPhoto;
+			writeFileSync(`files${joinedPhoto}`, Buffer.from(await photo.arrayBuffer()));
 		}
 
 		await db
@@ -46,11 +50,6 @@ export const actions: Actions = {
 			})
 			.where(eq(users.id, userId));
 
-		await fetch('/api/files', {
-			method: 'PUT',
-			body: photo
-		});
-
-		throw redirect(304, '/manage');
+		throw redirect(304, '/manage/');
 	}
 };

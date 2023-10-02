@@ -4,13 +4,14 @@
 	let news = 'Sekilas berita dan informasi terbaru akan tampil disini';
 
 	export let data;
+	const { userData } = data;
 </script>
 
 <main class="w-full flex" in:fade={{ delay: 100, duration: 500 }}>
 	<section class="bg-violet-50 dfTx w-60 px-4 py-2">
 		<div class="flex flex-col items-center">
 			<img
-				src={data.userData?.photo === '' ? '/img/default.jpg' : data.userData?.photo}
+				src={userData?.photo === null ? '/img/default.jpg' : userData?.photo}
 				alt="foto"
 				class="rounded-full w-20 h-20 object-cover"
 			/>
@@ -20,8 +21,8 @@
 			<!-- <p>{data}</p> -->
 		</div>
 		<div class="flex flex-col justify-between h-screen">
-			<div class="flex flex-col gap-4 my-4">
-				<a href="/manage/#" class="menu-item">
+			<nav class="flex flex-col gap-4 my-4">
+				<a href="/manage" class="menu-item" data-sveltekit-reload>
 					<div class="i-mdi-home w-5 h-5" />
 					<p>Dashboard</p>
 				</a>
@@ -50,7 +51,7 @@
 					Setting
 				</a>
 				<a href="/" class="btn text-center bg-red text-white font-semibold">Exit Dashboard</a>
-			</div>
+			</nav>
 		</div>
 	</section>
 	<section class="w-full">

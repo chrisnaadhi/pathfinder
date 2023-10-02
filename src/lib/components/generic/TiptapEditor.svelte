@@ -3,6 +3,8 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 
+	import { contentTipTap } from '$lib/utils/dataStore';
+
 	let element: HTMLElement;
 	let editor: any;
 
@@ -13,6 +15,7 @@
 			content: '<p>Hello PathfinderKit!</p>',
 			onTransaction: () => {
 				editor = editor;
+				$contentTipTap = editor.getHTML();
 			}
 		});
 	});
@@ -27,19 +30,19 @@
 {#if editor}
 	<div class="flex gap-1">
 		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+			on:click|preventDefault={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
 			class:active={editor.isActive('heading', { level: 1 })}
 		>
 			H1
 		</button>
 		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+			on:click|preventDefault={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
 			class:active={editor.isActive('heading', { level: 2 })}
 		>
 			H2
 		</button>
 		<button
-			on:click={() => editor.chain().focus().setParagraph().run()}
+			on:click|preventDefault={() => editor.chain().focus().setParagraph().run()}
 			class:active={editor.isActive('paragraph')}
 		>
 			P

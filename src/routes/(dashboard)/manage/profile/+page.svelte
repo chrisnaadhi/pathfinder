@@ -1,4 +1,5 @@
 <script>
+	// @ts-nocheck
 	import { enhance } from '$app/forms';
 
 	export let data;
@@ -6,7 +7,14 @@
 
 	const name = 'Profile';
 	const authorizedExtension = ['.jpg', '.jpeg', '.png', '.webp'];
-	console.log(userData?.photo);
+	/** @param {any} event */
+	const uploadPhoto = (event) => {
+		const target = event.target;
+		if (target.files[0].size > 1 * 1024 * 1024) {
+			alert('Maksimal Ukuran Foto 1Mb!');
+			target.value = '';
+		}
+	};
 </script>
 
 <section>
@@ -56,7 +64,14 @@
 		</div>
 		<div class="div-form">
 			<label for="photo">Photo Profile: </label>
-			<input type="file" name="photo" id="photo" accept={authorizedExtension.join(',')} />
+			<input
+				type="file"
+				name="photo"
+				id="photo"
+				enctype="multipart/form-data"
+				accept={authorizedExtension.join(',')}
+				on:change={uploadPhoto}
+			/>
 		</div>
 		<div>
 			<button type="submit" class="btn dfBg py-2 px-2 w-full">Update</button>

@@ -3,6 +3,7 @@
 	import { enhance } from '$app/forms';
 
 	import TiptapEditor from '$lib/components/generic/TiptapEditor.svelte';
+	import { contentTipTap } from '$lib/utils/dataStore';
 
 	import { backButton } from '$lib/utils/textFormatter';
 
@@ -24,6 +25,10 @@
 		<div class="div-form">
 			<label for="contentedit">Konten:</label>
 			<TiptapEditor />
+			<input type="hidden" name="contents" bind:value={$contentTipTap} />
+		</div>
+		<div>
+			<button type="submit" class="btn dfBg">Create</button>
 		</div>
 	</form>
 	<a href={back}>Kembali</a>

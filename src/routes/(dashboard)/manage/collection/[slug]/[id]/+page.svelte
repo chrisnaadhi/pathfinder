@@ -54,10 +54,10 @@
 	</div>
 
 	<div class="grid grid-cols-2 gap-2">
-		{#each Array(5) as _, i}
+		{#each data.contentsList as res}
 			<div class="box">
-				<h4>{i + 1}</h4>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, aliquid.</p>
+				<h4>{res.title}</h4>
+				<p>{res.contentDescription}</p>
 			</div>
 		{/each}
 	</div>

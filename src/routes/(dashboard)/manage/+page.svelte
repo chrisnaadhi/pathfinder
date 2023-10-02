@@ -1,5 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
+
 	let name = 'Dashboard';
 	export let data;
 </script>
