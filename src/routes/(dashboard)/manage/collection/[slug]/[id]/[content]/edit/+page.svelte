@@ -1,9 +1,9 @@
 <script>
-	let placeholder = 'Hello, svelte!';
+	export let data;
 </script>
 
 <section>
-	<p>{placeholder}</p>
+	<p>{data.contentData}</p>
 </section>
 
 <style>

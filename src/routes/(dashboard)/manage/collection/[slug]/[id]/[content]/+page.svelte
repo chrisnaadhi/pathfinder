@@ -2,6 +2,8 @@
 	import { page } from '$app/stores';
 	import { backButton } from '$lib/utils/textFormatter';
 
+	import DeleteModal from '$lib/components/generic/DeleteModal.svelte';
+
 	let placeholder = 'Konten ada disini nanti!';
 	const back = backButton($page);
 
@@ -16,7 +18,12 @@
 			{@html res.contents}
 		</div>
 	{/each}
-	<a href={back}>Kembali</a>
+	<div>
+		<DeleteModal>
+			<p>Ingin meghapus data ?</p>
+		</DeleteModal>
+		<a href={back}>Kembali</a>
+	</div>
 </section>
 
 <style>

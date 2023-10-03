@@ -13,7 +13,8 @@
 </script>
 
 <section>
-	<p>{placeholder}</p>
+	<h4 class="dfTx">{placeholder}</h4>
+	<a href={back} class="dfTx">&leftarrow;Kembali</a>
 	<form action="?/tambahKonten" method="POST" use:enhance>
 		<div class="div-form">
 			<label for="title">Judul:</label>
@@ -33,11 +34,10 @@
 			<button type="submit" class="btn dfBg">Create</button>
 		</div>
 	</form>
-	<a href={back}>Kembali</a>
 </section>
 
 <style>
-	p {
-		--at-apply: italic;
+	label {
+		--at-apply: font-semibold;
 	}
 </style>
