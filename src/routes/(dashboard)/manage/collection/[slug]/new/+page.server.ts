@@ -1,10 +1,9 @@
-import type { Actions, PageServerLoad } from './$types';
 import { db } from '$lib/server/drizzle';
 import { subjects, collections } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load = async ({ params }) => {
 	const searchParam = await db
 		.select({
 			id: subjects.id
@@ -17,7 +16,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	};
 };
 
-export const actions: Actions = {
+export const actions = {
 	tambah: async (event) => {
 		const session = await event.locals.auth.validate();
 		const data = await event.request.formData();

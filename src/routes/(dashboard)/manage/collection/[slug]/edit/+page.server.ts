@@ -1,4 +1,3 @@
-import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import { db } from '$lib/server/drizzle';
@@ -6,7 +5,7 @@ import { subjects } from '$lib/db/pgSchema';
 
 const date = new Date();
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load = async ({ params }) => {
 	const getSubject = await db.select().from(subjects).where(eq(subjects.subjectSlug, params.slug));
 
 	const subjectData = getSubject[0];
@@ -16,7 +15,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	};
 };
 
-export const actions: Actions = {
+export const actions = {
 	updateData: async (event) => {
 		const data = await event.request.formData();
 		const subjectName = data.get('title');

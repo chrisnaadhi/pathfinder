@@ -24,17 +24,17 @@
 	<p>{placeholder} + {data.userData?.email}</p>
 	<form action="?/tambah" method="POST" use:enhance>
 		<div class="div-form">
-			<label for="title">Judul</label>
+			<label for="title">Nama Koleksi:</label>
 			<input type="text" name="title" required />
 		</div>
 
 		<div class="div-form">
-			<label for="slug">Slug</label>
+			<label for="slug">Slug:</label>
 			<input type="text" name="slug" bind:this={slugValue} on:input={handleSlug} required />
 		</div>
 
 		<div class="div-form">
-			<label for="status">Status</label>
+			<label for="status">Status:</label>
 			<select name="status" id="content-type" required>
 				<option value="active">Active</option>
 				<option value="inactive">Inactive</option>

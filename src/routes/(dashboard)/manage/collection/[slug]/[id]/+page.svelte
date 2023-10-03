@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { enhance } from '$app/forms';
 	import { backButton } from '$lib/utils/textFormatter';
 
 	import EditModal from '$lib/components/generic/EditModal.svelte';
@@ -53,11 +54,12 @@
 		<a href={$page.url.toString() + '/new'} class="dfTx">Tambah Konten&rightarrow;</a>
 	</div>
 
-	<div class="grid grid-cols-2 gap-2">
+	<div class="grid grid-cols-3 gap-2">
 		{#each data.contentsList as res}
 			<div class="box">
 				<h4>{res.title}</h4>
 				<p>{res.contentDescription}</p>
+				<a href={`${$page.url.toString()}/${res.id}`}>Lihat</a>
 			</div>
 		{/each}
 	</div>

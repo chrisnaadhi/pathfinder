@@ -1,11 +1,10 @@
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
-import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
 import { department, users } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 
-export const load: PageServerLoad = async ({ locals }) => {
+export const load = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	const userData = session?.user;
 	const departmentList = await db.select().from(department);
@@ -16,7 +15,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	};
 };
 
-export const actions: Actions = {
+export const actions = {
 	updateProfile: async ({ locals, request, fetch }) => {
 		const session = await locals.auth.validate();
 		const data = await request.formData();

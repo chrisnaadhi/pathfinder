@@ -1,4 +1,3 @@
-import type { PageServerLoad, Actions } from './$types';
 import { db } from '$lib/server/drizzle';
 import { collections, contents } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
@@ -6,14 +5,17 @@ import { redirect } from '@sveltejs/kit';
 
 const date = new Date();
 
-export const load: PageServerLoad = async ({ params, url }) => {
+export const load = async ({ params, url }) => {
 	const collectionSearch = await db
 		.select()
 		.from(collections)
 		.where(eq(collections.id, Number(params.id)));
 	const collectionItem = collectionSearch[0];
 
-	const contentsList = await db.select().from(contents);
+	const contentsList = await db
+		.select()
+		.from(contents)
+		.where(eq(contents.collectionId, Number(params.id)));
 
 	return {
 		collectionItem,
@@ -21,7 +23,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 	};
 };
 
-export const actions: Actions = {
+export const actions = {
 	tambahKonten: async ({ locals }) => {
 		const session = await locals.auth.validate();
 	},

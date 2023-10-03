@@ -3,6 +3,7 @@
 	import { enhance } from '$app/forms';
 
 	import TiptapEditor from '$lib/components/generic/TiptapEditor.svelte';
+	import KeywordForm from '$lib/components/items/KeywordForm.svelte';
 	import { contentTipTap } from '$lib/utils/dataStore';
 
 	import { backButton } from '$lib/utils/textFormatter';
@@ -22,6 +23,7 @@
 			<label for="deskripsi">Deskripsi:</label>
 			<textarea name="deskripsi" id="" rows="2" />
 		</div>
+		<KeywordForm formName="Tags" keywords="" />
 		<div class="div-form">
 			<label for="contentedit">Konten:</label>
 			<TiptapEditor />

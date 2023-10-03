@@ -1,9 +1,8 @@
-import type { PageServerLoad } from './$types';
 import { db } from '$lib/server/drizzle';
 import { users, userType } from '$lib/db/pgSchema';
 import { asc, eq } from 'drizzle-orm';
 
-export const load: PageServerLoad = async () => {
+export const load = async () => {
 	const listUsers = await db
 		.select({
 			username: users.username,
