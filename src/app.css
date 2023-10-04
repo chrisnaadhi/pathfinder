@@ -40,6 +40,10 @@ h6 {
 	--at-apply: text-lg;
 }
 
+a {
+	--at-apply: dfTx;
+}
+
 input,
 textarea,
 select {
