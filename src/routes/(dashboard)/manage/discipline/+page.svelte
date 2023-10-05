@@ -22,9 +22,13 @@
 		<div class="discipline-list">
 			{#each data.disciplinesData as discipline}
 				<BaseCard>
-					<h5>{discipline.disciplineName}</h5>
-					<p>{discipline.disciplineDescription}</p>
-					<a href={$page.url.pathname + '/' + discipline.code}>Klik</a>
+					<div class="flex flex-col justify-between h-full">
+						<h5>{discipline.disciplineName}</h5>
+						<p>{discipline.disciplineDescription}</p>
+						<a href={$page.url.pathname + '/' + discipline.code} class="btn dfBg mt-5 text-center"
+							>Lihat</a
+						>
+					</div>
 				</BaseCard>
 			{/each}
 		</div>

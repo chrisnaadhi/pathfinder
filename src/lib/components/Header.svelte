@@ -7,7 +7,7 @@
 	};
 </script>
 
-<nav class="fixed top-0 w-full z-5 bg-violet-1">
+<nav class="fixed top-0 w-full z-5 dfBgSecond">
 	<section class="nav-section">
 		<div>
 			<a href="/">
@@ -33,7 +33,7 @@
 	}
 
 	.menu-link {
-		--at-apply: relative font-500 hover:text-violet-6;
+		--at-apply: relative font-500 hover:dfTx6;
 	}
 
 	.menu-link::after {
@@ -46,7 +46,7 @@
 		left: 0;
 		transform-origin: bottom right;
 		transition: transform 0.25s ease-out;
-		--at-apply: bg-violet-5;
+		--at-apply: dfBg;
 	}
 
 	.menu-link:hover::after {
@@ -55,6 +55,6 @@
 	}
 
 	.menu-active {
-		--at-apply: text-violet-5;
+		--at-apply: dfTx;
 	}
 </style>

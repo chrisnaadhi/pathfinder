@@ -13,7 +13,7 @@
 	{#key data.url}
 		<div in:fade={{ delay: 500, duration: 500 }} out:fly={{ y: 50, duration: 400 }}>
 			{#if $page.url.pathname === '/'}
-				<section class="bg-violet-50 w-full pt-10">
+				<section class="dfBgThird w-full pt-10">
 					<Welcome {name} />
 				</section>
 			{/if}

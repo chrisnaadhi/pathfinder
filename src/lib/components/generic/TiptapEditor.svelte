@@ -54,14 +54,14 @@
 
 <style>
 	.editor {
-		--at-apply: my-1 border border-violet rounded p-2;
+		--at-apply: my-1 dfBorder rounded p-2;
 	}
 
 	button {
-		--at-apply: bg-violet-1 dfTx rounded py-1 px-3;
+		--at-apply: dfBgSecond dfTx rounded py-1 px-3;
 	}
 
 	button.active {
-		--at-apply: bg-violet text-white;
+		--at-apply: dfBg;
 	}
 </style>

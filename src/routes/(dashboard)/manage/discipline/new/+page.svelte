@@ -36,7 +36,7 @@
 			</select>
 		</div>
 		<div class="my-3">
-			<button type="submit" class="btn dfBg">Create</button>
+			<button type="submit" class="btn dfBg">Buat</button>
 		</div>
 	</form>
 </section>

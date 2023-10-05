@@ -21,7 +21,7 @@
 	<h1 class="dfTx">{name}</h1>
 	<img
 		src={userData?.photo === '' ? '/img/default.jpg' : userData?.photo}
-		class="w-32 h-32 object-cover bg-violet-6 rounded-full border border-violet"
+		class="w-32 h-32 object-cover rounded-full dfBorder"
 		alt={userData?.fullName}
 	/>
 	<form method="POST" action="?/updateProfile" use:enhance>

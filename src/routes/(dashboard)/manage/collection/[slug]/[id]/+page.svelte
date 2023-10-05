@@ -71,6 +71,6 @@
 	}
 
 	.box {
-		--at-apply: bg-violet-50 p-5 rounded;
+		--at-apply: dfBgThird p-5 rounded;
 	}
 </style>

@@ -31,11 +31,11 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
 export const actions: Actions = {
 	signin: async ({ request, locals, cookies }) => {
 		const data = await request.formData();
-		const email = data.get('email-login') as string;
+		const username = data.get('username') as string;
 		const password = data.get('password-login') as string;
 
 		try {
-			const key = await auth.useKey('email', email.toLowerCase(), password);
+			const key = await auth.useKey('username', username.toLowerCase(), password);
 			const session = await auth.createSession({
 				userId: key.userId,
 				attributes: {}
@@ -75,8 +75,8 @@ export const actions: Actions = {
 		try {
 			const user = await auth.createUser({
 				key: {
-					providerId: 'email',
-					providerUserId: email.toLowerCase(),
+					providerId: 'username',
+					providerUserId: username.toLowerCase(),
 					password
 				},
 				attributes: {

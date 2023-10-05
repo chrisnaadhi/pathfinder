@@ -22,11 +22,15 @@
 			<p>Status: {data.status}</p>
 			<p>{data.isAvailable}</p>
 			<form method="post" use:enhance>
-				<div class="flex flex-col text-left">
+				<div class="div-form">
 					<label for="email">Email:</label>
 					<input type="text" name="email" />
 				</div>
-				<div class="flex flex-col text-left">
+				<div class="div-form">
+					<label for="username">Username:</label>
+					<input type="text" name="username" />
+				</div>
+				<div class="div-form">
 					<label for="password">Password: </label>
 					<input type="password" name="password" />
 				</div>
@@ -42,7 +46,7 @@
 	}
 
 	form {
-		--at-apply: bg-violet-1 px-20 py-10 rounded-lg flex flex-col gap-3 max-w-sm ma;
+		--at-apply: dfBgSecond px-20 py-10 rounded-lg flex flex-col gap-3 max-w-sm ma;
 	}
 
 	p {

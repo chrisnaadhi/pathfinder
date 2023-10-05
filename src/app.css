@@ -47,7 +47,7 @@ a {
 input,
 textarea,
 select {
-	--at-apply: border border-violet rounded p-2;
+	--at-apply: dfBorder rounded p-2;
 }
 
 input:disabled {
@@ -61,7 +61,7 @@ table {
 table,
 td,
 th {
-	--at-apply: border border-violet;
+	--at-apply: dfBorder;
 }
 
 th {

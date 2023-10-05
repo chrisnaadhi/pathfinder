@@ -10,6 +10,6 @@
 
 <style>
 	section {
-		--at-apply: text-center bg-violet-50;
+		--at-apply: text-center dfBgThird;
 	}
 </style>

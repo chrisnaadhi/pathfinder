@@ -28,6 +28,7 @@ export const actions: Actions = {
 	default: async ({ request, cookies, locals }) => {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
+		const username = formData.get('username') as string;
 		const password = formData.get('password') as string;
 
 		try {
@@ -77,12 +78,12 @@ export const actions: Actions = {
 
 			const user = await auth.createUser({
 				key: {
-					providerId: 'email',
-					providerUserId: email?.toLowerCase(),
+					providerId: 'username',
+					providerUserId: username?.toLowerCase(),
 					password
 				},
 				attributes: {
-					username: email?.split('@')[0],
+					username: username,
 					email: email,
 					full_name: 'Administrator',
 					type_id: 1

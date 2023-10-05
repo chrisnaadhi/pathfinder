@@ -6,7 +6,7 @@
 	export let slug: string | null;
 </script>
 
-<section class="bg-violet-1 text-violet-7 rounded px-5 py-3 w-full flex flex-col justify-between">
+<section class="dfBgThird dfTx7 rounded px-5 py-3 w-full flex flex-col justify-between">
 	<h6>{title}</h6>
 	<p class="text-justify text-sm">{formatDescription(description)}</p>
 	<a href={slug}>

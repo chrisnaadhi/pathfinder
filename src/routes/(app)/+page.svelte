@@ -15,7 +15,7 @@
 		<SubjectExplanation />
 	</div>
 	<h2 class="italic">
-		<span class="text-violet-5">Lantera</span> in Action
+		<span class="dfTx">Lantera</span> in Action
 	</h2>
 	<section class="main-content">
 		<div class="main-subject">
@@ -31,7 +31,7 @@
 
 <style>
 	.main-content {
-		--at-apply: bg-violet-50 h-full rounded-lg;
+		--at-apply: dfBgThird h-full rounded-lg;
 	}
 
 	.main-subject {

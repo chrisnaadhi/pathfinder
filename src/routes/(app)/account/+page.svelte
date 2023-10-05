@@ -27,8 +27,8 @@
 						</div>
 					{/if}
 					<div class="input-block">
-						<label for="email-login">E-Mail:</label>
-						<input type="email" name="email-login" id="email-login" required />
+						<label for="username">Username:</label>
+						<input type="username" name="username" id="username" required />
 					</div>
 					<div class="input-block">
 						<label for="password-login">Password:</label>
@@ -96,7 +96,7 @@
 	}
 
 	.account-block {
-		--at-apply: bg-violet-1 max-w-sm pb-10 px-10 rounded-lg ma;
+		--at-apply: dfBgSecond max-w-sm pb-10 px-10 rounded-lg ma;
 	}
 
 	.input-block {
