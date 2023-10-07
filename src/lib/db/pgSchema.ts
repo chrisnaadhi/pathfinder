@@ -77,14 +77,20 @@ export const department = pgTable('department', {
 });
 
 // Table for Subjects
+export const faculty = pgTable('faculty', {
+	id: serial('id').primaryKey(),
+	facultyName: varchar('faculty_name'),
+	facultyValue: varchar('faculty_value').unique()
+});
+
 export const discipline = pgTable('discipline', {
 	id: serial('id').primaryKey(),
 	code: varchar('code').notNull(),
 	disciplineName: varchar('discipline_name').notNull(),
 	disciplineDescription: text('discipline_description'),
-	faculty: varchar('faculty'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
+	faculty: integer('faculty').references(() => faculty.id),
 	creator: varchar('creator').references(() => users.id)
 });
 
@@ -151,10 +157,18 @@ export const usersRelations = relations(users, ({ one, many }) => ({
 }));
 
 // Subjects Relations
+export const facultyRelation = relations(faculty, ({ many }) => ({
+	discipline: many(discipline)
+}));
+
 export const disciplineRelation = relations(discipline, ({ one, many }) => ({
 	creator: one(users, {
 		fields: [discipline.creator],
 		references: [users.id]
+	}),
+	faculty: one(faculty, {
+		fields: [discipline.faculty],
+		references: [faculty.id]
 	}),
 	subject: many(subjects)
 }));

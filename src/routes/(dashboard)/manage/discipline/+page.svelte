@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { backButton } from '$lib/utils/textFormatter';
+	import { backButton, trimText } from '$lib/utils/textFormatter';
 
 	import BaseCard from '$lib/components/generic/BaseCard.svelte';
 
@@ -24,7 +24,7 @@
 				<BaseCard>
 					<div class="flex flex-col justify-between h-full">
 						<h5>{discipline.disciplineName}</h5>
-						<p>{discipline.disciplineDescription}</p>
+						<p>{trimText(discipline.disciplineDescription, 120)}</p>
 						<a href={$page.url.pathname + '/' + discipline.code} class="btn dfBg mt-5 text-center"
 							>Lihat</a
 						>

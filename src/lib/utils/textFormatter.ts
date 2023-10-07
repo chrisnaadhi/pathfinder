@@ -7,6 +7,13 @@ export const formatDescription = (text?: string | null) => {
 	return text?.substring(0, 55) + '...';
 };
 
+export const trimText = (text: string | null, limit: number) => {
+	if (text?.length! < limit) {
+		return text;
+	}
+	return text?.substring(0, limit) + '...';
+};
+
 export const slugifyText = (valElement: HTMLInputElement) => {
 	const value = valElement.value;
 	const modifiedValue = value.toLocaleLowerCase().replace(/\s/g, '-');
@@ -19,4 +26,26 @@ export const backButton = (page: Page<Record<string, string>, string | null>) =>
 	const backUrl = mainUrl.join('/');
 
 	return backUrl;
+};
+
+export const checkRole = (value: number) => {
+	let role: string;
+	switch (value) {
+		case 1:
+			role = 'Administrator';
+			break;
+		case 2:
+			role = 'Subject Librarian';
+			break;
+		case 3:
+			role = 'Lecturer';
+			break;
+		case 4:
+			role = 'Registered User';
+			break;
+		default:
+			role = 'Tidak Tersedia';
+			break;
+	}
+	return role;
 };

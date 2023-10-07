@@ -1,5 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
+	import SubmitButton from '$lib/components/generic/SubmitButton.svelte';
 
 	let name = 'Dashboard';
 	export let data;
@@ -13,6 +14,7 @@
 	<form action="?/signOut" method="POST" use:enhance>
 		<button type="submit" class="btn bg-red text-white">Sign Out</button>
 	</form>
+	<SubmitButton btnValue={'Klik!'} />
 </section>
 
 <style>

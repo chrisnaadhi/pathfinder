@@ -1,7 +1,24 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms';
 
 	let heading = 'PathfinderKit!';
+	let email = '';
+	let username = '';
+	let usernameValue: HTMLInputElement;
+
+	const generateUsername = () => {
+		username = email.split('@')[0];
+	};
+
+	const handleSlug = () => {
+		const value = usernameValue.value;
+		const modifiedValue = value
+			.toLocaleLowerCase()
+			.replace(/[^\w\s]/gi, '')
+			.replace(/\s/g, '_');
+		usernameValue.value = modifiedValue;
+	};
+
 	export let data;
 </script>
 
@@ -24,15 +41,36 @@
 			<form method="post" use:enhance>
 				<div class="div-form">
 					<label for="email">Email:</label>
-					<input type="text" name="email" />
+					<input
+						type="text"
+						name="email"
+						id="email"
+						bind:value={email}
+						on:input={generateUsername}
+						on:change={handleSlug}
+						required
+					/>
+					<p class="text-xs italic">Email institusi yang valid</p>
 				</div>
 				<div class="div-form">
 					<label for="username">Username:</label>
-					<input type="text" name="username" />
+					<input
+						type="text"
+						name="username"
+						id="username"
+						bind:value={username}
+						bind:this={usernameValue}
+						on:input={handleSlug}
+						required
+					/>
+					<p class="text-xs italic">
+						Tidak boleh menggunakan karakter spesial, hanya karakter _ (underscore) yang
+						diperbolehkan
+					</p>
 				</div>
 				<div class="div-form">
 					<label for="password">Password: </label>
-					<input type="password" name="password" />
+					<input type="password" name="password" id="password" required />
 				</div>
 				<button type="submit" class="default-button">Create PathfinderKit</button>
 			</form>
@@ -46,7 +84,7 @@
 	}
 
 	form {
-		--at-apply: dfBgSecond px-20 py-10 rounded-lg flex flex-col gap-3 max-w-sm ma;
+		--at-apply: dfBgSecond px-20 py-10 rounded-lg flex flex-col gap-3 max-w-md ma;
 	}
 
 	p {
