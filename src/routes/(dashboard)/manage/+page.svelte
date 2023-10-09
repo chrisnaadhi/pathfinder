@@ -14,7 +14,6 @@
 	<form action="?/signOut" method="POST" use:enhance>
 		<button type="submit" class="btn bg-red text-white">Sign Out</button>
 	</form>
-	<SubmitButton btnValue={'Klik!'} />
 </section>
 
 <style>

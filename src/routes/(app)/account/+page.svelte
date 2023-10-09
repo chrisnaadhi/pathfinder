@@ -2,9 +2,10 @@
 	import { slide, fade } from 'svelte/transition';
 	import { sineOut } from 'svelte/easing';
 	import { enhance } from '$app/forms';
-	import { onMount } from 'svelte';
-	let account = 'login';
+
 	export let data;
+
+	let account = 'login';
 </script>
 
 <main>
@@ -54,7 +55,7 @@
 		>
 			<div class="account-block">
 				<h2>Register</h2>
-				<form action="?/signup" method="POST" use:enhance>
+				<!-- <form action="?/signup" method="POST" use:enhance>
 					<div class="input-block">
 						<label for="nama-lengkap">Nama Lengkap:</label>
 						<input type="text" name="nama-lengkap" id="nama-lengkap" />
@@ -68,7 +69,8 @@
 						<input type="password" name="password-regis" id="password-regis" />
 					</div>
 					<button type="submit" class="btn-account">Register</button>
-				</form>
+				</form> -->
+				<h4>Pembuatan Akun ditutup sementara.</h4>
 				<div class="flex justify-between mt-2">
 					<div>
 						<button class="link" on:click={() => (account = 'login')}>Login</button>

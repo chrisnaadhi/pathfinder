@@ -11,11 +11,18 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
 	const session = await locals.auth.validate();
 	const listUsers = await db.select().from(users);
 	const loginStatus = cookies.get('loginStatus');
+	if (!loginStatus) {
+		cookies.set('loginStatus', 'undefined');
+	}
 
 	if (listUsers.length < 1) throw redirect(302, '/new-instance');
 	if (session) {
 		if (session.user.userType === 1) {
 			throw redirect(302, '/manage');
+		} else if (session.user.userType === 2) {
+			throw redirect(302, '/manage');
+		} else if (session.user.userType === 3) {
+			throw redirect(302, '/account/profile');
 		} else if (session.user.userType === 4) {
 			throw redirect(302, '/account/profile');
 		} else {
@@ -42,27 +49,21 @@ export const actions: Actions = {
 			});
 
 			locals.auth.setSession(session);
-			if (cookies.get('loginStatus')) {
-				cookies.set('loginStatus', 'SUCCESS');
-			}
-		} catch (err) {
-			if (err instanceof LuciaError) {
-				cookies.set('loginStatus', err.message, {
-					expires: new Date(date.getTime() + 1 * 60000)
-				});
-			}
-		}
+			cookies.set('loginStatus', 'SUCCESS');
 
-		const session = await locals.auth.validate();
-
-		if (session) {
-			if (session.user.userType === 1) {
-				throw redirect(302, '/manage');
-			} else if (session.user.userType === 4) {
-				throw redirect(302, '/');
-			} else {
-				console.log(session.state);
+			if (session) {
+				if (session.user.userType === 1 || session.user.userType === 2) {
+					throw redirect(302, '/manage');
+				} else if (session.user.userType === 3 || session.user.userType === 4) {
+					throw redirect(302, '/');
+				} else {
+					console.log(session.state);
+				}
 			}
+		} catch (err: any) {
+			cookies.set('loginStatus', err.message, {
+				expires: new Date(date.getTime() + 1 * 60000)
+			});
 		}
 	},
 	signup: async ({ request, locals }) => {

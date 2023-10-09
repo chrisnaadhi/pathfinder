@@ -27,8 +27,8 @@ export const actions = {
 		try {
 			await auth.createUser({
 				key: {
-					providerId: 'email',
-					providerUserId: email.toLowerCase(),
+					providerId: 'username',
+					providerUserId: username.toLowerCase(),
 					password
 				},
 				attributes: {

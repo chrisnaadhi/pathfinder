@@ -9,13 +9,13 @@ export const actions = {
 		const name = data.get('discipline') as string;
 		const code = data.get('code') as string;
 		const description = data.get('description') as string;
-		const faculty = data.get('faculty') as string;
+		const faculty = data.get('faculty');
 
 		await db.insert(discipline).values({
 			disciplineName: name,
 			code,
 			disciplineDescription: description,
-			faculty,
+			faculty: Number(faculty),
 			creator: session?.user.userId
 		});
 

@@ -3,7 +3,10 @@
 </script>
 
 <section>
-	<h3>{placeholder}</h3>
+	<div class="flex items-center justify-between">
+		<h3>{placeholder}</h3>
+		<a href="/manage/setting/new-faculty" class="btn dfBg">&plus;Tambah</a>
+	</div>
 	<p>
 		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ea excepturi nobis suscipit?
 		Maiores ullam vitae porro iure, minima, optio reiciendis explicabo amet rerum delectus

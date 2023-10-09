@@ -1,7 +1,7 @@
 import type { Actions, PageServerLoad } from './$types';
 import { db } from '$lib/server/drizzle';
 import { auth } from '$lib/server/lucia';
-import { users, userType, department } from '$lib/db/pgSchema';
+import { users, userType, department, faculty } from '$lib/db/pgSchema';
 import { fail, redirect } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ cookies, locals }) => {
@@ -72,6 +72,16 @@ export const actions: Actions = {
 					{
 						departmentName: 'Faculty Library',
 						departmentDescription: 'lorem ipsum 2'
+					}
+				])
+				.onConflictDoNothing();
+
+			await db
+				.insert(faculty)
+				.values([
+					{
+						facultyName: 'Fakultas Ilmu Komunikasi',
+						facultyValue: '210'
 					}
 				])
 				.onConflictDoNothing();

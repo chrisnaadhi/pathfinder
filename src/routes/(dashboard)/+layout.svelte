@@ -22,35 +22,42 @@
 		</div>
 		<div class="flex flex-col justify-between h-screen">
 			<nav class="flex flex-col gap-4 my-4">
-				<a href="/manage" class="menu-item" data-sveltekit-reload>
+				<a href="/manage" class="menu-item" data-sveltekit-preload-data="tap">
 					<div class="i-mdi-home w-5 h-5" />
 					<p>Dashboard</p>
 				</a>
-				<a href="/manage/profile" class="menu-item">
+				<a href="/manage/profile" class="menu-item" data-sveltekit-preload-data="tap">
 					<div class="i-mdi-account-edit w-5 h-5" />
 					Profile
 				</a>
-				<a href="/manage/discipline" class="menu-item">
+				<a href="/manage/discipline" class="menu-item" data-sveltekit-preload-data="tap">
 					<div class="i-mdi-school w-5 h-5" />
 					Discipline
 				</a>
-				<a href="/manage/collection" class="menu-item">
+				<a href="/manage/collection" class="menu-item" data-sveltekit-preload-data="tap">
 					<div class="i-mdi-bookshelf w-5 h-5" />
 					Subjects
 				</a>
-				<a href="/manage/member" class="menu-item">
+				<a href="/manage/member" class="menu-item" data-sveltekit-preload-data="tap">
 					<div class="i-mdi-account-group w-5 h-5" />
 					Member
 				</a>
-				<a href="/manage/#" class="menu-item">
+				<a href="/manage/#" class="menu-item" data-sveltekit-preload-data="tap">
 					<div class="i-mdi-folder-information w-5 h-5" />
 					Guides
 				</a>
-				<a href="/manage/setting" class="menu-item">
-					<div class="i-mdi-cog w-5 h-5" />
-					Setting
-				</a>
-				<a href="/" class="btn text-center bg-red text-white font-semibold">Exit Dashboard</a>
+				{#if userData?.userType === 1}
+					<a href="/manage/setting" class="menu-item" data-sveltekit-preload-data="tap">
+						<div class="i-mdi-cog w-5 h-5" />
+						Setting
+					</a>
+				{/if}
+
+				<a
+					href="/"
+					class="btn text-center bg-red text-white font-semibold"
+					data-sveltekit-preload-data="tap">Exit Dashboard</a
+				>
 			</nav>
 		</div>
 	</section>
