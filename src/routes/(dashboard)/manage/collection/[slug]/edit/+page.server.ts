@@ -1,17 +1,24 @@
 import { redirect } from '@sveltejs/kit';
-import { eq } from 'drizzle-orm';
+import { eq, or } from 'drizzle-orm';
 import { db } from '$lib/server/drizzle';
-import { subjects } from '$lib/db/pgSchema';
+import { subjects, discipline, users } from '$lib/db/pgSchema';
 
 const date = new Date();
 
 export const load = async ({ params }) => {
 	const getSubject = await db.select().from(subjects).where(eq(subjects.subjectSlug, params.slug));
+	const getDiscipline = await db.select().from(discipline);
+	const getLibrarian = await db
+		.select()
+		.from(users)
+		.where(or(eq(users.type, 1), eq(users.type, 2)));
 
 	const subjectData = getSubject[0];
 
 	return {
-		subjectData
+		subjectData,
+		getDiscipline,
+		getLibrarian
 	};
 };
 
@@ -24,6 +31,8 @@ export const actions = {
 		const subjectDescription = data.get('description');
 		const subjectKeywords = data.get('keywords');
 		const subjectType = data.get('typesubject');
+		const subjectDiscipline = data.get('disiplin');
+		const instructor = data.get('instructor') as string;
 
 		await db
 			.update(subjects)
@@ -34,6 +43,8 @@ export const actions = {
 				subjectStatus: subjectStatus as string,
 				keywords: subjectKeywords as string,
 				type: subjectType as string,
+				disciplineId: Number(subjectDiscipline),
+				instructor: instructor,
 				updatedAt: new Date(date.toISOString())
 			})
 			.where(eq(subjects.subjectSlug, event.params.slug));

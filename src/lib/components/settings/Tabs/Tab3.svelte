@@ -1,19 +1,34 @@
 <script>
+	import { enhance } from '$app/forms';
+	import AddModal from '$lib/components/generic/AddModal.svelte';
+
 	let placeholder = 'Faculty Settings';
 </script>
 
 <section>
 	<div class="flex items-center justify-between">
 		<h3>{placeholder}</h3>
-		<a href="/manage/setting/new-faculty" class="btn dfBg">&plus;Tambah</a>
+		<AddModal>
+			<h5>Tambah Fakultas</h5>
+			<form action="?/addFakultas" method="POST" use:enhance>
+				<div class="div-form">
+					<label for="namafakultas">Nama Fakultas:</label>
+					<input type="text" name="namafakultas" id="namafakultas" />
+				</div>
+				<div class="div-form">
+					<label for="slug">Identifier Fakultas:</label>
+					<input type="text" name="slug" id="slug" />
+					<p class="text-xs">Diisi dengan Identifier Fakultas, Contoh: 210</p>
+				</div>
+				<div class="my-3">
+					<button type="submit" class="dfBg btn">Tambah</button>
+				</div>
+			</form>
+		</AddModal>
 	</div>
-	<p>
-		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ea excepturi nobis suscipit?
-		Maiores ullam vitae porro iure, minima, optio reiciendis explicabo amet rerum delectus
-		inventore, neque exercitationem provident consequuntur! Officia, dolorem minus tempore sapiente
-		nesciunt amet laboriosam iure doloribus neque enim nemo cupiditate ex. Maiores iure dolor
-		facilis in.
-	</p>
+	<div>
+		<slot />
+	</div>
 </section>
 
 <style>
@@ -21,7 +36,7 @@
 		--at-apply: dfBgSecond h-screen p-5;
 	}
 
-	p {
-		--at-apply: italic;
+	form {
+		--at-apply: flex flex-col gap-3;
 	}
 </style>

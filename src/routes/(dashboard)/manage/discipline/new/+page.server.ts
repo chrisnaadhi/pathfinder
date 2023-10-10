@@ -1,6 +1,14 @@
 import { db } from '$lib/server/drizzle.js';
-import { discipline } from '$lib/db/pgSchema.js';
+import { discipline, faculty } from '$lib/db/pgSchema.js';
 import { redirect } from '@sveltejs/kit';
+
+export const load = async ({ locals }) => {
+	const getAllFaculty = await db.select().from(faculty);
+
+	return {
+		getAllFaculty
+	};
+};
 
 export const actions = {
 	createDiscipline: async ({ locals, params, request }) => {

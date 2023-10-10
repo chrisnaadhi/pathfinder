@@ -77,5 +77,5 @@ th {
 }
 
 .default-button {
-	--at-apply: btn dfBg;
+	--at-apply: btn dfBg w-full;
 }

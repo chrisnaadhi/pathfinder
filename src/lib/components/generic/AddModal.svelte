@@ -25,7 +25,7 @@
 	{/if}
 </div>
 
-<button use:melt={$trigger} class="btn dfBg w-full">Edit</button>
+<button use:melt={$trigger} class="btn dfBg">&plus;Tambah</button>
 
 <style>
 	.main-bg {

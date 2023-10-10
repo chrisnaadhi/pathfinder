@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import { asc, eq } from 'drizzle-orm';
 import { db } from '$lib/server/drizzle';
-import { subjects, collections } from '$lib/db/pgSchema';
+import { subjects, collections, users } from '$lib/db/pgSchema';
 
 export const load = async ({ params }) => {
 	const getSubject = await db
@@ -10,7 +10,8 @@ export const load = async ({ params }) => {
 			slug: subjects.subjectSlug,
 			name: subjects.subjectName,
 			description: subjects.subjectDescription,
-			keywords: subjects.keywords
+			keywords: subjects.keywords,
+			librarian: subjects.instructor
 		})
 		.from(subjects)
 		.where(eq(subjects.subjectSlug, params.slug));
@@ -23,9 +24,17 @@ export const load = async ({ params }) => {
 		.where(eq(collections.subjectId, subjectData.id))
 		.orderBy(asc(collections.id));
 
+	const subjectSpecialist = await db
+		.select()
+		.from(users)
+		.where(eq(users.id, `${subjectData.librarian}`));
+
+	const specialist = subjectSpecialist[0];
+
 	return {
 		getCollection,
-		subjectData
+		subjectData,
+		specialist
 	};
 };
 

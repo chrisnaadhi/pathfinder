@@ -21,7 +21,7 @@
 </script>
 
 <section>
-	<p>{placeholder} + {data.userData?.email}</p>
+	<h4 class="dfTx">Koleksi Baru</h4>
 	<form action="?/tambah" method="POST" use:enhance>
 		<div class="div-form">
 			<label for="title">Nama Koleksi:</label>

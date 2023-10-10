@@ -36,7 +36,7 @@
 	{/if}
 </div>
 
-<button use:melt={$trigger} class="btn bg-red text-white">Delete</button>
+<button use:melt={$trigger} class="btn bg-red text-white w-full">Delete</button>
 
 <style>
 	.main-bg {

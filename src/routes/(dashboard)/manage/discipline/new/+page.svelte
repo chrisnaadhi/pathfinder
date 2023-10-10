@@ -1,5 +1,9 @@
 <script>
 	import { enhance } from '$app/forms';
+
+	export let data;
+
+	const { getAllFaculty } = data;
 </script>
 
 <section>
@@ -22,16 +26,9 @@
 			<label for="faculty">Fakultas/Studi:</label>
 			<select name="faculty" id="faculty">
 				<optgroup label="Fakultas">
-					<option value="fakultas1">Nama Fakultas 1</option>
-					<option value="fakultas2">Nama Fakultas 2</option>
-					<option value="fakultas3">Nama Fakultas 3</option>
-					<option value="fakultas4">Nama Fakultas 4</option>
-					<option value="fakultas5">Nama Fakultas 5</option>
-				</optgroup>
-				<optgroup label="Program Studi">
-					<option value="prodi1">Nama Prodi 1</option>
-					<option value="prodi2">Nama Prodi 2</option>
-					<option value="prodi1">Nama Prodi 3</option>
+					{#each getAllFaculty as faculty}
+						<option value={faculty.id}>{faculty.facultyName}</option>
+					{/each}
 				</optgroup>
 			</select>
 		</div>
