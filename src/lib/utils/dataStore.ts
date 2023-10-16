@@ -12,7 +12,7 @@ export const groupByFaculty = (arr: Object[]) => {
 	}, Object.create([]));
 };
 
-export const getFacultyName = (arr: any, value: any) => {
-	const searchFaculty = arr.find((el: { id: any }) => el.id === value);
+export const getFacultyName = (arr: any, value: number) => {
+	const searchFaculty = arr.find((el: { id: number }) => el.id === value);
 	return searchFaculty.facultyName;
 };

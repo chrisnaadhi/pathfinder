@@ -1,10 +1,14 @@
-import type { Actions, PageServerLoad } from './$types';
 import { db } from '$lib/server/drizzle';
 import { auth } from '$lib/server/lucia';
 import { users, userType, department, faculty } from '$lib/db/pgSchema';
+import { userRole, departmentList, facultyName } from '$lib/utils/dummyData';
 import { fail, redirect } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async ({ cookies, locals }) => {
+const dummyFaculty = facultyName();
+const dummyRole = userRole();
+const dummyDepartment = departmentList();
+
+export const load = async ({ cookies, locals }) => {
 	const status = cookies.get('seedState');
 	const firstUserData = await db.select().from(users);
 	const session = await locals.auth.validate();
@@ -24,7 +28,7 @@ export const load: PageServerLoad = async ({ cookies, locals }) => {
 	};
 };
 
-export const actions: Actions = {
+export const actions = {
 	default: async ({ request, cookies, locals }) => {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
@@ -32,59 +36,11 @@ export const actions: Actions = {
 		const password = formData.get('password') as string;
 
 		try {
-			await db
-				.insert(userType)
-				.values([
-					{
-						id: 1,
-						typeName: 'Super Admin',
-						description: 'Super Administrator PathfinderKit',
-						typeRole: 'admin'
-					},
-					{
-						id: 2,
-						typeName: 'Subject Librarian',
-						description: 'Subject Librarian',
-						typeRole: 'subjectlib'
-					},
-					{
-						id: 3,
-						typeName: 'Lecturer',
-						description: 'Lecturer and Teacher',
-						typeRole: 'lecturer'
-					},
-					{
-						id: 4,
-						typeName: 'Registered User',
-						description: 'User that has registered to PathfinderKit',
-						typeRole: 'user'
-					}
-				])
-				.onConflictDoNothing();
+			await db.insert(userType).values(dummyRole).onConflictDoNothing();
 
-			await db
-				.insert(department)
-				.values([
-					{
-						departmentName: 'Central Library',
-						departmentDescription: 'lorem ipsum'
-					},
-					{
-						departmentName: 'Faculty Library',
-						departmentDescription: 'lorem ipsum 2'
-					}
-				])
-				.onConflictDoNothing();
+			await db.insert(department).values(dummyDepartment).onConflictDoNothing();
 
-			await db
-				.insert(faculty)
-				.values([
-					{
-						facultyName: 'Fakultas Ilmu Komunikasi',
-						facultyValue: '210'
-					}
-				])
-				.onConflictDoNothing();
+			await db.insert(faculty).values(dummyFaculty).onConflictDoNothing();
 
 			const user = await auth.createUser({
 				key: {

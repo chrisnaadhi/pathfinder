@@ -37,7 +37,6 @@
 				if you're on this page then you want to seed database, click the button below to seed it
 			</p>
 			<p>Status: {data.status}</p>
-			<p>{data.isAvailable}</p>
 			<form method="post" use:enhance>
 				<div class="div-form">
 					<label for="email">Email:</label>

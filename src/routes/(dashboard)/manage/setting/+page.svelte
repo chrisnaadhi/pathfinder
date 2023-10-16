@@ -8,7 +8,7 @@
 	import EditModal from '$lib/components/generic/EditModal.svelte';
 	import DeleteModal from '$lib/components/generic/DeleteModal.svelte';
 
-	export let activeTab: number = 1;
+	let activeTab: number = 1;
 	export let data;
 
 	let tabLocal = '';
@@ -22,13 +22,16 @@
 
 	const changeTab = (tabValue: number) => {
 		activeTab = tabValue;
-		if (tabLocal === '') {
+		if (activeTab !== 1) {
 			localStorage.setItem('tab', tabValue.toString());
 		}
 	};
 
 	onMount(() => {
 		const tab = localStorage.getItem('tab');
+		if (!tab) {
+			localStorage.setItem('tab', activeTab.toString());
+		}
 		activeTab = Number(tab);
 	});
 
