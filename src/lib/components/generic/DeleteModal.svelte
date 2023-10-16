@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
 	import { createDialog, melt } from '@melt-ui/svelte';
 	import { fade } from 'svelte/transition';
+
+	export let idData: number = 0;
 
 	const {
 		elements: { trigger, overlay, content, close, portalled },
@@ -25,6 +27,7 @@
 			<div class="flex items-center gap-2">
 				<form action="?/deleteData" method="POST" class="w-full">
 					<input type="hidden" name="confirmation" value="delete" />
+					<input type="hidden" name="idData" id="idData" value={idData} />
 					<button type="submit" formaction="?/deleteData" class="btn bg-red text-white w-full">
 						Hapus
 					</button>

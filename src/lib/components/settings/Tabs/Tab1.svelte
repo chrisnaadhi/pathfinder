@@ -15,7 +15,7 @@
 
 <style>
 	section {
-		--at-apply: dfBgSecond h-screen p-5;
+		--at-apply: dfBgSecond min-h-screen p-5;
 	}
 
 	p {

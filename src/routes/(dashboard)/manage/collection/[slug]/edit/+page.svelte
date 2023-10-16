@@ -1,18 +1,18 @@
 <script>
 	import { enhance } from '$app/forms';
-	import { groupByFaculty } from '$lib/utils/dataStore';
+	import { getFacultyName, groupByFaculty } from '$lib/utils/dataStore';
 	import DeleteModal from '$lib/components/generic/DeleteModal.svelte';
 	import FormCollection from '$lib/components/items/FormCollection.svelte';
 
 	export let data;
 
-	let { subjectData, getDiscipline, getLibrarian } = data;
+	let { subjectData, getDiscipline, getLibrarian, getFaculty } = data;
 
 	let instructor = subjectData?.instructor;
 	let instructorData = getLibrarian.find((lib) => lib.id === instructor);
 	let instructorName = instructorData?.name;
 	let dropdownInstructor = false;
-	const grouped = groupByFaculty(getDiscipline);
+	const facultyGrouped = Object.entries(groupByFaculty(getDiscipline));
 
 	/** @param {string} value */
 	const chooseInstructor = (value) => {
@@ -48,7 +48,13 @@
 		<div class="div-form max-w-full">
 			<label for="instructor">Subject Specialist: </label>
 			<input type="hidden" name="instructor" id="instructor" bind:value={instructor} />
-			<input type="text" bind:value={instructorName} on:click|preventDefault={viewDropdown} />
+			<input
+				type="text"
+				name="viewInstructor"
+				id="viewInstructor"
+				bind:value={instructorName}
+				on:click|preventDefault={viewDropdown}
+			/>
 			<div
 				class="flex flex-col w-full max-w-280 gap-2 dfBgSecond absolute mt-17 overflow-y-scroll max-h-25"
 				tabindex="0"
@@ -69,12 +75,14 @@
 			</div>
 		</div>
 		<div class="div-form">
-			<label for="disiplin">Discipline</label>
+			<label for="disiplin">Discipline: </label>
 			<select name="disiplin" id="disiplin">
-				{#each Object.entries(grouped) as [groups, data]}
-					<optgroup label={groups}>
+				{#each facultyGrouped as [groups, data]}
+					<optgroup label={getFacultyName(getFaculty, Number(groups))}>
 						{#each data as group}
-							<option value={group.id}>{group.disciplineName}</option>
+							<option value={group.id} selected={group.id === subjectData.disciplineId}>
+								{group.disciplineName}
+							</option>
 						{/each}
 					</optgroup>
 				{/each}

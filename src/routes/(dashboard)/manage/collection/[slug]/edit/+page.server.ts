@@ -1,13 +1,14 @@
 import { redirect } from '@sveltejs/kit';
 import { eq, or } from 'drizzle-orm';
 import { db } from '$lib/server/drizzle';
-import { subjects, discipline, users } from '$lib/db/pgSchema';
+import { subjects, discipline, users, faculty } from '$lib/db/pgSchema';
 
 const date = new Date();
 
 export const load = async ({ params }) => {
 	const getSubject = await db.select().from(subjects).where(eq(subjects.subjectSlug, params.slug));
 	const getDiscipline = await db.select().from(discipline);
+	const getFaculty = await db.select().from(faculty);
 	const getLibrarian = await db
 		.select()
 		.from(users)
@@ -18,6 +19,7 @@ export const load = async ({ params }) => {
 	return {
 		subjectData,
 		getDiscipline,
+		getFaculty,
 		getLibrarian
 	};
 };

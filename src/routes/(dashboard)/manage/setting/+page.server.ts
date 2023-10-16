@@ -1,6 +1,7 @@
 import { faculty } from '$lib/db/pgSchema';
 import { db } from '$lib/server/drizzle';
 import { redirect } from '@sveltejs/kit';
+import { eq } from 'drizzle-orm';
 
 export const load = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -27,6 +28,35 @@ export const actions = {
 			facultyName: nama,
 			facultyValue: value
 		});
+
+		throw redirect(302, '/manage/setting');
+	},
+	editFakultas: async ({ request }) => {
+		const data = await request.formData();
+		const nama = data.get('namafakultas') as string;
+		const value = data.get('slug') as string;
+		const id = data.get('idfakultas');
+
+		await db
+			.update(faculty)
+			.set({
+				facultyName: nama,
+				facultyValue: value
+			})
+			.where(eq(faculty.id, Number(id)));
+
+		throw redirect(302, '/manage/setting');
+	},
+	deleteData: async ({ request }) => {
+		const data = await request.formData();
+		const confirmation = data.get('confirmation') as string;
+		const id = data.get('idData');
+
+		if (confirmation === 'delete') {
+			await db.delete(faculty).where(eq(faculty.id, Number(id)));
+		} else {
+			console.log('Nothing deleted');
+		}
 
 		throw redirect(302, '/manage/setting');
 	}

@@ -1,6 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
-	import { groupByFaculty } from '$lib/utils/dataStore';
+	import { getFacultyName, groupByFaculty } from '$lib/utils/dataStore';
 	import FormCollection from '$lib/components/items/FormCollection.svelte';
 
 	export let data;
@@ -13,14 +13,14 @@
 		keywords: '',
 		subjectType: 'guide'
 	};
-	let { getDiscipline, getLibrarian } = data;
+	let { getDiscipline, getLibrarian, getFaculty } = data;
 
-	let instructor = '';
+	/** @type {string | null} */
+	let instructor = null;
 	/** @type {string | undefined} */
 	let instructorName = '';
 	let dropdownInstructor = false;
-
-	const grouped = groupByFaculty(getDiscipline);
+	const facultyGrouped = Object.entries(groupByFaculty(getDiscipline));
 
 	/** @param {string} value */
 	const chooseInstructor = (value) => {
@@ -43,8 +43,14 @@
 		<FormCollection {...newObj} />
 		<div class="div-form max-w-full">
 			<label for="instructor">Subject Specialist: </label>
-			<input type="hidden" name="instructor" bind:value={instructor} />
-			<input type="text" bind:value={instructorName} on:click|preventDefault={viewDropdown} />
+			<input type="hidden" name="instructor" bind:value={instructor} required />
+			<input
+				type="text"
+				bind:value={instructorName}
+				on:click|preventDefault={viewDropdown}
+				readonly
+				required
+			/>
 			<div
 				class="flex flex-col w-full max-w-280 gap-2 dfBgSecond absolute mt-17 overflow-y-scroll max-h-25"
 				tabindex="0"
@@ -66,9 +72,9 @@
 		</div>
 		<div class="div-form">
 			<label for="disiplin">Discipline</label>
-			<select name="disiplin" id="disiplin">
-				{#each Object.entries(grouped) as [groups, data]}
-					<optgroup label={groups}>
+			<select name="disiplin" id="disiplin" required>
+				{#each facultyGrouped as [groups, data]}
+					<optgroup label={getFacultyName(getFaculty, Number(groups))}>
 						{#each data as group}
 							<option value={group.id}>{group.disciplineName}</option>
 						{/each}

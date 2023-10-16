@@ -58,8 +58,37 @@
 				<div class="flex flex-col my-3 gap-3 md:(grid grid-cols-4)">
 					{#each getFaculty as faculty}
 						<FacultyCard facultyName={faculty.facultyName} facultyValue={faculty.facultyValue}>
-							<EditModal />
-							<DeleteModal />
+							<div class="flex gap-2">
+								<EditModal>
+									<h5>Update Fakultas</h5>
+									<form action="?/editFakultas" method="POST">
+										<div class="div-form">
+											<label for="namafakultas">Nama Fakultas:</label>
+											<input
+												type="text"
+												name="namafakultas"
+												id="namafakultas"
+												value={faculty.facultyName}
+											/>
+										</div>
+										<div class="div-form">
+											<label for="slug">Identifier Fakultas:</label>
+											<input type="text" name="slug" id="slug" value={faculty.facultyValue} />
+											<p class="text-xs">
+												Diisi dengan Unique Identifier Fakultas (tidak boleh duplikat), Contoh: 210
+											</p>
+										</div>
+										<input type="hidden" name="idfakultas" value={faculty.id} />
+										<div class="my-3">
+											<button type="submit" class="dfBg btn">Update</button>
+										</div>
+									</form>
+								</EditModal>
+								<DeleteModal idData={faculty.id}>
+									<h5 class="text-center">Hapus Data</h5>
+									<p class="pb-3 text-center">Anda yakin ingin menghapus Fakultas ini ?</p>
+								</DeleteModal>
+							</div>
 						</FacultyCard>
 					{/each}
 				</div>

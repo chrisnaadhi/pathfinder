@@ -11,3 +11,8 @@ export const groupByFaculty = (arr: Object[]) => {
 		return r;
 	}, Object.create([]));
 };
+
+export const getFacultyName = (arr: any, value: any) => {
+	const searchFaculty = arr.find((el: { id: any }) => el.id === value);
+	return searchFaculty.facultyName;
+};

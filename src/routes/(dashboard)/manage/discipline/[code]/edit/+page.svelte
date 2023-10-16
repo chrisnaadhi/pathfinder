@@ -5,13 +5,14 @@
 
 	export let data;
 
-	let placeholder = 'Edit your Discipline here';
+	const { getAllFaculty } = data;
+
 	const { disciplineData } = data;
 	const back = backButton($page);
 </script>
 
 <section>
-	<p>{placeholder}</p>
+	<h3 class="dfTx">{disciplineData.disciplineName}</h3>
 	<a href={back}>&leftarrow;Kembali</a>
 	<form action="?/updateData" method="POST" use:enhance>
 		<div class="div-form">
@@ -43,27 +44,15 @@
 			<label for="faculty">Fakultas/Studi:</label>
 			<select name="faculty" id="faculty" value={disciplineData.faculty}>
 				<optgroup label="Fakultas">
-					<option value="fakultas1">Nama Fakultas 1</option>
-					<option value="fakultas2">Nama Fakultas 2</option>
-					<option value="fakultas3">Nama Fakultas 3</option>
-					<option value="fakultas4">Nama Fakultas 4</option>
-					<option value="fakultas5">Nama Fakultas 5</option>
-				</optgroup>
-				<optgroup label="Program Studi">
-					<option value="prodi1">Nama Prodi 1</option>
-					<option value="prodi2">Nama Prodi 2</option>
-					<option value="prodi1">Nama Prodi 3</option>
+					{#each getAllFaculty as faculty}
+						<option value={faculty.id}>{faculty.facultyName}</option>
+					{/each}
 				</optgroup>
 			</select>
 		</div>
 		<div class="my-3">
+			<a href={back} class="btn bg-gray-2 text-dark">&leftarrow;Kembali</a>
 			<button type="submit" class="btn dfBg">Update</button>
 		</div>
 	</form>
 </section>
-
-<style>
-	p {
-		--at-apply: italic;
-	}
-</style>

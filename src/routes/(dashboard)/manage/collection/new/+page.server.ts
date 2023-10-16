@@ -1,10 +1,11 @@
 import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
-import { discipline, subjects, users } from '$lib/db/pgSchema';
+import { discipline, subjects, users, faculty } from '$lib/db/pgSchema';
 import { eq, or } from 'drizzle-orm';
 
 export const load = async () => {
 	const getDiscipline = await db.select().from(discipline);
+	const getFaculty = await db.select().from(faculty);
 	const getLibrarian = await db
 		.select()
 		.from(users)
@@ -12,7 +13,8 @@ export const load = async () => {
 
 	return {
 		getDiscipline,
-		getLibrarian
+		getLibrarian,
+		getFaculty
 	};
 };
 

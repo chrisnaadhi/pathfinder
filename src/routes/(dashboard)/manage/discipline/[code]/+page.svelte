@@ -12,8 +12,8 @@
 	<h5>{disciplineData.disciplineName}</h5>
 	<p>{disciplineData.disciplineDescription}</p>
 	<div class="my-3">
-		<a href={back} class="btn dfBg">Kembali</a>
-		<a href={$page.url.pathname + '/edit'} class="btn bg-gray-2 text-dark">Edit</a>
+		<a href={back} class="btn bg-gray-2 text-dark">&leftarrow;Kembali</a>
+		<a href={$page.url.pathname + '/edit'} class="btn dfBg">Edit</a>
 	</div>
 </section>
 
