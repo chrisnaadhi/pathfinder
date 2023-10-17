@@ -9,6 +9,8 @@
 	const backUrl = backButton($page);
 
 	export let data;
+
+	const { disciplinesData } = data;
 </script>
 
 <section>
@@ -24,10 +26,14 @@
 				<BaseCard>
 					<div class="flex flex-col justify-between h-full">
 						<h5>{discipline.disciplineName}</h5>
-						<p>{trimText(discipline.disciplineDescription, 120)}</p>
-						<a href={$page.url.pathname + '/' + discipline.code} class="btn dfBg mt-5 text-center"
-							>Lihat</a
+						<p>{trimText(discipline.disciplineDesc, 70)}</p>
+						<p class="font-semibold italic text-xs">{discipline.disciplineFaculty}</p>
+						<a
+							href={$page.url.pathname + '/' + discipline.disciplineCode}
+							class="btn dfBg mt-5 text-center"
 						>
+							Lihat
+						</a>
 					</div>
 				</BaseCard>
 			{/each}

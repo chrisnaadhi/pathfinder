@@ -18,7 +18,7 @@
 			{@html res.contents}
 		</div>
 	{/each}
-	<div>
+	<div class="flex gap-3">
 		<DeleteModal>
 			<p>Ingin meghapus data ?</p>
 		</DeleteModal>
@@ -32,6 +32,6 @@
 	}
 
 	a {
-		--at-apply: btn dfBg;
+		--at-apply: btn dfBg w-full text-center;
 	}
 </style>

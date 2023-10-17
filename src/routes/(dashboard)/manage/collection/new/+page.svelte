@@ -41,7 +41,7 @@
 	</div>
 	<form method="POST" use:enhance>
 		<FormCollection {...newObj} />
-		<div class="div-form max-w-full">
+		<div class="div-form w-full">
 			<label for="instructor">Subject Specialist: </label>
 			<input type="hidden" name="instructor" bind:value={instructor} required />
 			<input
@@ -52,7 +52,7 @@
 				required
 			/>
 			<div
-				class="flex flex-col w-full max-w-280 gap-2 dfBgSecond absolute mt-17 overflow-y-scroll max-h-25"
+				class="flex flex-col gap-2 dfBgSecond absolute mt-17 overflow-y-scroll max-h-25"
 				tabindex="0"
 				role="button"
 			>
@@ -73,13 +73,17 @@
 		<div class="div-form">
 			<label for="disiplin">Discipline</label>
 			<select name="disiplin" id="disiplin" required>
-				{#each facultyGrouped as [groups, data]}
-					<optgroup label={getFacultyName(getFaculty, Number(groups))}>
-						{#each data as group}
-							<option value={group.id}>{group.disciplineName}</option>
-						{/each}
-					</optgroup>
-				{/each}
+				{#if facultyGrouped.length > 0}
+					{#each facultyGrouped as [groups, data]}
+						<optgroup label={getFacultyName(getFaculty, Number(groups))}>
+							{#each data as group}
+								<option value={group.id}>{group.disciplineName}</option>
+							{/each}
+						</optgroup>
+					{/each}
+				{:else}
+					<option disabled selected>Belum ada Disiplin!</option>
+				{/if}
 			</select>
 		</div>
 		<button type="submit" class="default-button my-5">Create</button>
