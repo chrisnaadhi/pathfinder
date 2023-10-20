@@ -1,61 +1,58 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import BaseCard from '$lib/components/generic/BaseCard.svelte';
-	import { formatDescription } from '$lib/utils/textFormatter';
-
-	let name = 'Subjects';
-	let displayCard = ['One', 'Two', 'Three', 'Four'];
+	import { trimText } from '$lib/utils/textFormatter';
 
 	export let data;
 
-	const { results } = data;
+	const { results, subjectResults } = data;
+	let name = 'Subjects';
+	let displayCard = ['One', 'Two', 'Three', 'Four'];
+
+	let badgeColor = (value: string | null) => {
+		switch (value) {
+			case 'guide':
+				return 'bg-emerald';
+			case 'topic':
+				return 'bg-cyan';
+			case 'course':
+				return 'bg-rose';
+			default:
+				return 'bg-slate';
+		}
+	};
 </script>
 
 <section>
 	<h1 class="dfTx">{name}</h1>
-	<div class="my-4 float-right">
+	<div class="my-4">
 		<a class="btn dfBg" href="/manage/collection/new">+ New Subject</a>
 	</div>
-	<table>
-		<thead>
-			<th>No.</th>
-			<th>Title</th>
-			<th>Description</th>
-			<th>Type Subject</th>
-			<th>Ops</th>
-		</thead>
-		<tbody>
-			{#each results as subject, i}
-				<tr>
-					<td>{i + 1}</td>
-					<td>{subject.subjectName}</td>
-					<td>{formatDescription(subject.subjectDescription)}</td>
-					<td>{subject.type}</td>
-					<td>
-						<span class="flex justify-center gap-1">
-							<a href="{$page.url.pathname}/{subject.subjectSlug}">
-								<button class="default-button">Check</button>
-							</a>
-							<a href="{$page.url.pathname}/{subject.subjectSlug}/edit">
-								<button class="default-button">Edit</button>
-							</a>
-						</span>
-					</td>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-
-	<div class="flex gap-2">
-		{#each displayCard as display}
-			<BaseCard>
-				<h4>{display}'s Collection</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non necessitatibus cum laborum
-					iure veritatis velit, itaque similique, asperiores repudiandae laudantium in sed
-					accusantium est sit.
-				</p>
-			</BaseCard>
+	<div class="grid grid-cols-3 gap-3 my-5">
+		{#each subjectResults as subject}
+			<div class=" dfBgSecond p-5">
+				<div class="flex items-center justify-between">
+					<h5>{subject.title}</h5>
+					<div class={badgeColor(subject.type) + ' badge'}>{subject.type}</div>
+				</div>
+				<p class="italic text-sm text-justify">{trimText(subject.description, 130)}</p>
+				<div class="my-2">
+					Subject Specialist: <span class="badge dfBg">{subject.specialist}</span>
+				</div>
+				<div class="flex w-full gap-3 mt-4">
+					<a href="{$page.url.pathname}/{subject.slug}" class="w-full">
+						<button class="default-button">Lihat</button>
+					</a>
+					<a href="{$page.url.pathname}/{subject.slug}/edit" class="w-full">
+						<button class="btn bg-orange-2 text-dark w-full">Edit</button>
+					</a>
+				</div>
+			</div>
 		{/each}
 	</div>
 </section>
+
+<style>
+	.badge {
+		--at-apply: px-4 py-1 text-white font-semibold text-xs rounded-full;
+	}
+</style>

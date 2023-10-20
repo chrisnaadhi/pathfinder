@@ -20,9 +20,12 @@
 			<h5>Daftar Disiplin Ilmu</h5>
 			<a href="/manage/discipline/new" class="btn dfBg">&plus; New Discipline</a>
 		</div>
+		<div class="my-3">
+			<a href={backUrl} class="btn bg-gray-2 text-dark">&leftarrow;Kembali</a>
+		</div>
 
 		<div class="discipline-list">
-			{#each data.disciplinesData as discipline}
+			{#each disciplinesData as discipline}
 				<BaseCard>
 					<div class="flex flex-col justify-between h-full">
 						<h5>{discipline.disciplineName}</h5>
@@ -39,9 +42,6 @@
 			{/each}
 		</div>
 	</section>
-	<div>
-		<a href={backUrl} class="dfTx">&leftarrow;Back</a>
-	</div>
 </section>
 
 <style>

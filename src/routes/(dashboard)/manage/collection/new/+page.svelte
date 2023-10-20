@@ -37,7 +37,7 @@
 <section>
 	<h3 class="dfTx">Subjects</h3>
 	<div class="my-1">
-		<a class="dfTx" href="/manage/collection">&leftarrow;Back</a>
+		<a class="btn bg-gray-2 text-dark" href="/manage/collection">&leftarrow;Back</a>
 	</div>
 	<form method="POST" use:enhance>
 		<FormCollection {...newObj} />
@@ -52,7 +52,7 @@
 				required
 			/>
 			<div
-				class="flex flex-col gap-2 dfBgSecond absolute mt-17 overflow-y-scroll max-h-25"
+				class="flex flex-col w-full max-w-280 gap-2 dfBgSecond absolute mt-17 overflow-y-scroll max-h-25"
 				tabindex="0"
 				role="button"
 			>
