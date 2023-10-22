@@ -5,6 +5,8 @@
 	import SubjectExplanation from '$lib/components/home/SubjectExplanation.svelte';
 
 	export let data;
+
+	const { listGuide, getSubjects } = data;
 </script>
 
 <main class="max-w-7xl ma">
@@ -19,7 +21,17 @@
 	</h2>
 	<section class="main-content">
 		<div class="main-subject">
-			<SubjectLists guideType={data.listGuide} />
+			<div>
+				<SubjectLists guideType={listGuide} />
+				<section class="grid grid-cols-3 gap-2 rounded">
+					{#each getSubjects as subject}
+						<div class="dfBgSecond">
+							<h6>{subject.subjectName}</h6>
+						</div>
+					{/each}
+				</section>
+			</div>
+
 			<div>
 				<SubjectSpecialist />
 			</div>
@@ -35,6 +47,6 @@
 	}
 
 	.main-subject {
-		--at-apply: grid grid-cols-none lg:grid-cols-3 my-5;
+		--at-apply: grid grid-cols-none lg:grid-cols-2 my-5;
 	}
 </style>

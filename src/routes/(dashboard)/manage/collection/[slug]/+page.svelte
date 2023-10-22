@@ -24,11 +24,11 @@
 	</div>
 
 	<div class="flex items-center gap-3">
+		<a href={back} class="w-full">
+			<button class="default-button">&leftarrow;Kembali</button>
+		</a>
 		<a href="/manage/collection/{subjectData.slug}/new" class="w-full">
 			<button class="default-button">&plus;Tambah</button>
-		</a>
-		<a href={back} class="w-full">
-			<button class="default-button">Kembali</button>
 		</a>
 	</div>
 	<h5>Daftar Koleksi {subjectData.name}</h5>

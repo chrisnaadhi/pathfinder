@@ -15,7 +15,7 @@
 <section>
 	<h4 class="dfTx">Edit {selectedContent.title}</h4>
 	<a href={back} class="dfTx">&leftarrow;Kembali</a>
-	<form action="?/tambahKonten" method="POST" use:enhance>
+	<form action="?/updateKonten" method="POST" use:enhance>
 		<div class="div-form">
 			<label for="title">Judul:</label>
 			<input type="text" name="title" required value={selectedContent.title} />
@@ -27,12 +27,12 @@
 		<KeywordForm formName="Tags" keywords={selectedContent.tag} />
 		<div class="div-form">
 			<label for="contentedit">Konten:</label>
-			<TiptapEditor />
+			<TiptapEditor contentState="edit" contentsFull={selectedContent.contents} />
 			<input type="hidden" name="contents" bind:value={$contentTipTap} />
 		</div>
 		<div>
-			<button type="submit" class="btn dfBg">Update</button>
 			<a href={back} class="btn bg-gray-2">&leftarrow;Kembali</a>
+			<button type="submit" class="btn dfBg">Update</button>
 		</div>
 	</form>
 </section>

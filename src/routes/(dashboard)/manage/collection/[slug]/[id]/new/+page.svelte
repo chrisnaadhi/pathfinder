@@ -27,7 +27,7 @@
 		<KeywordForm formName="Tags" keywords="" />
 		<div class="div-form">
 			<label for="contentedit">Konten:</label>
-			<TiptapEditor />
+			<TiptapEditor contentState="new" />
 			<input type="hidden" name="contents" bind:value={$contentTipTap} />
 		</div>
 		<div>

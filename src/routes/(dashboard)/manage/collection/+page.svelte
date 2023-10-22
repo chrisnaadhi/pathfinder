@@ -11,11 +11,11 @@
 	let badgeColor = (value: string | null) => {
 		switch (value) {
 			case 'guide':
-				return 'bg-emerald';
+				return 'bg-emerald-6';
 			case 'topic':
-				return 'bg-cyan';
+				return 'bg-blue-6';
 			case 'course':
-				return 'bg-rose';
+				return 'bg-rose-6';
 			default:
 				return 'bg-slate';
 		}

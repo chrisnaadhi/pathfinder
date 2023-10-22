@@ -20,6 +20,8 @@
 					<img src="/img/default.jpg" class="rounded-full w-20" alt={specialist.username} />
 					<h6>{specialist.name}</h6>
 					<p class="text-xs italic">{specialist.email}</p>
+					<a href="/manage/member/{specialist.id}" class="btn dfBg w-full mt-5 text-center">Lihat</a
+					>
 				</div>
 			</BaseCard>
 		{/each}

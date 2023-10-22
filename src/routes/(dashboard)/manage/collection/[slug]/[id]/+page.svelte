@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { enhance } from '$app/forms';
-	import { backButton } from '$lib/utils/textFormatter';
+	import { backButton, trimText } from '$lib/utils/textFormatter';
 
 	import EditModal from '$lib/components/generic/EditModal.svelte';
 	import DeleteModal from '$lib/components/generic/DeleteModal.svelte';
@@ -60,8 +59,8 @@
 		{#each data.contentsList as res}
 			<div class="box">
 				<h4>{res.title}</h4>
-				<p>{res.contentDescription}</p>
-				<div class="flex w-full items-center gap-3 text-center">
+				<p>{trimText(res.contentDescription, 120)}</p>
+				<div class="flex w-full items-center gap-3 text-center mt-2">
 					<a href={`${$page.url.toString()}/${res.id}`} class="btn dfBg w-full"> Lihat </a>
 					<a href={`${$page.url.toString()}/${res.id}/edit`} class="btn dfBgSecond w-full">
 						Edit

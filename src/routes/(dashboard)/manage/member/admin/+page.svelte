@@ -17,9 +17,14 @@
 		{#each getAdminUser as admin}
 			<BaseCard>
 				<div class="flex flex-col items-center">
-					<img src="/img/default.jpg" class="rounded-full w-20" alt={admin.username} />
-					<h6>{admin.name}</h6>
+					<img
+						src={admin.photo === null ? '/img/default.jpg' : admin?.photo}
+						class="rounded-full w-20 h-20 object-cover"
+						alt={admin.username}
+					/>
+					<h6 class=" text-center">{admin.name}</h6>
 					<p class="text-xs italic">{admin.email}</p>
+					<a href="/manage/member/{admin.id}" class="btn dfBg w-full mt-5 text-center">Lihat</a>
 				</div>
 			</BaseCard>
 		{/each}

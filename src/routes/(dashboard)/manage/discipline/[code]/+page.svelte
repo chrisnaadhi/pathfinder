@@ -22,7 +22,7 @@
 			{#each getSubjectOfDiscipline as subject}
 				<BaseCard>
 					<h6>{subject.subjectName}</h6>
-					<p>{trimText(subject.subjectDescription, 80)}</p>
+					<p class="text-sm">{trimText(subject.subjectDescription, 80)}</p>
 					<div class="flex mt-2">
 						<a href="/manage/collection/{subject.subjectSlug}" class="btn dfBg w-full text-center">
 							Lihat

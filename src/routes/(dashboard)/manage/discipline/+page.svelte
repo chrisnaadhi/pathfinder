@@ -29,7 +29,7 @@
 				<BaseCard>
 					<div class="flex flex-col justify-between h-full">
 						<h5>{discipline.disciplineName}</h5>
-						<p>{trimText(discipline.disciplineDesc, 70)}</p>
+						<p class="text-sm">{trimText(discipline.disciplineDesc, 80)}</p>
 						<p class="font-semibold italic text-xs">{discipline.disciplineFaculty}</p>
 						<a
 							href={$page.url.pathname + '/' + discipline.disciplineCode}

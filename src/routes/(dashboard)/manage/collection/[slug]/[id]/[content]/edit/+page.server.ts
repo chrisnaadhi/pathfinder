@@ -1,6 +1,7 @@
 import { contents } from '$lib/db/pgSchema.js';
 import { db } from '$lib/server/drizzle';
-import { eq } from 'drizzle-orm';
+import { redirect } from '@sveltejs/kit';
+import { eq, param } from 'drizzle-orm';
 
 export const load = async ({ params }) => {
 	const contentData = await db.select().from(contents).where(eq(contents.id, params.content));
@@ -9,4 +10,26 @@ export const load = async ({ params }) => {
 	return {
 		selectedContent
 	};
+};
+
+export const actions = {
+	updateKonten: async ({ request, params }) => {
+		const data = await request.formData();
+		const title = data.get('title') as string;
+		const description = data.get('deskripsi') as string;
+		const content = data.get('contents') as string;
+		const tags = data.get('keywords') as string;
+
+		await db
+			.update(contents)
+			.set({
+				title,
+				contents: content,
+				contentDescription: description,
+				tag: tags
+			})
+			.where(eq(contents.id, params.content));
+
+		throw redirect(302, `/manage/collection/${params.slug}/${params.id}`);
+	}
 };
