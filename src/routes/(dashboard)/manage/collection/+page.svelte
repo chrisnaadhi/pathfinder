@@ -23,7 +23,7 @@
 </script>
 
 <section>
-	<h1 class="dfTx">{name}</h1>
+	<h2 class="dfTx">{name}</h2>
 	<div class="my-4">
 		<a class="btn dfBg" href="/manage/collection/new">+ New Subject</a>
 	</div>

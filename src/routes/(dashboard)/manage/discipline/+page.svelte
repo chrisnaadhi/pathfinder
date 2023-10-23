@@ -14,7 +14,7 @@
 </script>
 
 <section>
-	<h3 class="dfTx">{placeholder}</h3>
+	<h2 class="dfTx">{placeholder}</h2>
 	<section>
 		<div class="my-3 flex justify-between">
 			<h5>Daftar Disiplin Ilmu</h5>

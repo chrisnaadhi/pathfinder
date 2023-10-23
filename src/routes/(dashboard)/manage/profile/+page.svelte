@@ -19,7 +19,7 @@
 </script>
 
 <section>
-	<h1 class="dfTx">{name}</h1>
+	<h2 class="dfTx">{name}</h2>
 	<img
 		src={userData?.photo === null ? '/img/default.jpg' : userData?.photo}
 		class="w-32 h-32 object-cover rounded-full dfBorder"

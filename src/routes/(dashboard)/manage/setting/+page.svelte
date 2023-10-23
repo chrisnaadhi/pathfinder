@@ -35,7 +35,7 @@
 		activeTab = Number(tab);
 	});
 
-	let placeholder = 'Setting';
+	let placeholder = 'Settings';
 </script>
 
 <section>

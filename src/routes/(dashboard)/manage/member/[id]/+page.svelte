@@ -4,14 +4,13 @@
 
 	export let data;
 
-	let placeholder = 'Hello, svelte!';
 	const { userProfile } = data;
 	const back = backButton($page);
 </script>
 
 <section>
-	<h3>Hello, {userProfile.username}</h3>
-	<p>{placeholder}</p>
+	<h3>{userProfile.username}'s Profile</h3>
+	<p>{userProfile.departmentName}</p>
 	<div>
 		<a href={back} class="btn bg-gray-2">Kembali</a>
 	</div>

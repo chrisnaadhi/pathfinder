@@ -18,7 +18,6 @@ export const load = async ({ locals }) => {
 	const loggedInUser = await locals.auth.validate();
 
 	if (loggedInUser?.user.userType === 1 || loggedInUser?.user.userType === 2) {
-		console.log(loggedInUser?.user.userType);
 	} else {
 		throw redirect(302, '/manage');
 	}

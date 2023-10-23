@@ -69,7 +69,7 @@
 					Member
 				</a>
 				<a
-					href="/manage/#"
+					href="/manage/guides"
 					class="menu-item"
 					class:active-menu={activeUrl('/guides')}
 					data-sveltekit-preload-data="tap"

@@ -1,5 +1,5 @@
 <script>
-	let placeholder = 'Content 1';
+	let placeholder = 'Application Settings';
 </script>
 
 <section>

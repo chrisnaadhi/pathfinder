@@ -1,4 +1,4 @@
-import { faculty } from '$lib/db/pgSchema';
+import { department, faculty } from '$lib/db/pgSchema';
 import { db } from '$lib/server/drizzle';
 import { redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
