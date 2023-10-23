@@ -36,8 +36,6 @@
 				<SubjectSpecialist />
 			</div>
 		</div>
-		<p>{data.msg} - {data.statusCode}</p>
-		<p>{data.checkParams}</p>
 	</section>
 </main>
 

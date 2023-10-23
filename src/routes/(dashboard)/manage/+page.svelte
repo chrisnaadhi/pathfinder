@@ -1,6 +1,5 @@
 <script>
 	import { enhance } from '$app/forms';
-	import SubmitButton from '$lib/components/generic/SubmitButton.svelte';
 
 	let name = 'Dashboard';
 	export let data;

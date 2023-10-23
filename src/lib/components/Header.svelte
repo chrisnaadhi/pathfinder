@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 
+	export let state: string | undefined;
+	export let userData = '';
+
 	$: path = $page.url.pathname;
 	$: isLinkActive = (val: string) => {
 		return path === val ? 'menu-active menu-link' : 'menu-link';
@@ -22,7 +25,12 @@
 			<a href="/contacts" class={isLinkActive('/contacts')}>Ask us!</a>
 		</div>
 		<div>
-			<a href="/account">Account</a>
+			{#if state === 'active' || state === 'idle'}
+				<a href="/manage">Manage</a>
+			{:else}
+				<a href="/account">Account</a>
+			{/if}
+			{userData}
 		</div>
 	</section>
 </nav>

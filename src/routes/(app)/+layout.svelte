@@ -9,7 +9,7 @@
 </script>
 
 <main in:fade={{ delay: 100, duration: 500 }}>
-	<Header />
+	<Header state={data.userState} />
 	{#key data.url}
 		<div in:fade={{ delay: 500, duration: 500 }} out:fly={{ y: 50, duration: 400 }}>
 			{#if $page.url.pathname === '/'}
