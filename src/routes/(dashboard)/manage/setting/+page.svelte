@@ -7,6 +7,7 @@
 	import FacultyCard from '$lib/components/settings/FacultyCard.svelte';
 	import EditModal from '$lib/components/generic/EditModal.svelte';
 	import DeleteModal from '$lib/components/generic/DeleteModal.svelte';
+	import { page } from '$app/stores';
 
 	let activeTab: number = 1;
 	export let data;
@@ -58,6 +59,12 @@
 			<Subjects />
 		{:else if activeTab === 3}
 			<Faculty>
+				<div class="my-5">
+					<a href={$page.url.pathname + '/department'} class="btn dfBg">
+						Department Settings&rightarrow;
+					</a>
+				</div>
+
 				<div class="flex flex-col my-3 gap-3 md:(grid grid-cols-4)">
 					{#each getFaculty as faculty}
 						<FacultyCard facultyName={faculty.facultyName} facultyValue={faculty.facultyValue}>
@@ -76,7 +83,7 @@
 										</div>
 										<div class="div-form">
 											<label for="slug">Identifier Fakultas:</label>
-											<input type="text" name="slug" id="slug" value={faculty.facultyValue} />
+											<input type="number" name="slug" id="slug" value={faculty.facultyValue} />
 											<p class="text-xs">
 												Diisi dengan Unique Identifier Fakultas (tidak boleh duplikat), Contoh: 210
 											</p>
