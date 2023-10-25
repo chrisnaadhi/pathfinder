@@ -12,7 +12,8 @@ export const load = async ({ params }) => {
 			photo: users.photo,
 			title: users.title,
 			departmentName: department.departmentName,
-			role: userType.typeName
+			role: userType.typeName,
+			userType: users.type
 		})
 		.from(users)
 		.leftJoin(department, eq(department.id, users.departmentId))

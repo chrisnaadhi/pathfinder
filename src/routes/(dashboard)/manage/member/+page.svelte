@@ -6,16 +6,21 @@
 	export let data;
 
 	const member = 'Anggota';
-	const { listUsers } = data;
+	const { userData } = data;
+
+	const isAdmin = () => {
+		if (userData?.userType === 1) {
+			return true;
+		} else if (userData?.userType === 2) {
+			return false;
+		} else {
+			return false;
+		}
+	};
 </script>
 
 <section>
 	<h2 class="dfTx">{member}</h2>
-	<div>
-		{#each listUsers as user}
-			<pre>{user.type}. {user.email} - {user.username} - {user.fullName}</pre>
-		{/each}
-	</div>
 	<div class="flex items-center justify-between my-5">
 		<h4>Daftar Anggota berdasarkan Role</h4>
 		<a href={$page.url.pathname + '/new'} class="btn dfBg">&plus;Tambah Anggota</a>
@@ -29,8 +34,18 @@
 					<p class="text-xs">Daftar Pengelola Admin</p>
 				</div>
 			</div>
-			<div class="mt-2 flex w-full">
-				<a href={$page.url.pathname + '/admin'} class="lihat-btn">Lihat</a>
+			<div class="mt-2 flex">
+				<button
+					class:disable-btn={userData?.userType === 2}
+					class:lihat-btn={userData?.userType === 1}
+					class="w-full"
+					disabled={userData?.userType !== 1}
+				>
+					<a
+						href={userData?.userType === 1 ? $page.url.pathname + '/admin' : '#'}
+						class:cursor-not-allowed={userData?.userType !== 1}>Lihat</a
+					>
+				</button>
 			</div>
 		</BaseCard>
 		<BaseCard>
@@ -71,5 +86,9 @@
 
 	.lihat-btn {
 		--at-apply: btn dfBg w-full items-center text-center text-sm;
+	}
+
+	.disable-btn {
+		--at-apply: btn bg-gray-3 text-dark cursor-not-allowed;
 	}
 </style>

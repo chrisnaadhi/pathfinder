@@ -17,7 +17,11 @@
 		{#each getSubjectSpecialist as specialist}
 			<BaseCard>
 				<div class="flex flex-col items-center justify-center text-center">
-					<img src="/img/default.jpg" class="rounded-full w-20" alt={specialist.username} />
+					<img
+						src={specialist?.photo === null ? '/img/default.jpg' : specialist?.photo}
+						class="rounded-full w-20 h-20 object-cover"
+						alt={specialist.username}
+					/>
 					<p class="font-semibold">{specialist.name}</p>
 					<p class="text-xs italic">{specialist.email}</p>
 					<a href="/manage/member/{specialist.id}" class="btn dfBg w-full mt-5 text-center">Lihat</a

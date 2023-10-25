@@ -3,11 +3,14 @@ import { department, userType, users } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
 
-export const load = async ({ params }) => {
+export const load = async ({ params, locals }) => {
 	const getUserData = await db.select().from(users).where(eq(users.id, params.id));
 	const getDepartment = await db.select().from(department).orderBy(department.id);
 	const getRole = await db.select().from(userType).orderBy(userType.id);
+	const loggedInUser = await locals.auth.validate();
 	const userData = getUserData[0];
+
+	if (loggedInUser?.user.userType !== 1) throw redirect(302, '/manage/member');
 
 	return {
 		userData,

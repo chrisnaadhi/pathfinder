@@ -76,7 +76,7 @@
 		</div>
 		<div class="div-form">
 			<label for="disiplin">Discipline: </label>
-			<select name="disiplin" id="disiplin">
+			<select name="disiplin" id="disiplin" class="overflow-y-scroll">
 				{#each facultyGrouped as [groups, data]}
 					<optgroup label={getFacultyName(getFaculty, Number(groups))}>
 						{#each data as group}

@@ -35,7 +35,7 @@
 					<div class={badgeColor(subject.type) + ' badge'}>{subject.type}</div>
 				</div>
 				<p class="italic text-sm text-justify">{trimText(subject.description, 130)}</p>
-				<div class="my-2">
+				<div class="my-2 text-sm font-bold">
 					Subject Specialist: <span class="badge dfBg">{subject.specialist}</span>
 				</div>
 				<div class="flex w-full gap-3 mt-4">

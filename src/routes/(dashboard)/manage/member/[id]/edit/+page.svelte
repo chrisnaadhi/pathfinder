@@ -1,12 +1,15 @@
 <script>
+	import { page } from '$app/stores';
+	import { backButton } from '$lib/utils/textFormatter';
 	export let data;
 
 	let placeholder = 'Edit Profile';
 	const { userData, getDepartment, getRole } = data;
+	const back = backButton($page);
 </script>
 
 <section>
-	<p>{placeholder}</p>
+	<h4>{placeholder}</h4>
 	<form action="?/updateData" method="POST">
 		<div class="div-form">
 			<label for="nama">Nama Lengkap: </label>
@@ -42,14 +45,15 @@
 				{/each}
 			</select>
 		</div>
-		<div class="flex my-3">
+		<div class="flex my-3 text-center gap-3">
+			<a href={back} class="back">&leftarrow;Kembali</a>
 			<button type="submit" class="btn dfBg w-full">Update</button>
 		</div>
 	</form>
 </section>
 
 <style>
-	p {
-		--at-apply: italic;
+	.back {
+		--at-apply: btn bg-gray-3 text-dark w-full;
 	}
 </style>

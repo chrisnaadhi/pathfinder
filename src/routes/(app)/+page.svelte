@@ -23,12 +23,12 @@
 		<div class="main-subject">
 			<div>
 				<SubjectLists guideType={listGuide} />
-				<section class="grid grid-cols-3 gap-2 rounded">
-					{#each getSubjects as subject}
-						<div class="dfBgSecond">
-							<h6>{subject.subjectName}</h6>
-						</div>
-					{/each}
+				<section class="flex flex-col w-full gap-2 rounded px-15">
+					<ul class="text-left">
+						{#each getSubjects as subject}
+							<li class="text-xl">&bigstar; &ThickSpace;{subject.subjectName}</li>
+						{/each}
+					</ul>
 				</section>
 			</div>
 

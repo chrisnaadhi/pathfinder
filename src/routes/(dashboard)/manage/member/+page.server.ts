@@ -16,6 +16,7 @@ export const load = async ({ locals }) => {
 		.leftJoin(userType, eq(users.type, userType.id))
 		.orderBy(asc(users.type));
 	const loggedInUser = await locals.auth.validate();
+	const userData = loggedInUser?.user;
 
 	if (loggedInUser?.user.userType === 1 || loggedInUser?.user.userType === 2) {
 	} else {
@@ -23,6 +24,7 @@ export const load = async ({ locals }) => {
 	}
 
 	return {
-		listUsers
+		listUsers,
+		userData
 	};
 };
