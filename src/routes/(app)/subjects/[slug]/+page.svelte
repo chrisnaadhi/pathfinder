@@ -4,7 +4,7 @@
 
 	export let data;
 
-	const { subjectData, subjectGet } = data;
+	const { subjectGet } = data;
 	const back = backButton($page);
 </script>
 
@@ -15,7 +15,7 @@
 	</div>
 	<div>
 		{#each subjectGet?.collections || [] as coll}
-			<p>{coll}</p>
+			<p>{coll.name}</p>
 		{/each}
 	</div>
 	<div />
