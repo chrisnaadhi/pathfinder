@@ -51,7 +51,7 @@ export const actions = {
 				attributes: {
 					username: username,
 					email: email,
-					full_name: 'Administrator',
+					full_name: 'Administrator Pathfinder',
 					type_id: 1
 				}
 			});

@@ -130,7 +130,8 @@ export const contents = pgTable('contents', {
 	tag: varchar('tag'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-	collectionId: integer('collection_id').references(() => subjects.id),
+	collectionId: integer('collection_id').references(() => collections.id),
+	subjectId: integer('subject_id').references(() => subjects.id),
 	creator: varchar('creator').references(() => users.id)
 });
 
@@ -187,7 +188,8 @@ export const subjectsRelations = relations(subjects, ({ one, many }) => ({
 		references: [users.id],
 		relationName: 'subject_instructor'
 	}),
-	collections: many(collections)
+	collections: many(collections),
+	contents: many(contents)
 }));
 
 export const collectionRelations = relations(collections, ({ one, many }) => ({
@@ -206,6 +208,10 @@ export const contentRelations = relations(contents, ({ one }) => ({
 	creator: one(users, {
 		fields: [contents.creator],
 		references: [users.id]
+	}),
+	subjects: one(subjects, {
+		fields: [contents.subjectId],
+		references: [subjects.id]
 	}),
 	collections: one(collections, {
 		fields: [contents.collectionId],

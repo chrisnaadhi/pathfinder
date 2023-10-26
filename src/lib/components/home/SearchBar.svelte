@@ -1,6 +1,10 @@
+<script lang="ts">
+	export let searchValue: string = '';
+</script>
+
 <section>
 	<div class="relative max-w-xl ma">
-		<input type="search" name="searchbox" placeholder="Find your path.." />
+		<input type="search" name="searchbox" bind:value={searchValue} placeholder="Find your path.." />
 		<button type="submit">Cari</button>
 	</div>
 </section>

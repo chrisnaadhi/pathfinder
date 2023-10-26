@@ -13,7 +13,6 @@
 <section>
 	<div class="text-center max-w-xl ma">
 		<h3>{data.collectionItem.name}</h3>
-		<pre>/{data.collectionItem.slug}</pre>
 		<p class="text-sm">
 			{data.collectionItem.deskripsi}
 		</p>
@@ -50,19 +49,23 @@
 			</DeleteModal>
 		</div>
 	</div>
-	<div class="flex justify-between">
-		<a href={backUrl} class="dfTx">&leftarrow;Kembali</a>
-		<a href={$page.url.toString() + '/new'} class="dfTx">Tambah Konten&rightarrow;</a>
+	<div class="flex items-center justify-between">
+		<a href={backUrl} class="dfTx btn bg-gray-2 my-2">&leftarrow;Kembali</a>
+		<a href={$page.url.toString() + '/new'} class="btn dfBg">&plus;Tambah Konten&rightarrow;</a>
 	</div>
 
 	<div class="grid grid-cols-3 gap-2">
 		{#each data.contentsList as res}
 			<div class="box">
 				<h4>{res.title}</h4>
-				<p>{trimText(res.contentDescription, 120)}</p>
+				<p class="text-sm">{trimText(res.contentDescription, 120)}</p>
 				<div class="flex w-full items-center gap-3 text-center mt-2">
 					<a href={`${$page.url.toString()}/${res.id}`} class="btn dfBg w-full"> Lihat </a>
-					<a href={`${$page.url.toString()}/${res.id}/edit`} class="btn dfBgSecond w-full">
+					<a
+						href={`${$page.url.toString()}/${res.id}/edit`}
+						class="btn dfBgSecond dfTx w-full flex gap-1 items-center justify-center"
+					>
+						<div class="i-mdi-pencil-box w-4 h-4" />
 						Edit
 					</a>
 				</div>

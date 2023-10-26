@@ -35,17 +35,20 @@
 				</div>
 			</div>
 			<div class="mt-2 flex">
-				<button
-					class:disable-btn={userData?.userType === 2}
-					class:lihat-btn={userData?.userType === 1}
-					class="w-full"
-					disabled={userData?.userType !== 1}
+				<a
+					href={userData?.userType === 1 ? $page.url.pathname + '/admin' : '#'}
+					class:cursor-not-allowed={userData?.userType !== 1}
+					class="w-full text-white"
 				>
-					<a
-						href={userData?.userType === 1 ? $page.url.pathname + '/admin' : '#'}
-						class:cursor-not-allowed={userData?.userType !== 1}>Lihat</a
+					<button
+						class:disable-btn={userData?.userType === 2}
+						class:lihat-btn={userData?.userType === 1}
+						class="w-full"
+						disabled={userData?.userType !== 1}
 					>
-				</button>
+						Lihat
+					</button>
+				</a>
 			</div>
 		</BaseCard>
 		<BaseCard>

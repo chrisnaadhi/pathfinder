@@ -1,5 +1,5 @@
 import { db } from '$lib/server/drizzle';
-import { collections, contents } from '$lib/db/pgSchema';
+import { collections, contents, subjects } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
 
@@ -37,6 +37,12 @@ export const actions = {
 			.replace(/[^\w\s]/gi, '')
 			.split(' ')
 			.join('-');
+
+		const getSubject = await db
+			.select({ id: subjects.id, slug: subjects.subjectSlug })
+			.from(subjects)
+			.where(eq(subjects.subjectSlug, params.slug));
+		const selectedSubject = getSubject[0];
 
 		await db
 			.update(collections)

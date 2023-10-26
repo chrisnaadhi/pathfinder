@@ -1,5 +1,3 @@
-import { writable } from 'svelte/store';
-
 export const specialist = () => {
 	const data = [
 		{
@@ -56,12 +54,12 @@ export const userRole = () => {
 export const departmentList = () => {
 	const department = [
 		{
-			departmentName: 'Central Library',
-			departmentDescription: 'lorem ipsum'
+			departmentName: 'Kandaga Library',
+			departmentDescription: 'Perpustakaan Pusat Pengelolaan Pengetahuan'
 		},
 		{
-			departmentName: 'Faculty Library',
-			departmentDescription: 'lorem ipsum 2'
+			departmentName: 'FIKOM Library',
+			departmentDescription: 'Perpustakaan Fakultas Ilmu Komunikasi'
 		}
 	];
 

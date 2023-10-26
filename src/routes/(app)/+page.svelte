@@ -23,12 +23,14 @@
 		<div class="main-subject">
 			<div>
 				<SubjectLists guideType={listGuide} />
-				<section class="flex flex-col w-full gap-2 rounded px-15">
-					<ul class="text-left">
-						{#each getSubjects as subject}
-							<li class="text-xl">&bigstar; &ThickSpace;{subject.subjectName}</li>
-						{/each}
-					</ul>
+				<section class="flex flex-col w-full gap-2 rounded px-15 text-left">
+					{#each getSubjects as subject}
+						<div class="text-xl">
+							<a href="/subjects/{subject.subjectSlug}">
+								&bigstar; &ThickSpace;{subject.subjectName}
+							</a>
+						</div>
+					{/each}
 				</section>
 			</div>
 

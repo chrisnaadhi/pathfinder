@@ -25,7 +25,13 @@
 	{/if}
 </div>
 
-<button use:melt={$trigger} class="btn dfBg w-full">Edit</button>
+<button
+	use:melt={$trigger}
+	class="btn dfBgSecond dfTx w-full flex gap-1 items-center justify-center"
+>
+	<div class="i-mdi-pencil-box w-4 h-4" />
+	Edit</button
+>
 
 <style>
 	.main-bg {

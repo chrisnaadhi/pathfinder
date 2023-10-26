@@ -2,19 +2,59 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
+	import Youtube from '@tiptap/extension-youtube';
+	import Link from '@tiptap/extension-link';
 
 	import { contentTipTap } from '$lib/utils/dataStore';
 
 	let element: HTMLElement;
+	let editorHeader: HTMLElement;
 	let editor: any;
+	let videoHeight: '480';
 
 	export let contentState: string;
 	export let contentsFull: string | null = '';
 
+	const addYoutubeVideo = () => {
+		const url = prompt('Masukkan Link Youtube:');
+
+		editor.commands.setYoutubeVideo({
+			src: url,
+			width: '100%',
+			height: Math.max(180, parseInt(videoHeight, 10)) || 480
+		});
+	};
+
+	const addLink = () => {
+		const previousUrl = editor.getAttributes('link').href;
+		const url = window.prompt('URL', previousUrl);
+
+		if (url === null) {
+			return;
+		}
+
+		if (url === '') {
+			editor.chain().focus().extendMarkRange('link').unsetLink().run();
+			return;
+		}
+
+		editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+	};
+
 	onMount(() => {
 		editor = new Editor({
 			element: element,
-			extensions: [StarterKit],
+			extensions: [
+				StarterKit,
+				Youtube.configure({
+					enableIFrameApi: true,
+					nocookie: true
+				}),
+				Link.configure({
+					openOnClick: false,
+					linkOnPaste: true
+				})
+			],
 			content: contentState === 'new' ? '<p>Hello, PathfinderKit!</p>' : contentsFull,
 			onTransaction: () => {
 				editor = editor;
@@ -87,6 +127,36 @@
 			>
 				<span class="italic"> Italic </span>
 			</button>
+			<button
+				on:click|preventDefault={() => editor.chain().focus().toggleStrike().run()}
+				class:active={editor.isActive('strike')}
+			>
+				<span class="line-through"> Strike </span>
+			</button>
+			<button
+				on:click|preventDefault={() => editor.chain().focus().toggleCodeBlock().run()}
+				class:active={editor.isActive('codeBlock')}
+			>
+				&LeftAngleBracket;<span class="text-xs">code</span>&RightAngleBracket;
+			</button>
+			<button
+				on:click|preventDefault={() => editor.chain().focus().toggleBulletList().run()}
+				class:active={editor.isActive('bulletList')}
+			>
+				<div class="i-mdi-format-list-bulleted w-6 h-6" />
+			</button>
+			<button
+				on:click|preventDefault={() => editor.chain().focus().toggleOrderedList().run()}
+				class:active={editor.isActive('orderedList')}
+			>
+				<div class="i-mdi-format-list-numbered w-6 h-6" />
+			</button>
+			<button on:click|preventDefault={addYoutubeVideo}>
+				<div class="i-mdi-youtube w-6 h-6" />
+			</button>
+			<button on:click|preventDefault={addLink}>
+				<div class="i-mdi-link-plus w-6 h-6" />
+			</button>
 		</div>
 	{/if}
 
@@ -95,7 +165,7 @@
 
 <style>
 	.editor {
-		--at-apply: my-1 dfBorder rounded;
+		--at-apply: relative my-1 dfBorder rounded w-full;
 	}
 
 	button {

@@ -39,7 +39,13 @@
 	{/if}
 </div>
 
-<button use:melt={$trigger} class="btn bg-red text-white w-full">Delete</button>
+<button
+	use:melt={$trigger}
+	class="btn bg-red text-white w-full flex gap-1 items-center justify-center"
+>
+	<div class="i-mdi-delete w-4 h-4" />
+	Delete
+</button>
 
 <style>
 	.main-bg {

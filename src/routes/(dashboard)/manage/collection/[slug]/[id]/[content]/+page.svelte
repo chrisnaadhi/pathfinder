@@ -25,8 +25,14 @@
 	</div>
 
 	<div class="flex gap-2">
-		<a class="dfBg" href={back}>Kembali</a>
-		<a class="bg-orange text-white" href={$page.url.pathname + '/edit'}>Edit</a>
+		<a class="dfBg" href={back}>&leftarrow;Kembali</a>
+		<a
+			class="btn dfBgSecond dfTx w-full flex gap-1 items-center justify-center"
+			href={$page.url.pathname + '/edit'}
+		>
+			<div class="i-mdi-pencil-box w-4 h-4" />
+			Edit
+		</a>
 		<DeleteModal>
 			<p>Ingin meghapus data ?</p>
 		</DeleteModal>

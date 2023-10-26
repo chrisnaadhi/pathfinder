@@ -72,10 +72,30 @@ th {
 	outline: none;
 }
 
+.ProseMirror > a {
+	--at-apply: underline;
+}
+
 .div-form {
 	--at-apply: flex flex-col;
 }
 
 .default-button {
 	--at-apply: btn dfBg w-full;
+}
+
+pre {
+	--at-apply: my-2 p-4 bg-dark text-white rounded-lg;
+}
+
+code {
+	--at-apply: text-white;
+}
+
+ul {
+	--at-apply: list-disc pl-5;
+}
+
+ol {
+	--at-apply: list-decimal pl-5;
 }
