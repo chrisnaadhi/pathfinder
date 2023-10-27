@@ -11,9 +11,6 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
 	const session = await locals.auth.validate();
 	const listUsers = await db.select().from(users);
 	const loginStatus = cookies.get('loginStatus');
-	if (!loginStatus) {
-		cookies.set('loginStatus', 'undefined');
-	}
 
 	if (listUsers.length < 1) throw redirect(302, '/new-instance');
 	if (session) {

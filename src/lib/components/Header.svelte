@@ -21,6 +21,7 @@
 			<a href="/" class={isLinkActive('/')}>Home</a>
 			<a href="/about" class={isLinkActive('/about')}>About</a>
 			<a href="/guides" class={isLinkActive('/guides')}>Guide</a>
+			<a href="/subjects" class={isLinkActive('/subjects')}>Subjects</a>
 			<a href="/librarian" class={isLinkActive('/librarian')}>Librarian</a>
 			<a href="/contacts" class={isLinkActive('/contacts')}>Ask us!</a>
 		</div>
