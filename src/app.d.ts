@@ -24,6 +24,7 @@ declare global {
 			type: number;
 			departmentId: number;
 		};
+		type DatabaseSessionAttributes = Record<string, never>;
 	}
 }
 
