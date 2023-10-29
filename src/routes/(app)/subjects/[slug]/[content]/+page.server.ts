@@ -4,7 +4,12 @@ import { eq } from 'drizzle-orm';
 
 export const load = async ({ params }) => {
 	const getContent = await db.query.contents.findFirst({
-		where: eq(contents.id, params.content)
+		where: eq(contents.id, params.content),
+		with: {
+			subjects: true,
+			collections: true,
+			creator: true
+		}
 	});
 
 	return {

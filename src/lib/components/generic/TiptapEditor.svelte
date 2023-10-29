@@ -4,6 +4,7 @@
 	import StarterKit from '@tiptap/starter-kit';
 	import Youtube from '@tiptap/extension-youtube';
 	import Link from '@tiptap/extension-link';
+	import Image from '@tiptap/extension-image';
 
 	import { contentTipTap } from '$lib/utils/dataStore';
 
@@ -27,7 +28,7 @@
 
 	const addLink = () => {
 		const previousUrl = editor.getAttributes('link').href;
-		const url = window.prompt('URL', previousUrl);
+		const url = prompt('URL', previousUrl);
 
 		if (url === null) {
 			return;
@@ -39,6 +40,14 @@
 		}
 
 		editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+	};
+
+	const addImage = () => {
+		const urlImage = prompt('Masukkan Link Gambar: ');
+
+		if (urlImage) {
+			editor.chain().focus().setImage({ src: urlImage }).run();
+		}
 	};
 
 	onMount(() => {
@@ -53,7 +62,8 @@
 				Link.configure({
 					openOnClick: false,
 					linkOnPaste: true
-				})
+				}),
+				Image
 			],
 			content: contentState === 'new' ? '<p>Hello, PathfinderKit!</p>' : contentsFull,
 			onTransaction: () => {
@@ -156,6 +166,9 @@
 			</button>
 			<button on:click|preventDefault={addLink}>
 				<div class="i-mdi-link-plus w-6 h-6" />
+			</button>
+			<button on:click|preventDefault={addImage}>
+				<div class="i-mdi-file-image-plus w-6 h-6" />
 			</button>
 		</div>
 	{/if}

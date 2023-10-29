@@ -9,7 +9,7 @@
 	let email = '';
 	let username = '';
 	let slugValue: HTMLInputElement;
-	const { getDepartment } = data;
+	const { getDepartment, userRole } = data;
 	const back = backButton($page);
 
 	const generateUsername = () => {
@@ -66,6 +66,9 @@
 			<label for="role">Role:</label>
 			<select name="role" id="role" required>
 				<option value="" disabled selected>Pilih Role</option>
+				{#if userRole === 1}
+					<option value="1">Super Admin</option>
+				{/if}
 				<option value="2">Subject Librarian</option>
 				<option value="3">Lecturer(Dosen)</option>
 				<option value="4">User</option>

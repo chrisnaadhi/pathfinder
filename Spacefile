@@ -1,0 +1,12 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: pathfinder
+    src: ./
+    engine: svelte-kit
+    primary: true
+    presets:
+      env:
+        - name: DATABASE_URL
+          description: 'The Database URL'
+          default: 'postgres://pathfinder:path@0.0.0.0:5432/pathfinder'

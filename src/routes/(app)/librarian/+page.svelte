@@ -6,8 +6,8 @@
 	const { getAllLibrarian } = data;
 </script>
 
-<h1>List of our Librarian</h1>
-<p>You can find more about our Librarian and their specialist in subjects</p>
+<h1>Daftar Subject Specialist</h1>
+<p>Anda bisa menemukan dan mencari seluruh Pustakawan Subject Specialist disini</p>
 <section class="max-w-4xl ma">
 	<div class="librarian-list">
 		{#each getAllLibrarian as librarian}
@@ -18,10 +18,21 @@
 						class="librarian-img"
 						alt={librarian.name}
 					/>
-					<div class="flex flex-col mt-3">
-						<h6>{librarian.name}</h6>
-						<p>{librarian.email}</p>
-						<p>{librarian.departmentId}</p>
+					<div class="flex flex-col my-3">
+						<h5>{librarian.name}</h5>
+						<a
+							href="mailto:{librarian.email}"
+							class="text-gray-6 text-sm italic transition-all-500 hover:underline"
+						>
+							{librarian.email}
+						</a>
+						<p class="font-semibold dfTx">{librarian.department?.departmentName}</p>
+					</div>
+					<div class="w-full">
+						<p class="dfBg rounded">Subjects:</p>
+						{#each librarian.subjectsInstructor as subject}
+							<p class="text-left text-sm">&star; {subject.subjectName}</p>
+						{/each}
 					</div>
 				</div>
 			</BaseCard>

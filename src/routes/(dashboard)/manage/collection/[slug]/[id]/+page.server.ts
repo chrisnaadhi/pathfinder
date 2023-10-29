@@ -1,6 +1,6 @@
 import { db } from '$lib/server/drizzle';
 import { collections, contents, subjects } from '$lib/db/pgSchema';
-import { eq } from 'drizzle-orm';
+import { eq, desc } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
 
 const date = new Date();
@@ -15,7 +15,8 @@ export const load = async ({ params, url }) => {
 	const contentsList = await db
 		.select()
 		.from(contents)
-		.where(eq(contents.collectionId, Number(params.id)));
+		.where(eq(contents.collectionId, Number(params.id)))
+		.orderBy(desc(contents.updatedAt));
 
 	return {
 		collectionItem,

@@ -9,15 +9,17 @@
 
 <section>
 	<h2>{placeholder}</h2>
-	<div class="subjects">
+	<div class="grid grid-cols-4 gap-3 my-5">
 		{#each getAllSubjects as discipline}
-			<h6>{discipline.disciplineName}</h6>
-			<div class="flex flex-col">
-				{#each discipline.subject as subject}
-					<a href={$page.url.pathname + '/' + subject.subjectSlug}>
-						&star; {subject.subjectName}
-					</a>
-				{/each}
+			<div class="subjects">
+				<h6>{discipline.disciplineName}</h6>
+				<div class="flex flex-col">
+					{#each discipline.subject as subject}
+						<a href={$page.url.pathname + '/' + subject.subjectSlug}>
+							&star; {subject.subjectName}
+						</a>
+					{/each}
+				</div>
 			</div>
 		{/each}
 	</div>
@@ -25,10 +27,10 @@
 
 <style>
 	section {
-		--at-apply: max-w-6xl ma;
+		--at-apply: max-w-6xl ma min-h-screen;
 	}
 
 	.subjects {
-		--at-apply: text-left;
+		--at-apply: text-left dfBgThird p-5 flex flex-col rounded-lg;
 	}
 </style>

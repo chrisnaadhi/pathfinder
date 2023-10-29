@@ -6,7 +6,7 @@
 
 	export let data;
 
-	const { listGuide, getSubjects } = data;
+	const { getSubjectData, getSubjectSpecialist } = data;
 </script>
 
 <main class="max-w-7xl ma">
@@ -22,20 +22,23 @@
 	<section class="main-content">
 		<div class="main-subject">
 			<div>
-				<SubjectLists guideType={listGuide} />
-				<section class="flex flex-col w-full gap-2 rounded px-15 text-left">
-					{#each getSubjects as subject}
-						<div class="text-xl">
-							<a href="/subjects/{subject.subjectSlug}">
-								&bigstar; &ThickSpace;{subject.subjectName}
-							</a>
+				<!-- <SubjectLists guideType={listGuide} /> -->
+				<section class="flex flex-col w-full gap-2 rounded p-10 text-left">
+					{#each getSubjectData as sub}
+						<div>
+							<h6>{sub.disciplineName}</h6>
+							{#each sub.subject as sube}
+								<div class="pl-3">
+									&bigstar; <a href={'subjects/' + sube.subjectSlug}>{sube.subjectName}</a>
+								</div>
+							{/each}
 						</div>
 					{/each}
 				</section>
 			</div>
 
 			<div>
-				<SubjectSpecialist />
+				<SubjectSpecialist subjectSpecialist={getSubjectSpecialist} />
 			</div>
 		</div>
 	</section>

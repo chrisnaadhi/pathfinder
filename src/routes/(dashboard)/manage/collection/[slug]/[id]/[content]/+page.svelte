@@ -11,7 +11,7 @@
 </script>
 
 <section>
-	<div class="dfBgSecond rounded p-5 my-5">
+	<div class="dfBgSecond rounded p-5 mb-5">
 		<div class="dfBg ma max-w-lg py-2 text-center rounded">
 			<h4>{content.title}</h4>
 		</div>

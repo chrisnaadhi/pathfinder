@@ -1,5 +1,5 @@
 import { db } from '$lib/server/drizzle';
-import { subjects, users } from '$lib/db/pgSchema';
+import { subjects, users, discipline } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 
 export const load = async () => {
@@ -10,10 +10,12 @@ export const load = async () => {
 			description: subjects.subjectDescription,
 			type: subjects.type,
 			slug: subjects.subjectSlug,
-			specialist: users.name
+			specialist: users.name,
+			disciplineName: discipline.disciplineName
 		})
 		.from(subjects)
 		.leftJoin(users, eq(users.id, subjects.instructor))
+		.leftJoin(discipline, eq(discipline.id, subjects.disciplineId))
 		.orderBy(subjects.id);
 	return {
 		results,

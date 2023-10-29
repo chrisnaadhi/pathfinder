@@ -10,7 +10,7 @@
 	};
 </script>
 
-<nav class="fixed top-0 w-full z-5 dfBgSecond">
+<nav class="fixed top-0 w-full z-5 bg-white shadow-md">
 	<section class="nav-section">
 		<div>
 			<a href="/">

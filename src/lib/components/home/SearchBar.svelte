@@ -4,7 +4,13 @@
 
 <section>
 	<div class="relative max-w-xl ma">
-		<input type="search" name="searchbox" bind:value={searchValue} placeholder="Find your path.." />
+		<input
+			type="search"
+			name="searchbox"
+			bind:value={searchValue}
+			placeholder="Find your path.."
+			autocomplete="off"
+		/>
 		<button type="submit">Cari</button>
 	</div>
 </section>

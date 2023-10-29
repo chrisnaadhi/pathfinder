@@ -3,13 +3,15 @@ import { db } from '$lib/server/drizzle';
 import { auth } from '$lib/server/lucia';
 import { LuciaError } from 'lucia';
 import { redirect } from '@sveltejs/kit';
-import { page } from '$app/stores';
 
-export const load = async ({ params }) => {
+export const load = async ({ locals }) => {
 	const getDepartment = await db.select().from(department);
+	const userSession = await locals.auth.validate();
+	const userRole = userSession?.user.userType;
 
 	return {
-		getDepartment
+		getDepartment,
+		userRole
 	};
 };
 

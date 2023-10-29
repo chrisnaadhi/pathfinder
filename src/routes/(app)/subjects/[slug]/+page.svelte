@@ -26,7 +26,7 @@
 		<div class="subject-specialist-card">
 			<h5 class="dfBg w-full rounded-tr-lg rounded-tl-lg px-5">Subject Specialist</h5>
 			<img
-				src={getSubjectSpecialist?.photo}
+				src={getSubjectSpecialist?.photo ?? '/img/default.jpg'}
 				alt={getSubjectSpecialist?.username}
 				class="rounded-full w-24 h-24 object-cover my-2"
 			/>

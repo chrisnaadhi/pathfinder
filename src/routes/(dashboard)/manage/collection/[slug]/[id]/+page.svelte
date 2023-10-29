@@ -56,14 +56,14 @@
 
 	<div class="grid grid-cols-3 gap-2">
 		{#each data.contentsList as res}
-			<div class="box">
+			<div class="box flex flex-col justify-between">
 				<h4>{res.title}</h4>
 				<p class="text-sm">{trimText(res.contentDescription, 120)}</p>
 				<div class="flex w-full items-center gap-3 text-center mt-2">
 					<a href={`${$page.url.toString()}/${res.id}`} class="btn dfBg w-full"> Lihat </a>
 					<a
 						href={`${$page.url.toString()}/${res.id}/edit`}
-						class="btn dfBgSecond dfTx w-full flex gap-1 items-center justify-center"
+						class="btn dfBgSecond dfTx w-full flex gap-1 items-center justify-center border border-violet"
 					>
 						<div class="i-mdi-pencil-box w-4 h-4" />
 						Edit

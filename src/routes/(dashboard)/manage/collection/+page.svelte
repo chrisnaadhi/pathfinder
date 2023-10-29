@@ -34,16 +34,21 @@
 					<h5>{subject.title}</h5>
 					<div class={badgeColor(subject.type) + ' badge'}>{subject.type}</div>
 				</div>
+
 				<p class="italic text-sm text-justify">{trimText(subject.description, 130)}</p>
+				<div class="my-2">
+					<span class="bg-gray text-white text-xs p-1 rounded">{subject.disciplineName}</span>
+				</div>
 				<div class="my-2 text-sm font-bold">
 					Subject Specialist: <span class="badge dfBg">{subject.specialist}</span>
 				</div>
+
 				<div class="flex w-full gap-3 mt-4">
 					<a href="{$page.url.pathname}/{subject.slug}" class="w-full">
 						<button class="default-button">Lihat</button>
 					</a>
 					<a href="{$page.url.pathname}/{subject.slug}/edit" class="w-full">
-						<button class="btn bg-orange-2 text-dark w-full">Edit</button>
+						<button class="btn dfBgThird dfTx border border-violet w-full">Edit</button>
 					</a>
 				</div>
 			</div>
