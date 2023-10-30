@@ -23,7 +23,9 @@
 		<div class="main-subject">
 			<div>
 				<!-- <SubjectLists guideType={listGuide} /> -->
+
 				<section class="flex flex-col w-full gap-2 rounded p-10 text-left">
+					<h3>Daftar Subjek</h3>
 					{#each getSubjectData as sub}
 						<div>
 							<h6>{sub.disciplineName}</h6>

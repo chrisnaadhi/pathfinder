@@ -14,27 +14,26 @@
 				/>
 				<div class="text-left">
 					<h5>{specialist.name}</h5>
+					<p class="bg-violet text-xs p-1">{specialist.userType?.typeName}</p>
 					<span class="flex gap-2 text-xs text-dark-50 italic">
 						{#each specialist.subjectsInstructor as sub}
 							<p class=" dfTx">{sub.subjectName}</p>
 						{/each}
 					</span>
-					<p>{specialist.email}</p>
+					<a href={'mailto:' + specialist.email} class="text-sm text-gray italic hover:(dfTx)">
+						{specialist.email}
+					</a>
 				</div>
 			</div>
 		{/each}
 	</div>
 	<div>
-		<a href="/librarian">Lihat semua SS</a>
+		<a class="btn dfBg" href="/librarian">Lihat semua SS</a>
 	</div>
 </section>
 
 <style>
 	.librarian-list {
 		--at-apply: m-5;
-	}
-
-	a {
-		--at-apply: btn dfBg;
 	}
 </style>

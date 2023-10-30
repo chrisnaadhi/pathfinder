@@ -60,8 +60,12 @@
 								<h6>{content.title}</h6>
 								<p>
 									{content.contentDescription}
-									<a href={$page.url.pathname + `/${content.id}`}>Lihat &rightarrow;</a>
 								</p>
+								<div class="mt-2">
+									<a class="dfBg py-1 px-4 rounded" href={$page.url.pathname + `/${content.id}`}>
+										Lihat &rightarrow;
+									</a>
+								</div>
 							</div>
 						{/if}
 					{/each}

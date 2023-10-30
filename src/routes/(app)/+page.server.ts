@@ -9,7 +9,8 @@ export const load = async ({ request, locals }) => {
 	const getSubjectSpecialist = await db.query.users.findMany({
 		where: or(eq(users.type, 1), eq(users.type, 2)),
 		with: {
-			subjectsInstructor: true
+			subjectsInstructor: true,
+			userType: true
 		},
 		limit: 3
 	});
