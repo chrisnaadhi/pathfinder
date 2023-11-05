@@ -1,7 +1,9 @@
 import { contents } from '$lib/db/pgSchema.js';
 import { db } from '$lib/server/drizzle';
 import { redirect } from '@sveltejs/kit';
-import { eq, param } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
+
+const date = new Date();
 
 export const load = async ({ params }) => {
 	const contentData = await db.select().from(contents).where(eq(contents.id, params.content));
@@ -26,7 +28,8 @@ export const actions = {
 				title,
 				contents: content,
 				contentDescription: description,
-				tag: tags
+				tag: tags,
+				updatedAt: new Date(date.toISOString())
 			})
 			.where(eq(contents.id, params.content));
 

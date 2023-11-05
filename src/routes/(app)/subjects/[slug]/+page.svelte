@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { fade, fly } from 'svelte/transition';
-	import { backButton } from '$lib/utils/textFormatter';
+	import { backButton, trimText } from '$lib/utils/textFormatter';
 
 	export let data;
 
@@ -59,7 +59,7 @@
 							>
 								<h6>{content.title}</h6>
 								<p>
-									{content.contentDescription}
+									{trimText(content.contentDescription, 120)}
 								</p>
 								<div class="mt-2">
 									<a class="dfBg py-1 px-4 rounded" href={$page.url.pathname + `/${content.id}`}>

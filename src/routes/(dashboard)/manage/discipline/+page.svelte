@@ -10,7 +10,7 @@
 
 	export let data;
 
-	const { disciplinesData } = data;
+	const { disciplinesData, role } = data;
 </script>
 
 <section>
@@ -18,7 +18,13 @@
 	<section>
 		<div class="my-3 flex justify-between">
 			<h5>Daftar Disiplin Ilmu</h5>
-			<a href="/manage/discipline/new" class="btn dfBg">&plus; New Discipline</a>
+			<a
+				href={role === 1 ? '/manage/discipline/new' : '/manage/discipline#'}
+				class:active-btn={role === 1}
+				class:disabled-btn={role !== 1}
+			>
+				&plus; New Discipline
+			</a>
 		</div>
 		<div class="my-3">
 			<a href={backUrl} class="btn bg-gray-2 text-dark">&leftarrow;Kembali</a>
@@ -47,5 +53,13 @@
 <style>
 	.discipline-list {
 		--at-apply: flex flex-col gap-3 md:(grid grid-cols-3);
+	}
+
+	.active-btn {
+		--at-apply: btn dfBg;
+	}
+
+	.disabled-btn {
+		--at-apply: btn bg-gray-3 text-dark cursor-not-allowed;
 	}
 </style>

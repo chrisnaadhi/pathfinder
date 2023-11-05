@@ -4,9 +4,8 @@
 
 	export let data;
 
-	const { results, subjectResults } = data;
+	const { subjectResults } = data;
 	let name = 'Subjects';
-	let displayCard = ['One', 'Two', 'Three', 'Four'];
 
 	let badgeColor = (value: string | null) => {
 		switch (value) {

@@ -5,7 +5,8 @@
 
 	export let data;
 
-	const { disciplineData, getSubjectOfDiscipline } = data;
+	const { disciplineData, getSubjectOfDiscipline, role, userId } = data;
+
 	const back = backButton($page);
 </script>
 
@@ -14,7 +15,9 @@
 	<p>{disciplineData.disciplineDescription}</p>
 	<div class="my-3">
 		<a href={back} class="btn bg-gray-2 text-dark">&leftarrow;Kembali</a>
-		<a href={$page.url.pathname + '/edit'} class="btn dfBg">Edit</a>
+		{#if role === 1}
+			<a href={$page.url.pathname + '/edit'} class="btn dfBg">Edit</a>
+		{/if}
 	</div>
 	<div>
 		<h4>Daftar Subjek dalam disiplin <span class="dfTx">{disciplineData.disciplineName}</span></h4>
@@ -24,7 +27,14 @@
 					<h6>{subject.subjectName}</h6>
 					<p class="text-sm">{trimText(subject.subjectDescription, 80)}</p>
 					<div class="flex mt-2">
-						<a href="/manage/collection/{subject.subjectSlug}" class="btn dfBg w-full text-center">
+						<a
+							href={subject.instructor === userId
+								? `/manage/collection/${subject.subjectSlug}`
+								: `${$page.url.pathname}#`}
+							class="btn w-full text-center"
+							class:accessible-btn={subject.instructor === userId}
+							class:inaccessible-btn={subject.instructor !== userId}
+						>
 							Lihat
 						</a>
 					</div>
@@ -35,6 +45,14 @@
 </section>
 
 <style>
+	.accessible-btn {
+		--at-apply: dfBg;
+	}
+
+	.inaccessible-btn {
+		--at-apply: bg-gray-2 border border-gray text-dark cursor-not-allowed;
+	}
+
 	p {
 		--at-apply: italic;
 	}

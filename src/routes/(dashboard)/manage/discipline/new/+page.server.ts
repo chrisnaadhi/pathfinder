@@ -1,5 +1,5 @@
-import { db } from '$lib/server/drizzle.js';
-import { discipline, faculty } from '$lib/db/pgSchema.js';
+import { db } from '$lib/server/drizzle';
+import { discipline, faculty } from '$lib/db/pgSchema';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ locals }) => {

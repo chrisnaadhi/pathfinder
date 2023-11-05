@@ -5,7 +5,8 @@ import { redirect } from '@sveltejs/kit';
 
 const date = new Date();
 
-export const load = async ({ params }) => {
+export const load = async ({ params, locals }) => {
+	const getSession = await locals.auth.validate();
 	const getDiscipline = await db.select().from(discipline).where(eq(discipline.code, params.code));
 	const getAllFaculty = await db.select().from(faculty);
 	const joinFaculty = await db
@@ -13,6 +14,8 @@ export const load = async ({ params }) => {
 		.from(discipline)
 		.fullJoin(faculty, eq(discipline.faculty, faculty.id));
 	const disciplineData = getDiscipline[0];
+
+	if (getSession?.user.userType !== 1) throw redirect(302, '/manage/discipline');
 
 	return {
 		disciplineData,

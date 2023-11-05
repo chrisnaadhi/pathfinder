@@ -3,7 +3,8 @@ import { asc, eq } from 'drizzle-orm';
 import { db } from '$lib/server/drizzle';
 import { subjects, collections, users } from '$lib/db/pgSchema';
 
-export const load = async ({ params }) => {
+export const load = async ({ params, locals }) => {
+	const session = await locals.auth.validate();
 	const getSubject = await db
 		.select({
 			id: subjects.id,
@@ -30,11 +31,15 @@ export const load = async ({ params }) => {
 		.where(eq(users.id, `${subjectData.librarian}`));
 
 	const specialist = subjectSpecialist[0];
+	const isInstructor = subjectData.librarian === session?.user.id ? true : false;
+
+	if (session?.user.id !== subjectData.librarian) throw redirect(302, '/manage/discipline#');
 
 	return {
 		getCollection,
 		subjectData,
-		specialist
+		specialist,
+		isInstructor
 	};
 };
 

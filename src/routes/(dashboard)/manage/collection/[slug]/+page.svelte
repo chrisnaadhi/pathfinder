@@ -14,7 +14,11 @@
 	<div class="flex gap-5 p-5">
 		<div class="flex flex-col items-center justify-center text-center gap-3 min-w-60">
 			<p class="font-semibold italic">Subject Specialist</p>
-			<img src={specialist.photo} alt="" class="w-30 h-30 rounded-lg object-cover" />
+			<img
+				src={specialist.photo ?? '/img/default.jpg'}
+				alt=""
+				class="w-30 h-30 rounded-lg object-cover"
+			/>
 			<h6>{specialist.name}</h6>
 		</div>
 		<div>
