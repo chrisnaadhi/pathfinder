@@ -46,6 +46,10 @@ export const actions = {
 		throw redirect(302, '/manage/discipline');
 	},
 	deleteData: async ({ request, params }) => {
-		const data = await request.formData();
+		const dataCollection = params.code;
+
+		await db.delete(discipline).where(eq(discipline.code, dataCollection));
+
+		throw redirect(302, '/manage/discipline');
 	}
 };

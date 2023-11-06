@@ -4,9 +4,13 @@ import { eq } from 'drizzle-orm';
 
 export const load = async ({ locals }) => {
 	const session = await locals.auth.validate();
-	let subjectResults;
+	const userType = session?.user.userType;
 
-	if (session?.user.userType !== 1) {
+	let subjectResults = null;
+
+	const results = await db.select().from(subjects).orderBy(subjects.id);
+
+	if (userType === 1) {
 		subjectResults = await db
 			.select({
 				title: subjects.subjectName,
@@ -14,15 +18,13 @@ export const load = async ({ locals }) => {
 				type: subjects.type,
 				slug: subjects.subjectSlug,
 				specialist: users.name,
-				disciplineName: discipline.disciplineName,
-				instructor: subjects.instructor
+				disciplineName: discipline.disciplineName
 			})
 			.from(subjects)
-			.where(eq(subjects.instructor, session?.user.id))
 			.leftJoin(users, eq(users.id, subjects.instructor))
 			.leftJoin(discipline, eq(discipline.id, subjects.disciplineId))
 			.orderBy(subjects.id);
-	} else {
+	} else if (userType === 2) {
 		subjectResults = await db
 			.select({
 				title: subjects.subjectName,
@@ -30,10 +32,10 @@ export const load = async ({ locals }) => {
 				type: subjects.type,
 				slug: subjects.subjectSlug,
 				specialist: users.name,
-				disciplineName: discipline.disciplineName,
-				instructor: subjects.instructor
+				disciplineName: discipline.disciplineName
 			})
 			.from(subjects)
+			.where(eq(subjects.instructor, session?.user?.userId!))
 			.leftJoin(users, eq(users.id, subjects.instructor))
 			.leftJoin(discipline, eq(discipline.id, subjects.disciplineId))
 			.orderBy(subjects.id);

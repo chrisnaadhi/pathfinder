@@ -7,7 +7,7 @@
 </script>
 
 <h1>Daftar Subject Specialist</h1>
-<p>Anda bisa menemukan dan mencari seluruh Pustakawan Subject Specialist disini</p>
+<p class="mt-5">Anda bisa menemukan dan mencari seluruh Pustakawan Subject Specialist disini</p>
 <section class="max-w-4xl ma">
 	<div class="librarian-list">
 		{#each getAllLibrarian as librarian}
@@ -38,11 +38,6 @@
 			</BaseCard>
 		{/each}
 	</div>
-	<p>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos in laborum tenetur quis
-		eaque assumenda deserunt perferendis vero culpa debitis et cum praesentium officiis quaerat,
-		modi facere consequuntur optio amet?
-	</p>
 </section>
 
 <style>

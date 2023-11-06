@@ -24,8 +24,8 @@ export const userRole = () => {
 	const role = [
 		{
 			id: 1,
-			typeName: 'Super Admin',
-			description: 'Super Administrator PathfinderKit',
+			typeName: 'Koordinator Subjects',
+			description: 'Koordinator Subjects',
 			typeRole: 'admin'
 		},
 		{

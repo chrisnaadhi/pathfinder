@@ -14,7 +14,12 @@
 				/>
 				<div class="text-left">
 					<h5>{specialist.name}</h5>
-					<p class="bg-violet text-xs p-1">{specialist.userType?.typeName}</p>
+					<div class="flex flex-row">
+						<p class="dfBg rounded-lg text-xs font-semibold py-1 px-3">
+							{specialist.userType?.typeName}
+						</p>
+					</div>
+
 					<span class="flex gap-2 text-xs text-dark-50 italic">
 						{#each specialist.subjectsInstructor as sub}
 							<p class=" dfTx">{sub.subjectName}</p>

@@ -26,7 +26,7 @@
 
 <section>
 	<h3>Apa itu <span class="lantera">Lantera</span> ?</h3>
-	<div class="flex items-center justify-center">
+	<div class="flex flex-col items-center justify-center md:flex-row">
 		<div class="w-full flex justify-center">
 			<img src="/illust/undraw_Search_engines.png" alt="" class="w-150" />
 		</div>
@@ -53,7 +53,7 @@
 
 <section class="py-15">
 	<h3>Fitur <span class="lantera">Lantera</span></h3>
-	<div class="flex justify-around gap-5">
+	<div class="flex flex-col items-center justify-around gap-5 sm:flex-row">
 		{#each feature as feat}
 			<div class="max-w-75 flex flex-col items-center">
 				<img src={feat.img} alt={feat.name} class="h-45" />

@@ -9,6 +9,10 @@
 	const { getSubject, getCollection, getSubjectSpecialist } = data;
 	let contentState = getCollection[0]?.id;
 
+	const otherSubjects = getSubjectSpecialist?.subjectsInstructor.filter(
+		(subject) => subject.subjectSlug !== getSubject?.subjectSlug
+	);
+
 	const changeCollection = (value: any) => {
 		contentState = value;
 	};
@@ -16,9 +20,9 @@
 
 <section class="max-w-5xl ma">
 	<div>
-		<a href="/" class="italic font-semibold text-lg">Lantera</a>
+		<a href="/" class="font-semibold text-lg">Lantera</a>
 		<h2>{getSubject?.subjectName}</h2>
-		<p class="text-sm text-gray-5 italic mt-2 mb-10 max-w-2xl ma">
+		<p class="text-sm text-gray-5 italic mt-2 mb-10 max-w-4xl ma">
 			{getSubject?.subjectDescription}
 		</p>
 	</div>
@@ -33,8 +37,18 @@
 			<h6>{getSubjectSpecialist?.name}</h6>
 			<a
 				href={'mailto:' + getSubjectSpecialist?.email}
-				class="text-gray-5 text-sm italic hover:dfTx">{getSubjectSpecialist?.email}</a
+				class="text-gray-5 text-sm italic hover:dfTx"
 			>
+				{getSubjectSpecialist?.email}
+			</a>
+			<div>
+				<div class="dfBg px-4 py-1 my-3 rounded">Subjek:</div>
+				<div class="grid grid-cols-2 gap-2 text-left">
+					{#each otherSubjects || [] as subject}
+						<a href={'/subjects/' + subject.subjectSlug}>&star; {subject.subjectName}</a>
+					{/each}
+				</div>
+			</div>
 		</div>
 		<div class="w-full">
 			<div class="flex gap-1 mb-3">
@@ -61,6 +75,11 @@
 								<p>
 									{trimText(content.contentDescription, 120)}
 								</p>
+
+								<p class="text-xs italic">
+									Keyword: <span class=" dfTx hover:underline">{content.tag}</span>
+								</p>
+
 								<div class="mt-2">
 									<a class="dfBg py-1 px-4 rounded" href={$page.url.pathname + `/${content.id}`}>
 										Lihat &rightarrow;
@@ -89,7 +108,7 @@
 	}
 
 	.collection {
-		--at-apply: btn bg-gray-3 text-dark hover:dfTx;
+		--at-apply: btn bg-gray-2 text-gra5 hover:dfTx;
 	}
 
 	.collection-active {

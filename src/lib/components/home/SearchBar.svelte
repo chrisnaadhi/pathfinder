@@ -1,23 +1,52 @@
 <script lang="ts">
+	import { trimText } from '$lib/utils/textFormatter';
+	import { fade, fly } from 'svelte/transition';
+
 	export let searchValue: string = '';
+
+	let searchResults: any = null;
+
+	const getResults = async () => {
+		const result = await fetch(`/api/search?q=${searchValue}`);
+		searchResults = await result.json();
+		console.log(searchResults);
+	};
 </script>
 
 <section>
-	<div class="relative max-w-xl ma">
+	<div class="relative z-5">
 		<input
 			type="search"
 			name="searchbox"
 			bind:value={searchValue}
+			on:keydown={getResults}
 			placeholder="Find your path.."
 			autocomplete="off"
 		/>
-		<button type="submit">Cari</button>
+		<button type="submit" on:click={getResults}>Cari</button>
+	</div>
+	<div class="absolute max-w-xl max-h-md overflow-y-scroll overflow-x-hidden">
+		{#if searchResults && searchValue}
+			<div class="bg-white min-w-xl z-4 pt-5 mt--4 border dfBorder px-2 rounded">
+				<div class="w-full">
+					{#each searchResults as result}
+						<div transition:fade={{ delay: 250, duration: 300 }} class="py-2 text-left">
+							<a href="/subjects/{result?.subjects?.subjectSlug}/{result?.id}">
+								<h6 class="dfTx">{result?.title}</h6>
+							</a>
+
+							<p class="italic text-gray-4">{trimText(result.contentDescription, 100)}</p>
+						</div>
+					{/each}
+				</div>
+			</div>
+		{/if}
 	</div>
 </section>
 
 <style>
 	section {
-		--at-apply: w-full px-2 md:px-0;
+		--at-apply: max-w-xl ma px-2 md:px-0;
 	}
 
 	input {

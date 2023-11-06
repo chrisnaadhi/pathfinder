@@ -16,7 +16,10 @@ export const load = async ({ params }) => {
 	});
 
 	const getSubjectSpecialist = await db.query.users.findFirst({
-		where: eq(users.id, getSubject?.instructor!)
+		where: eq(users.id, getSubject?.instructor!),
+		with: {
+			subjectsInstructor: true
+		}
 	});
 
 	return {

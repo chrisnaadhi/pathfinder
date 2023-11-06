@@ -11,7 +11,7 @@
 		<img src="/img/lantera.png" alt="Lantera" class="w-40" />
 	</div>
 
-	<h1>Selamat datang di <span class="dfTx">{name}</span></h1>
+	<h1 class="text-3xl md:text-5xl">Selamat datang di <span class="dfTx">{name}</span></h1>
 	<br />
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et amet provident nesciunt deserunt
@@ -25,7 +25,7 @@
 
 <style>
 	section {
-		--at-apply: pt-10 pb-15 max-w-5xl ma px-3;
+		--at-apply: pt-10 pb-15 max-w-5xl ma px-8;
 	}
 
 	h1 {

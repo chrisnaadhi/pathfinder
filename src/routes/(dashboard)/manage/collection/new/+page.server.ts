@@ -3,7 +3,9 @@ import { db } from '$lib/server/drizzle';
 import { discipline, subjects, users, faculty } from '$lib/db/pgSchema';
 import { eq, or } from 'drizzle-orm';
 
-export const load = async () => {
+export const load = async ({ locals }) => {
+	const session = await locals.auth.validate();
+	const type = session?.user.userType;
 	const getDiscipline = await db.select().from(discipline);
 	const getFaculty = await db.select().from(faculty);
 	const getLibrarian = await db
@@ -14,7 +16,8 @@ export const load = async () => {
 	return {
 		getDiscipline,
 		getLibrarian,
-		getFaculty
+		getFaculty,
+		type
 	};
 };
 
@@ -40,7 +43,7 @@ export const actions = {
 			subjectStatus: subjectStatus,
 			type: subjectType,
 			disciplineId: Number(subjectDiscipline),
-			instructor: instructor,
+			instructor: session?.user.userType === 2 ? session?.user.userId : instructor,
 			creator: session?.user.userId
 		});
 

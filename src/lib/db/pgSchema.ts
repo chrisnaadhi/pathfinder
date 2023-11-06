@@ -19,16 +19,16 @@ export const users = pgTable('auth_user', {
 	name: varchar('full_name', { length: 255 }).notNull(),
 	title: text('title'),
 	bio: text('biograph'),
-	type: integer('type_id').references(() => userType.id),
+	type: integer('type_id').references(() => userType.id, { onDelete: 'cascade' }),
 	photo: text('photo'),
-	departmentId: integer('department_id').references(() => department.id)
+	departmentId: integer('department_id').references(() => department.id, { onDelete: 'cascade' })
 });
 
 export const session = pgTable('auth_session', {
 	id: varchar('id', { length: 128 }).primaryKey(),
 	userId: varchar('user_id', { length: 32 })
 		.notNull()
-		.references(() => users.id),
+		.references(() => users.id, { onDelete: 'cascade' }),
 	activeExpires: bigint('active_expires', {
 		mode: 'number'
 	}).notNull(),
@@ -45,7 +45,7 @@ export const key = pgTable('auth_key', {
 		length: 32
 	})
 		.notNull()
-		.references(() => users.id),
+		.references(() => users.id, { onDelete: 'cascade' }),
 	primaryKey: boolean('primary_key'),
 	hashedPassword: varchar('hashed_password', {
 		length: 155
@@ -89,8 +89,8 @@ export const discipline = pgTable('discipline', {
 	disciplineDescription: text('discipline_description'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-	faculty: integer('faculty').references(() => faculty.id),
-	creator: varchar('creator').references(() => users.id)
+	faculty: integer('faculty').references(() => faculty.id, { onDelete: 'cascade' }),
+	creator: varchar('creator').references(() => users.id, { onDelete: 'cascade' })
 });
 
 export const subjects = pgTable('subjects', {
@@ -105,9 +105,11 @@ export const subjects = pgTable('subjects', {
 	type: varchar('subject_type'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-	creator: varchar('creator').references(() => users.id),
-	instructor: varchar('instructor', { length: 32 }).references(() => users.id),
-	disciplineId: integer('discipline_id').references(() => discipline.id)
+	creator: varchar('creator').references(() => users.id, { onDelete: 'cascade' }),
+	instructor: varchar('instructor', { length: 32 }).references(() => users.id, {
+		onDelete: 'cascade'
+	}),
+	disciplineId: integer('discipline_id').references(() => discipline.id, { onDelete: 'cascade' })
 });
 
 export const collections = pgTable('collections', {
@@ -118,8 +120,8 @@ export const collections = pgTable('collections', {
 	deskripsi: varchar('description'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-	creator: varchar('creator').references(() => users.id),
-	subjectId: integer('subject_id').references(() => subjects.id)
+	creator: varchar('creator').references(() => users.id, { onDelete: 'cascade' }),
+	subjectId: integer('subject_id').references(() => subjects.id, { onDelete: 'cascade' })
 });
 
 export const contents = pgTable('contents', {
@@ -130,9 +132,9 @@ export const contents = pgTable('contents', {
 	tag: varchar('tag'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-	collectionId: integer('collection_id').references(() => collections.id),
-	subjectId: integer('subject_id').references(() => subjects.id),
-	creator: varchar('creator').references(() => users.id)
+	collectionId: integer('collection_id').references(() => collections.id, { onDelete: 'cascade' }),
+	subjectId: integer('subject_id').references(() => subjects.id, { onDelete: 'cascade' }),
+	creator: varchar('creator').references(() => users.id, { onDelete: 'cascade' })
 });
 
 // Users Relations

@@ -1,6 +1,7 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
+	import DeleteModal from '$lib/components/generic/DeleteModal.svelte';
 	import { backButton } from '$lib/utils/textFormatter';
 
 	export let data;
@@ -50,9 +51,12 @@
 				</optgroup>
 			</select>
 		</div>
-		<div class="my-3">
-			<a href={back} class="btn bg-gray-2 text-dark">&leftarrow;Kembali</a>
-			<button type="submit" class="btn dfBg">Update</button>
+		<div class="my-3 flex flex-row gap-3 text-center">
+			<a href={back} class="btn bg-gray-2 text-dark w-full">&leftarrow;Kembali</a>
+			<button type="submit" class="btn dfBg w-full">Update</button>
+			<DeleteModal>
+				<p>Anda yakin ingin menghapus ?</p>
+			</DeleteModal>
 		</div>
 	</form>
 </section>
