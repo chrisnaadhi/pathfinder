@@ -76,9 +76,10 @@
 			<div class="px-5">
 				<h5 class="dfTx">Contents</h5>
 				<p>
-					Merupakan komponen kelompok paling atas untuk menampung setiap subjek keilmuan yang berada
-					dalam satu rumpun. Contohnya adalah Fakultas Ilmu Komunikasi yang berada di Universitas
-					Padjadjaran
+					Contents merupakan salah satu koleksi yang ada dalam kumpulan koleksi di Subjek. Contents
+					dapat berisi satu atau lebih informasi mengenai koleksi yang ada di masing-masing Subjek.
+					Contohnya adalah <span class="highlight">Buku E-DDC Edisi 23</span> yang berada dalam Koleksi
+					Buku Fisik dari Klasifikasi.
 				</p>
 			</div>
 		</div>

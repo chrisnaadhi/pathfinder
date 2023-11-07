@@ -35,8 +35,6 @@ export const load = async ({ params, locals }) => {
 
 	if (session?.user.userType !== 1) {
 		if (session?.user.id !== subjectData.librarian) throw redirect(302, '/manage/discipline#');
-	} else {
-		return true;
 	}
 
 	return {
