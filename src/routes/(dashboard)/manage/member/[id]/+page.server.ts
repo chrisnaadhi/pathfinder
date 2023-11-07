@@ -2,7 +2,9 @@ import { users, department, userType } from '$lib/db/pgSchema';
 import { db } from '$lib/server/drizzle';
 import { eq } from 'drizzle-orm';
 
-export const load = async ({ params }) => {
+export const load = async ({ params, locals }) => {
+	const session = await locals.auth.validate();
+
 	const getUsers = await db
 		.select({
 			username: users.username,
@@ -19,8 +21,12 @@ export const load = async ({ params }) => {
 		.leftJoin(department, eq(department.id, users.departmentId))
 		.leftJoin(userType, eq(userType.id, users.type))
 		.where(eq(users.id, params.id));
+
 	const userProfile = getUsers[0];
+	console.log(session?.user.userType);
+
 	return {
-		userProfile
+		userProfile,
+		type: session?.user.userType
 	};
 };

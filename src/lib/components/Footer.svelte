@@ -4,7 +4,7 @@
 
 <section>
 	<div class="py-5">
-		<p>&copy; {date.getFullYear()} | PathfinderKit Project</p>
+		<p>&copy; {date.getFullYear()} | Lantera PathfinderKit Project</p>
 	</div>
 </section>
 

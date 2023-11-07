@@ -20,7 +20,7 @@
 				class="rounded-full w-20 h-20 object-cover"
 			/>
 		</div>
-		<h5 class="font-bold text-center dfTx">PathfinderKit</h5>
+		<h5 class="font-bold text-center dfTx">Lantera Unpad</h5>
 		<div class="flex flex-col justify-between h-screen">
 			<nav class="flex flex-col gap-4 my-4">
 				<a

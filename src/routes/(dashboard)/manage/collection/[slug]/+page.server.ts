@@ -33,7 +33,11 @@ export const load = async ({ params, locals }) => {
 	const specialist = subjectSpecialist[0];
 	const isInstructor = subjectData.librarian === session?.user.id ? true : false;
 
-	if (session?.user.id !== subjectData.librarian) throw redirect(302, '/manage/discipline#');
+	if (session?.user.userType !== 1) {
+		if (session?.user.id !== subjectData.librarian) throw redirect(302, '/manage/discipline#');
+	} else {
+		return true;
+	}
 
 	return {
 		getCollection,

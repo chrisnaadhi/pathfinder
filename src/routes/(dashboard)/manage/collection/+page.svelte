@@ -49,7 +49,7 @@
 						<button class="default-button">Lihat</button>
 					</a>
 					<a href="{$page.url.pathname}/{subject.slug}/edit" class="w-full">
-						<button class="btn dfBgThird dfTx border border-violet w-full">Edit</button>
+						<button class="btn dfBgThird dfTx border dfBorder w-full">Edit</button>
 					</a>
 				</div>
 			</div>

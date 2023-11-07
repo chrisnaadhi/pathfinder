@@ -15,6 +15,8 @@ export const load = async ({ request, fetch }) => {
 		limit: 3
 	});
 
+	const randomSubjectSpecialist = getSubjectSpecialist.sort(() => 0.5 - Math.random()).slice(0, 3);
+
 	const getSubjectData = await db.query.discipline.findMany({
 		with: {
 			subject: true
@@ -55,6 +57,7 @@ export const load = async ({ request, fetch }) => {
 		getSubjectDataTopic,
 		getSubjectDataGuide,
 		getSubjectDataCourse,
-		getSubjectSpecialist
+		getSubjectSpecialist,
+		randomSubjectSpecialist
 	};
 };

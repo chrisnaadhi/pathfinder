@@ -21,11 +21,11 @@
 		</div>
 		<div class="div-form">
 			<label for="username">Username:</label>
-			<input type="text" name="username" id="username" value={userData.username} />
+			<input type="text" name="username" id="username" value={userData.username} disabled />
 		</div>
 		<div class="div-form">
 			<label for="email">E-Mail:</label>
-			<input type="email" name="email" id="email" value={userData.email} />
+			<input type="email" name="email" id="email" value={userData.email} disabled />
 		</div>
 		<div class="div-form">
 			<label for="department">Department:</label>

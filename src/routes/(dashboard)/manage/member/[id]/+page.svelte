@@ -4,8 +4,10 @@
 
 	export let data;
 
-	const { userProfile } = data;
+	const { userProfile, type } = data;
 	const back = backButton($page);
+
+	console.log(userProfile);
 </script>
 
 <section>
@@ -45,7 +47,7 @@
 	</div>
 	<div class="my-5">
 		<a href={back} class="btn bg-gray-2">&leftarrow;Kembali</a>
-		{#if userProfile.userType === 1}
+		{#if type === 1}
 			<a href={$page.url.pathname + '/edit'} class="btn dfBg">Edit</a>
 		{/if}
 	</div>

@@ -11,6 +11,7 @@
 		getSubjectDataTopic,
 		getSubjectDataCourse,
 		getSubjectSpecialist,
+		randomSubjectSpecialist,
 		listGuide
 	} = data;
 
@@ -111,7 +112,7 @@
 			</div>
 
 			<div>
-				<SubjectSpecialist subjectSpecialist={getSubjectSpecialist} />
+				<SubjectSpecialist subjectSpecialist={randomSubjectSpecialist} />
 			</div>
 		</div>
 	</section>
