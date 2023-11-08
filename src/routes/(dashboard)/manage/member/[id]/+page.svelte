@@ -6,19 +6,19 @@
 
 	const { userProfile, type } = data;
 	const back = backButton($page);
-
-	console.log(userProfile);
 </script>
 
 <section>
 	<h3>{userProfile.username}'s Profile</h3>
 	<div class="p-5 flex gap-5 w-full rounded my-5">
-		<img
-			src={userProfile.photo ?? '/img/default.jpg'}
-			class="w-32 h-32 rounded-full"
-			alt={userProfile.fullName}
-		/>
-		<div class="flex flex-col gap-5">
+		<div class="w-full md:w-45">
+			<img
+				src={userProfile.photo ?? '/img/default.jpg'}
+				class="w-32 h-32 rounded-full object-cover"
+				alt={userProfile.fullName}
+			/>
+		</div>
+		<div class="flex flex-col gap-5 md:(grid grid-cols-2) w-full">
 			<div>
 				<h6>Nama Lengkap:</h6>
 				<p class="content-paragraph">{userProfile.fullName}</p>
@@ -45,11 +45,16 @@
 			</div>
 		</div>
 	</div>
-	<div class="my-5">
-		<a href={back} class="btn bg-gray-2">&leftarrow;Kembali</a>
+	<div class="mb-5">
 		{#if type === 1}
-			<a href={$page.url.pathname + '/edit'} class="btn dfBg">Edit</a>
+			<div class="mb-5">
+				<a href={$page.url.pathname + '/edit'} class="btn dfBg">Edit Profil</a>
+				<a href={$page.url.pathname + '/reset-password'} class="btn bg-orange text-white"
+					>Reset Password</a
+				>
+			</div>
 		{/if}
+		<a href={back} class="btn bg-gray-2">&leftarrow;Kembali</a>
 	</div>
 </section>
 

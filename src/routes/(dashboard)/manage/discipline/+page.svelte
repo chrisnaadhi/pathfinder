@@ -70,7 +70,7 @@
 
 <style>
 	.discipline-list {
-		--at-apply: flex flex-col gap-3 md:(grid grid-cols-4);
+		--at-apply: flex flex-col gap-3 sm:(grid grid-cols-2) md:(grid-cols-3) lg:(grid-cols-4);
 	}
 
 	.active-btn {

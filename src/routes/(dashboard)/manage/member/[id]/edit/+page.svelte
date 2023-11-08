@@ -39,7 +39,7 @@
 		</div>
 		<div class="div-form">
 			<label for="role">Role:</label>
-			<select name="role" id="role">
+			<select name="role" id="role" disabled={userData.type === 1}>
 				{#each getRole as role}
 					<option value={role.id} selected={userData.type === role.id}>{role.typeName}</option>
 				{/each}

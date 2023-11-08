@@ -4,10 +4,12 @@
 
 	export let data;
 
-	const { subjectResults } = data;
+	const { subjectResults, disciplineList } = data;
 	let name = 'Subjects';
+	let filteredCollection: Object[] | undefined = [];
+	let isFiltered = false;
 
-	let badgeColor = (value: string | null) => {
+	const badgeColor = (value: string | null) => {
 		switch (value) {
 			case 'guide':
 				return 'bg-emerald-6';
@@ -19,6 +21,12 @@
 				return 'bg-slate';
 		}
 	};
+	const filterSubject = (value: number) => {
+		// filteredCollection = subjectResults?.filter((val) => {
+		// 	val?.subjectDiscipline! === value;
+		// });
+		console.log(value);
+	};
 </script>
 
 <section>
@@ -26,6 +34,17 @@
 	<div class="my-4">
 		<a class="btn dfBg" href="/manage/collection/new">+ New Subject</a>
 	</div>
+	<div>
+		{#each disciplineList as disc}
+			<button on:click={() => filterSubject(disc.id)}>{disc.disciplineName}</button>
+		{/each}
+	</div>
+	{#each filteredCollection || [] as filter}
+		<p>{filter}</p>
+	{/each}
+
+	{filteredCollection}
+
 	{#if subjectResults?.length || [].length > 0}
 		<div class="grid grid-cols-3 gap-3 my-5">
 			{#each subjectResults || [] as subject}

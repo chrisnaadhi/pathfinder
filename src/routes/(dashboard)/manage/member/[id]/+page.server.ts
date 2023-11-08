@@ -23,7 +23,6 @@ export const load = async ({ params, locals }) => {
 		.where(eq(users.id, params.id));
 
 	const userProfile = getUsers[0];
-	console.log(session?.user.userType);
 
 	return {
 		userProfile,

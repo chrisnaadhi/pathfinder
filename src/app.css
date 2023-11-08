@@ -50,7 +50,8 @@ select {
 	--at-apply: dfBorder rounded p-2;
 }
 
-input:disabled {
+input:disabled,
+select:disabled {
 	--at-apply: bg-gray-3 cursor-not-allowed;
 }
 

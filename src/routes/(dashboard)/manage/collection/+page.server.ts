@@ -8,7 +8,7 @@ export const load = async ({ locals }) => {
 
 	let subjectResults = null;
 
-	const results = await db.select().from(subjects).orderBy(subjects.id);
+	const disciplineList = await db.select().from(discipline).orderBy(discipline.id);
 
 	if (userType === 1) {
 		subjectResults = await db
@@ -18,7 +18,9 @@ export const load = async ({ locals }) => {
 				type: subjects.type,
 				slug: subjects.subjectSlug,
 				specialist: users.name,
-				disciplineName: discipline.disciplineName
+				subjectDiscipline: subjects.disciplineId,
+				disciplineName: discipline.disciplineName,
+				disciplineCode: discipline.code
 			})
 			.from(subjects)
 			.leftJoin(users, eq(users.id, subjects.instructor))
@@ -32,7 +34,9 @@ export const load = async ({ locals }) => {
 				type: subjects.type,
 				slug: subjects.subjectSlug,
 				specialist: users.name,
-				disciplineName: discipline.disciplineName
+				subjectDiscipline: subjects.disciplineId,
+				disciplineName: discipline.disciplineName,
+				disciplineCode: discipline.code
 			})
 			.from(subjects)
 			.where(eq(subjects.instructor, session?.user?.userId!))
@@ -42,6 +46,7 @@ export const load = async ({ locals }) => {
 	}
 
 	return {
-		subjectResults
+		subjectResults,
+		disciplineList
 	};
 };
