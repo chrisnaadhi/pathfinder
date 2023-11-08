@@ -13,22 +13,29 @@
 <section>
 	<p>{placeholder}</p>
 	<a href={back}>&leftarrow;Kembali</a>
-	<div class="grid grid-cols-5 gap-3">
-		{#each getAdminUser as admin}
-			<BaseCard>
-				<div class="flex flex-col items-center">
-					<img
-						src={admin.photo === null ? '/img/default.jpg' : admin?.photo}
-						class="rounded-full w-20 h-20 object-cover"
-						alt={admin.username}
-					/>
-					<h6 class=" text-center">{admin.name}</h6>
-					<p class="text-xs italic">{admin.email}</p>
-					<a href="/manage/member/{admin.id}" class="btn dfBg w-full mt-5 text-center">Lihat</a>
-				</div>
-			</BaseCard>
-		{/each}
-	</div>
+	{#if getAdminUser.length > 0}
+		<div class="grid grid-cols-5 gap-3">
+			{#each getAdminUser as admin}
+				<BaseCard>
+					<div class="flex flex-col items-center">
+						<img
+							src={admin.photo === null ? '/img/default.jpg' : admin?.photo}
+							class="rounded-full w-20 h-20 object-cover"
+							alt={admin.username}
+						/>
+						<h6 class=" text-center">{admin.name}</h6>
+						<p class="text-xs italic">{admin.email}</p>
+						<a href="/manage/member/{admin.id}" class="btn dfBg w-full mt-5 text-center">Lihat</a>
+					</div>
+				</BaseCard>
+			{/each}
+		</div>
+	{:else}
+		<div class="flex flex-col items-center">
+			<img src="/illust/undraw_Warning.png" alt="Warning" class="w-sm" />
+			<h4 class="text-red">Tidak ada daftar Admin!</h4>
+		</div>
+	{/if}
 </section>
 
 <style>

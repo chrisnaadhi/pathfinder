@@ -3,7 +3,10 @@ import { discipline, faculty } from '$lib/db/pgSchema';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ locals }) => {
+	const session = await locals.auth.validate();
 	const getAllFaculty = await db.select().from(faculty);
+
+	if (session?.user.userType !== 1) throw redirect(302, '/manage/discipline');
 
 	return {
 		getAllFaculty

@@ -52,10 +52,8 @@
 		<button type="submit" class="default-button">Submit</button>
 	</form>
 	<div class="py-5">
-		<a href={newLink} class="dfTx">&leftarrow;Back</a>
+		<a href={newLink} class="btn dfBgThird dfTx">&leftarrow;Back</a>
 	</div>
-
-	<pre>{data.param.id}</pre>
 </section>
 
 <style>

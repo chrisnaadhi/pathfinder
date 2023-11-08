@@ -13,23 +13,31 @@
 <section>
 	<p>{placeholder}</p>
 	<a href={back}>&leftarrow;Kembali</a>
-	<div class="grid grid-cols-5 gap-3">
-		{#each getSubjectSpecialist as specialist}
-			<BaseCard>
-				<div class="flex flex-col items-center justify-center text-center">
-					<img
-						src={specialist?.photo === null ? '/img/default.jpg' : specialist?.photo}
-						class="rounded-full w-20 h-20 object-cover"
-						alt={specialist.username}
-					/>
-					<p class="font-semibold">{specialist.name}</p>
-					<p class="text-xs italic">{specialist.email}</p>
-					<a href="/manage/member/{specialist.id}" class="btn dfBg w-full mt-5 text-center">Lihat</a
-					>
-				</div>
-			</BaseCard>
-		{/each}
-	</div>
+	{#if getSubjectSpecialist.length > 0}
+		<div class="grid grid-cols-5 gap-3">
+			{#each getSubjectSpecialist as specialist}
+				<BaseCard>
+					<div class="flex flex-col items-center justify-center text-center">
+						<img
+							src={specialist?.photo === null ? '/img/default.jpg' : specialist?.photo}
+							class="rounded-full w-20 h-20 object-cover"
+							alt={specialist.username}
+						/>
+						<p class="font-semibold">{specialist.name}</p>
+						<p class="text-xs italic">{specialist.email}</p>
+						<a href="/manage/member/{specialist.id}" class="btn dfBg w-full mt-5 text-center"
+							>Lihat</a
+						>
+					</div>
+				</BaseCard>
+			{/each}
+		</div>
+	{:else}
+		<div class="flex flex-col items-center">
+			<img src="/illust/undraw_Warning.png" alt="Warning" class="w-sm" />
+			<h4 class="text-red">Tidak ada ditemukan data anggota Subjek!</h4>
+		</div>
+	{/if}
 </section>
 
 <style>

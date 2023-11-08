@@ -36,17 +36,25 @@
 		</a>
 	</div>
 	<h5>Daftar Koleksi {subjectData.name}</h5>
-	<div>
-		<div class="flex flex-col lg:(grid grid-cols-3) gap-2">
-			{#each getCollection as collection}
-				<CollectionCard
-					title={collection.name}
-					description={collection.deskripsi}
-					slug={$page.url + '/' + collection.id}
-				/>
-			{/each}
+	{#if getCollection.length > 0}
+		<div>
+			<div class="flex flex-col lg:(grid grid-cols-3) gap-2">
+				{#each getCollection as collection}
+					<CollectionCard
+						title={collection.name}
+						description={collection.deskripsi}
+						slug={$page.url + '/' + collection.id}
+					/>
+				{/each}
+			</div>
 		</div>
-	</div>
+	{:else}
+		<div class="flex flex-col items-center">
+			<img src="/illust/undraw_Warning.png" alt="Warning" class="w-sm" />
+			<h4 class="text-red">Tidak ada daftar koleksi {subjectData.name}!</h4>
+			<p>Silahkan tambahkan jenis koleksi melalui tombol Tambah</p>
+		</div>
+	{/if}
 </section>
 
 <style>

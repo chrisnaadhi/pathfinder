@@ -30,29 +30,47 @@
 			<a href={backUrl} class="btn bg-gray-2 text-dark">&leftarrow;Kembali</a>
 		</div>
 
-		<div class="discipline-list">
-			{#each disciplinesData as discipline}
-				<BaseCard>
-					<div class="flex flex-col justify-between h-full">
-						<h5>{discipline.disciplineName}</h5>
-						<p class="text-sm">{trimText(discipline.disciplineDesc, 80)}</p>
-						<p class="font-semibold italic text-xs">{discipline.disciplineFaculty}</p>
-						<a
-							href={$page.url.pathname + '/' + discipline.disciplineCode}
-							class="btn dfBg mt-5 text-center"
-						>
-							Lihat
-						</a>
-					</div>
-				</BaseCard>
-			{/each}
-		</div>
+		{#if disciplinesData.length > 0}
+			<div class="discipline-list">
+				{#each disciplinesData as discipline}
+					<BaseCard>
+						<div class="flex flex-col justify-between h-full">
+							<div class="flex items-center justify-between">
+								<h5>{discipline.disciplineName}</h5>
+								<span class="dfBg px-3 py-1 rounded-lg text-xs font-semibold">
+									{discipline.disciplineCode}
+								</span>
+							</div>
+
+							<p class="text-sm">{trimText(discipline.disciplineDesc, 80)}</p>
+							<div class="flex mt-3">
+								<p class="font-semibold italic text-xs bg-white dfTx rounded px-3 py-1">
+									{discipline.disciplineFaculty}
+								</p>
+							</div>
+							<a
+								href={$page.url.pathname + '/' + discipline.disciplineCode}
+								class="btn dfBg mt-5 text-center"
+							>
+								Lihat
+							</a>
+						</div>
+					</BaseCard>
+				{/each}
+			</div>
+		{:else}
+			<div class="flex flex-col items-center">
+				<img src="/illust/undraw_Void.png" alt="Warning" class="w-sm" />
+				<h4 class="text-red">Tidak ada Disiplin!</h4>
+				<p>Silahkan tambahkan disiplin melalui tombol New Discipline (Khusus Koordinator)</p>
+			</div>
+		{/if}
 	</section>
 </section>
 
 <style>
 	.discipline-list {
-		--at-apply: flex flex-col gap-3 md:(grid grid-cols-3);
+		--at-apply: flex flex-col gap-3 md:(grid grid-cols-4);
 	}
 
 	.active-btn {

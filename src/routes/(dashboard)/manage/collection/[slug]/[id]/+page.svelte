@@ -45,7 +45,12 @@
 				</form>
 			</EditModal>
 			<DeleteModal>
-				<p>Anda yakin ingin menghapus ini ?</p>
+				<p class="py-3">
+					Anda yakin ingin menghapus
+					<span class="font-semibold dfTx">
+						{data.collectionItem.name}
+					</span> ?
+				</p>
 			</DeleteModal>
 		</div>
 	</div>
@@ -54,24 +59,32 @@
 		<a href={$page.url.toString() + '/new'} class="btn dfBg">&plus;Tambah Konten&rightarrow;</a>
 	</div>
 
-	<div class="grid grid-cols-3 gap-2">
-		{#each data.contentsList as res}
-			<div class="box flex flex-col justify-between">
-				<h4>{res.title}</h4>
-				<p class="text-sm">{trimText(res.contentDescription, 120)}</p>
-				<div class="flex w-full items-center gap-3 text-center mt-2">
-					<a href={`${$page.url.toString()}/${res.id}`} class="btn dfBg w-full"> Lihat </a>
-					<a
-						href={`${$page.url.toString()}/${res.id}/edit`}
-						class="btn dfBgSecond dfTx w-full flex gap-1 items-center justify-center border border-violet"
-					>
-						<div class="i-mdi-pencil-box w-4 h-4" />
-						Edit
-					</a>
+	{#if data.contentsList.length > 0}
+		<div class="grid grid-cols-3 gap-2">
+			{#each data.contentsList as res}
+				<div class="box flex flex-col justify-between">
+					<h4>{res.title}</h4>
+					<p class="text-sm">{trimText(res.contentDescription, 120)}</p>
+					<div class="flex w-full items-center gap-3 text-center mt-2">
+						<a href={`${$page.url.toString()}/${res.id}`} class="btn dfBg w-full"> Lihat </a>
+						<a
+							href={`${$page.url.toString()}/${res.id}/edit`}
+							class="btn dfBgSecond dfTx w-full flex gap-1 items-center justify-center border dfBorder"
+						>
+							<div class="i-mdi-pencil-box w-4 h-4" />
+							Edit
+						</a>
+					</div>
 				</div>
-			</div>
-		{/each}
-	</div>
+			{/each}
+		</div>
+	{:else}
+		<div class="flex flex-col items-center">
+			<img src="/illust/undraw_Void.png" alt="Warning" class="w-sm" />
+			<h4 class="text-red">Tidak ada daftar konten yang tersedia!</h4>
+			<p>Silahkan tambahkan konten melalui tombol Tambah Konten di sebelah kanan atas</p>
+		</div>
+	{/if}
 </section>
 
 <style>

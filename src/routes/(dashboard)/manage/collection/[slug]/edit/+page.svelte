@@ -41,7 +41,7 @@
 		<h3 class="dfTx">{subjectData.subjectName}</h3>
 		<div class="text-white">
 			<a href="/manage/collection">
-				<button class="dfTx bg-transparent">&leftarrow;Back</button>
+				<button class="btn dfBgThird dfTx">&leftarrow;Back</button>
 			</a>
 		</div>
 		<FormCollection {...objData} />
@@ -91,7 +91,11 @@
 		<div class="flex items-center gap-3">
 			<button type="submit" class="default-button">Update</button>
 			<DeleteModal>
-				<p>Anda yakin ingin menghapus ini ?</p>
+				<p class="py-3">
+					Anda yakin ingin menghapus Subjek
+					<span class="dfTx font-semibold">{subjectData.subjectName}</span>
+					?
+				</p>
 			</DeleteModal>
 		</div>
 	</form>

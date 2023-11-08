@@ -2,17 +2,22 @@
 	export let formName: string;
 	export let keywords: string | null;
 
-	let keyword: string;
-	let keywordList = keywords === null ? [] : keywords?.split(',');
+	let keyword: string = '';
+	let keywordList = keywords === null ? [] : keywords.length > 0 ? keywords?.split(',') : [];
 
 	const enterKey = (event: KeyboardEvent) => {
-		if (event.key === 'Enter') {
+		if (keywordList.length > 0 && keyword === null) {
+			alert('Keyword kosong!');
+		} else if (event.key === 'Enter') {
 			event.preventDefault();
-			keywordList.push(keyword);
-			if (keywordList[0] === '') keywordList.shift();
-			keywordList = keywordList;
-			keywords = keywordList.join(',');
-			keyword = '';
+			if (keyword.length > 0) {
+				keywordList.push(keyword);
+				keywordList = keywordList;
+				keywords = keywordList.join(',');
+				keyword = '';
+			} else {
+				keyword = '';
+			}
 		}
 	};
 
@@ -32,16 +37,27 @@
 		bind:value={keyword}
 		on:keypress|stopPropagation={enterKey}
 	/>
-	<div class="flex gap-2 my-2">
+	<div class="flex gap-2 mt-2">
 		{#each keywordList as val, i}
 			<button class="keyword-label" on:click|preventDefault={() => deleteKeyword(i)}>{val}</button>
 		{/each}
 	</div>
-	{#if keywordList.length > 0}
+	{#if keywords?.length === 0}
+		<p>Tekan Enter untuk menambahkan kategori</p>
+	{:else}
 		<p class="italic text-sm text-red-6">Klik label untuk menghapus keyword</p>
 	{/if}
 
 	<input type="hidden" name="keywords" bind:value={keywords} />
+	<div>
+		keyword : {keyword}
+	</div>
+	<div>
+		keywords : {keywords}
+	</div>
+	<div>
+		keywordList : {keywordList}
+	</div>
 </div>
 
 <style>
