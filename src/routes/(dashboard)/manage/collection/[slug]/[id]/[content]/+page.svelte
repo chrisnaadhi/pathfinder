@@ -12,7 +12,7 @@
 
 <section>
 	<div class="dfBgSecond rounded p-5 mb-5">
-		<div class="dfBg ma max-w-lg py-2 text-center rounded">
+		<div class="dfBg ma w-full py-2 text-center rounded">
 			<h4>{content.title}</h4>
 		</div>
 		<div class="text-center">

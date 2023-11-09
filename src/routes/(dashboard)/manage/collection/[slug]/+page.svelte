@@ -22,6 +22,12 @@
 			<h6>{specialist.name}</h6>
 		</div>
 		<div>
+			<span
+				class="text-sm px-4 py-0.5 rounded-full text-white"
+				class:bg-emerald-6={subjectData.type === 'guide'}
+				class:bg-red-6={subjectData.type === 'course'}
+				class:bg-blue-6={subjectData.type === 'topic'}>{subjectData.type}</span
+			>
 			<p>{subjectData.description}</p>
 			<p class="italic text-sm">Keywords: {subjectData.keywords}</p>
 		</div>

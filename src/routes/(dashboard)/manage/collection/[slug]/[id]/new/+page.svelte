@@ -30,6 +30,7 @@
 			<TiptapEditor contentState="new" />
 			<input type="hidden" name="contents" bind:value={$contentTipTap} />
 		</div>
+
 		<div>
 			<button type="submit" class="btn dfBg">Create</button>
 		</div>

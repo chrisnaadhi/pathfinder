@@ -49,3 +49,12 @@ export const checkRole = (value: number) => {
 	}
 	return role;
 };
+
+export const formatTanggal = (dateTime: Date | null | undefined) => {
+	let formatted = new Intl.DateTimeFormat('id-ID', {
+		dateStyle: 'full',
+		timeStyle: 'long'
+	}).format(dateTime!);
+
+	return formatted;
+};

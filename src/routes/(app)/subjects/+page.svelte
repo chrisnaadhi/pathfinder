@@ -17,6 +17,12 @@
 					{#each discipline.subject as subject}
 						<a href={$page.url.pathname + '/' + subject.subjectSlug}>
 							&star; {subject.subjectName}
+							<span
+								class=" text-2.4 px-1 py-0.5 rounded-full text-white"
+								class:bg-emerald-6={subject.type === 'guide'}
+								class:bg-red-6={subject.type === 'course'}
+								class:bg-blue-6={subject.type === 'topic'}>{subject.type}</span
+							>
 						</a>
 					{/each}
 				</div>

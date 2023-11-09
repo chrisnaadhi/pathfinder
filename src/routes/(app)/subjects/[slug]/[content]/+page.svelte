@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { backButton } from '$lib/utils/textFormatter';
+	import { backButton, formatTanggal } from '$lib/utils/textFormatter';
 
 	export let data;
 
@@ -26,8 +26,24 @@
 	</p>
 </div>
 <section>
+	<div class="mb-3">
+		<h4 class=" dfTx">
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium praesentium blanditiis
+			iusto, mollitia sint consequuntur impedit dolores, optio aliquam minus modi beatae totam et
+			exercitationem?
+		</h4>
+		<p class="text-xs">Dibuat pada: {formatTanggal(getContent?.createdAt)}</p>
+	</div>
+
 	<div class="dfBgThird p-5 rounded text-left">
+		<div class="text-center">
+			<p>Pembuat: <span class="dfBg px-3 py-1 rounded">{getContent?.creator?.name}</span></p>
+		</div>
 		{@html getContent?.contents}
+		<div class="mt-10 text-xs">
+			<p>Dibuat oleh: <span class="font-semibold">{getContent?.creator?.name}</span></p>
+			<p>Diperbarui: {formatTanggal(getContent?.updatedAt)}</p>
+		</div>
 	</div>
 	<div class="flex mt-5">
 		<a href={back} class="dfBg btn w-full">&leftarrow;Kembali</a>
@@ -40,7 +56,7 @@
 	}
 
 	.specialist-background {
-		--at-apply: flex flex-col items-center pb-15 pt-5 mt--5 mb-5;
+		--at-apply: flex flex-col items-center pb-15 pt-5 mt--5;
 	}
 
 	.background-img {

@@ -12,7 +12,8 @@ export const load = async ({ params, locals }) => {
 			name: subjects.subjectName,
 			description: subjects.subjectDescription,
 			keywords: subjects.keywords,
-			librarian: subjects.instructor
+			librarian: subjects.instructor,
+			type: subjects.type
 		})
 		.from(subjects)
 		.where(eq(subjects.subjectSlug, params.slug));

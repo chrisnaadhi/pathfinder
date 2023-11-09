@@ -2,8 +2,24 @@
 	import { fade } from 'svelte/transition';
 
 	let placeholder = 'Tata cara penggunaan Pathfinder';
-
-	let selectedTab = 'hierarki';
+	let tabList = [
+		{
+			id: 1,
+			slug: 'hierarki',
+			name: 'Hierarki Data'
+		},
+		{
+			id: 2,
+			slug: 'workflow',
+			name: 'Workflow Data'
+		},
+		{
+			id: 3,
+			slug: 'typesubject',
+			name: 'Subject Type'
+		}
+	];
+	let selectedTab = 'typesubject';
 
 	const selectTab = (value: string) => {
 		selectedTab = value;
@@ -18,21 +34,16 @@
 		ratione laborum eius.
 	</p>
 
-	<section>
-		<button
-			class="btn"
-			class:active-btn={selectedTab === 'hierarki'}
-			on:click={() => selectTab('hierarki')}
-		>
-			<h6>Hierarki Data</h6>
-		</button>
-		<button
-			class="btn"
-			class:active-btn={selectedTab === 'workflow'}
-			on:click={() => selectTab('workflow')}
-		>
-			<h6>Workflow</h6>
-		</button>
+	<section class="flex gap-2 mt-15">
+		{#each tabList as tab}
+			<button
+				class="btn"
+				class:active-btn={selectedTab === tab.slug}
+				on:click={() => selectTab(tab.slug)}
+			>
+				<h6>{tab.name}</h6>
+			</button>
+		{/each}
 	</section>
 
 	{#if selectedTab === 'hierarki'}
@@ -144,6 +155,47 @@
 			</p>
 			<div class="my-5">
 				<img src="/img/workflow.webp" alt="Workflow of Pathfinder" />
+			</div>
+		</section>
+	{:else if selectedTab === 'typesubject'}
+		<section
+			class="flex flex-col gap-3 my-5 text-center md:(grid grid-cols-3)"
+			transition:fade={{ delay: 150, duration: 300 }}
+		>
+			<div class="flex flex-col">
+				<div class="bg-blue-6 text-white p-5 rounded">
+					<h5>Topic</h5>
+				</div>
+				<div>
+					<p>
+						Topic merupakan tipe subjek yang berkaitan dengan topik dari subjek tersebut yang
+						bersifat umum dan universal. Tipe Topic merupakan standar dari kebanyakan Subjek, karena
+						membahas keseluruhan konten secara umum.
+					</p>
+				</div>
+			</div>
+			<div>
+				<div class="bg-emerald-6 text-white p-5 rounded">
+					<h5>Guide</h5>
+				</div>
+				<div>
+					<p>
+						Guide merupakan tipe subjek yang berkaitan dengan tata cara dan petunjuk dalam melakukan
+						sesuatu yang berkaitan dengan subjek tersebut. Guide berisi tentang petunjuk dan
+						langkah-langkah yang dilakukan dalam subjek tertentu.
+					</p>
+				</div>
+			</div>
+			<div>
+				<div class="bg-rose-6 text-white p-5 rounded">
+					<h5>Course</h5>
+				</div>
+				<div>
+					<p>
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde magnam at mollitia itaque
+						dolores tempora totam natus fuga magni, quas corrupti sunt alias beatae quia.
+					</p>
+				</div>
 			</div>
 		</section>
 	{/if}

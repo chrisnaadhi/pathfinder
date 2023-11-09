@@ -49,15 +49,6 @@
 	{/if}
 
 	<input type="hidden" name="keywords" bind:value={keywords} />
-	<div>
-		keyword : {keyword}
-	</div>
-	<div>
-		keywords : {keywords}
-	</div>
-	<div>
-		keywordList : {keywordList}
-	</div>
 </div>
 
 <style>

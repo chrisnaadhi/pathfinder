@@ -22,6 +22,14 @@
 	<div>
 		<a href="/" class="font-semibold text-lg">Lantera</a>
 		<h2>{getSubject?.subjectName}</h2>
+		<div>
+			<span
+				class="px-3 py-0.5 text-xs rounded-full text-white"
+				class:bg-emerald-6={getSubject?.type === 'guide'}
+				class:bg-red-6={getSubject?.type === 'course'}
+				class:bg-blue-6={getSubject?.type === 'topic'}>{getSubject?.type}</span
+			>
+		</div>
 		<p class="text-sm text-gray-5 italic mt-2 mb-10 max-w-4xl ma">
 			{getSubject?.subjectDescription}
 		</p>
@@ -41,17 +49,21 @@
 			>
 				{getSubjectSpecialist?.email}
 			</a>
-			<div>
-				<div class="dfBg px-4 py-1 my-3 rounded">Subjek:</div>
-				<div class="grid grid-cols-2 gap-2 text-left">
-					{#each otherSubjects || [] as subject}
-						<a href={'/subjects/' + subject.subjectSlug}>&star; {subject.subjectName}</a>
-					{/each}
-				</div>
+			<div class="w-full">
+				<div class="dfBg px-4 py-1 my-3 rounded mx-5">Subjek lainnya:</div>
+				{#if otherSubjects && otherSubjects.length > 0}
+					<div class="flex flex-col items-start px-3">
+						{#each otherSubjects || [] as subject}
+							<a href={'/subjects/' + subject.subjectSlug}>&star; {subject.subjectName}</a>
+						{/each}
+					</div>
+				{:else}
+					<p>Belum ada Subjek Lainnya</p>
+				{/if}
 			</div>
 		</div>
 		<div class="w-full">
-			<div class="flex gap-1 mb-3">
+			<div class="flex flex gap-1 mb-3 md:(grid grid-cols-4)">
 				{#each getCollection as collection}
 					<button
 						class="collection"
@@ -104,14 +116,14 @@
 	}
 
 	.subject-specialist-card {
-		--at-apply: flex flex-col items-center w-full dfBgThird rounded-xl pb-5 md:(w-80);
+		--at-apply: flex flex-col items-center w-full h-full dfBgThird rounded-xl pb-5 md:(w-80);
 	}
 
 	.collection {
-		--at-apply: btn bg-gray-2 text-gra5 hover:dfTx;
+		--at-apply: btn bg-gray-2 text-gray-5 text-center hover:dfTx;
 	}
 
 	.collection-active {
-		--at-apply: btn dfBg text-left hover:text-white;
+		--at-apply: btn dfBg hover:text-white;
 	}
 </style>

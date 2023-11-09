@@ -64,7 +64,8 @@
 			{#each data.contentsList as res}
 				<div class="box flex flex-col justify-between">
 					<h4>{res.title}</h4>
-					<p class="text-sm">{trimText(res.contentDescription, 120)}</p>
+					<p>{trimText(res.contentDescription, 120)}</p>
+					<p class="text-xs">Keyword: <span class="dfTx">{res.tag}</span></p>
 					<div class="flex w-full items-center gap-3 text-center mt-2">
 						<a href={`${$page.url.toString()}/${res.id}`} class="btn dfBg w-full"> Lihat </a>
 						<a
