@@ -72,7 +72,7 @@
 				<div class="grid grid-cols-4 gap-3 my-5">
 					{#each filteredCollection || [] as subject}
 						<div class=" dfBgSecond p-5 flex flex-col justify-between">
-							<div class="flex items-center justify-between">
+							<div class="flex items-start justify-between">
 								<h5>{subject.title}</h5>
 								<div class={badgeColor(subject.type) + ' badge'}>{subject.type}</div>
 							</div>
@@ -112,7 +112,7 @@
 				<div class="grid grid-cols-4 gap-3 my-5">
 					{#each subjectResults || [] as subject}
 						<div class=" dfBgSecond p-5 flex flex-col justify-between">
-							<div class="flex items-center justify-between">
+							<div class="flex items-start justify-between">
 								<h5>{subject.title}</h5>
 								<div class={badgeColor(subject.type) + ' badge'}>{subject.type}</div>
 							</div>
