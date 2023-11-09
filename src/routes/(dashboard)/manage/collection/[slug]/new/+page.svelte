@@ -2,10 +2,6 @@
 	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
 
-	let placeholder = 'Hello, svelte!';
-
-	export let data;
-
 	const back = $page.data.url;
 	const reduceNew = back.split('/');
 	reduceNew.splice(-1);
