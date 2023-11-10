@@ -29,12 +29,12 @@
 						<p class="text-sm">{trimText(subject.subjectDescription, 80)}</p>
 						<div class="flex mt-2">
 							<a
-								href={subject.instructor === userId
+								href={subject.instructor === userId || role === 1
 									? `/manage/collection/${subject.subjectSlug}`
 									: `${$page.url.pathname}#`}
 								class="btn w-full text-center"
-								class:accessible-btn={subject.instructor === userId}
-								class:inaccessible-btn={subject.instructor !== userId}
+								class:accessible-btn={subject.instructor === userId || role === 1}
+								class:inaccessible-btn={subject.instructor !== userId && role !== 1}
 							>
 								Lihat
 							</a>

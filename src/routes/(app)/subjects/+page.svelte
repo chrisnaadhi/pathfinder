@@ -9,7 +9,7 @@
 
 <section>
 	<h2>{placeholder}</h2>
-	<div class="grid grid-cols-4 gap-3 my-5">
+	<div class="flex flex-col md:(grid grid-cols-3) gap-3 my-5">
 		{#each getAllSubjects as discipline}
 			<div class="subjects">
 				<h6>{discipline.disciplineName}</h6>

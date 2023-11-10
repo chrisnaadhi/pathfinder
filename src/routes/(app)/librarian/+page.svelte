@@ -19,7 +19,10 @@
 						alt={librarian.name}
 					/>
 					<div class="flex flex-col my-3">
-						<h5>{librarian.name}</h5>
+						<a href="/librarian/{librarian.username}">
+							<h5>{librarian.name}</h5>
+						</a>
+
 						<a
 							href="mailto:{librarian.email}"
 							class="text-gray-6 text-sm italic transition-all-500 hover:underline"

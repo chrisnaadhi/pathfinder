@@ -188,6 +188,12 @@
 						<div class="i-mdi-format-align-right w-6 h-6" />
 					</button>
 					<button
+						on:click|preventDefault={() => editor.chain().setTextAlign('justify').run()}
+						class:active={editor.isActive({ textAlign: 'justify' })}
+					>
+						<div class="i-mdi-format-align-justify w-6 h-6" />
+					</button>
+					<button
 						on:click|preventDefault={() => editor.chain().focus().toggleBulletList().run()}
 						class:active={editor.isActive('bulletList')}
 					>

@@ -118,13 +118,14 @@
 							</div>
 
 							<div class="my-2">
-								<span class="italic dfTx font-semibold">{subject.disciplineName}</span>
+								<span class="italic dfTx text-sm font-semibold">{subject.disciplineName}</span>
 							</div>
 
 							<p class="italic text-sm text-justify">{trimText(subject.description, 130)}</p>
 
-							<div class="my-2 text-sm font-bold">
-								Subject Specialist: <span class="badge dfBg">{subject.specialist}</span>
+							<div class="my-2 text-sm flex flex-col">
+								<p class="font-semibold">Subject Specialist:</p>
+								<div class="dfTx font-bold">{subject.specialist}</div>
 							</div>
 
 							<div class="flex w-full gap-3 mt-4">

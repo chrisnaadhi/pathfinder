@@ -19,7 +19,7 @@
 			name: 'Subject Type'
 		}
 	];
-	let selectedTab = 'typesubject';
+	let selectedTab = 'hierarki';
 
 	const selectTab = (value: string) => {
 		selectedTab = value;
@@ -192,8 +192,10 @@
 				</div>
 				<div>
 					<p>
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde magnam at mollitia itaque
-						dolores tempora totam natus fuga magni, quas corrupti sunt alias beatae quia.
+						Course merupakan tipe subjek yang digunakan untuk menampung dan mengoleksi kumpulan
+						kursus serta pelatihan yang berkaitan dengan subjek tersebut. Course diisi dengan
+						kumpulan materi pelatihan yang bersifat step-by-step dalam melakukan sesuatu hingga
+						setiap individu yang mempelajarinya dapat memahami materi dari subjek tersebut.
 					</p>
 				</div>
 			</div>

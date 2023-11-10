@@ -11,6 +11,12 @@
 		Perferendis, laborum? Quidem optio minus totam labore. Fugit perspiciatis totam quisquam, in
 		facere voluptatum.
 	</p>
+	<div class="mt-5">
+		<h5>Setting Konten Depan</h5>
+		<div class="mt-3">
+			<a class="btn dfBg" href="/manage/setting/contents">Contents</a>
+		</div>
+	</div>
 </section>
 
 <style>

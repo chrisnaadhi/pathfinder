@@ -52,13 +52,20 @@
 							<h3>Daftar Seluruh Subjek</h3>
 							{#each getSubjectData as sub}
 								<div>
-									<h6>{sub.disciplineName}</h6>
-									{#each sub.subject as subject}
-										<div class="pl-3">
-											&bigstar; <a href={'subjects/' + subject.subjectSlug}>{subject.subjectName}</a
-											>
-										</div>
-									{/each}
+									<h6>&bigstar; {sub.disciplineName}</h6>
+									<div class="flex flex-col gap-2">
+										{#each sub.subject as subject}
+											<div class="pl-2">
+												<span
+													class="text-3 py-0.5 px-2 mr-1 rounded-lg text-white"
+													class:bg-emerald-6={subject.type === 'guide'}
+													class:bg-red-6={subject.type === 'course'}
+													class:bg-blue-6={subject.type === 'topic'}
+													>{subject.type}
+												</span><a href={'subjects/' + subject.subjectSlug}>{subject.subjectName}</a>
+											</div>
+										{/each}
+									</div>
 								</div>
 							{/each}
 						</div>

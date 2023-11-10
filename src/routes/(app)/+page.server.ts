@@ -11,8 +11,7 @@ export const load = async ({ request, fetch }) => {
 		with: {
 			subjectsInstructor: true,
 			userType: true
-		},
-		limit: 3
+		}
 	});
 
 	const randomSubjectSpecialist = getSubjectSpecialist.sort(() => 0.5 - Math.random()).slice(0, 3);

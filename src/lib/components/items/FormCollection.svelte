@@ -87,9 +87,9 @@
 	<div class="div-form">
 		<label for="typesubject">Subject Type:</label>
 		<select name="typesubject" id="typesubject" bind:value={subjectType} required>
+			<option value="topic">Topic</option>
 			<option value="guide">Guide</option>
 			<option value="course">Course</option>
-			<option value="topic">Topic</option>
 		</select>
 	</div>
 </section>
