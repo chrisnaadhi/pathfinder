@@ -25,19 +25,33 @@
 			<div class="grid grid-cols-4 gap-3">
 				{#each getSubjectOfDiscipline as subject}
 					<BaseCard>
-						<h6>{subject.subjectName}</h6>
-						<p class="text-sm">{trimText(subject.subjectDescription, 80)}</p>
-						<div class="flex mt-2">
-							<a
-								href={subject.instructor === userId || role === 1
-									? `/manage/collection/${subject.subjectSlug}`
-									: `${$page.url.pathname}#`}
-								class="btn w-full text-center"
-								class:accessible-btn={subject.instructor === userId || role === 1}
-								class:inaccessible-btn={subject.instructor !== userId && role !== 1}
-							>
-								Lihat
-							</a>
+						<div class="flex flex-col justify-end">
+							<div class="flex items-center justify-between">
+								<h6>{subject.subjectName}</h6>
+								<span
+									class="text-sm h-full px-2 rounded-lg text-white"
+									class:bg-emerald-6={subject.type === 'guide'}
+									class:bg-red-6={subject.type === 'course'}
+									class:bg-blue-6={subject.type === 'topic'}
+									>{subject.type}
+								</span>
+							</div>
+							<p class="text-sm">{trimText(subject.subjectDescription, 80)}</p>
+							<p class="text-xs">
+								Subject Specialist : <span class="dfTx">{subject.instructor?.name}</span>
+							</p>
+							<div class="flex mt-2">
+								<a
+									href={subject.instructor === userId || role === 1
+										? `/manage/collection/${subject.subjectSlug}`
+										: `${$page.url.pathname}#`}
+									class="btn w-full text-center"
+									class:accessible-btn={subject.instructor === userId || role === 1}
+									class:inaccessible-btn={subject.instructor !== userId && role !== 1}
+								>
+									Lihat
+								</a>
+							</div>
 						</div>
 					</BaseCard>
 				{/each}

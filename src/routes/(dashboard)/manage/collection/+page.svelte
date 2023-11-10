@@ -52,7 +52,7 @@
 	</div>
 
 	<h4>Filter:</h4>
-	<div class="flex gap-2">
+	<div class="flex flex-col md:(grid grid-cols-5) gap-2">
 		<button class="btn" class:dfBg={!isFiltered} on:click={() => (isFiltered = false)}>Semua</button
 		>
 		{#each disciplineList as disc}
@@ -125,7 +125,7 @@
 
 							<div class="my-2 text-sm flex flex-col">
 								<p class="font-semibold">Subject Specialist:</p>
-								<div class="dfTx font-bold">{subject.specialist}</div>
+								<div class="dfTx font-bold text-base w-full">{subject.specialist}</div>
 							</div>
 
 							<div class="flex w-full gap-3 mt-4">
