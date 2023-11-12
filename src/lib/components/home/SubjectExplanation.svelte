@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+	export let description: string | null | undefined;
+
 	let feature = [
 		{
 			id: 1,
@@ -33,11 +35,7 @@
 		<div class="w-full">
 			<h5>Web-based Pathfinder</h5>
 			<p class="text-justify">
-				Deskripsi disini seperti Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
-				repellat veniam optio maxime ullam. Eaque nisi aspernatur ratione quaerat assumenda optio
-				pariatur iure dolorem, iste aperiam maxime numquam id sit quam? Repudiandae unde
-				perspiciatis at ipsam deserunt porro optio consequuntur, tempora cupiditate doloribus
-				repellat laudantium culpa ullam delectus eum.
+				{description}
 			</p>
 			<div class="flex gap-3 py-5">
 				<a href="/#" class="w-full">

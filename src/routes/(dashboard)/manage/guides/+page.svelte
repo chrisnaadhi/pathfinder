@@ -29,12 +29,12 @@
 <section>
 	<h3>{placeholder}</h3>
 	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, magnam quasi magni
-		exercitationem dignissimos necessitatibus consequatur vel amet blanditiis possimus quam illo
-		ratione laborum eius.
+		Tata cara dan panduan dalam menggunakan Lantera Pathfinder. Tata cara ini disusun berdasarkan
+		hierarki data dalam subject yang menyusun setiap konten dalam sebuah subjek disusun berdasarkan
+		kelompoknya masing-masing, mulai dari jenis koleksi, subjek, disiplin ilmu hingga fakultas.
 	</p>
 
-	<section class="flex gap-2 mt-15">
+	<section class="flex gap-2 mt-5">
 		{#each tabList as tab}
 			<button
 				class="btn"
@@ -170,7 +170,13 @@
 					<p>
 						Topic merupakan tipe subjek yang berkaitan dengan topik dari subjek tersebut yang
 						bersifat umum dan universal. Tipe Topic merupakan standar dari kebanyakan Subjek, karena
-						membahas keseluruhan konten secara umum.
+						membahas keseluruhan topik dari masing-masing konten secara umum. Contohnya adalah <span
+							class="highlight"
+						>
+							Ilmu Perpustakaan
+						</span>
+						dapat menjadi <span class="highlight">Topic</span> karena hal yang dibahas adalah topik Ilmu
+						Perpustakaan secara keseluruhan.
 					</p>
 				</div>
 			</div>

@@ -20,8 +20,7 @@
 
 <section class="max-w-5xl ma">
 	<div>
-		<a href="/" class="font-semibold text-lg">Lantera</a>
-		<h2>{getSubject?.subjectName}</h2>
+		<a href="/" class="font-semibold text-lg italic">Lantera</a>
 		<div>
 			<span
 				class="px-3 py-0.5 text-xs rounded-full text-white"
@@ -30,10 +29,13 @@
 				class:bg-blue-6={getSubject?.type === 'topic'}>{getSubject?.type}</span
 			>
 		</div>
+		<h2>{getSubject?.subjectName}</h2>
+
 		<p class="text-sm text-gray-5 italic mt-2 mb-10 max-w-4xl ma">
 			{getSubject?.subjectDescription}
 		</p>
 	</div>
+
 	<div class="flex flex-col justify-center gap-5 md:flex-row">
 		<div class="subject-specialist-card">
 			<h5 class="dfBg w-full rounded-tr-lg rounded-tl-lg px-5">Subject Specialist</h5>

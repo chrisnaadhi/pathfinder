@@ -33,9 +33,13 @@
 					</div>
 					<div class="w-full">
 						<p class="dfBg rounded">Subjects:</p>
-						{#each librarian.subjectsInstructor as subject}
-							<p class="text-left text-sm">&star; {subject.subjectName}</p>
-						{/each}
+						<div class="flex flex-col">
+							{#each librarian.subjectsInstructor as subject}
+								<a href="/subjects/{subject.subjectSlug}" class="text-left text-sm">
+									&star; {subject.subjectName}
+								</a>
+							{/each}
+						</div>
 					</div>
 				</div>
 			</BaseCard>

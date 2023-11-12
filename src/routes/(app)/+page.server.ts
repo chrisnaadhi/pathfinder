@@ -1,10 +1,14 @@
 import { db } from '$lib/server/drizzle';
-import { discipline, subjects, users } from '$lib/db/pgSchema';
+import { discipline, subjects, systemContents, users } from '$lib/db/pgSchema';
 import { eq, or } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ request, fetch }) => {
 	const listUsers = await db.select().from(users);
+
+	const getDeskripsiPathfinder = await db.query.systemContents.findFirst({
+		where: eq(systemContents.title, 'deskripsiPathfinder')
+	});
 
 	const getSubjectSpecialist = await db.query.users.findMany({
 		where: or(eq(users.type, 1), eq(users.type, 2)),
@@ -51,12 +55,13 @@ export const load = async ({ request, fetch }) => {
 	return {
 		statusCode: 200,
 		checkParams: request.method,
-		listGuide: ['All Subjects', 'Guide Collections', 'Topic Guides', 'Course List'],
+		listGuide: ['All Subjects', 'Topic Collections', 'Guides List', 'Courses List'],
+		getDeskripsiPathfinder,
 		getSubjectData,
 		getSubjectDataTopic,
 		getSubjectDataGuide,
 		getSubjectDataCourse,
-		getSubjectSpecialist,
+
 		randomSubjectSpecialist
 	};
 };

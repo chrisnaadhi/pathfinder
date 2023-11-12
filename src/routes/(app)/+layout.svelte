@@ -6,6 +6,8 @@
 
 	let name = 'Lantera';
 	export let data;
+
+	const { getDeskripsiUtama } = data;
 </script>
 
 <main in:fade={{ delay: 100, duration: 500 }}>
@@ -14,7 +16,7 @@
 		<div in:fade={{ delay: 500, duration: 500 }} out:fly={{ y: 50, duration: 400 }}>
 			{#if $page.url.pathname === '/'}
 				<section class="dfBgThird w-full pt-10">
-					<Welcome {name} />
+					<Welcome {name} description={getDeskripsiUtama?.contents} />
 				</section>
 			{/if}
 			<section class="mt-20 mb-5 px-5 xl:px-0">

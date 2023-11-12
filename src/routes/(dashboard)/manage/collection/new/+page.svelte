@@ -5,15 +5,17 @@
 
 	export let data;
 
+	let { getDiscipline, getLibrarian, getFaculty, type, role } = data;
+
 	let newObj = {
 		subjectName: '',
 		subjectSlug: '',
 		status: 'pending',
 		description: '',
 		keywords: '',
-		subjectType: 'guide'
+		subjectType: 'topic',
+		isAdmin: role === 1 ? true : false
 	};
-	let { getDiscipline, getLibrarian, getFaculty, type } = data;
 
 	/** @type {string | null} */
 	let instructor = null;
@@ -74,19 +76,21 @@
 		{/if}
 		<div class="div-form">
 			<label for="disiplin">Discipline</label>
-			<select name="disiplin" id="disiplin" required>
-				{#if facultyGrouped.length > 0}
-					{#each facultyGrouped as [groups, data]}
-						<optgroup label={getFacultyName(getFaculty, Number(groups))}>
-							{#each data as group}
-								<option value={group.id}>{group.disciplineName}</option>
-							{/each}
-						</optgroup>
-					{/each}
-				{:else}
-					<option disabled selected>Belum ada Disiplin!</option>
-				{/if}
-			</select>
+			<div class="flex flex-col">
+				<select name="disiplin" id="disiplin" required>
+					{#if facultyGrouped.length > 0}
+						{#each facultyGrouped as [groups, data]}
+							<optgroup label={getFacultyName(getFaculty, Number(groups))}>
+								{#each data as group}
+									<option value={group.id}>{group.disciplineName}</option>
+								{/each}
+							</optgroup>
+						{/each}
+					{:else}
+						<option disabled selected>Belum ada Disiplin!</option>
+					{/if}
+				</select>
+			</div>
 		</div>
 		<button type="submit" class="default-button my-5">Create</button>
 	</form>

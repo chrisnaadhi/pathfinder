@@ -18,9 +18,9 @@
 			</a>
 		</div>
 		<div class="hidden md:(flex items-center gap-5)">
-			<a href="/" class={isLinkActive('/')}>Home</a>
-			<a href="/about" class={isLinkActive('/about')}>About</a>
-			<a href="/guides" class={isLinkActive('/guides')}>Guide</a>
+			<a href="/" class={isLinkActive('/')}>Beranda</a>
+			<a href="/about" class={isLinkActive('/about')}>Tentang</a>
+			<a href="/guides" class={isLinkActive('/guides')}>Petunjuk</a>
 			<a href="/subjects" class={isLinkActive('/subjects')}>Subjects</a>
 			<a href="/librarian" class={isLinkActive('/librarian')}>Librarian</a>
 			<a href="/contacts" class={isLinkActive('/contacts')}>Ask us!</a>

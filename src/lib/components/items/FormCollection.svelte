@@ -5,6 +5,7 @@
 	export let description: string | null;
 	export let keywords: string | null;
 	export let subjectType: string | null;
+	export let isAdmin: boolean = false;
 
 	let slugValue: HTMLInputElement;
 	let keyword: string;
@@ -54,8 +55,10 @@
 	<div class="div-form">
 		<label for="status">Status:</label>
 		<select name="status" id="status" bind:value={status} required>
-			<option value="active">Active</option>
-			<option value="inactive">Inactive</option>
+			{#if isAdmin}
+				<option value="active">Active</option>
+				<option value="inactive">Inactive</option>
+			{/if}
 			<option value="pending">Pending</option>
 		</select>
 	</div>

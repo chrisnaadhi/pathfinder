@@ -12,7 +12,6 @@
 	let activeTab: number = 1;
 	export let data;
 
-	let tabLocal = '';
 	let items = [
 		{ label: 'Applications', value: 1 },
 		{ label: 'Subjects', value: 2 },
@@ -23,9 +22,11 @@
 
 	const changeTab = (tabValue: number) => {
 		activeTab = tabValue;
-		if (activeTab !== 1) {
-			localStorage.setItem('tab', tabValue.toString());
-		}
+
+		localStorage.setItem('tab', tabValue.toString());
+
+		console.log('activeTab: ' + activeTab);
+		console.log('tabValue: ' + tabValue);
 	};
 
 	onMount(() => {

@@ -69,7 +69,7 @@
 	{#if isFiltered}
 		<div>
 			{#if filteredCollection?.length || [].length > 0}
-				<div class="grid grid-cols-4 gap-3 my-5">
+				<div class="flex flex-col lg:(grid grid-cols-4) gap-3 my-5">
 					{#each filteredCollection || [] as subject}
 						<div class=" dfBgSecond p-5 flex flex-col justify-between">
 							<div class="flex items-start justify-between">
@@ -78,13 +78,14 @@
 							</div>
 
 							<div class="my-2">
-								<span class="italic dfTx font-semibold">{subject.disciplineName}</span>
+								<span class="italic dfTx text-sm font-semibold">{subject.disciplineName}</span>
 							</div>
 
 							<p class="italic text-sm text-justify">{trimText(subject.description, 130)}</p>
 
-							<div class="my-2 text-sm font-bold">
-								Subject Specialist: <span class="badge dfBg">{subject.specialist}</span>
+							<div class="my-2 text-sm flex flex-col">
+								<p class="font-semibold">Subject Specialist:</p>
+								<div class="dfTx font-bold text-base w-full">{subject.specialist}</div>
 							</div>
 
 							<div class="flex w-full gap-3 mt-4">
@@ -109,7 +110,7 @@
 	{:else}
 		<div>
 			{#if subjectResults?.length || [].length > 0}
-				<div class="grid grid-cols-4 gap-3 my-5">
+				<div class="flex flex-col lg:(grid grid-cols-4) gap-3 my-5">
 					{#each subjectResults || [] as subject}
 						<div class=" dfBgSecond p-5 flex flex-col justify-between">
 							<div class="flex items-start justify-between">

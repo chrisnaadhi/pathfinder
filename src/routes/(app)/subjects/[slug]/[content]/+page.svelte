@@ -11,6 +11,7 @@
 
 <div class="specialist-background">
 	<div class="background-img" />
+	<div class="bg-white h-50 z--1 opacity-50 mt--5 w-full absolute blur-25" />
 	<p class="dfBg rounded px-5 mb-3 text-sm">{getContent?.subjects?.subjectName}</p>
 	<img
 		src={getContent?.creator?.photo ?? '/img/default.jpg'}
@@ -27,11 +28,9 @@
 </div>
 <section>
 	<div class="mb-3">
-		<h4 class=" dfTx">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium praesentium blanditiis
-			iusto, mollitia sint consequuntur impedit dolores, optio aliquam minus modi beatae totam et
-			exercitationem?
-		</h4>
+		<h3 class=" dfTx">
+			{getContent?.title}
+		</h3>
 		<p class="text-xs">Dibuat pada: {formatTanggal(getContent?.createdAt)}</p>
 	</div>
 
@@ -60,7 +59,7 @@
 	}
 
 	.background-img {
-		--at-apply: w-full h-60 mt--15 z--1 absolute opacity-15 blur-5;
+		--at-apply: w-full h-60 mt--15 z--1 absolute opacity-50 blur-8;
 		background-image: url('/img/lantern-book.jpg');
 		background-position: center;
 	}

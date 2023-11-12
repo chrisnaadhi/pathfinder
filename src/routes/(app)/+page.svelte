@@ -6,11 +6,11 @@
 	export let data;
 
 	const {
+		getDeskripsiPathfinder,
 		getSubjectData,
 		getSubjectDataGuide,
 		getSubjectDataTopic,
 		getSubjectDataCourse,
-		getSubjectSpecialist,
 		randomSubjectSpecialist,
 		listGuide
 	} = data;
@@ -19,7 +19,6 @@
 
 	const chosenSubject = (value: string) => {
 		subjectState = value;
-		console.log(subjectState);
 	};
 </script>
 
@@ -28,7 +27,7 @@
 		<SearchBar />
 	</div>
 	<div class="my-5">
-		<SubjectExplanation />
+		<SubjectExplanation description={getDeskripsiPathfinder?.contents} />
 	</div>
 	<h2 class="italic">
 		<span class="dfTx">Lantera</span> in Action
@@ -69,7 +68,7 @@
 								</div>
 							{/each}
 						</div>
-					{:else if subjectState === 'Guide Collections'}
+					{:else if subjectState === 'Guides List'}
 						<div in:fade={{ delay: 400, duration: 500 }} out:fly={{ y: 30, duration: 400 }}>
 							<h3>Daftar Subjek - <span class="dfTx">Guide</span></h3>
 							{#each getSubjectDataGuide as sub}
@@ -84,7 +83,7 @@
 								{/if}
 							{/each}
 						</div>
-					{:else if subjectState === 'Topic Guides'}
+					{:else if subjectState === 'Topic Collections'}
 						<div in:fade={{ delay: 400, duration: 500 }} out:fly={{ y: 30, duration: 400 }}>
 							<h3>Daftar Subjek - <span class="dfTx">Topic</span></h3>
 							{#each getSubjectDataTopic as sub}
@@ -99,7 +98,7 @@
 								{/if}
 							{/each}
 						</div>
-					{:else if subjectState === 'Course List'}
+					{:else if subjectState === 'Courses List'}
 						<div in:fade={{ delay: 400, duration: 500 }} out:fly={{ y: 30, duration: 400 }}>
 							<h3>Daftar Subjek - <span class="dfTx">Course</span></h3>
 							{#each getSubjectDataCourse as sub}

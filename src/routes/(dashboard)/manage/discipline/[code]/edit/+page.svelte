@@ -46,7 +46,7 @@
 			<select name="faculty" id="faculty" value={disciplineData.faculty}>
 				<optgroup label="Fakultas">
 					{#each getAllFaculty as faculty}
-						<option value={faculty.id}>{faculty.facultyName}</option>
+						<option value={faculty.id}>{faculty.facultyValue} - {faculty.facultyName}</option>
 					{/each}
 				</optgroup>
 			</select>

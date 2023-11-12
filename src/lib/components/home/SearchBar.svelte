@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { trimText } from '$lib/utils/textFormatter';
-	import { fade, fly } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 
 	export let searchValue: string = '';
 
@@ -9,7 +9,6 @@
 	const getResults = async () => {
 		const result = await fetch(`/api/search?q=${searchValue}`);
 		searchResults = await result.json();
-		console.log(searchResults);
 	};
 </script>
 
@@ -35,7 +34,14 @@
 								<h6 class="dfTx">{result?.title}</h6>
 							</a>
 
-							<p class="italic text-gray-4">{trimText(result.contentDescription, 100)}</p>
+							<p class="italic text-gray-4">
+								{trimText(result.contentDescription, 100)}
+								<span>
+									<a href="/subjects/{result?.subjects?.subjectSlug}/{result?.id}">
+										Selengkapnya &rightarrow;
+									</a>
+								</span>
+							</p>
 						</div>
 					{/each}
 				</div>

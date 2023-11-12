@@ -137,6 +137,25 @@ export const contents = pgTable('contents', {
 	creator: varchar('creator').references(() => users.id, { onDelete: 'cascade' })
 });
 
+// System Settings
+export const systemContents = pgTable('system_contents', {
+	id: serial('id').primaryKey(),
+	title: varchar('title').unique().notNull(),
+	contents: text('contents'),
+	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow()
+});
+
+export const systemConfigs = pgTable('system_configs', {
+	id: serial('id').primaryKey(),
+	configName: varchar('config_name').unique().notNull(),
+	configValue: integer('config_value'),
+	configOption: varchar('config_option'),
+	configState: boolean('config_state'),
+	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
+	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow()
+});
+
 // Users Relations
 export const usersRelations = relations(users, ({ one, many }) => ({
 	department: one(department, {
