@@ -47,7 +47,7 @@
 										: `${$page.url.pathname}#`}
 									class="btn w-full text-center"
 									class:accessible-btn={subject.instructor?.id === userId || role === 1}
-									class:inaccessible-btn={subject.instructor?.id !== userId}
+									class:inaccessible-btn={subject.instructor?.id !== userId && role !== 1}
 								>
 									Lihat
 								</a>
