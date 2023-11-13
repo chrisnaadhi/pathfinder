@@ -2,7 +2,7 @@
 
 import { db } from '$lib/server/drizzle';
 import { systemContents, users } from '$lib/db/pgSchema';
-import { eq, or } from 'drizzle-orm';
+import { eq, or, sql } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ request }) => {
@@ -32,6 +32,9 @@ export const load = async ({ request }) => {
 	const getSubjectData = await db.query.discipline.findMany({
 		with: {
 			subject: true
+		},
+		extras: {
+			state: sql<string>`false`.as('state')
 		}
 	});
 
@@ -40,6 +43,9 @@ export const load = async ({ request }) => {
 			subject: {
 				where: (subjects, { eq }) => eq(subjects.type, 'topic')
 			}
+		},
+		extras: {
+			state: sql<string>`false`.as('state')
 		}
 	});
 
@@ -48,6 +54,9 @@ export const load = async ({ request }) => {
 			subject: {
 				where: (subjects, { eq }) => eq(subjects.type, 'guide')
 			}
+		},
+		extras: {
+			state: sql<string>`false`.as('state')
 		}
 	});
 
@@ -56,6 +65,9 @@ export const load = async ({ request }) => {
 			subject: {
 				where: (subjects, { eq }) => eq(subjects.type, 'course')
 			}
+		},
+		extras: {
+			state: sql<string>`false`.as('state')
 		}
 	});
 

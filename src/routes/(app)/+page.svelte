@@ -7,7 +7,7 @@
 	import { fade, fly } from 'svelte/transition';
 	export let data;
 
-	const {
+	let {
 		getDeskripsiPathfinder,
 		getSubjectData,
 		getSubjectDataGuide,
@@ -19,21 +19,11 @@
 	} = data;
 
 	let subjectState = 'All Subjects';
-	let disciplineList = [];
+
 	const mappedSubject = groupBy(getAZListOfSubjects, (sub) =>
 		sub.subjectName.toUpperCase().charAt(0)
 	);
 	const sortMappedSubject = new Map([...mappedSubject.entries()].sort());
-
-	getSubjectData.forEach((subject) => {
-		const discipline = {
-			name: subject.disciplineName,
-			code: subject.code,
-			state: false,
-			subjectList: subject.subject
-		};
-		disciplineList.push(discipline);
-	});
 
 	const chosenSubject = (value: string) => {
 		subjectState = value;
@@ -69,31 +59,36 @@
 						<div in:fade={{ delay: 400, duration: 500 }} out:fly={{ y: 30, duration: 400 }}>
 							<h3>Daftar Seluruh Subjek</h3>
 							<div class="flex flex-col md:(grid grid-cols-2)">
-								{#each disciplineList as discipline}
+								{#each getSubjectData as discipline}
 									<div>
 										<button
 											on:click={() => (discipline.state = !discipline.state)}
 											class="bg-transparent"
 										>
-											<h6>&bigstar; {discipline.name}</h6>
+											<h6>&bigstar; {discipline.disciplineName}</h6>
 										</button>
 
 										<div class="flex flex-col gap-2">
 											{#if discipline.state}
-												{#each discipline.subjectList as subject}
-													<div class="pl-5">
-														<span
-															class="text-3 py-0.5 px-2 mr-1 rounded-lg text-white"
-															class:bg-emerald-6={subject.type === 'guide'}
-															class:bg-red-6={subject.type === 'course'}
-															class:bg-blue-6={subject.type === 'topic'}
-															>{subject.type}
-														</span>
-														<a href={'subjects/' + subject.subjectSlug} class="font-semibold">
-															{subject.subjectName}
-														</a>
-													</div>
-												{/each}
+												<div
+													in:fade={{ delay: 200, duration: 300 }}
+													out:fly={{ y: 30, duration: 200 }}
+												>
+													{#each discipline.subject as subject}
+														<div class="pl-5">
+															<span
+																class="text-3 py-0.5 px-2 mr-1 rounded-lg text-white"
+																class:bg-emerald-6={subject.type === 'guide'}
+																class:bg-red-6={subject.type === 'course'}
+																class:bg-blue-6={subject.type === 'topic'}
+																>{subject.type}
+															</span>
+															<a href={'subjects/' + subject.subjectSlug} class="font-semibold">
+																{subject.subjectName}
+															</a>
+														</div>
+													{/each}
+												</div>
 											{/if}
 										</div>
 									</div>
@@ -133,47 +128,98 @@
 					{:else if subjectState === 'Guides List'}
 						<div in:fade={{ delay: 400, duration: 500 }} out:fly={{ y: 30, duration: 400 }}>
 							<h3>Daftar Subjek - <span class="dfTx">Guide</span></h3>
-							{#each getSubjectDataGuide as sub}
-								{#if sub.subject.length > 0}
-									<h6>{sub.disciplineName}</h6>
-									{#each sub.subject as subject}
-										<div>
-											&bigstar; <a href={'subjects/' + subject.subjectSlug}>{subject.subjectName}</a
+							<div class="flex flex-col gap-2 md:(grid grid-cols-2)">
+								{#each getSubjectDataGuide as sub}
+									<div class="flex flex-col">
+										{#if sub.subject.length > 0}
+											<button
+												on:click={() => (sub.state = !sub.state)}
+												class="bg-transparent text-left"
 											>
-										</div>
-									{/each}
-								{/if}
-							{/each}
+												<h6>&bigstar;{sub.disciplineName}</h6>
+											</button>
+											{#if sub.state}
+												<div
+													in:fade={{ delay: 200, duration: 300 }}
+													out:fly={{ y: 30, duration: 200 }}
+												>
+													{#each sub.subject as subject}
+														<div>
+															&DoubleRightArrow; <a href={'subjects/' + subject.subjectSlug}
+																>{subject.subjectName}</a
+															>
+														</div>
+													{/each}
+												</div>
+											{/if}
+										{/if}
+									</div>
+								{/each}
+							</div>
 						</div>
 					{:else if subjectState === 'Topic Collections'}
 						<div in:fade={{ delay: 400, duration: 500 }} out:fly={{ y: 30, duration: 400 }}>
 							<h3>Daftar Subjek - <span class="dfTx">Topic</span></h3>
-							{#each getSubjectDataTopic as sub}
-								{#if sub.subject.length > 0}
-									<h6>{sub.disciplineName}</h6>
-									{#each sub.subject as subject}
-										<div>
-											&bigstar; <a href={'subjects/' + subject.subjectSlug}>{subject.subjectName}</a
+							<div class="flex flex-col md:(grid grid-cols-2)">
+								{#each getSubjectDataTopic as sub}
+									<div class="flex flex-col">
+										{#if sub.subject.length > 0}
+											<button
+												on:click={() => (sub.state = !sub.state)}
+												class="bg-transparent text-left"
 											>
-										</div>
-									{/each}
-								{/if}
-							{/each}
+												<h6>&bigstar;{sub.disciplineName}</h6>
+											</button>
+											{#if sub.state}
+												<div
+													in:fade={{ delay: 200, duration: 300 }}
+													out:fly={{ y: 30, duration: 200 }}
+												>
+													{#each sub.subject as subject}
+														<div>
+															&DoubleRightArrow; <a href={'subjects/' + subject.subjectSlug}
+																>{subject.subjectName}</a
+															>
+														</div>
+													{/each}
+												</div>
+											{/if}
+										{/if}
+									</div>
+								{/each}
+							</div>
 						</div>
 					{:else if subjectState === 'Courses List'}
 						<div in:fade={{ delay: 400, duration: 500 }} out:fly={{ y: 30, duration: 400 }}>
 							<h3>Daftar Subjek - <span class="dfTx">Course</span></h3>
-							{#each getSubjectDataCourse as sub}
-								{#if sub.subject.length > 0}
-									<h6>{sub.disciplineName}</h6>
-									{#each sub.subject as subject}
-										<div>
-											&bigstar; <a href={'subjects/' + subject.subjectSlug}>{subject.subjectName}</a
+							<div class="flex flex-col md:(grid grid-cols-2)">
+								{#each getSubjectDataCourse as sub}
+									<div class="flex flex-col">
+										{#if sub.subject.length > 0}
+											<button
+												on:click={() => (sub.state = !sub.state)}
+												class="bg-transparent text-left"
 											>
-										</div>
-									{/each}
-								{/if}
-							{/each}
+												<h6>&bigstar;{sub.disciplineName}</h6>
+											</button>
+											{#if sub.state}
+												<div
+													in:fade={{ delay: 200, duration: 300 }}
+													out:fly={{ y: 30, duration: 200 }}
+												>
+													{#each sub.subject as subject}
+														<div>
+															&DoubleRightArrow; <a href={'subjects/' + subject.subjectSlug}
+																>{subject.subjectName}</a
+															>
+														</div>
+													{/each}
+												</div>
+											{/if}
+										{/if}
+									</div>
+								{/each}
+							</div>
 						</div>
 					{/if}
 				</section>

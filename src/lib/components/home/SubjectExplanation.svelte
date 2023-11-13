@@ -4,24 +4,24 @@
 	let feature = [
 		{
 			id: 1,
-			name: 'Fitur 1',
+			name: 'Daftar Subjek',
 			img: '/illust/undraw_My_personal_files.png',
 			deskripsi:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ipsam id ad quasi? Nemo expedita maiores suscipit quasi fugit consequatur!'
+				'Cari dan temukan berbagai topik dalam subjek yang berisi mengenai pembahasan dan daftar tautan mengenai subjek tertentu yang dapat digunakan untuk keperluan pembelajaran dan penelitian.'
 		},
 		{
 			id: 2,
-			name: 'Fitur 2',
+			name: 'Data Kepakaran',
 			img: '/illust/undraw_People_search.png',
 			deskripsi:
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ut, amet corporis illum animi temporibus voluptate itaque fugit at autem!'
+				'Data kepakaran juga terdapat di situs Pathfinder, dimana anda bisa menemukan berbagai ahli di bidangnya masing-masing.'
 		},
 		{
 			id: 3,
-			name: 'Fitur 3',
+			name: 'Konten Terkurasi ',
 			img: '/illust/undraw_Instant_support.png',
 			deskripsi:
-				'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis a officia ipsam temporibus, itaque odio. Laboriosam repellendus a odio quibusdam.'
+				'Kurasi konten dilakukan oleh pustakawan ahli yang sudah mempelajari berbagai subjek sehingga dapat menyusun daftar sumber referensi dari masing-masing subjek.'
 		}
 	];
 </script>
