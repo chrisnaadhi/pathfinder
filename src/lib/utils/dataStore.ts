@@ -18,3 +18,17 @@ export const getFacultyName = (arr: any, value: number) => {
 	const searchFaculty = arr.find((el: { id: number }) => el.id === value);
 	return searchFaculty.facultyName;
 };
+
+export function groupBy(list: any[], keyGetter: (arg0: any) => any) {
+	const map = new Map();
+	list.forEach((item: any) => {
+		const key = keyGetter(item);
+		const collection = map.get(key);
+		if (!collection) {
+			map.set(key, [item]);
+		} else {
+			collection.push(item);
+		}
+	});
+	return map;
+}

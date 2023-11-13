@@ -25,11 +25,11 @@
 			<div class="grid grid-cols-4 gap-3">
 				{#each getSubjectOfDiscipline as subject}
 					<BaseCard>
-						<div class="flex flex-col justify-end">
+						<div class="w-full h-full flex flex-col justify-between">
 							<div class="flex items-center justify-between">
 								<h6>{subject.subjectName}</h6>
 								<span
-									class="text-sm h-full px-2 rounded-lg text-white"
+									class="text-sm px-2 rounded-lg text-white"
 									class:bg-emerald-6={subject.type === 'guide'}
 									class:bg-red-6={subject.type === 'course'}
 									class:bg-blue-6={subject.type === 'topic'}
@@ -42,12 +42,12 @@
 							</p>
 							<div class="flex mt-2">
 								<a
-									href={subject.instructor === userId || role === 1
+									href={subject.instructor?.id === userId || role === 1
 										? `/manage/collection/${subject.subjectSlug}`
 										: `${$page.url.pathname}#`}
 									class="btn w-full text-center"
-									class:accessible-btn={subject.instructor === userId || role === 1}
-									class:inaccessible-btn={subject.instructor !== userId && role !== 1}
+									class:accessible-btn={subject.instructor?.id === userId || role === 1}
+									class:inaccessible-btn={subject.instructor?.id !== userId}
 								>
 									Lihat
 								</a>

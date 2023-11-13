@@ -173,10 +173,10 @@
 						membahas keseluruhan topik dari masing-masing konten secara umum. Contohnya adalah <span
 							class="highlight"
 						>
-							Ilmu Perpustakaan
+							Klasifikasi
 						</span>
-						dapat menjadi <span class="highlight">Topic</span> karena hal yang dibahas adalah topik Ilmu
-						Perpustakaan secara keseluruhan.
+						dapat menjadi <span class="highlight">Topic</span> karena hal yang dibahas adalah topik terkait
+						Klasifikasi dalam Ilmu Perpustakaan secara keseluruhan.
 					</p>
 				</div>
 			</div>
@@ -188,7 +188,9 @@
 					<p>
 						Guide merupakan tipe subjek yang berkaitan dengan tata cara dan petunjuk dalam melakukan
 						sesuatu yang berkaitan dengan subjek tersebut. Guide berisi tentang petunjuk dan
-						langkah-langkah yang dilakukan dalam subjek tertentu.
+						langkah-langkah yang dilakukan dalam subjek tertentu. Contohnya adalah <span
+							class="highlight">Langkah-langkah Klasifikasi</span
+						> yang berisi tentang aturan dan alur mengenai bagaimana melakukan Klasifikasi.
 					</p>
 				</div>
 			</div>
@@ -202,6 +204,9 @@
 						kursus serta pelatihan yang berkaitan dengan subjek tersebut. Course diisi dengan
 						kumpulan materi pelatihan yang bersifat step-by-step dalam melakukan sesuatu hingga
 						setiap individu yang mempelajarinya dapat memahami materi dari subjek tersebut.
+						Contohnya adalah <span class="highlight">Kursus Klasifikasi</span> yang berisi tentang kursus
+						dan pelatihan step-by-step secara terperinci disertai dengan praktik dan output yang dapat
+						dilihat secara langsung.
 					</p>
 				</div>
 			</div>

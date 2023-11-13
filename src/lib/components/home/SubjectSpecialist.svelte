@@ -6,7 +6,7 @@
 	};
 </script>
 
-<section class="w-full my-5 flex flex-col items-center">
+<section class="max-w-md ma my-5 flex flex-col items-center">
 	<h4>Subject Specialists</h4>
 	<div class="librarian-list">
 		{#each subjectSpecialist as specialist}

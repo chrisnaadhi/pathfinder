@@ -1,7 +1,9 @@
 <script lang="ts">
+	// @ts-nocheck
 	import SearchBar from '$lib/components/home/SearchBar.svelte';
 	import SubjectSpecialist from '$lib/components/home/SubjectSpecialist.svelte';
 	import SubjectExplanation from '$lib/components/home/SubjectExplanation.svelte';
+	import { groupBy } from '$lib/utils/dataStore';
 	import { fade, fly } from 'svelte/transition';
 	export let data;
 
@@ -11,11 +13,27 @@
 		getSubjectDataGuide,
 		getSubjectDataTopic,
 		getSubjectDataCourse,
+		getAZListOfSubjects,
 		randomSubjectSpecialist,
 		listGuide
 	} = data;
 
 	let subjectState = 'All Subjects';
+	let disciplineList = [];
+	const mappedSubject = groupBy(getAZListOfSubjects, (sub) =>
+		sub.subjectName.toUpperCase().charAt(0)
+	);
+	const sortMappedSubject = new Map([...mappedSubject.entries()].sort());
+
+	getSubjectData.forEach((subject) => {
+		const discipline = {
+			name: subject.disciplineName,
+			code: subject.code,
+			state: false,
+			subjectList: subject.subject
+		};
+		disciplineList.push(discipline);
+	});
 
 	const chosenSubject = (value: string) => {
 		subjectState = value;
@@ -34,7 +52,7 @@
 	</h2>
 	<section class="main-content">
 		<div class="main-subject">
-			<div class="py-5">
+			<div class="py-5 grow w-full">
 				<h2>Subject Lists</h2>
 				<div class="flex items-center justify-center gap-2 mt-5">
 					{#each listGuide as list}
@@ -45,23 +63,67 @@
 						>
 					{/each}
 				</div>
+
 				<section class="subject-section">
 					{#if subjectState === 'All Subjects'}
 						<div in:fade={{ delay: 400, duration: 500 }} out:fly={{ y: 30, duration: 400 }}>
 							<h3>Daftar Seluruh Subjek</h3>
-							{#each getSubjectData as sub}
-								<div>
-									<h6>&bigstar; {sub.disciplineName}</h6>
+							<div class="flex flex-col md:(grid grid-cols-2)">
+								{#each disciplineList as discipline}
+									<div>
+										<button
+											on:click={() => (discipline.state = !discipline.state)}
+											class="bg-transparent"
+										>
+											<h6>&bigstar; {discipline.name}</h6>
+										</button>
+
+										<div class="flex flex-col gap-2">
+											{#if discipline.state}
+												{#each discipline.subjectList as subject}
+													<div class="pl-5">
+														<span
+															class="text-3 py-0.5 px-2 mr-1 rounded-lg text-white"
+															class:bg-emerald-6={subject.type === 'guide'}
+															class:bg-red-6={subject.type === 'course'}
+															class:bg-blue-6={subject.type === 'topic'}
+															>{subject.type}
+														</span>
+														<a href={'subjects/' + subject.subjectSlug} class="font-semibold">
+															{subject.subjectName}
+														</a>
+													</div>
+												{/each}
+											{/if}
+										</div>
+									</div>
+								{/each}
+							</div>
+						</div>
+					{:else if subjectState === 'A-Z Lists'}
+						<div in:fade={{ delay: 400, duration: 500 }} out:fly={{ y: 30, duration: 400 }}>
+							<h3><span class="dfTx">A-Z</span> Lists</h3>
+							<div class="flex gap-3">
+								{#each [...sortMappedSubject] as [letter, _info]}
+									<a href="#letter-{letter}">
+										<h6 class="btn dfBg">{letter}</h6>
+									</a>
+								{/each}
+							</div>
+							{#each [...sortMappedSubject] as [letter, info]}
+								<div class="my-4">
+									<h4 id={'letter-' + letter}>{letter}</h4>
 									<div class="flex flex-col gap-2">
-										{#each sub.subject as subject}
-											<div class="pl-2">
+										{#each info as inf}
+											<div class="flex">
 												<span
 													class="text-3 py-0.5 px-2 mr-1 rounded-lg text-white"
-													class:bg-emerald-6={subject.type === 'guide'}
-													class:bg-red-6={subject.type === 'course'}
-													class:bg-blue-6={subject.type === 'topic'}
-													>{subject.type}
-												</span><a href={'subjects/' + subject.subjectSlug}>{subject.subjectName}</a>
+													class:bg-emerald-6={inf.type === 'guide'}
+													class:bg-red-6={inf.type === 'course'}
+													class:bg-blue-6={inf.type === 'topic'}
+													>{inf.type}
+												</span>
+												<a href="/subjects/{inf.subjectSlug}">{inf.subjectName}</a>
 											</div>
 										{/each}
 									</div>
@@ -117,7 +179,7 @@
 				</section>
 			</div>
 
-			<div>
+			<div class="flex-none max-w-lg">
 				<SubjectSpecialist subjectSpecialist={randomSubjectSpecialist} />
 			</div>
 		</div>
@@ -130,7 +192,7 @@
 	}
 
 	.main-subject {
-		--at-apply: flex flex-col sm:(grid grid-cols-2 my-5);
+		--at-apply: flex flex-col w-full sm:(flex flex-row my-5);
 	}
 
 	.subject-section {
