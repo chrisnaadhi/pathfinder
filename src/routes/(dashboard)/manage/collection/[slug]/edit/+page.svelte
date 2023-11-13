@@ -6,7 +6,7 @@
 
 	export let data;
 
-	let { subjectData, getDiscipline, getLibrarian, getFaculty } = data;
+	let { subjectData, getDiscipline, getLibrarian, getFaculty, role } = data;
 
 	let instructor = subjectData?.instructor;
 	let instructorData = getLibrarian.find((lib) => lib.id === instructor);
@@ -32,7 +32,8 @@
 		status: subjectData.subjectStatus,
 		description: subjectData.subjectDescription,
 		keywords: subjectData.keywords,
-		subjectType: subjectData.type
+		subjectType: subjectData.type,
+		isAdmin: role === 1 ? true : false
 	};
 </script>
 
