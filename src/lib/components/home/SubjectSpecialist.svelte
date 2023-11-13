@@ -24,15 +24,19 @@
 						</p>
 					</div>
 
-					<span class="flex flex-row text-xs text-dark-50 italic">
-						{#each limitSubject(specialist.subjectsInstructor) as sub}
-							<p>{sub.subjectName}</p>
-						{/each}
-						&ThickSpace;dan<a href="/librarian/{specialist.username}">&ThickSpace;lainnya.</a>
-					</span>
-					<a href={'mailto:' + specialist.email} class="text-sm text-gray italic hover:(dfTx)">
-						{specialist.email}
-					</a>
+					{#if specialist.subjectsInstructor.length > 0}
+						<span class="flex flex-row text-xs text-dark-50 italic">
+							{#each limitSubject(specialist.subjectsInstructor) as sub}
+								<p>{sub.subjectName}</p>
+							{/each}
+							&ThickSpace;dan<a href="/librarian/{specialist.username}">&ThickSpace;lainnya.</a>
+						</span>
+						<a href={'mailto:' + specialist.email} class="text-sm text-gray italic hover:(dfTx)">
+							{specialist.email}
+						</a>
+					{:else}
+						<span>Belum ada subjek.</span>
+					{/if}
 				</div>
 			</div>
 		{/each}

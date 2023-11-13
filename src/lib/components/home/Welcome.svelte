@@ -11,7 +11,8 @@
 	<h1 class="text-3xl md:text-5xl">Selamat datang di <span class="dfTx">{name}</span></h1>
 	<br />
 	<p>
-		{description}
+		{description ??
+			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed iste porro nihil officiis repellat atque possimus, veniam quisquam accusamus ad voluptatem aspernatur ab rerum cupiditate odit tempora reprehenderit tenetur esse ut quo incidunt. Earum a quidem neque obcaecati animi voluptatum? Nemo molestiae dolor doloremque odit voluptatem sit, obcaecati distinctio aut!'}
 	</p>
 </section>
 

@@ -35,8 +35,10 @@
 		<div class="w-full">
 			<h5>Web-based Pathfinder</h5>
 			<p class="text-justify">
-				{description}
+				{description ??
+					'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio cupiditate dolorem quo esse deserunt molestiae error, consequuntur natus reprehenderit omnis quisquam recusandae autem. Aliquam laborum impedit a facere. Velit, praesentium.'}
 			</p>
+
 			<div class="flex gap-3 py-5">
 				<a href="/#" class="w-full">
 					<button class="default-button w-full">Tombol 1</button>
