@@ -7,7 +7,7 @@
 	let searchResults: any = null;
 
 	const getResults = async () => {
-		const result = await fetch(`/api/search?q=${searchValue}`);
+		const result = await fetch(`api/search?q=${searchValue}`);
 		searchResults = await result.json();
 	};
 </script>
@@ -28,22 +28,26 @@
 		{#if searchResults && searchValue}
 			<div class="bg-white min-w-xl z-4 pt-5 mt--4 border dfBorder px-2 rounded">
 				<div class="w-full">
-					{#each searchResults as result}
-						<div transition:fade={{ delay: 250, duration: 300 }} class="py-2 text-left">
-							<a href="/subjects/{result?.subjects?.subjectSlug}/{result?.id}">
-								<h6 class="dfTx">{result?.title}</h6>
-							</a>
+					{#if searchResults.length > 0}
+						{#each searchResults as result}
+							<div transition:fade={{ delay: 250, duration: 300 }} class="py-2 text-left">
+								<a href="/subjects/{result?.subjects?.subjectSlug}/{result?.id}">
+									<h6 class="dfTx">{result?.title}</h6>
+								</a>
 
-							<p class="italic text-gray-4">
-								{trimText(result.contentDescription, 100)}
-								<span>
-									<a href="/subjects/{result?.subjects?.subjectSlug}/{result?.id}">
-										Selengkapnya &rightarrow;
-									</a>
-								</span>
-							</p>
-						</div>
-					{/each}
+								<p class="italic text-gray-4">
+									{trimText(result.contentDescription, 100)}
+									<span>
+										<a href="/subjects/{result?.subjects?.subjectSlug}/{result?.id}">
+											Selengkapnya &rightarrow;
+										</a>
+									</span>
+								</p>
+							</div>
+						{/each}
+					{:else}
+						<p>Pencarian tidak ditemukan</p>
+					{/if}
 				</div>
 			</div>
 		{/if}

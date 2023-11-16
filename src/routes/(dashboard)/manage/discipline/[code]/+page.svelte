@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { backButton, trimText } from '$lib/utils/textFormatter';
 	import BaseCard from '$lib/components/generic/BaseCard.svelte';
+	import { base } from '$app/paths';
 
 	export let data;
 
@@ -26,7 +27,7 @@
 				{#each getSubjectOfDiscipline as subject}
 					<BaseCard>
 						<div class="w-full h-full flex flex-col justify-between">
-							<div class="flex items-center justify-between">
+							<div class="flex items-center justify-between gap-2">
 								<h6>{subject.subjectName}</h6>
 								<span
 									class="text-sm px-2 rounded-lg text-white"
@@ -43,7 +44,7 @@
 							<div class="flex mt-2">
 								<a
 									href={subject.instructor?.id === userId || role === 1
-										? `/manage/collection/${subject.subjectSlug}`
+										? `${base}/manage/collection/${subject.subjectSlug}`
 										: `${$page.url.pathname}#`}
 									class="btn w-full text-center"
 									class:accessible-btn={subject.instructor?.id === userId || role === 1}

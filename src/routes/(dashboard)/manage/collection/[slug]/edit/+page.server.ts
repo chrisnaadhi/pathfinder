@@ -1,7 +1,8 @@
-import { redirect } from '@sveltejs/kit';
 import { eq, or } from 'drizzle-orm';
 import { db } from '$lib/server/drizzle';
 import { subjects, discipline, users, faculty } from '$lib/db/pgSchema';
+import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 const date = new Date();
 
@@ -51,7 +52,7 @@ export const actions = {
 			})
 			.where(eq(subjects.subjectSlug, event.params.slug));
 
-		throw redirect(302, '/manage/collection');
+		throw redirect(302, `${base}/manage/collection`);
 	},
 	deleteData: async (event) => {
 		const data = await event.request.formData();
@@ -59,9 +60,9 @@ export const actions = {
 
 		if (isDelete === 'delete') {
 			await db.delete(subjects).where(eq(subjects.subjectSlug, event.params.slug));
-			throw redirect(302, '/manage/collection');
+			throw redirect(302, `${base}/manage/collection`);
 		} else if (isDelete === 'keep') {
-			throw redirect(300, '/manage/collection/' + event.params.slug);
+			throw redirect(300, `${base}/manage/collection/${event.params.slug}`);
 		} else {
 			console.log('Nothing Happen');
 		}

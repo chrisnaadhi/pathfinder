@@ -1,6 +1,7 @@
 import { department, faculty } from '$lib/db/pgSchema';
 import { db } from '$lib/server/drizzle';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 import { eq } from 'drizzle-orm';
 
 export const load = async ({ locals }) => {
@@ -9,7 +10,7 @@ export const load = async ({ locals }) => {
 	const getFaculty = await db.select().from(faculty);
 
 	if (checkUserType !== 1) {
-		throw redirect(302, '/manage');
+		throw redirect(302, `${base}/manage`);
 	}
 
 	return {
@@ -29,7 +30,7 @@ export const actions = {
 			facultyValue: value
 		});
 
-		throw redirect(302, '/manage/setting');
+		throw redirect(302, `${base}/manage/setting`);
 	},
 	editFakultas: async ({ request }) => {
 		const data = await request.formData();
@@ -45,7 +46,7 @@ export const actions = {
 			})
 			.where(eq(faculty.id, Number(id)));
 
-		throw redirect(302, '/manage/setting');
+		throw redirect(302, `${base}/manage/setting`);
 	},
 	deleteData: async ({ request }) => {
 		const data = await request.formData();
@@ -58,6 +59,6 @@ export const actions = {
 			console.log('Nothing deleted');
 		}
 
-		throw redirect(302, '/manage/setting');
+		throw redirect(302, `${base}/manage/setting`);
 	}
 };

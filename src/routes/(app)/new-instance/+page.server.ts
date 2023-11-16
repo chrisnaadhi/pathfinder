@@ -20,7 +20,7 @@ export const load = async ({ cookies, locals }) => {
 		isAvailable = false;
 	}
 
-	if (session) throw redirect(302, '/manage');
+	if (session) throw redirect(302, 'manage');
 
 	return {
 		status,
@@ -67,6 +67,6 @@ export const actions = {
 			return fail(403, { message: error });
 		}
 
-		throw redirect(302, '/manage');
+		throw redirect(302, 'manage');
 	}
 };

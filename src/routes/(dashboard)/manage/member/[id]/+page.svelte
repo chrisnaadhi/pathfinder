@@ -13,7 +13,7 @@
 	<div class="p-5 flex gap-5 w-full rounded my-5">
 		<div class="w-full md:w-45">
 			<img
-				src={userProfile.photo ?? '/img/default.jpg'}
+				src={userProfile.photo === null ? '/img/default.jpg' : '/pathfinder' + userProfile.photo}
 				class="w-32 h-32 rounded-full object-cover"
 				alt={userProfile.fullName}
 			/>

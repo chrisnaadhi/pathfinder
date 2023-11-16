@@ -29,7 +29,7 @@
 			<p class="mb-5">
 				Look like you already have an Administrator Account. Try to login with this link instead.
 			</p>
-			<a href="/account" class="default-button">Login</a>
+			<a href="account" class="default-button">Login</a>
 		</div>
 	{:else}
 		<div>

@@ -2,6 +2,7 @@ import { auth } from '$lib/server/lucia';
 import { db } from '$lib/server/drizzle';
 import { subjects, contents, discipline, faculty } from '$lib/db/pgSchema';
 import { fail, redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -34,6 +35,6 @@ export const actions = {
 		if (!session) return fail(401);
 		await auth.invalidateSession(session.sessionId);
 		locals.auth.setSession(null);
-		throw redirect(302, '/account');
+		throw redirect(302, `${base}/account`);
 	}
 };

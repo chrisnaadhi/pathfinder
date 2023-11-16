@@ -1,5 +1,7 @@
 <script>
 	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
+	import { backButton } from '$lib/utils/textFormatter';
 	import { getFacultyName, groupByFaculty } from '$lib/utils/dataStore';
 	import FormCollection from '$lib/components/items/FormCollection.svelte';
 
@@ -23,6 +25,7 @@
 	let instructorName = '';
 	let dropdownInstructor = false;
 	const facultyGrouped = Object.entries(groupByFaculty(getDiscipline));
+	const back = backButton($page);
 
 	/** @param {string} value */
 	const chooseInstructor = (value) => {
@@ -39,7 +42,7 @@
 <section>
 	<h3 class="dfTx">Subjects</h3>
 	<div class="my-1">
-		<a class="btn bg-gray-2 text-dark" href="/manage/collection">&leftarrow;Back</a>
+		<a class="btn bg-gray-2 text-dark" href={back}>&leftarrow;Back</a>
 	</div>
 	<form method="POST" use:enhance>
 		<FormCollection {...newObj} />

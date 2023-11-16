@@ -1,7 +1,8 @@
 import { systemConfigs, systemContents } from '$lib/db/pgSchema';
 import { db } from '$lib/server/drizzle';
-import { fail, redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
+import { fail, redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async () => {
 	const deskripsiUtama = await db.query.systemContents.findFirst({
@@ -62,6 +63,6 @@ export const actions = {
 			}
 		}
 
-		throw redirect(302, '/manage/setting');
+		throw redirect(302, `${base}/manage/setting`);
 	}
 };

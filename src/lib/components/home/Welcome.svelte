@@ -5,7 +5,7 @@
 
 <section>
 	<div class="flex justify-center">
-		<img src="/img/lantera.png" alt="Lantera" class="w-40" />
+		<img src="/pathfinder/img/lantera.png" alt="Lantera" class="w-40" />
 	</div>
 
 	<h1 class="text-3xl md:text-5xl">Selamat datang di <span class="dfTx">{name}</span></h1>

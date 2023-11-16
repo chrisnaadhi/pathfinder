@@ -48,7 +48,7 @@
 <section>
 	<h2 class="dfTx">{name}</h2>
 	<div class="my-4">
-		<a class="btn dfBg" href="/manage/collection/new">+ New Subject</a>
+		<a class="btn dfBg" href="collection/new">+ New Subject</a>
 	</div>
 
 	<h4>Filter:</h4>

@@ -1,14 +1,17 @@
 <script>
 	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
+	import { backButton } from '$lib/utils/textFormatter.js';
 
 	export let data;
 
 	const { getAllFaculty } = data;
+	const back = backButton($page);
 </script>
 
 <section>
 	<h4>Buat Disiplin baru</h4>
-	<a href="/manage/discipline" class="dfTx">&leftarrow;Kembali</a>
+	<a href={back} class="dfTx">&leftarrow;Kembali</a>
 	<form action="?/createDiscipline" method="POST" use:enhance>
 		<div class="div-form">
 			<label for="discipline">Nama Disiplin:</label>

@@ -1,7 +1,8 @@
 import { contents, subjects } from '$lib/db/pgSchema';
 import { db } from '$lib/server/drizzle';
-import { redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
+import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const actions = {
 	tambahKonten: async ({ request, locals, params }) => {
@@ -28,6 +29,6 @@ export const actions = {
 			subjectId: selectedSubject.id
 		});
 
-		throw redirect(302, `/manage/collection/${params.slug}/${params.id}`);
+		throw redirect(302, `${base}/manage/collection/${params.slug}/${params.id}`);
 	}
 };

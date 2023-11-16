@@ -1,8 +1,9 @@
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
-import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
 import { department, users } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
+import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -27,8 +28,8 @@ export const actions = {
 		const photo = data.get('photo') as File;
 		let joinedPhoto = session?.user.photo;
 
-		if (!existsSync('./files/api/uploads/')) {
-			mkdirSync('./files/api/uploads/', { recursive: true });
+		if (!existsSync('./files/uploads/')) {
+			mkdirSync('./files/uploads/', { recursive: true });
 		}
 		if (photo.name !== undefined && photo.size !== 0) {
 			const splitPhotoName = photo.name.split('.');
@@ -49,6 +50,6 @@ export const actions = {
 			})
 			.where(eq(users.id, userId));
 
-		throw redirect(304, '/manage/');
+		throw redirect(304, `${base}/manage`);
 	}
 };

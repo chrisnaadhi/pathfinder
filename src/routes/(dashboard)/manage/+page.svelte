@@ -5,33 +5,37 @@
 	let name = 'Dashboard';
 	export let data;
 
-	const { subjectList, subjectNumber, disciplineNumber, contentNumber, facultyNumber } = data;
+	const { userData, subjectNumber, disciplineNumber, contentNumber, facultyNumber } = data;
 </script>
 
 <section>
-	<h1 class="dfTx">{name}</h1>
+	<div class="mb-3">
+		<h1 class="dfTx">{name}</h1>
+		<h5>Halo, {userData?.fullName}!</h5>
+	</div>
+
 	<BaseCard>
 		<div class="text-center">
-			<h3>{subjectNumber}</h3>
+			<h1>{subjectNumber}</h1>
 			<p>total subjek</p>
 		</div>
 	</BaseCard>
 	<div class="flex flex-col my-3 gap-3 md:(grid grid-cols-3)">
 		<BaseCard>
 			<div class="text-center">
-				<h3>{disciplineNumber}</h3>
+				<h2>{disciplineNumber}</h2>
 				<p>total disiplin ilmu</p>
 			</div>
 		</BaseCard>
 		<BaseCard>
 			<div class="text-center">
-				<h3>{facultyNumber}</h3>
+				<h2>{facultyNumber}</h2>
 				<p>total fakultas</p>
 			</div>
 		</BaseCard>
 		<BaseCard>
 			<div class="text-center">
-				<h3>{contentNumber}</h3>
+				<h2>{contentNumber}</h2>
 				<p>total konten</p>
 			</div>
 		</BaseCard>

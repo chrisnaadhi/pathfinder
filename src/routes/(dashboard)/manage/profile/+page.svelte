@@ -1,6 +1,7 @@
 <script>
 	// @ts-nocheck
 	import { enhance } from '$app/forms';
+	import { base } from '$app/paths';
 	import SubmitButton from '$lib/components/generic/SubmitButton.svelte';
 	import { checkRole } from '$lib/utils/textFormatter';
 
@@ -21,7 +22,7 @@
 <section>
 	<h2 class="dfTx">{name}</h2>
 	<img
-		src={userData?.photo === null ? '/img/default.jpg' : userData?.photo}
+		src={userData?.photo === null ? base + '/img/default.jpg' : base + userData?.photo}
 		class="w-32 h-32 object-cover rounded-full dfBorder"
 		alt={userData?.username}
 	/>

@@ -4,6 +4,7 @@ import { db } from '$lib/server/drizzle';
 import { systemContents, users } from '$lib/db/pgSchema';
 import { eq, or, sql } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ request }) => {
 	const listUsers = await db.select().from(users);
@@ -73,7 +74,7 @@ export const load = async ({ request }) => {
 
 	const getAZListOfSubjects = await db.query.subjects.findMany();
 
-	if (!listUsers || listUsers.length < 1) throw redirect(302, '/new-instance');
+	if (!listUsers || listUsers.length < 1) throw redirect(302, `${base}/new-instance`);
 
 	return {
 		statusCode: 200,

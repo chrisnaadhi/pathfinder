@@ -2,6 +2,7 @@ import { db } from '$lib/server/drizzle';
 import { users, userType } from '$lib/db/pgSchema';
 import { asc, eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ locals }) => {
 	const listUsers = await db
@@ -20,7 +21,7 @@ export const load = async ({ locals }) => {
 
 	if (loggedInUser?.user.userType === 1 || loggedInUser?.user.userType === 2) {
 	} else {
-		throw redirect(302, '/manage');
+		throw redirect(302, `${base}/manage`);
 	}
 
 	return {

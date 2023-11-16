@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { page } from '$app/stores';
+	import { base } from '$app/paths';
 
 	let news = 'Sekilas berita dan informasi terbaru akan tampil disini';
 
@@ -15,7 +16,7 @@
 	<section class="dfBgThird dfTx w-60 px-4 py-2">
 		<div class="flex flex-col items-center">
 			<img
-				src={userData?.photo === null ? '/img/default.jpg' : userData?.photo}
+				src={userData?.photo === null ? '/img/default.jpg' : base + userData?.photo}
 				alt="foto"
 				class="rounded-full w-20 h-20 object-cover"
 			/>
@@ -24,7 +25,7 @@
 		<div class="flex flex-col justify-between h-screen">
 			<nav class="flex flex-col gap-4 my-4">
 				<a
-					href="/manage"
+					href="{base}/manage"
 					class="menu-item"
 					class:active-menu={$page.url.pathname === '/manage'}
 					data-sveltekit-preload-data="tap"
@@ -33,7 +34,7 @@
 					<p>Dashboard</p>
 				</a>
 				<a
-					href="/manage/profile"
+					href="{base}/manage/profile"
 					class="menu-item"
 					class:active-menu={activeUrl('/profile')}
 					data-sveltekit-preload-data="tap"
@@ -42,7 +43,7 @@
 					Profile
 				</a>
 				<a
-					href="/manage/discipline"
+					href="{base}/manage/discipline"
 					class="menu-item"
 					class:active-menu={activeUrl('/discipline')}
 					data-sveltekit-preload-data="tap"
@@ -51,7 +52,7 @@
 					Discipline
 				</a>
 				<a
-					href="/manage/collection"
+					href="{base}/manage/collection"
 					class="menu-item"
 					class:active-menu={activeUrl('/collection')}
 					data-sveltekit-preload-data="tap"
@@ -60,7 +61,7 @@
 					Subjects
 				</a>
 				<a
-					href="/manage/member"
+					href="{base}/manage/member"
 					class="menu-item"
 					class:active-menu={activeUrl('/member')}
 					data-sveltekit-preload-data="tap"
@@ -69,7 +70,7 @@
 					Member
 				</a>
 				<a
-					href="/manage/guides"
+					href="{base}/manage/guides"
 					class="menu-item"
 					class:active-menu={activeUrl('/guides')}
 					data-sveltekit-preload-data="tap"
@@ -79,7 +80,7 @@
 				</a>
 				{#if userData?.userType === 1}
 					<a
-						href="/manage/setting"
+						href="{base}/manage/setting"
 						class="menu-item"
 						class:active-menu={activeUrl('/setting')}
 						data-sveltekit-preload-data="tap"
@@ -90,7 +91,7 @@
 				{/if}
 
 				<a
-					href="/"
+					href={base}
 					class="btn text-center bg-red text-white font-semibold"
 					data-sveltekit-preload-data="tap">Exit Dashboard</a
 				>

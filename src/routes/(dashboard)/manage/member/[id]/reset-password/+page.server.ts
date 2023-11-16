@@ -1,16 +1,17 @@
 import { db } from '$lib/server/drizzle';
 import { users } from '$lib/db/pgSchema';
-import { redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import { auth } from '$lib/server/lucia';
 import { LuciaError } from 'lucia';
+import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ params, locals }) => {
 	const userId = params.id;
 	const getUserData = await db.select().from(users).where(eq(users.id, userId));
 	const session = await locals.auth.validate();
 
-	if (session?.user.userType !== 1) throw redirect(302, '/manage/member');
+	if (session?.user.userType !== 1) throw redirect(302, `${base}/manage/member`);
 
 	return {
 		getUserData
@@ -34,6 +35,6 @@ export const actions = {
 			}
 		}
 
-		throw redirect(302, '/manage/member/' + params.id);
+		throw redirect(302, `${base}/manage/member/${params.id}`);
 	}
 };

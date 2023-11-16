@@ -1,6 +1,7 @@
 import { db } from '$lib/server/drizzle';
 import { department } from '$lib/db/pgSchema';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const actions = {
 	tambahDepartment: async ({ request }) => {
@@ -19,6 +20,6 @@ export const actions = {
 			url
 		});
 
-		throw redirect(302, '/manage/setting/department');
+		throw redirect(302, `${base}/manage/setting/department`);
 	}
 };

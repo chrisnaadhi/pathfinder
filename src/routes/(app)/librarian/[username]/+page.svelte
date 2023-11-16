@@ -1,4 +1,5 @@
 <script>
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { backButton } from '$lib/utils/textFormatter';
 
@@ -17,14 +18,14 @@
 	<div class="my-5 max-w-3xl">
 		<div class="flex items-center gap-4">
 			<img
-				src={getLibrarian?.photo ?? '/img/default.jpg'}
+				src={getLibrarian?.photo === null ? '/img/default.jpg' : `${base}${getLibrarian?.photo}`}
 				alt={getLibrarian?.name}
 				class="w-32 h-32 rounded object-cover"
 			/>
 			<div class="text-left">
 				<h4>{getLibrarian?.name}</h4>
 				<h6 class="dfTx">
-					{getLibrarian?.title !== '' ? getLibrarian?.title : 'Librarian Subject'}
+					{getLibrarian?.title !== null ? `${getLibrarian?.title}` : 'Librarian Subject'}
 				</h6>
 				<a href="mailto:{getLibrarian?.email}">{getLibrarian?.email}</a>
 				<p>{getLibrarian?.department?.departmentName}</p>
@@ -44,7 +45,7 @@
 		{#if getLibrarian?.subjectsInstructor.length || [].length > 0}
 			<div class="flex flex-col items-start gap-2 mt-5">
 				{#each getLibrarian?.subjectsInstructor || [] as instruct}
-					<a href="/subjects/{instruct.subjectSlug}">{instruct.subjectName}</a>
+					<a href={`${base}/subjects/${instruct.subjectSlug}`}>{instruct.subjectName}</a>
 				{/each}
 			</div>
 		{:else}

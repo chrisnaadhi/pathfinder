@@ -2,6 +2,7 @@ import { db } from '$lib/server/drizzle';
 import { discipline, faculty } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 const date = new Date();
 
@@ -43,13 +44,13 @@ export const actions = {
 			})
 			.where(eq(discipline.code, params.code));
 
-		throw redirect(302, '/manage/discipline');
+		throw redirect(302, `${base}/manage/discipline`);
 	},
 	deleteData: async ({ request, params }) => {
 		const dataCollection = params.code;
 
 		await db.delete(discipline).where(eq(discipline.code, dataCollection));
 
-		throw redirect(302, '/manage/discipline');
+		throw redirect(302, `${base}/manage/discipline`);
 	}
 };

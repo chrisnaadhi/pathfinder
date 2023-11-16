@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { backButton } from '$lib/utils/textFormatter';
 	import CollectionCard from '$lib/components/generic/CollectionCard.svelte';
+	import { base } from '$app/paths';
 
 	export let data;
 
@@ -15,7 +16,7 @@
 		<div class="flex flex-col items-center justify-center text-center gap-3 min-w-60">
 			<p class="font-semibold italic">Subject Specialist</p>
 			<img
-				src={specialist.photo ?? '/img/default.jpg'}
+				src={specialist.photo === null ? '/img/default.jpg' : `${base}${specialist.photo}`}
 				alt=""
 				class="w-30 h-30 rounded-lg object-cover"
 			/>
@@ -37,7 +38,7 @@
 		<a href={back} class="w-full">
 			<button class="default-button">&leftarrow;Kembali</button>
 		</a>
-		<a href="/manage/collection/{subjectData.slug}/new" class="w-full">
+		<a href="{subjectData.slug}/new" class="w-full">
 			<button class="default-button">&plus;Tambah</button>
 		</a>
 	</div>

@@ -1,7 +1,8 @@
 import { contents } from '$lib/db/pgSchema.js';
 import { db } from '$lib/server/drizzle';
-import { redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
+import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 const date = new Date();
 
@@ -33,6 +34,6 @@ export const actions = {
 			})
 			.where(eq(contents.id, params.content));
 
-		throw redirect(302, `/manage/collection/${params.slug}/${params.id}`);
+		throw redirect(302, `${base}/manage/collection/${params.slug}/${params.id}`);
 	}
 };

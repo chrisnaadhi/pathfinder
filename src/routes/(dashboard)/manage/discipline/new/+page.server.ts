@@ -1,6 +1,7 @@
 import { db } from '$lib/server/drizzle';
 import { discipline, faculty } from '$lib/db/pgSchema';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -30,6 +31,6 @@ export const actions = {
 			creator: session?.user.userId
 		});
 
-		throw redirect(302, '/manage/discipline');
+		throw redirect(302, `${base}/manage/discipline`);
 	}
 };

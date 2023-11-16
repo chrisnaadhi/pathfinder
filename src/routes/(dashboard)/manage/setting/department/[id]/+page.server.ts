@@ -2,6 +2,7 @@ import { db } from '$lib/server/drizzle';
 import { department } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ params }) => {
 	const getDepartment = await db
@@ -36,7 +37,7 @@ export const actions = {
 			})
 			.where(eq(department.id, id));
 
-		throw redirect(302, '/manage/setting/department');
+		throw redirect(302, `${base}/manage/setting/department`);
 	},
 	deleteData: async ({ request }) => {
 		const data = await request.formData();
@@ -47,6 +48,6 @@ export const actions = {
 			await db.delete(department).where(eq(department.id, Number(idData)));
 		}
 
-		throw redirect(302, '/manage/setting/department');
+		throw redirect(302, `${base}/manage/setting/department`);
 	}
 };

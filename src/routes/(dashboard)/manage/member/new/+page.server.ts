@@ -3,6 +3,7 @@ import { db } from '$lib/server/drizzle';
 import { auth } from '$lib/server/lucia';
 import { LuciaError } from 'lucia';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ locals }) => {
 	const getDepartment = await db.select().from(department);
@@ -49,6 +50,6 @@ export const actions = {
 			console.log(error);
 		}
 
-		throw redirect(302, '/manage/member');
+		throw redirect(302, `${base}/manage/member`);
 	}
 };

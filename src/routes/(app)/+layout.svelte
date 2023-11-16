@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { fade, fly, slide } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import Header from '$lib/components/Header.svelte';
 	import Welcome from '$lib/components/home/Welcome.svelte';
 
@@ -14,7 +14,7 @@
 	<Header state={data.userState} />
 	{#key data.url}
 		<div in:fade={{ delay: 500, duration: 500 }} out:fly={{ y: 50, duration: 400 }}>
-			{#if $page.url.pathname === '/'}
+			{#if $page.url.pathname === '/pathfinder'}
 				<section class="dfBgThird w-full pt-10">
 					<Welcome {name} description={getDeskripsiUtama?.contents} />
 				</section>

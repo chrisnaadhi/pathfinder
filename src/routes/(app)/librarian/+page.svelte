@@ -1,4 +1,5 @@
 <script>
+	import { base } from '$app/paths';
 	import BaseCard from '$lib/components/generic/BaseCard.svelte';
 
 	export let data;
@@ -14,12 +15,12 @@
 			<BaseCard>
 				<div class="flex flex-col items-center">
 					<img
-						src={librarian.photo ?? '/img/default.jpg'}
+						src={librarian.photo === null ? 'img/default.jpg' : `${base}${librarian.photo}`}
 						class="librarian-img"
 						alt={librarian.name}
 					/>
 					<div class="flex flex-col my-3">
-						<a href="/librarian/{librarian.username}">
+						<a href="librarian/{librarian.username}">
 							<h5>{librarian.name}</h5>
 						</a>
 
@@ -35,7 +36,7 @@
 						<p class="dfBg rounded">Subjects:</p>
 						<div class="flex flex-col">
 							{#each librarian.subjectsInstructor as subject}
-								<a href="/subjects/{subject.subjectSlug}" class="text-left text-sm">
+								<a href="subjects/{subject.subjectSlug}" class="text-left text-sm">
 									&star; {subject.subjectName}
 								</a>
 							{/each}

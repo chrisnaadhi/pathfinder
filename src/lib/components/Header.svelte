@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 
 	export let state: string | undefined;
@@ -13,23 +14,23 @@
 <nav class="fixed top-0 w-full z-10 bg-white shadow-md">
 	<section class="nav-section">
 		<div>
-			<a href="/">
+			<a href="{base}/">
 				<h5>PathfinderKit</h5>
 			</a>
 		</div>
 		<div class="hidden md:(flex items-center gap-5)">
-			<a href="/" class={isLinkActive('/')}>Beranda</a>
-			<a href="/about" class={isLinkActive('/about')}>Tentang</a>
-			<a href="/guides" class={isLinkActive('/guides')}>Petunjuk</a>
-			<a href="/subjects" class={isLinkActive('/subjects')}>Subjects</a>
-			<a href="/librarian" class={isLinkActive('/librarian')}>Librarian</a>
-			<a href="/contacts" class={isLinkActive('/contacts')}>Ask us!</a>
+			<a href={base} class={isLinkActive('/')}>Beranda</a>
+			<a href="{base}/about" class={isLinkActive(`${base}/about`)}>Tentang</a>
+			<a href="{base}/guides" class={isLinkActive(`${base}/guides`)}>Petunjuk</a>
+			<a href="{base}/subjects" class={isLinkActive(`${base}/subjects`)}>Subjects</a>
+			<a href="{base}/librarian" class={isLinkActive(`${base}/librarian`)}>Librarian</a>
+			<a href="{base}/contacts" class={isLinkActive(`${base}/contacts`)}>Ask us!</a>
 		</div>
 		<div>
 			{#if state === 'active' || state === 'idle'}
-				<a href="/manage">Manage</a>
+				<a href="{base}/manage">Manage</a>
 			{:else}
-				<a href="/account">Account</a>
+				<a href="{base}/account">Account</a>
 			{/if}
 			{userData}
 		</div>

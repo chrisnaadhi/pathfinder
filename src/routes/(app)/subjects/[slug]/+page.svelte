@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { fade, fly } from 'svelte/transition';
 	import { backButton, trimText } from '$lib/utils/textFormatter';
+	import { base } from '$app/paths';
 
 	export let data;
 
@@ -20,7 +21,7 @@
 
 <section class="max-w-5xl ma">
 	<div>
-		<a href="/" class="font-semibold text-lg italic">Lantera</a>
+		<a href={base} class="font-semibold text-lg italic">Lantera</a>
 		<div>
 			<span
 				class="px-3 py-0.5 text-xs rounded-full text-white"
@@ -40,7 +41,9 @@
 		<div class="subject-specialist-card">
 			<h5 class="dfBg w-full rounded-tr-lg rounded-tl-lg px-5">Subject Specialist</h5>
 			<img
-				src={getSubjectSpecialist?.photo ?? '/img/default.jpg'}
+				src={getSubjectSpecialist?.photo === null
+					? '/img/default.jpg'
+					: `${base}${getSubjectSpecialist?.photo}`}
 				alt={getSubjectSpecialist?.username}
 				class="rounded-full w-24 h-24 object-cover my-2"
 			/>
@@ -54,9 +57,9 @@
 			<div class="w-full">
 				<div class="dfBg px-4 py-1 my-3 rounded mx-5">Subjek lainnya:</div>
 				{#if otherSubjects && otherSubjects.length > 0}
-					<div class="flex flex-col items-start px-3">
+					<div class="flex flex-col items-start text-left px-3">
 						{#each otherSubjects || [] as subject}
-							<a href={'/subjects/' + subject.subjectSlug}>&star; {subject.subjectName}</a>
+							<a href={subject.subjectSlug}>&star; {subject.subjectName}</a>
 						{/each}
 					</div>
 				{:else}

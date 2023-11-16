@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	import { base } from '$app/paths';
 	import { backButton, trimText } from '$lib/utils/textFormatter';
 
 	import BaseCard from '$lib/components/generic/BaseCard.svelte';
@@ -19,7 +20,7 @@
 		<div class="my-3 flex justify-between">
 			<h5>Daftar Disiplin Ilmu</h5>
 			<a
-				href={role === 1 ? '/manage/discipline/new' : '/manage/discipline#'}
+				href={role === 1 ? `${base}manage/discipline/new` : `${base}manage/discipline#`}
 				class:active-btn={role === 1}
 				class:disabled-btn={role !== 1}
 			>

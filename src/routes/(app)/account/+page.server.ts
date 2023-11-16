@@ -1,9 +1,9 @@
 import type { Actions, PageServerLoad } from './$types';
 import { auth } from '$lib/server/lucia';
 import { error, redirect } from '@sveltejs/kit';
-import { LuciaError } from 'lucia';
 import { db } from '$lib/server/drizzle';
 import { users } from '$lib/db/pgSchema';
+import { base } from '$app/paths';
 
 const date = new Date();
 
@@ -15,13 +15,13 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
 	if (listUsers.length < 1) throw redirect(302, '/new-instance');
 	if (session) {
 		if (session.user.userType === 1) {
-			throw redirect(302, '/manage');
+			throw redirect(302, 'manage');
 		} else if (session.user.userType === 2) {
-			throw redirect(302, '/manage');
+			throw redirect(302, 'manage');
 		} else if (session.user.userType === 3) {
-			throw redirect(302, '/account/profile');
+			throw redirect(302, 'account/profile');
 		} else if (session.user.userType === 4) {
-			throw redirect(302, '/account/profile');
+			throw redirect(302, 'account/profile');
 		} else {
 			console.log(session.state);
 		}
@@ -50,9 +50,9 @@ export const actions: Actions = {
 
 			if (session) {
 				if (session.user.userType === 1 || session.user.userType === 2) {
-					throw redirect(302, '/manage');
+					throw redirect(302, `${base}manage`);
 				} else if (session.user.userType === 3 || session.user.userType === 4) {
-					throw redirect(302, '/');
+					throw redirect(302, '/pathfinder');
 				} else {
 					console.log(session.state);
 				}
@@ -95,6 +95,6 @@ export const actions: Actions = {
 			console.log(err);
 		}
 
-		throw redirect(302, '/');
+		throw redirect(302, '/pathfinder');
 	}
 };

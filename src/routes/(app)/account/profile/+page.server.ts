@@ -6,7 +6,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	const session = await locals.auth.validate();
 	const user = session?.user;
 
-	if (!session) throw redirect(307, '/account');
+	if (!session) throw redirect(307, 'account');
 
 	return {
 		user
@@ -20,6 +20,6 @@ export const actions: Actions = {
 
 		await auth.invalidateSession(session.sessionId);
 		locals.auth.setSession(null);
-		throw redirect(302, '/account');
+		throw redirect(302, 'account');
 	}
 };

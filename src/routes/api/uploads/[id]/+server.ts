@@ -2,7 +2,7 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 
 export const GET = async ({ params }) => {
-	const userFile = 'files/api/uploads/' + params.id;
+	const userFile = 'files/uploads/' + params.id;
 
 	const type = path.extname(userFile);
 	const extension = type.replace(/./, '');

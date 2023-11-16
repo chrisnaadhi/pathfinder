@@ -2,6 +2,7 @@ import { db } from '$lib/server/drizzle';
 import { department, userType, users } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ params, locals }) => {
 	const getUserData = await db.select().from(users).where(eq(users.id, params.id));
@@ -10,7 +11,7 @@ export const load = async ({ params, locals }) => {
 	const loggedInUser = await locals.auth.validate();
 	const userData = getUserData[0];
 
-	if (loggedInUser?.user.userType !== 1) throw redirect(302, '/manage/member');
+	if (loggedInUser?.user.userType !== 1) throw redirect(302, `${base}/manage/member`);
 
 	return {
 		userData,
@@ -24,8 +25,6 @@ export const actions = {
 		const data = await request.formData();
 		const nama = data.get('nama') as string;
 		const title = data.get('title') as string;
-		const username = data.get('username') as string;
-		const email = data.get('email') as string;
 		const department = data.get('department');
 		const role = data.get('role');
 
@@ -34,13 +33,11 @@ export const actions = {
 			.set({
 				name: nama,
 				title,
-				username,
-				email,
 				departmentId: Number(department),
 				type: Number(role)
 			})
 			.where(eq(users.id, params.id));
 
-		throw redirect(302, '/manage/member/' + params.id);
+		throw redirect(302, `${base}/manage/member/${params.id}`);
 	}
 };

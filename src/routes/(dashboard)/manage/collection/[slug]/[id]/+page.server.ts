@@ -2,6 +2,7 @@ import { db } from '$lib/server/drizzle';
 import { collections, contents, subjects } from '$lib/db/pgSchema';
 import { eq, desc } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 const date = new Date();
 
@@ -64,9 +65,9 @@ export const actions = {
 
 		if (isDelete === 'delete') {
 			await db.delete(collections).where(eq(collections.id, Number(event.params.id)));
-			throw redirect(302, '/manage/collection/' + event.params.slug);
+			throw redirect(302, `${base}/manage/collection/${event.params.slug}`);
 		} else if (isDelete === 'keep') {
-			throw redirect(300, '/manage/collection/' + event.params.slug + '/' + event.params.id);
+			throw redirect(300, `${base}/manage/collection/${event.params.slug}/${event.params.id}`);
 		} else {
 			console.log('Nothing Happen');
 		}

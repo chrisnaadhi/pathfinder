@@ -34,7 +34,7 @@
 			Edit
 		</a>
 		<DeleteModal>
-			<p>Ingin meghapus data ?</p>
+			<p class="my-3">Ingin meghapus {content.title} ?</p>
 		</DeleteModal>
 	</div>
 </section>
