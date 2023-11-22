@@ -1,7 +1,7 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
-	import { backButton } from '$lib/utils/textFormatter.js';
+	import { backButton } from '$lib/utils/textFormatter';
 
 	export let data;
 
