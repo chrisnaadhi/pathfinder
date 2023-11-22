@@ -1,4 +1,5 @@
 <script>
+	import { base } from '$app/paths';
 	let placeholder = 'Application Settings';
 </script>
 
@@ -14,7 +15,7 @@
 	<div class="mt-5">
 		<h5>Setting Konten Depan</h5>
 		<div class="mt-3">
-			<a class="btn dfBg" href="/manage/setting/contents">Edit Contents</a>
+			<a class="btn dfBg" href="{base}/manage/setting/contents">Edit Contents</a>
 		</div>
 	</div>
 </section>

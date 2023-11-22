@@ -1,4 +1,5 @@
 <script>
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { backButton, formatTanggal } from '$lib/utils/textFormatter';
 
@@ -14,7 +15,9 @@
 	<div class="bg-white h-50 z--1 opacity-50 mt--5 w-full absolute blur-25" />
 	<p class="dfBg rounded px-5 mb-3 text-sm">{getContent?.subjects?.subjectName}</p>
 	<img
-		src={getContent?.creator?.photo ?? '/img/default.jpg'}
+		src={getContent?.creator?.photo === null
+			? 'img/default.jpg'
+			: `${base}${getContent?.creator?.photo}`}
 		alt={getContent?.creator?.username}
 		class="w-16 h-16 rounded-full object-cover"
 	/>

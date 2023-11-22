@@ -1,11 +1,13 @@
 <script lang="ts">
+	import { base } from '$app/paths';
+
 	export let name: string;
 	export let description: string | null | undefined;
 </script>
 
 <section>
 	<div class="flex justify-center">
-		<img src="/pathfinder/img/lantera.png" alt="Lantera" class="w-40" />
+		<img src="{base}/img/lantera.png" alt="Lantera" class="w-40" />
 	</div>
 
 	<h1 class="text-3xl md:text-5xl">Selamat datang di <span class="dfTx">{name}</span></h1>

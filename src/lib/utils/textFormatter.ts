@@ -58,3 +58,16 @@ export const formatTanggal = (dateTime: Date | null | undefined) => {
 
 	return formatted;
 };
+
+export const bulletType = (typeValue: string) => {
+	switch (typeValue) {
+		case 'guide':
+			return 'bg-emerald-6 text-white px-2 py-1 text-xs rounded';
+		case 'course':
+			return 'bg-red-6 text-white px-2 py-1 text-xs rounded';
+		case 'topic':
+			return 'bg-blue-6 text-white px-2 py-1 text-xs rounded';
+		default:
+			return 'dfBg';
+	}
+};

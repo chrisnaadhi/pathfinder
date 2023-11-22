@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { base } from '$app/paths';
+
 	export let subjectSpecialist: Array<any>;
 
 	const limitSubject = (list: Array<any>) => {
@@ -12,7 +14,7 @@
 		{#each subjectSpecialist as specialist}
 			<div class="flex flex-row items-center my-2">
 				<img
-					src={specialist.photo ?? '/img/default.jpg'}
+					src={specialist.photo === null ? 'img/default.jpg' : `${base}${specialist.photo}`}
 					alt="foto"
 					class="h-24 w-24 object-cover mx-2 rounded-full"
 				/>
@@ -24,25 +26,28 @@
 						</p>
 					</div>
 
-					{#if specialist.subjectsInstructor.length > 0}
-						<span class="flex flex-row text-xs text-dark-50 italic">
-							{#each limitSubject(specialist.subjectsInstructor) as sub}
-								<p>{sub.subjectName}</p>
-							{/each}
-							&ThickSpace;dan<a href="/librarian/{specialist.username}">&ThickSpace;lainnya.</a>
-						</span>
-						<a href={'mailto:' + specialist.email} class="text-sm text-gray italic hover:(dfTx)">
-							{specialist.email}
-						</a>
-					{:else}
-						<span>Belum ada subjek.</span>
-					{/if}
+					<div class="flex flex-col">
+						{#if specialist.subjectsInstructor.length > 0}
+							<span class="text-xs text-dark-50 italic">
+								{#each limitSubject(specialist.subjectsInstructor) as sub}
+									{sub.subjectName}
+								{/each}
+								&ThickSpace;dan
+								<a href="{base}/librarian/{specialist.username}">&ThickSpace;lainnya.</a>
+							</span>
+							<a href={'mailto:' + specialist.email} class="text-sm text-gray italic hover:(dfTx)">
+								{specialist.email}
+							</a>
+						{:else}
+							<span>Belum ada subjek.</span>
+						{/if}
+					</div>
 				</div>
 			</div>
 		{/each}
 	</div>
 	<div>
-		<a class="btn dfBg" href="/librarian">Lihat semua SS</a>
+		<a class="btn dfBg" href="{base}/librarian">Lihat semua SS</a>
 	</div>
 </section>
 

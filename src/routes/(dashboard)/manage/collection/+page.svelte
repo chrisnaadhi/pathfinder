@@ -38,8 +38,6 @@
 		isFiltered = true;
 		subjectState = value;
 		filteredCollection = subjectResults?.filter((val) => {
-			console.log('val.disciplineCode:' + val.disciplineCode);
-			console.log('val params' + value);
 			return val?.disciplineCode === value;
 		});
 	};
@@ -69,7 +67,7 @@
 	{#if isFiltered}
 		<div>
 			{#if filteredCollection?.length || [].length > 0}
-				<div class="flex flex-col lg:(grid grid-cols-4) gap-3 my-5">
+				<div class="flex flex-col lg:(grid grid-cols-3) gap-3 my-5">
 					{#each filteredCollection || [] as subject}
 						<div class=" dfBgSecond p-5 flex flex-col justify-between">
 							<div class="flex items-start justify-between">
@@ -110,7 +108,7 @@
 	{:else}
 		<div>
 			{#if subjectResults?.length || [].length > 0}
-				<div class="flex flex-col lg:(grid grid-cols-4) gap-3 my-5">
+				<div class="flex flex-col lg:(grid grid-cols-3) gap-3 my-5">
 					{#each subjectResults || [] as subject}
 						<div class=" dfBgSecond p-5 flex flex-col justify-between">
 							<div class="flex items-start justify-between">

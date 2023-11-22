@@ -35,8 +35,8 @@ export const actions = {
 			const splitPhotoName = photo.name.split('.');
 			splitPhotoName.splice(0, 1, userId);
 			joinedPhoto = splitPhotoName.join('.');
+			writeFileSync(`files/uploads/${joinedPhoto}`, Buffer.from(await photo.arrayBuffer()));
 			joinedPhoto = '/api/uploads/' + joinedPhoto;
-			writeFileSync(`files${joinedPhoto}`, Buffer.from(await photo.arrayBuffer()));
 		}
 
 		await db

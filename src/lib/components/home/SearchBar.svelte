@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { trimText } from '$lib/utils/textFormatter';
 	import { fade } from 'svelte/transition';
 
@@ -7,9 +8,11 @@
 	let searchResults: any = null;
 
 	const getResults = async () => {
-		const result = await fetch(`api/search?q=${searchValue}`);
+		const result = await fetch(`${base}/api/search?q=${searchValue}`);
 		searchResults = await result.json();
 	};
+
+	console.log(base);
 </script>
 
 <section>

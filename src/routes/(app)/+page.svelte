@@ -34,6 +34,7 @@
 	<div class="mt--27">
 		<SearchBar />
 	</div>
+
 	<div class="my-5">
 		<SubjectExplanation description={getDeskripsiPathfinder?.contents} />
 	</div>
