@@ -14,7 +14,7 @@
 		{#each subjectSpecialist as specialist}
 			<div class="flex flex-row items-center my-2">
 				<img
-					src={specialist.photo === null ? 'img/default.jpg' : `${base}${specialist.photo}`}
+					src={specialist.photo === null ? `${base}/img/default.jpg` : `${base}${specialist.photo}`}
 					alt="foto"
 					class="h-24 w-24 object-cover mx-2 rounded-full"
 				/>

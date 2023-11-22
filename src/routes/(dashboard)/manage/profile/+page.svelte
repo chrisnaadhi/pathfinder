@@ -22,7 +22,7 @@
 <section>
 	<h2 class="dfTx">{name}</h2>
 	<img
-		src={userData?.photo === null ? base + '/img/default.jpg' : base + userData?.photo}
+		src={userData?.photo === null ? base + `/img/default.jpg` : base + userData?.photo}
 		class="w-32 h-32 object-cover rounded-full dfBorder"
 		alt={userData?.username}
 	/>

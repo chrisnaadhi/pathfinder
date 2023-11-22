@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { fade } from 'svelte/transition';
 
 	let placeholder = 'Tata cara penggunaan Pathfinder';
@@ -154,7 +155,7 @@
 				berikut.
 			</p>
 			<div class="my-5">
-				<img src="/img/workflow.webp" alt="Workflow of Pathfinder" />
+				<img src="{base}/img/workflow.webp" alt="Workflow of Pathfinder" />
 			</div>
 		</section>
 	{:else if selectedTab === 'typesubject'}

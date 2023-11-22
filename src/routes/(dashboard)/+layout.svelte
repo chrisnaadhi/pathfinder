@@ -16,7 +16,7 @@
 	<section class="dfBgThird dfTx w-60 px-4 py-2">
 		<div class="flex flex-col items-center">
 			<img
-				src={userData?.photo === null ? '/img/default.jpg' : base + userData?.photo}
+				src={userData?.photo === null ? `${base}/img/default.jpg` : base + userData?.photo}
 				alt="foto"
 				class="rounded-full w-20 h-20 object-cover"
 			/>

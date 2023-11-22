@@ -68,7 +68,7 @@
 			</div>
 		</div>
 		<div class="w-full">
-			<div class="flex flex gap-1 mb-3 md:(grid grid-cols-4)">
+			<div class="flex flex gap-1 mb-3 md:(grid grid-cols-3)">
 				{#each getCollection as collection}
 					<button
 						class="collection"

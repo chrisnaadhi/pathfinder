@@ -1,25 +1,27 @@
 <script lang="ts">
+	import { base } from '$app/paths';
+
 	export let description: string | null | undefined;
 
 	let feature = [
 		{
 			id: 1,
 			name: 'Daftar Subjek',
-			img: '/illust/undraw_My_personal_files.png',
+			img: `${base}/illust/undraw_My_personal_files.png`,
 			deskripsi:
 				'Cari dan temukan berbagai topik dalam subjek yang berisi mengenai pembahasan dan daftar tautan mengenai subjek tertentu yang dapat digunakan untuk keperluan pembelajaran dan penelitian.'
 		},
 		{
 			id: 2,
 			name: 'Data Kepakaran',
-			img: '/illust/undraw_People_search.png',
+			img: `${base}/illust/undraw_People_search.png`,
 			deskripsi:
 				'Data kepakaran juga terdapat di situs Pathfinder, dimana anda bisa menemukan berbagai ahli di bidangnya masing-masing.'
 		},
 		{
 			id: 3,
 			name: 'Konten Terkurasi ',
-			img: '/illust/undraw_Instant_support.png',
+			img: `${base}/illust/undraw_Instant_support.png`,
 			deskripsi:
 				'Kurasi konten dilakukan oleh pustakawan ahli yang sudah mempelajari berbagai subjek sehingga dapat menyusun daftar sumber referensi dari masing-masing subjek.'
 		}
@@ -30,7 +32,7 @@
 	<h3>Apa itu <span class="lantera">Lantera</span> ?</h3>
 	<div class="flex flex-col items-center justify-center md:flex-row">
 		<div class="w-full flex justify-center">
-			<img src="/illust/undraw_Search_engines.png" alt="" class="w-150" />
+			<img src="{base}/illust/undraw_Search_engines.png" alt="" class="w-150" />
 		</div>
 		<div class="w-full">
 			<h5>Web-based Pathfinder</h5>

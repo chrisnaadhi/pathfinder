@@ -11,8 +11,6 @@
 		const result = await fetch(`${base}/api/search?q=${searchValue}`);
 		searchResults = await result.json();
 	};
-
-	console.log(base);
 </script>
 
 <section>
