@@ -11,7 +11,7 @@
 </script>
 
 <section>
-	<div class="text-center max-w-xl ma">
+	<div class="text-center max-w-6xl ma px-5">
 		<h3>{data.collectionItem.name}</h3>
 		<p class="text-sm">
 			{data.collectionItem.deskripsi}

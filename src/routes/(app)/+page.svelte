@@ -5,6 +5,7 @@
 	import SubjectExplanation from '$lib/components/home/SubjectExplanation.svelte';
 	import { groupBy } from '$lib/utils/dataStore';
 	import { fade, fly } from 'svelte/transition';
+	import { base } from '$app/paths';
 	export let data;
 
 	let {
@@ -84,7 +85,10 @@
 																class:bg-blue-6={subject.type === 'topic'}
 																>{subject.type}
 															</span>
-															<a href={'subjects/' + subject.subjectSlug} class="font-semibold">
+															<a
+																href={base + '/subjects/' + subject.subjectSlug}
+																class="font-semibold"
+															>
 																{subject.subjectName}
 															</a>
 														</div>

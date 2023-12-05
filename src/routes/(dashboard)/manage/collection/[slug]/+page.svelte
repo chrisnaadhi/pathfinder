@@ -16,7 +16,7 @@
 		<div class="flex flex-col items-center justify-center text-center gap-3 min-w-60">
 			<p class="font-semibold italic">Subject Specialist</p>
 			<img
-				src={specialist.photo === null ? '/img/default.jpg' : `${base}${specialist.photo}`}
+				src={specialist.photo === null ? `${base}/img/default.jpg` : `${base}${specialist.photo}`}
 				alt=""
 				class="w-30 h-30 rounded-lg object-cover"
 			/>

@@ -1,4 +1,5 @@
 <script>
+	import { base } from '$app/paths';
 	import { enhance } from '$app/forms';
 	import { getFacultyName, groupByFaculty } from '$lib/utils/dataStore';
 	import DeleteModal from '$lib/components/generic/DeleteModal.svelte';
@@ -68,7 +69,13 @@
 							on:click|preventDefault={() => chooseInstructor(instructor.id)}
 							on:click|preventDefault={viewDropdown}
 						>
-							<img src={instructor.photo} class="w-12 h-12 object-cover rounded" alt="" />
+							<img
+								src={instructor.photo !== null
+									? base + instructor.photo
+									: base + '/img/default.jpg'}
+								class="w-12 h-12 object-cover rounded-full"
+								alt=""
+							/>
 							<p>{instructor.name} - {instructor.email}</p>
 						</button>
 					{/each}

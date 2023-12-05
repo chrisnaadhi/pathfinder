@@ -46,6 +46,9 @@
 								</p>
 							</div>
 						{/each}
+						<div>
+							<a href={base + '/search?q=' + searchValue}>Tampilkan hasil lainnya</a>
+						</div>
 					{:else}
 						<p>Pencarian tidak ditemukan</p>
 					{/if}

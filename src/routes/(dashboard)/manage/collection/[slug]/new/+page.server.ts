@@ -2,6 +2,7 @@ import { db } from '$lib/server/drizzle';
 import { subjects, collections } from '$lib/db/pgSchema';
 import { eq } from 'drizzle-orm';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = async ({ params }) => {
 	const searchParam = await db
@@ -42,6 +43,6 @@ export const actions = {
 			creator: session?.user.userId
 		});
 
-		throw redirect(302, '/manage/collection/' + searchParam[0].slug);
+		throw redirect(302, base + '/manage/collection/' + searchParam[0].slug);
 	}
 };
