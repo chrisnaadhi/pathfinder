@@ -7,6 +7,7 @@
 		{
 			id: 1,
 			name: 'Daftar Subjek',
+			slug: 'subjects',
 			img: `${base}/illust/undraw_My_personal_files.png`,
 			deskripsi:
 				'Cari dan temukan berbagai topik dalam subjek yang berisi mengenai pembahasan dan daftar tautan mengenai subjek tertentu yang dapat digunakan untuk keperluan pembelajaran dan penelitian.'
@@ -14,13 +15,15 @@
 		{
 			id: 2,
 			name: 'Data Kepakaran',
+			slug: 'kepakaran',
 			img: `${base}/illust/undraw_People_search.png`,
 			deskripsi:
 				'Data kepakaran juga terdapat di situs Pathfinder, dimana anda bisa menemukan berbagai ahli di bidangnya masing-masing.'
 		},
 		{
 			id: 3,
-			name: 'Konten Terkurasi ',
+			name: 'Konten Terkurasi',
+			slug: 'librarian',
 			img: `${base}/illust/undraw_Instant_support.png`,
 			deskripsi:
 				'Kurasi konten dilakukan oleh pustakawan ahli yang sudah mempelajari berbagai subjek sehingga dapat menyusun daftar sumber referensi dari masing-masing subjek.'
@@ -59,7 +62,10 @@
 		{#each feature as feat}
 			<div class="max-w-75 flex flex-col items-center">
 				<img src={feat.img} alt={feat.name} class="h-45" />
-				<h5>{feat.name}</h5>
+				<a href={base + '/' + feat.slug}>
+					<h5 class="text-dark hover:dfTx">{feat.name}</h5>
+				</a>
+
 				<p class="text-xs">{feat.deskripsi}</p>
 			</div>
 		{/each}

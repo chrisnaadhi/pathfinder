@@ -5,6 +5,8 @@
 	export let data;
 
 	const { getAllLibrarian } = data;
+
+	console.log(getAllLibrarian);
 </script>
 
 <h1>Daftar Subject Specialist</h1>
@@ -35,10 +37,10 @@
 					<div class="w-full">
 						<p class="dfBg rounded">Subjects:</p>
 						<div class="flex flex-col">
-							{#each librarian.subjectsInstructor as subject}
-								<a href="subjects/{subject.subjectSlug}" class="text-left text-sm">
-									&star; {subject.subjectName}
-								</a>
+							{#each librarian.discipline as discipline}
+								<p class="text-left text-sm">
+									&star; {discipline.disciplineName}
+								</p>
 							{/each}
 						</div>
 					</div>
