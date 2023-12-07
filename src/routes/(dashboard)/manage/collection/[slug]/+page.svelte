@@ -57,7 +57,7 @@
 		</div>
 	{:else}
 		<div class="flex flex-col items-center">
-			<img src="/illust/undraw_Warning.png" alt="Warning" class="w-sm" />
+			<img src={base + '/illust/undraw_Warning.png'} alt="Warning" class="w-sm" />
 			<h4 class="text-red">Tidak ada daftar koleksi {subjectData.name}!</h4>
 			<p>Silahkan tambahkan jenis koleksi melalui tombol Tambah</p>
 		</div>

@@ -7,12 +7,16 @@ export const load = async () => {
 		with: {
 			userType: true,
 			department: true,
-			subjectsInstructor: true,
-			discipline: true
+			subjectsInstructor: {
+				with: {
+					discipline: true
+				}
+			}
 		},
 		where: or(eq(users.type, 1), eq(users.type, 2)),
 		orderBy: [asc(users.type)]
 	});
+
 	return {
 		getAllLibrarian
 	};

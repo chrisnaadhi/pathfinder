@@ -1,12 +1,17 @@
-<script>
+<script lang="ts">
 	import { base } from '$app/paths';
 	import BaseCard from '$lib/components/generic/BaseCard.svelte';
+	import { discipline } from '$lib/db/pgSchema';
 
 	export let data;
 
 	const { getAllLibrarian } = data;
 
-	console.log(getAllLibrarian);
+	const getDisciplineName = (arr: Array<any>) => {
+		const findDisciplineName = arr.map((subject) => subject.discipline?.disciplineName);
+		const uniqueDiscipline = [...new Set(findDisciplineName)];
+		return uniqueDiscipline;
+	};
 </script>
 
 <h1>Daftar Subject Specialist</h1>
@@ -35,13 +40,11 @@
 						<p class="font-semibold dfTx">{librarian.department?.departmentName}</p>
 					</div>
 					<div class="w-full">
-						<p class="dfBg rounded">Subjects:</p>
-						<div class="flex flex-col">
-							{#each librarian.discipline as discipline}
-								<p class="text-left text-sm">
-									&star; {discipline.disciplineName}
-								</p>
-							{/each}
+						<button class="dfBg rounded w-full">Discipline</button>
+						<div class="flex flex-col py-2">
+							<p class="text-sm">
+								{getDisciplineName(librarian.subjectsInstructor)}
+							</p>
 						</div>
 					</div>
 				</div>

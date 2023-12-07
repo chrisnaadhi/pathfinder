@@ -4,6 +4,7 @@
 
 	import EditModal from '$lib/components/generic/EditModal.svelte';
 	import DeleteModal from '$lib/components/generic/DeleteModal.svelte';
+	import { base } from '$app/paths';
 
 	const backUrl = backButton($page);
 
@@ -81,7 +82,7 @@
 		</div>
 	{:else}
 		<div class="flex flex-col items-center">
-			<img src="/illust/undraw_Void.png" alt="Warning" class="w-sm" />
+			<img src={base + '/illust/undraw_Warning.png'} alt="Warning" class="w-sm" />
 			<h4 class="text-red">Tidak ada daftar konten yang tersedia!</h4>
 			<p>Silahkan tambahkan konten melalui tombol Tambah Konten di sebelah kanan atas</p>
 		</div>

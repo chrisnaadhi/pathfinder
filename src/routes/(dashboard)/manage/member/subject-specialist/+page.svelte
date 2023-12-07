@@ -35,7 +35,7 @@
 		</div>
 	{:else}
 		<div class="flex flex-col items-center">
-			<img src="/illust/undraw_Warning.png" alt="Warning" class="w-sm" />
+			<img src={base + '/illust/undraw_Warning.png'} alt="Warning" class="w-sm" />
 			<h4 class="text-red">Tidak ada ditemukan data anggota Subjek!</h4>
 		</div>
 	{/if}

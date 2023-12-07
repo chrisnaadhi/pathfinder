@@ -20,7 +20,7 @@
 		<div class="my-3 flex justify-between">
 			<h5>Daftar Disiplin Ilmu</h5>
 			<a
-				href={role === 1 ? `${base}manage/discipline/new` : `${base}manage/discipline#`}
+				href={role === 1 ? `${base}/manage/discipline/new` : `${base}manage/discipline#`}
 				class:active-btn={role === 1}
 				class:disabled-btn={role !== 1}
 			>
@@ -61,7 +61,7 @@
 			</div>
 		{:else}
 			<div class="flex flex-col items-center">
-				<img src="/illust/undraw_Void.png" alt="Warning" class="w-sm" />
+				<img src={base + '/illust/undraw_Void.png'} alt="Warning" class="w-sm" />
 				<h4 class="text-red">Tidak ada Disiplin!</h4>
 				<p>Silahkan tambahkan disiplin melalui tombol New Discipline (Khusus Koordinator)</p>
 			</div>

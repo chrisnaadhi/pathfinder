@@ -62,7 +62,7 @@
 	}
 
 	.background-img {
-		--at-apply: w-full h-60 mt--15 z--1 absolute opacity-50 blur-8;
+		--at-apply: w-full h-60 mt--15 z--1 absolute opacity-35 blur-8;
 		background-image: url('/img/lantern-book.jpg');
 		background-position: center;
 	}

@@ -6,9 +6,8 @@
 
 	export let data;
 
-	const { getAllFaculty } = data;
+	const { getAllFaculty, disciplineData } = data;
 
-	const { disciplineData } = data;
 	const back = backButton($page);
 </script>
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
 	import { trimText } from '$lib/utils/textFormatter';
 	import { fade } from 'svelte/transition';
@@ -11,6 +12,11 @@
 		const result = await fetch(`${base}/api/search?q=${searchValue}`);
 		searchResults = await result.json();
 	};
+	const goToSearchPage = async (event: KeyboardEvent) => {
+		if (event.key === 'Enter') {
+			goto(base + `/search?q=${searchValue}`);
+		}
+	};
 </script>
 
 <section>
@@ -20,12 +26,13 @@
 			name="searchbox"
 			bind:value={searchValue}
 			on:keydown={getResults}
+			on:keydown={goToSearchPage}
 			placeholder="Find your path.."
 			autocomplete="off"
 		/>
 		<button type="submit" on:click={getResults}>Cari</button>
 	</div>
-	<div class="absolute max-w-xl max-h-md overflow-y-scroll overflow-x-hidden">
+	<div class="absolute max-w-xl max-h-xs overflow-y-scroll overflow-x-hidden">
 		{#if searchResults && searchValue}
 			<div class="bg-white min-w-xl z-4 pt-5 mt--4 border dfBorder px-2 rounded">
 				<div class="w-full">

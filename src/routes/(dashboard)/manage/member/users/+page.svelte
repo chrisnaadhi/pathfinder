@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { backButton } from '$lib/utils/textFormatter';
 	import BaseCard from '$lib/components/generic/BaseCard.svelte';
+	import { base } from '$app/paths';
 
 	export let data;
 
@@ -28,7 +29,7 @@
 		</div>
 	{:else}
 		<div class="flex flex-col items-center">
-			<img src="/illust/undraw_Warning.png" alt="Warning" class="w-sm" />
+			<img src={base + '/illust/undraw_Warning.png'} alt="Warning" class="w-sm" />
 			<h4 class="text-red">Tidak ada daftar Anggota!</h4>
 		</div>
 	{/if}

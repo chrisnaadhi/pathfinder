@@ -59,7 +59,7 @@
 			</div>
 		{:else}
 			<div class="flex flex-col items-center">
-				<img src="/illust/undraw_Void.png" alt="Warning" class="w-sm" />
+				<img src={base + '/illust/undraw_Warning.png'} alt="Warning" class="w-sm" />
 				<h4 class="text-red">Tidak ada Koleksi Subjek untuk {disciplineData.disciplineName}!</h4>
 				<p>Silahkan tambahkan koleksi Subjek dengan klik tombol New Subject</p>
 			</div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { trimText } from '$lib/utils/textFormatter';
 	import { fade, fly } from 'svelte/transition';
@@ -99,7 +100,7 @@
 				</div>
 			{:else}
 				<div class="flex flex-col items-center">
-					<img src="/illust/undraw_Void.png" alt="Warning" class="w-sm" />
+					<img src={base + '/illust/undraw_Void.png'} alt="Warning" class="w-sm" />
 					<h4 class="text-red">Tidak ada Koleksi Subjek!</h4>
 					<p>Silahkan tambahkan koleksi Subjek dengan klik tombol New Subject</p>
 				</div>
