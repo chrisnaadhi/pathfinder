@@ -65,9 +65,16 @@
 									<div>
 										<button
 											on:click={() => (discipline.state = !discipline.state)}
-											class="bg-transparent"
+											class="bg-transparent flex items-center gap-1"
 										>
-											<h6>&bigstar; {discipline.disciplineName}</h6>
+											{#if discipline.state}
+												<div class="i-mdi-minus-circle" />
+											{:else}
+												<div class="i-mdi-plus-circle" />
+											{/if}
+											<h6>
+												{discipline.disciplineName}
+											</h6>
 										</button>
 
 										<div class="flex flex-col gap-2">
@@ -139,9 +146,14 @@
 										<div class="flex flex-col">
 											<button
 												on:click={() => (sub.state = !sub.state)}
-												class="bg-transparent text-left"
+												class="bg-transparent text-left flex items-center gap-1"
 											>
-												<h6>&bigstar;{sub.disciplineName}</h6>
+												{#if sub.state}
+													<div class="i-mdi-minus-circle" />
+												{:else}
+													<div class="i-mdi-plus-circle" />
+												{/if}
+												<h6>{sub.disciplineName}</h6>
 											</button>
 											{#if sub.state}
 												<div
@@ -171,9 +183,14 @@
 										<div class="flex flex-col">
 											<button
 												on:click={() => (sub.state = !sub.state)}
-												class="bg-transparent text-left"
+												class="bg-transparent text-left flex items-center gap-1"
 											>
-												<h6>&bigstar;{sub.disciplineName}</h6>
+												{#if sub.state}
+													<div class="i-mdi-minus-circle" />
+												{:else}
+													<div class="i-mdi-plus-circle" />
+												{/if}
+												<h6>{sub.disciplineName}</h6>
 											</button>
 											{#if sub.state}
 												<div
@@ -203,9 +220,14 @@
 										<div class="flex flex-col">
 											<button
 												on:click={() => (sub.state = !sub.state)}
-												class="bg-transparent text-left"
+												class="bg-transparent text-left flex items-center gap-1"
 											>
-												<h6>&bigstar;{sub.disciplineName}</h6>
+												{#if sub.state}
+													<div class="i-mdi-minus-circle" />
+												{:else}
+													<div class="i-mdi-plus-circle" />
+												{/if}
+												<h6>{sub.disciplineName}</h6>
 											</button>
 											{#if sub.state}
 												<div
