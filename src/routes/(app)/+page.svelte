@@ -135,8 +135,8 @@
 							<h3>Daftar Subjek - <span class="dfTx">Guide</span></h3>
 							<div class="flex flex-col gap-2 md:(grid grid-cols-2)">
 								{#each getSubjectDataGuide as sub}
-									<div class="flex flex-col">
-										{#if sub.subject.length > 0}
+									{#if sub.subject.length > 0}
+										<div class="flex flex-col">
 											<button
 												on:click={() => (sub.state = !sub.state)}
 												class="bg-transparent text-left"
@@ -157,10 +157,8 @@
 													{/each}
 												</div>
 											{/if}
-										{:else}
-											<div />
-										{/if}
-									</div>
+										</div>
+									{/if}
 								{/each}
 							</div>
 						</div>
@@ -201,8 +199,8 @@
 							<h3>Daftar Subjek - <span class="dfTx">Course</span></h3>
 							<div class="flex flex-col md:(grid grid-cols-2)">
 								{#each getSubjectDataCourse as sub}
-									<div class="flex flex-col">
-										{#if sub.subject.length > 0}
+									{#if sub.subject.length > 0}
+										<div class="flex flex-col">
 											<button
 												on:click={() => (sub.state = !sub.state)}
 												class="bg-transparent text-left"
@@ -223,8 +221,8 @@
 													{/each}
 												</div>
 											{/if}
-										{/if}
-									</div>
+										</div>
+									{/if}
 								{/each}
 							</div>
 						</div>
