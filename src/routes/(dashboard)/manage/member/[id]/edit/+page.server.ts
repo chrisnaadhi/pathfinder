@@ -28,13 +28,15 @@ export const actions = {
 		const department = data.get('department');
 		const role = data.get('role');
 
+		console.log(role, department);
+
 		await db
 			.update(users)
 			.set({
 				name: nama,
 				title,
 				departmentId: Number(department),
-				type: Number(role)
+				type: role === null ? 1 : Number(role)
 			})
 			.where(eq(users.id, params.id));
 

@@ -1,4 +1,5 @@
 <script>
+	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import { backButton } from '$lib/utils/textFormatter';
 	export let data;
@@ -10,7 +11,7 @@
 
 <section>
 	<h4>{placeholder}</h4>
-	<form action="?/updateData" method="POST">
+	<form action="?/updateData" method="POST" use:enhance>
 		<div class="div-form">
 			<label for="nama">Nama Lengkap: </label>
 			<input type="text" name="nama" id="nama" value={userData.name} />

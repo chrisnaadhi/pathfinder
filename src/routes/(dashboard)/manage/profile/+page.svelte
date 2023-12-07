@@ -1,6 +1,5 @@
 <script>
 	// @ts-nocheck
-	import { enhance } from '$app/forms';
 	import { base } from '$app/paths';
 	import SubmitButton from '$lib/components/generic/SubmitButton.svelte';
 	import { checkRole } from '$lib/utils/textFormatter';
@@ -26,7 +25,7 @@
 		class="w-32 h-32 object-cover rounded-full dfBorder"
 		alt={userData?.username}
 	/>
-	<form method="POST" action="?/updateProfile" use:enhance>
+	<form method="POST" action="?/updateProfile">
 		<div class="div-form">
 			<label for="nama">Nama Lengkap: </label>
 			<input type="text" value={userData?.fullName} name="nama-lengkap" id="nama" />

@@ -123,7 +123,7 @@
 													class:bg-blue-6={inf.type === 'topic'}
 													>{inf.type}
 												</span>
-												<a href="/subjects/{inf.subjectSlug}">{inf.subjectName}</a>
+												<a href="{base}/subjects/{inf.subjectSlug}">{inf.subjectName}</a>
 											</div>
 										{/each}
 									</div>
@@ -150,7 +150,7 @@
 												>
 													{#each sub.subject as subject}
 														<div>
-															&DoubleRightArrow; <a href={'subjects/' + subject.subjectSlug}
+															&DoubleRightArrow; <a href="{base}/subjects/{subject.subjectSlug}"
 																>{subject.subjectName}</a
 															>
 														</div>
@@ -182,7 +182,7 @@
 												>
 													{#each sub.subject as subject}
 														<div>
-															&DoubleRightArrow; <a href={'subjects/' + subject.subjectSlug}
+															&DoubleRightArrow; <a href="{base}/subjects/{subject.subjectSlug}"
 																>{subject.subjectName}</a
 															>
 														</div>
@@ -214,7 +214,7 @@
 												>
 													{#each sub.subject as subject}
 														<div>
-															&DoubleRightArrow; <a href={'subjects/' + subject.subjectSlug}
+															&DoubleRightArrow; <a href="{base}/subjects/{subject.subjectSlug}"
 																>{subject.subjectName}</a
 															>
 														</div>

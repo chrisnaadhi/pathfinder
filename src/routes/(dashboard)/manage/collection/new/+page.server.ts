@@ -2,6 +2,7 @@ import { redirect } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
 import { discipline, subjects, users, faculty } from '$lib/db/pgSchema';
 import { eq, or } from 'drizzle-orm';
+import { base } from '$app/paths';
 
 export const load = async ({ locals }) => {
 	const session = await locals.auth.validate();
@@ -47,6 +48,6 @@ export const actions = {
 			creator: session?.user.userId
 		});
 
-		throw redirect(302, '/manage/collection');
+		throw redirect(302, base + '/manage/collection');
 	}
 };
