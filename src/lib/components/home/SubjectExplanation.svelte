@@ -45,11 +45,11 @@
 			</p>
 
 			<div class="flex gap-3 py-5">
-				<a href="/#" class="w-full">
-					<button class="default-button w-full">Tombol 1</button>
+				<a href="{base}/about" class="w-full">
+					<button class="default-button w-full">Tentang Pathfinder</button>
 				</a>
-				<a href="/#" class="w-full">
-					<button class="default-button w-full">Tombol 2</button>
+				<a href="{base}/subjects" class="w-full">
+					<button class="default-button w-full">Lihat Subjek</button>
 				</a>
 			</div>
 		</div>

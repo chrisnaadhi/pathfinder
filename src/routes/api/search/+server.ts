@@ -1,4 +1,4 @@
-import { error, json } from '@sveltejs/kit';
+import { json } from '@sveltejs/kit';
 import { db } from '$lib/server/drizzle';
 import { ilike, or } from 'drizzle-orm';
 import { contents } from '$lib/db/pgSchema';
@@ -19,6 +19,16 @@ export const GET = async ({ url }) => {
 		)
 	});
 
+	const subjectSpecialistList: Array<any> = [];
+
+	contentResult.forEach((subject) => {
+		subjectSpecialistList.push(subject?.creator);
+	});
+
+	const uniqueSpecialist = Object.values(
+		subjectSpecialistList.reduce((acc, obj) => ({ ...acc, [obj.id]: obj }), {})
+	);
+
 	if (!value) {
 		return json({
 			name: 'PathfinderKit Search API',
@@ -32,5 +42,8 @@ export const GET = async ({ url }) => {
 		});
 	}
 
-	return json(contentResult);
+	return json({
+		results: contentResult,
+		subjectSpecialist: uniqueSpecialist
+	});
 };

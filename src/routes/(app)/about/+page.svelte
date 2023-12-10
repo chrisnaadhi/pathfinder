@@ -1,3 +1,7 @@
+<script>
+	import { base } from '$app/paths';
+</script>
+
 <section class="max-w-6xl ma text-justify px-4 lg:px-0">
 	<h1 class="text-center">Tentang Pathfinder</h1>
 	<div class="my-2">
@@ -44,14 +48,33 @@
 	</div>
 	<div>
 		<h3 class="text-center">Founder Lantera</h3>
-		<div>Yulianti, S.Sos., M.I.Kom.</div>
-		<div>Chrisna Adhi Pranoto, S.S.I.</div>
-		<div>Ziani Marni, S.S.I.</div>
+		<div class="flex items-center justify-evenly w-full my-5">
+			<div class="profile">
+				<img src="{base}/img/default.jpg" alt="Founder 1" class="photo" />
+				<h5>Yulianti, S.Sos., M.I.Kom.</h5>
+			</div>
+			<div class="profile">
+				<img src="{base}/img/default.jpg" alt="Founder 2" class="photo" />
+				<h5>Chrisna Adhi Pranoto, S.S.I.</h5>
+			</div>
+			<div class="profile">
+				<img src="{base}/img/default.jpg" alt="Founder 3" class="photo" />
+				<h5>Ziani Marni, S.S.I.</h5>
+			</div>
+		</div>
 	</div>
 </section>
 
 <style>
 	p {
 		--at-apply: italic text-gray-7;
+	}
+
+	.profile {
+		--at-apply: flex flex-col items-center gap-2;
+	}
+
+	.photo {
+		--at-apply: rounded-full w-24 h-24;
 	}
 </style>

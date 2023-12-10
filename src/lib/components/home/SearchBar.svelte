@@ -10,10 +10,17 @@
 
 	const getResults = async () => {
 		const result = await fetch(`${base}/api/search?q=${searchValue}`);
-		searchResults = await result.json();
+		const getResults = await result.json();
+		searchResults = getResults.results;
+		console.log(searchResults);
 	};
 	const goToSearchPage = async (event: KeyboardEvent) => {
 		if (event.key === 'Enter') {
+			goto(base + `/search?q=${searchValue}`);
+		}
+	};
+	const searchPage = async () => {
+		if (searchValue) {
 			goto(base + `/search?q=${searchValue}`);
 		}
 	};
@@ -30,7 +37,7 @@
 			placeholder="Find your path.."
 			autocomplete="off"
 		/>
-		<button type="submit" on:click={getResults}>Cari</button>
+		<button type="submit" on:click={searchPage}>Cari</button>
 	</div>
 	<div class="absolute max-w-xl max-h-xs overflow-y-scroll overflow-x-hidden">
 		{#if searchResults && searchValue}

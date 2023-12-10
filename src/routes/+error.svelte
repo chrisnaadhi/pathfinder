@@ -10,8 +10,9 @@
 	<Header state="" />
 	<section class="mt-5 py-25 flex flex-col items-center justify-center">
 		<img src="/illust/undraw_Warning.png" class="w-50" alt={$page.status.toString()} />
-		<h1 class="text-9xl">{$page.status}</h1>
-		<p class="font-semibold">{$page.error?.message}</p>
+		<h1 class="text-9xl text-red">{$page.status}</h1>
+		<p class="text-lg font-semibold">{$page.error?.message}</p>
+		<pre>{$page.url}</pre>
 		<div class="mt-5">
 			<a href={back} class="btn dfBg">Kembali</a>
 		</div>

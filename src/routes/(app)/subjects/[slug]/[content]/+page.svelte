@@ -16,7 +16,7 @@
 	<p class="dfBg rounded px-5 mb-3 text-sm">{getContent?.subjects?.subjectName}</p>
 	<img
 		src={getContent?.creator?.photo === null
-			? 'img/default.jpg'
+			? '/img/default.jpg'
 			: `${base}${getContent?.creator?.photo}`}
 		alt={getContent?.creator?.username}
 		class="w-16 h-16 rounded-full object-cover"
